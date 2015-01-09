@@ -91,10 +91,22 @@ class Derived: public Base
 {
     public:
         
+        Derived( void ): _z( 0 )
+        {}
+        
         int GetZ( void )
         {
-            return 0;
+            return this->_z;
         }
+        
+        void SetZ( int z )
+        {
+            this->_z = z;
+        }
+        
+    private:
+        
+        int _z;
 };
 
 TEST( XS_PIMPL_Object, BaseClassGetter )
@@ -124,7 +136,7 @@ TEST( XS_PIMPL_Object, BaseClassConstructorWithParams )
     ASSERT_EQ( 2, b.GetY() );
 }
 
-TEST( XS_PIMPL_Object, CopyConstructor )
+TEST( XS_PIMPL_Object, BaseClassCopyConstructor )
 {
     Base b1( 1, 2 );
     Base b2( b1 );
@@ -133,7 +145,7 @@ TEST( XS_PIMPL_Object, CopyConstructor )
     ASSERT_EQ( 2, b2.GetY() );
 }
 
-TEST( XS_PIMPL_Object, MoveConstructor )
+TEST( XS_PIMPL_Object, BaseClassMoveConstructor )
 {
     Base b1( 1, 2 );
     Base b2 = std::move( b1 );
@@ -142,7 +154,7 @@ TEST( XS_PIMPL_Object, MoveConstructor )
     ASSERT_EQ( 2, b2.GetY() );
 }
 
-TEST( XS_PIMPL_Object, AssigmnentOperator )
+TEST( XS_PIMPL_Object, BaseClassAssigmnentOperator )
 {
     Base b1( 1, 2 );
     Base b2;
@@ -160,4 +172,17 @@ TEST( XS_PIMPL_Object, DerivedClassGetter )
     ASSERT_EQ( 0, d.GetX() );
     ASSERT_EQ( 0, d.GetY() );
     ASSERT_EQ( 0, d.GetZ() );
+}
+
+TEST( XS_PIMPL_Object, DerivedClassSetter )
+{
+    Derived d;
+    
+    d.SetX( 1 );
+    d.SetY( 2 );
+    d.SetZ( 3 );
+    
+    ASSERT_EQ( 1, d.GetX() );
+    ASSERT_EQ( 2, d.GetY() );
+    ASSERT_EQ( 3, d.GetZ() );
 }
