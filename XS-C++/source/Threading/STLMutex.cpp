@@ -28,9 +28,9 @@
  ******************************************************************************/
 
 /*!
- * @file        Mutex-STL.cpp
+ * @file        STLMutex.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Definition of the XS::Threading::Mutex class (STL implementation)
+ * @abstract    Definition of the XS::Threading::STLMutex class
  */
 
 #include <XS-C++.h>
@@ -44,7 +44,7 @@ namespace XS
     #endif
     
     template<>
-    class PIMPL::Object< Threading::Mutex >::IMPL
+    class PIMPL::Object< Threading::STLMutex >::IMPL
     {
         public:
             
@@ -96,19 +96,19 @@ namespace XS
     #endif
     
     template<>
-    void PIMPL::Object< Threading::Mutex >::D::operator ()( PIMPL::Object< Threading::Mutex >::IMPL * p )
+    void PIMPL::Object< Threading::STLMutex >::D::operator ()( PIMPL::Object< Threading::STLMutex >::IMPL * p )
     {
         delete p;
     }
 
-    template class PIMPL::Object< Threading::Mutex >;
+    template class PIMPL::Object< Threading::STLMutex >;
     
     namespace Threading
     {
-        Mutex::Mutex( bool recursive ): XS::PIMPL::Object< Mutex >( recursive )
+        STLMutex::STLMutex( bool recursive ): XS::PIMPL::Object< STLMutex >( recursive )
         {}
         
-        void Mutex::Lock( void )
+        void STLMutex::Lock( void )
         {
             if( this->impl->_recursive )
             {
@@ -120,7 +120,7 @@ namespace XS
             }
         }
         
-        void Mutex::Unlock( void )
+        void STLMutex::Unlock( void )
         {
             if( this->impl->_recursive )
             {
@@ -132,7 +132,7 @@ namespace XS
             }
         }
         
-        bool Mutex::TryLock( void )
+        bool STLMutex::TryLock( void )
         {
             if( this->impl->_recursive )
             {

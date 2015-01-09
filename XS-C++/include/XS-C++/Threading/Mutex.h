@@ -30,7 +30,7 @@
 /*!
  * @header      Mutex.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Declaration of the XS::Threading::Mutex class
+ * @abstract    Declaration of the XS::Threading::Mutex type
  */
 
 #ifndef __XSCPP_THREADING_MUTEX_H__
@@ -40,22 +40,27 @@ namespace XS
 {
     namespace Threading
     {
+        class STLMutex;
+        
         /*!
-         * @class           XS::Threading::Mutex
-         * @abstract        Mutex class
+         * @typedef     Mutex
+         * @abstract    Mutex object type
+         * @discussion  The mutex object type is a typedef, as the concrete
+         *              implementation may vary, depending on the
+         *              XSCPP_THREADING_USE_STL macro.
+         * @see         XSCPP_THREADING_USE_STL
+         * @see         XS::Threading::STLMutex
+         * @see         XS::Threading::NativeMutex
          */
-        class Mutex: public XS::PIMPL::Object< Mutex >, public Lockable
-        {
-            public:
-                
-                using PIMPL::Object< Mutex >::impl;
-                
-                Mutex( bool recursive = true );
-                
-                void Lock( void );
-                void Unlock( void );
-                bool TryLock( void );
-        };
+        #if defined( XSCPP_THREADING_USE_STL ) && XSCPP_THREADING_USE_STL == 1
+        
+        typedef STLMutex Mutex;
+        
+        #else
+        
+        
+        
+        #endif
     }
 }
 
