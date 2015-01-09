@@ -40,5 +40,36 @@
 namespace XS
 {
     namespace Atomic
-    {}
+    {
+        void MemoryBarrier( void )
+        {
+            #if defined( __ARM_ARCH )
+            
+            __asm__ __volatile__
+            (
+                "dmb sy"
+            );
+            
+            #elif defined( __i386__ ) || defined( __x86_64__ )
+            
+                #if defined( _WIN32 )
+                
+                __asm mfence;
+                
+                #else
+                
+                __asm__ __volatile__
+                (
+                    "mfence"
+                );
+                
+                #endif
+                
+            #else
+            
+            #error "XS::Atomic::MemoryBarrier is not implemented for the current target architecture"
+            
+            #endif
+        }
+    }
 }

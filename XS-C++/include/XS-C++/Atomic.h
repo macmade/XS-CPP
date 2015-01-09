@@ -41,7 +41,19 @@
 namespace XS
 {
     namespace Atomic
-    {}
+    {
+        /*!
+         * @function    XS::Atomic::MemoryBarrier
+         * @abstract    Issues a memory barrier/fence
+         * @discussion  Currently, this function is implemented for the
+         *              following architectures:
+         *              - ARMv7
+         *              - ARM64
+         *              - x86
+         *              - x86-64
+         */
+        void MemoryBarrier( void );
+    }
 }
 
 #endif /* __XSCPP_ATOMIC_H__ */
