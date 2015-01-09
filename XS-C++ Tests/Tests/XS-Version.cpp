@@ -30,63 +30,22 @@
 /* $Id$ */
 
 /*!
- * @file        Version.cpp
+ * @file        XS-Version.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Definition of the XS::Version class
+ * @abstract    Test case XS::Version
  */
 
-#include <XS-C++.h>
-#include <XS-C++/PIMPL/Object-IMPL.h>
+using namespace testing;
 
-namespace XS
+TEST( XS_Version, Major )
 {
-    #ifdef __clang__
-    #pragma clang diagnostic push
-    #pragma clang diagnostic ignored "-Wpadded"
-    #endif
+    XS::Version v1;
+    XS::Version v2( 1 );
     
-    template<>
-    class PIMPL::Object< Version >::IMPL
-    {
-        public:
-            
-            IMPL( unsigned int major ): _major( major )
-            {}
-            
-            IMPL( const IMPL & o ): _major( o._major )
-            {
-                ( void )o;
-            }
-            
-            ~IMPL( void )
-            {}
-            
-            unsigned int _major;
-    };
+    ASSERT_EQ( 0, static_cast< int >( v1.GetMajor() ) );
+    ASSERT_EQ( 1, static_cast< int >( v2.GetMajor() ) );
     
-    #ifdef __clang__
-    #pragma clang diagnostic pop
-    #endif
+    v1.SetMajor( 1 );
     
-    template<>
-    void PIMPL::Object< Version >::D::operator ()( PIMPL::Object< Version >::IMPL * p )
-    {
-        delete p;
-    }
-
-    template class PIMPL::Object< Version >;
-    
-    Version::Version( unsigned int major ): XS::PIMPL::Object< Version >( major )
-    {}
-    
-    unsigned int Version::GetMajor( void ) const
-    {
-        return this->impl->_major;
-    }
-    
-    /* TODO: Thread-safety */
-    void Version::SetMajor( unsigned int value )
-    {
-        this->impl->_major = value;
-    }
+    ASSERT_EQ( 1, static_cast< int >( v1.GetMajor() ) );
 }

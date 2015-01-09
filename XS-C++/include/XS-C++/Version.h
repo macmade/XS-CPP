@@ -50,11 +50,9 @@ namespace XS
             
             using PIMPL::Object< Version >::impl;
             
-            /*!
-             * @function    Version
-             * @abstract    Class constructor
-             */
-            Version( void );
+            Version( unsigned int major = 0 );
+            unsigned int GetMajor( void ) const;
+            void SetMajor( unsigned int value );
     };
 }
 
