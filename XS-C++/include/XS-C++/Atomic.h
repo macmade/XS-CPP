@@ -77,6 +77,14 @@ namespace XS
          * @return      The decremented value
          */
         XS::Int32 Decrement32( volatile XS::Int32 * value );
+        
+        /*!
+         * @function    XS::Atomic::Decrement64
+         * @abstract    Atomically decrements a 64 bits integer value
+         * @param       value       The value to decrement
+         * @return      The decremented value
+         */
+        XS::Int64 Decrement64( volatile XS::Int64 * value );
     }
 }
 
