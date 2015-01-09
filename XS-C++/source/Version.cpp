@@ -51,18 +51,26 @@ namespace XS
             IMPL( unsigned int major, unsigned int minor, unsigned int build, unsigned int revision, Version::Status status ): _major( major ), _minor( minor ), _build( build ), _revision( revision ), _status( status )
             {}
             
-            /* TODO: Thread-safety */
-            IMPL( const IMPL & o ): _major( o._major ), _minor( o._minor ), _build( o._build ), _revision( o._revision ), _status( o._status )
-            {}
+            IMPL( const IMPL & o )
+            {
+                Threading::LockGuard lock( const_cast< Threading::Mutex * >( &( o._mtx ) ) );
+                
+                this->_major    = o._major;
+                this->_minor    = o._minor;
+                this->_build    = o._build;
+                this->_revision = o._revision;
+                this->_major    = o._major;
+            }
             
             ~IMPL( void )
             {}
             
-            unsigned int    _major;
-            unsigned int    _minor;
-            unsigned int    _build;
-            unsigned int    _revision;
-            Version::Status _status;
+            unsigned int     _major;
+            unsigned int     _minor;
+            unsigned int     _build;
+            unsigned int     _revision;
+            Version::Status  _status;
+            Threading::Mutex _mtx;
     };
     
     #ifdef __clang__
@@ -132,56 +140,71 @@ namespace XS
     
     unsigned int Version::GetMajor( void ) const
     {
+        Threading::LockGuard lock( &( this->impl->_mtx ) );
+        
         return this->impl->_major;
     }
     
     unsigned int Version::GetMinor( void ) const
     {
+        Threading::LockGuard lock( &( this->impl->_mtx ) );
+        
         return this->impl->_minor;
     }
     
     unsigned int Version::GetBuild( void ) const
     {
+        Threading::LockGuard lock( &( this->impl->_mtx ) );
+        
         return this->impl->_build;
     }
     
     unsigned int Version::GetRevision( void ) const
     {
+        Threading::LockGuard lock( &( this->impl->_mtx ) );
+        
         return this->impl->_revision;
     }
     
     Version::Status Version::GetStatus( void ) const
     {
+        Threading::LockGuard lock( &( this->impl->_mtx ) );
+        
         return this->impl->_status;
     }
     
-    /* TODO: Thread-safety */
     void Version::SetMajor( unsigned int value )
     {
+        Threading::LockGuard lock( &( this->impl->_mtx ) );
+        
         this->impl->_major = value;
     }
     
-    /* TODO: Thread-safety */
     void Version::SetMinor( unsigned int value )
     {
+        Threading::LockGuard lock( &( this->impl->_mtx ) );
+        
         this->impl->_minor = value;
     }
     
-    /* TODO: Thread-safety */
     void Version::SetBuild( unsigned int value )
     {
+        Threading::LockGuard lock( &( this->impl->_mtx ) );
+        
         this->impl->_build = value;
     }
     
-    /* TODO: Thread-safety */
     void Version::SetRevision( unsigned int value )
     {
+        Threading::LockGuard lock( &( this->impl->_mtx ) );
+        
         this->impl->_revision = value;
     }
     
-    /* TODO: Thread-safety */
     void Version::SetStatus( Version::Status value )
     {
+        Threading::LockGuard lock( &( this->impl->_mtx ) );
+        
         this->impl->_status = value;
     }
     
