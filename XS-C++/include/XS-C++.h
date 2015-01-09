@@ -73,6 +73,7 @@
 /* Includes from XS-C++ */
 #include <XS-C++/Macros.h>
 #include <XS-C++/Types.h>
+#include <XS-C++/Atomic.h>
 
 #endif /* __cplusplus */
 #endif /* __XSCPP__ */
