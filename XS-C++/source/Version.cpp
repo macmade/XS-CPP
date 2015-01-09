@@ -48,11 +48,11 @@ namespace XS
     {
         public:
             
-            IMPL( unsigned int major, unsigned int minor, unsigned int build, Version::Status status ): _major( major ), _minor( minor ), _build( build ), _status( status )
+            IMPL( unsigned int major, unsigned int minor, unsigned int build, unsigned int revision, Version::Status status ): _major( major ), _minor( minor ), _build( build ), _revision( revision ), _status( status )
             {}
             
             /* TODO: Thread-safety */
-            IMPL( const IMPL & o ): _major( o._major ), _minor( o._minor ), _build( o._build ), _status( o._status )
+            IMPL( const IMPL & o ): _major( o._major ), _minor( o._minor ), _build( o._build ), _revision( o._revision ), _status( o._status )
             {}
             
             ~IMPL( void )
@@ -61,6 +61,7 @@ namespace XS
             unsigned int    _major;
             unsigned int    _minor;
             unsigned int    _build;
+            unsigned int    _revision;
             Version::Status _status;
     };
     
@@ -76,7 +77,7 @@ namespace XS
 
     template class PIMPL::Object< Version >;
     
-    Version::Version( unsigned int major, unsigned int minor, unsigned int build, Status status ): XS::PIMPL::Object< Version >( major, minor, build, status )
+    Version::Version( unsigned int major, unsigned int minor, unsigned int build, unsigned int revision, Status status ): XS::PIMPL::Object< Version >( major, minor, build, revision, status )
     {}
     
     unsigned int Version::GetMajor( void ) const
@@ -92,6 +93,11 @@ namespace XS
     unsigned int Version::GetBuild( void ) const
     {
         return this->impl->_build;
+    }
+    
+    unsigned int Version::GetRevision( void ) const
+    {
+        return this->impl->_revision;
     }
     
     Version::Status Version::GetStatus( void ) const
@@ -115,6 +121,12 @@ namespace XS
     void Version::SetBuild( unsigned int value )
     {
         this->impl->_build = value;
+    }
+    
+    /* TODO: Thread-safety */
+    void Version::SetRevision( unsigned int value )
+    {
+        this->impl->_revision = value;
     }
     
     /* TODO: Thread-safety */
