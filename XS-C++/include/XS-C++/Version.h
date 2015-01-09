@@ -58,6 +58,8 @@ namespace XS
             Status;
             
             Version( unsigned int major = 0, unsigned int minor = 0, unsigned int build = 0, unsigned int revision = 0, Status status = StatusFinal );
+            operator std::string( void ) const;
+            std::string ToString( void ) const;
             unsigned int GetMajor( void ) const;
             unsigned int GetMinor( void ) const;
             unsigned int GetBuild( void ) const;

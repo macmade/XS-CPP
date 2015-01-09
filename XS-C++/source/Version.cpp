@@ -80,6 +80,56 @@ namespace XS
     Version::Version( unsigned int major, unsigned int minor, unsigned int build, unsigned int revision, Status status ): XS::PIMPL::Object< Version >( major, minor, build, revision, status )
     {}
     
+    Version::operator std::string( void ) const
+    {
+        return this->ToString();
+    }
+    
+    std::string Version::ToString( void ) const
+    {
+        std::string  v;
+        unsigned int major;
+        unsigned int minor;
+        unsigned int build;
+        unsigned int revision;
+        Status       status;
+        
+        major    = this->GetMajor();
+        minor    = this->GetMinor();
+        build    = this->GetBuild();
+        revision = this->GetRevision();
+        status   = this->GetStatus();
+        
+        v  = std::to_string( major )
+           + "."
+           + std::to_string( minor )
+           + "."
+           + std::to_string( build );
+        
+        switch( status )
+        {
+            case StatusAlpha:            v += "-a";  break;
+            case StatusBeta:             v += "-b";  break;
+            case StatusReleaseCandidate: v += "-rc"; break;
+            
+            case StatusFinal:
+                
+                if( revision > 0 )
+                {
+                    v += "-r";
+                }
+                
+                break;
+        }
+        
+        if( revision > 0 )
+        {
+            v += std::to_string( revision );
+        }
+        
+        return v;
+    }
+    
     unsigned int Version::GetMajor( void ) const
     {
         return this->impl->_major;

@@ -99,3 +99,17 @@ TEST( XS_Version, Status )
     
     ASSERT_EQ( XS::Version::StatusAlpha, static_cast< int >( v1.GetStatus() ) );
 }
+
+TEST( XS_Version, ToString )
+{
+    XS::Version v1;
+    XS::Version v2( 0, 1, 2, 0, XS::Version::StatusAlpha );
+    XS::Version v3( 0, 1, 2, 3, XS::Version::StatusAlpha );
+    XS::Version v4( 0, 1, 2, 3, XS::Version::StatusFinal );
+    
+    ASSERT_EQ( "0.0.0",    v1.ToString() );
+    ASSERT_EQ( "0.1.2-a",  v2.ToString() );
+    ASSERT_EQ( "0.1.2-a3", v3.ToString() );
+    ASSERT_EQ( "0.1.2-r3", v4.ToString() );
+    ASSERT_EQ( "0.0.0",    std::string( v1 ) );
+}
