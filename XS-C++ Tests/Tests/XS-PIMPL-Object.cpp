@@ -53,6 +53,14 @@ class Base: XS::PIMPL::Object< Base >
         Base( const Base && b ): _x( b._x ), _y( b._y )
         {}
         
+        Base & operator =( const Base & b )
+        {
+            this->_x = b._x;
+            this->_y = b._y;
+            
+            return *( this );
+        }
+        
         int GetX( void )
         {
             return this->_x;
@@ -119,6 +127,17 @@ TEST( XS_PIMPL_Object, MoveConstructor )
 {
     Base b1( 1, 2 );
     Base b2 = std::move( b1 );
+    
+    ASSERT_EQ( 1, b2.GetX() );
+    ASSERT_EQ( 2, b2.GetY() );
+}
+
+TEST( XS_PIMPL_Object, AssigmnentOperator )
+{
+    Base b1( 1, 2 );
+    Base b2;
+    
+    b2 = b1;
     
     ASSERT_EQ( 1, b2.GetX() );
     ASSERT_EQ( 2, b2.GetY() );
