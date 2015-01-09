@@ -30,61 +30,50 @@
 /* $Id$ */
 
 /*!
- * @file        XS-Atomic.cpp
+ * @file        Add32.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Test case XS::Atomic
+ * @abstract    Definition of XS::Atomic::Add32
  */
 
-using namespace testing;
+#include <XS-C++.h>
 
-TEST( XS_Atomic, Increment32 )
+#if defined( _WIN32 )
+
+#include <Windows.h>
+#include <Winnt.h>
+
+#elif defined( __APPLE__ )
+
+#include <libkern/OSAtomic.h>
+
+#else
+
+#error "XS::Atomic::Add32 is not implemented for the current platform"
+
+#endif
+
+namespace XS
 {
-    XS::Int32 i = 0;
-    
-    ASSERT_EQ( 1, XS::Atomic::Increment32( &i ) );
-    ASSERT_EQ( 1, i );
+    namespace Atomic
+    {
+        XS::Int32 Add32( XS::Int32 amount, volatile XS::Int32 * value )
+        {
+            #if defined( _WIN32 )
+            
+            return static_cast< XS::Int32 >( InterlockedExchangeAdd( static_cast< LONG volatile * >( value ), static_cast< LONG >( amount ) ) ) + amount;
+            
+            #elif defined( __APPLE__ )
+            
+            return static_cast< XS::Int32 >( OSAtomicAdd32( static_cast< int32_t >( amount ), static_cast< volatile int32_t * >( value ) ) );
+            
+            #else
+            
+            ( void )amount;
+            ( void )value;
+            
+            return 0;
+            
+            #endif
+        }
+    }
 }
-
-TEST( XS_Atomic, Increment64 )
-{
-    XS::Int64 i = 0;
-    
-    ASSERT_EQ( 1, XS::Atomic::Increment64( &i ) );
-    ASSERT_EQ( 1, i );
-}
-
-TEST( XS_Atomic, Decrement32 )
-{
-    XS::Int32 i = 0;
-    
-    ASSERT_EQ( -1, XS::Atomic::Decrement32( &i ) );
-    ASSERT_EQ( -1, i );
-}
-
-TEST( XS_Atomic, Decrement64 )
-{
-    XS::Int64 i = 0;
-    
-    ASSERT_EQ( -1, XS::Atomic::Decrement64( &i ) );
-    ASSERT_EQ( -1, i );
-}
-
-TEST( XS_Atomic, Add32 )
-{
-    XS::Int32 i = 0;
-    
-    ASSERT_EQ( 1, XS::Atomic::Add32( 1, &i ) );
-    ASSERT_EQ( 1, i );
-}
-
-TEST( XS_Atomic, Add64 )
-{}
-
-TEST( XS_Atomic, CompareAndSwap32 )
-{}
-
-TEST( XS_Atomic, CompareAndSwap64 )
-{}
-
-TEST( XS_Atomic, CompareAndSwapPointer )
-{}

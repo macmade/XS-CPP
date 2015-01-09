@@ -85,6 +85,15 @@ namespace XS
          * @return      The decremented value
          */
         XS::Int64 Decrement64( volatile XS::Int64 * value );
+        
+        /*!
+         * @function    XS::Atomic::Add32
+         * @abstract    Atomically adds to a 32 bits value
+         * @param       amount      The amount to add
+         * @param       value       The 32 bits value to modify
+         * @return      The new value
+         */
+        XS::Int32 Add32( XS::Int32 amount, volatile XS::Int32 * value );
     }
 }
 
