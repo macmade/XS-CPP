@@ -37,4 +37,25 @@
 
 using namespace testing;
 
+class Base: XS::PIMPL::Object< Base >
+{
+    public:
+        
+        int GetX( void )
+        {
+            return 0;
+        }
+        
+        int GetY( void )
+        {
+            return 0;
+        }
+};
 
+TEST( XS_PIMPL_Object, BaseClassGetter )
+{
+    Base b;
+    
+    ASSERT_EQ( 0, b.GetX() );
+    ASSERT_EQ( 0, b.GetY() );
+}
