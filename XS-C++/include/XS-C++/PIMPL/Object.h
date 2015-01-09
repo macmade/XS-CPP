@@ -49,7 +49,84 @@ namespace XS
          */
         template< class T >
         class Object
-        {};
+        {
+            public:
+                
+                /*!
+                 * @function    Object
+                 * @abstract    Class constructor
+                 */
+                template< typename ... A > 
+                Object( A ... args );
+                
+                /*!
+                 * @function    Object
+                 * @abstract    Class copy constructor
+                 * @param       o   Another object to be used as data source for the initialization
+                 */
+                Object( const Object & o );
+                
+                /*!
+                 * @function    Object
+                 * @abstract    Class move constructor
+                 * @param       o   Another object to be used as data source for the initialization
+                 */
+                Object( Object && o );
+                
+                /*!
+                 * @function    ~Object
+                 * @abstract    Class destructor
+                 */
+                virtual ~Object( void );
+                
+                /*!
+                 * @function    operator =
+                 * @abstract    Assignment operator
+                 * @param       o   Another object to use as data source
+                 */
+                Object< T > & operator =( Object o );
+                
+                /*!
+                 * @function        swap
+                 * @abstract        ADL - Swap function for XS::PIMPL::Object
+                 * @templatefield   U   The class extending XS::PIMPL::Object
+                 * @param           o1  The first object to swap
+                 * @param           o2  The second object to swap
+                 */
+                template< class U >
+                friend void swap( Object< U > & o1, Object< U > & o2 );
+                
+            private:
+                
+                friend T;
+                class  IMPL;
+                
+                /*!
+                 * @class           XS::PIMPL::Object::D
+                 * @abstract        Deleter class for the private implementation
+                 */
+                class D
+                {
+                    public:
+                        
+                        /*!
+                         * @function    operator ()
+                         * @abstract    ...
+                         * @param       p   The private implementation pointer that needs to be deleted
+                         * @discussion  This method shall be defined manually
+                         *              for all classes extending XS::PIMPL::Object,
+                         *              as there is no way to delete a pointer
+                         *              to a forward class.
+                         */
+                        void operator ()( IMPL * p );
+                };
+                
+                /*!
+                 * @var         impl
+                 * @abstract    A pointer to the class' private implementation
+                 */
+                std::unique_ptr< IMPL, D > impl;
+        };
     }
 }
 

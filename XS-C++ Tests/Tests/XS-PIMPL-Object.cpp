@@ -35,97 +35,148 @@
  * @abstract    Test case XS::PIMPL::Object
  */
 
-using namespace testing;
+/*******************************************************************************
+ * Test base class declaration
+ ******************************************************************************/
 
 class Base: XS::PIMPL::Object< Base >
 {
     public:
         
-        Base( void ): _x( 0 ), _y( 0 )
-        {}
+        using XS::PIMPL::Object< Base >::impl;
         
-        Base( int x, int y ): _x( x ), _y( y )
-        {}
-        
-        Base( const Base & b ): _x( b._x ), _y( b._y )
-        {}
-        
-        Base( const Base && b ): _x( b._x ), _y( b._y )
-        {}
-        
-        Base & operator =( const Base & b )
-        {
-            this->_x = b._x;
-            this->_y = b._y;
-            
-            return *( this );
-        }
-        
-        int GetX( void )
-        {
-            return this->_x;
-        }
-        
-        int GetY( void )
-        {
-            return this->_y;
-        }
-        
-        void SetX( int x )
-        {
-            this->_x = x;
-        }
-        
-        void SetY( int y )
-        {
-            this->_y = y;
-        }
-        
-    private:
-        
-        int _x;
-        int _y;
+        Base( void );
+        Base( int x, int y );
+        int GetX( void );
+        int GetY( void );
+        void SetX( int x );
+        void SetY( int y );
 };
+
+/*******************************************************************************
+ * Test derived class declaration
+ ******************************************************************************/
 
 class Derived: public Base, public XS::PIMPL::Object< Derived >
 {
     public:
         
-        Derived( void ): _z( 0 )
+        using XS::PIMPL::Object< Derived >::impl;
+        
+        Derived( void );
+        Derived( int x, int y, int z );
+        int GetZ( void );
+        void SetZ( int z );
+};
+
+#include <XS-C++/PIMPL/Object-IMPL.h>
+
+/*******************************************************************************
+ * Test base class definition
+ ******************************************************************************/
+
+template<>
+class XS::PIMPL::Object< Base >::IMPL
+{
+    public:
+        
+        IMPL( int x, int y ): _x( x ), _y( y )
         {}
         
-        Derived( int x, int y, int z ): Base( x, y ), _z( z )
+        IMPL( const IMPL & o ): _x( o._x ), _y( o._y )
         {}
         
-        Derived( const Derived & d ): Base( d ), _z( d._z )
+        ~IMPL( void )
         {}
         
-        Derived( const Derived && d ): Base( d ), _z( d._z )
+        int _x;
+        int _y;
+};
+
+template<>
+void XS::PIMPL::Object< Base >::D::operator ()( XS::PIMPL::Object< Base >::IMPL * p )
+{
+    delete p;
+}
+
+template class XS::PIMPL::Object< Base >;
+
+Base::Base( void ): XS::PIMPL::Object< Base >( 0, 0 )
+{}
+
+Base::Base( int x, int y ): XS::PIMPL::Object< Base >( x, y )
+{}
+
+int Base::GetX( void )
+{
+    return this->impl->_x;
+}
+
+int Base::GetY( void )
+{
+    return this->impl->_y;
+}
+
+void Base::SetX( int x )
+{
+    this->impl->_x = x;
+}
+
+void Base::SetY( int y )
+{
+    this->impl->_y = y;
+}
+
+/*******************************************************************************
+ * Test derived class definition
+ ******************************************************************************/
+
+template<>
+class XS::PIMPL::Object< Derived >::IMPL
+{
+    public:
+        
+        IMPL( int z ): _z( z )
         {}
         
-        Derived & operator =( const Derived & d )
-        {
-            Base::operator =( d );
-            
-            this->_z = d._z;
-            
-            return *( this );
-        }
+        IMPL( const IMPL & o ): _z( o._z )
+        {}
         
-        int GetZ( void )
-        {
-            return this->_z;
-        }
-        
-        void SetZ( int z )
-        {
-            this->_z = z;
-        }
-        
-    private:
+        ~IMPL( void )
+        {}
         
         int _z;
 };
+
+template<>
+void XS::PIMPL::Object< Derived >::D::operator ()( XS::PIMPL::Object< Derived >::IMPL * p )
+{
+    delete p;
+}
+
+template class XS::PIMPL::Object< Derived >;
+
+Derived::Derived( void ): Base( 0, 0 ), XS::PIMPL::Object< Derived >( 0 )
+{}
+
+Derived::Derived( int x, int y, int z ): Base( x, y ), XS::PIMPL::Object< Derived >( z )
+{}
+
+int Derived::GetZ( void )
+{
+    return this->impl->_z;
+}
+
+void Derived::SetZ( int z )
+{
+    this->impl->_z = z;
+}
+
+/*******************************************************************************
+ * Unit tests
+ ******************************************************************************/
+
+using namespace testing;
 
 TEST( XS_PIMPL_Object, BaseClassGetter )
 {
