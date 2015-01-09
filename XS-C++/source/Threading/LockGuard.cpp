@@ -50,6 +50,12 @@ namespace XS
             
             IMPL( Threading::Lockable * lock ): _lock( lock )
             {
+                if( lock == nullptr )
+                {
+                    /* TODO: throw */
+                    throw 0;
+                }
+                
                 this->_lock->Lock();
             }
             

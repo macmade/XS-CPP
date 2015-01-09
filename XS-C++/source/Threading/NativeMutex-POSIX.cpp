@@ -70,6 +70,7 @@ namespace XS
                 if( pthread_mutexattr_init( &attr ) != 0 )
                 {
                     /* TODO: throw */
+                    throw 0;
                 }
                 
                 if( this->_recursive )
@@ -79,6 +80,7 @@ namespace XS
                         pthread_mutexattr_destroy( &attr );
                         
                         /* TODO: throw */
+                        throw 0;
                     }
                 }
                 
@@ -87,6 +89,7 @@ namespace XS
                     pthread_mutexattr_destroy( &attr );
                     
                     /* TODO: throw */
+                    throw 0;
                 }
                 
                 pthread_mutexattr_destroy( &attr );
