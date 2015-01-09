@@ -35,4 +35,31 @@
  * @abstract    Test case XS::Atomic
  */
 
+using namespace testing;
 
+TEST( XS_Atomic, Increment32 )
+{}
+
+TEST( XS_Atomic, Increment64 )
+{}
+
+TEST( XS_Atomic, Decrement32 )
+{}
+
+TEST( XS_Atomic, Decrement64 )
+{}
+
+TEST( XS_Atomic, Add32 )
+{}
+
+TEST( XS_Atomic, Add64 )
+{}
+
+TEST( XS_Atomic, CompareAndSwap32 )
+{}
+
+TEST( XS_Atomic, CompareAndSwap64 )
+{}
+
+TEST( XS_Atomic, CompareAndSwapPointer )
+{}
