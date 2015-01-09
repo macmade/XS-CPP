@@ -86,3 +86,4 @@ gmock_build:
 	@cp $(DIR_TMP_BUILD)gtest/libgtest_main.a $(DIR_BUILD)lib/osx
 	@cp $(DIR_TMP_BUILD)gtest/libgtest.a $(DIR_BUILD)lib/osx
 	@cp -rf $(SRC_GMOCK_DIR)include/gmock $(DIR_BUILD)include/
+	@cp -rf $(SRC_GMOCK_DIR)gtest/include/gtest $(DIR_BUILD)include/
