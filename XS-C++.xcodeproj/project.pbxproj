@@ -54,6 +54,10 @@
 		05DC07601A5FD28B00A7CF26 /* CompareAndSwap64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC075E1A5FD28B00A7CF26 /* CompareAndSwap64.cpp */; };
 		05DC07611A5FD28B00A7CF26 /* CompareAndSwap64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC075E1A5FD28B00A7CF26 /* CompareAndSwap64.cpp */; };
 		05DC07621A5FD28B00A7CF26 /* CompareAndSwap64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC075E1A5FD28B00A7CF26 /* CompareAndSwap64.cpp */; };
+		05DC07641A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07631A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp */; };
+		05DC07651A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07631A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp */; };
+		05DC07661A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07631A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp */; };
+		05DC07671A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07631A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp */; };
 		05E71B5E1961D96100F911C4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E71B5D1961D96100F911C4 /* main.cpp */; };
 		05E71B691961D9D100F911C4 /* libXS-C++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C881218C8B85F006260B3 /* libXS-C++.a */; };
 /* End PBXBuildFile section */
@@ -156,6 +160,7 @@
 		05DC07541A5FD06400A7CF26 /* Add64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Add64.cpp; sourceTree = "<group>"; };
 		05DC07591A5FD16B00A7CF26 /* CompareAndSwap32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompareAndSwap32.cpp; sourceTree = "<group>"; };
 		05DC075E1A5FD28B00A7CF26 /* CompareAndSwap64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompareAndSwap64.cpp; sourceTree = "<group>"; };
+		05DC07631A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompareAndSwapPointer.cpp; sourceTree = "<group>"; };
 		05E71B5D1961D96100F911C4 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		05E71B631961D9D100F911C4 /* XS-C++ Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XS-C++ Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E71B711961DA1100F911C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -296,6 +301,7 @@
 				05DC07541A5FD06400A7CF26 /* Add64.cpp */,
 				05DC07591A5FD16B00A7CF26 /* CompareAndSwap32.cpp */,
 				05DC075E1A5FD28B00A7CF26 /* CompareAndSwap64.cpp */,
+				05DC07631A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp */,
 				05DC07451A5FCD4700A7CF26 /* Decrement32.cpp */,
 				05DC074A1A5FCF2C00A7CF26 /* Decrement64.cpp */,
 				05DC073B1A5FCA6800A7CF26 /* Increment32.cpp */,
@@ -536,6 +542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05DC07641A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp in Sources */,
 				05DC07501A5FCFDE00A7CF26 /* Add32.cpp in Sources */,
 				05DC07461A5FCD4700A7CF26 /* Decrement32.cpp in Sources */,
 				05DC074B1A5FCF2C00A7CF26 /* Decrement64.cpp in Sources */,
@@ -552,6 +559,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05DC07651A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp in Sources */,
 				05DC07511A5FCFDE00A7CF26 /* Add32.cpp in Sources */,
 				05DC07471A5FCD4700A7CF26 /* Decrement32.cpp in Sources */,
 				05DC074C1A5FCF2C00A7CF26 /* Decrement64.cpp in Sources */,
@@ -568,6 +576,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05DC07661A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp in Sources */,
 				05DC07521A5FCFDE00A7CF26 /* Add32.cpp in Sources */,
 				05DC07481A5FCD4700A7CF26 /* Decrement32.cpp in Sources */,
 				05DC074D1A5FCF2C00A7CF26 /* Decrement64.cpp in Sources */,
@@ -584,6 +593,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05DC07671A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp in Sources */,
 				05DC07531A5FCFDE00A7CF26 /* Add32.cpp in Sources */,
 				05DC07491A5FCD4700A7CF26 /* Decrement32.cpp in Sources */,
 				05DC074E1A5FCF2C00A7CF26 /* Decrement64.cpp in Sources */,

@@ -118,7 +118,19 @@ TEST( XS_Atomic, CompareAndSwap64Failure )
 }
 
 TEST( XS_Atomic, CompareAndSwapPointerSuccess )
-{}
+{
+    int    i = 0;
+    void * p = nullptr;
+    
+    ASSERT_TRUE( XS::Atomic::CompareAndSwapPointer( nullptr, &i, &p ) );
+    ASSERT_EQ( &i, p );
+}
 
 TEST( XS_Atomic, CompareAndSwapPointerFailure )
-{}
+{
+    int    i = 0;
+    void * p = nullptr;
+    
+    ASSERT_FALSE( XS::Atomic::CompareAndSwapPointer( &i, nullptr, &p ) );
+    ASSERT_EQ( nullptr, p );
+}
