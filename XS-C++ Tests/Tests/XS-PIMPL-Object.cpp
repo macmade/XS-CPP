@@ -94,6 +94,9 @@ class Derived: public Base
         Derived( void ): _z( 0 )
         {}
         
+        Derived( int x, int y, int z ): Base( x, y ), _z( z )
+        {}
+        
         int GetZ( void )
         {
             return this->_z;
@@ -181,6 +184,15 @@ TEST( XS_PIMPL_Object, DerivedClassSetter )
     d.SetX( 1 );
     d.SetY( 2 );
     d.SetZ( 3 );
+    
+    ASSERT_EQ( 1, d.GetX() );
+    ASSERT_EQ( 2, d.GetY() );
+    ASSERT_EQ( 3, d.GetZ() );
+}
+
+TEST( XS_PIMPL_Object, DerivedClassConstructorWithParams )
+{
+    Derived d( 1, 2, 3 );
     
     ASSERT_EQ( 1, d.GetX() );
     ASSERT_EQ( 2, d.GetY() );
