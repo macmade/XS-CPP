@@ -85,11 +85,20 @@ TEST( XS_Atomic, Add64 )
     ASSERT_EQ( 1, i );
 }
 
-TEST( XS_Atomic, CompareAndSwap32 )
+TEST( XS_Atomic, CompareAndSwap32Success )
 {}
 
-TEST( XS_Atomic, CompareAndSwap64 )
+TEST( XS_Atomic, CompareAndSwap32Failure )
 {}
 
-TEST( XS_Atomic, CompareAndSwapPointer )
+TEST( XS_Atomic, CompareAndSwap64Success )
+{}
+
+TEST( XS_Atomic, CompareAndSwap64Failure )
+{}
+
+TEST( XS_Atomic, CompareAndSwapPointerSuccess )
+{}
+
+TEST( XS_Atomic, CompareAndSwapPointerFailure )
 {}
