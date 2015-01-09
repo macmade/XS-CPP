@@ -45,5 +45,6 @@
 
 #import <XCTest/XCTest.h>
 #import <XS-C++.h>
+#import "gmock/gmock.h"
 
 #endif /* __XSCPP_TESTS_PREFIX_H__ */

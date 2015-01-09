@@ -20,7 +20,7 @@
 		05DC06E91A5FB36E00A7CF26 /* Atomic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC06E51A5FB36E00A7CF26 /* Atomic.cpp */; };
 		05DC06EB1A5FB38A00A7CF26 /* Atomic.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DC06EA1A5FB38A00A7CF26 /* Atomic.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05DC06EC1A5FB38A00A7CF26 /* Atomic.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DC06EA1A5FB38A00A7CF26 /* Atomic.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		05DC06EE1A5FB44700A7CF26 /* XS-Atomic.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05DC06ED1A5FB44700A7CF26 /* XS-Atomic.mm */; };
+		05DC06EE1A5FB44700A7CF26 /* XS-CPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05DC06ED1A5FB44700A7CF26 /* XS-CPP.mm */; };
 		05E71B5E1961D96100F911C4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E71B5D1961D96100F911C4 /* main.cpp */; };
 		05E71B691961D9D100F911C4 /* libXS-C++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C881218C8B85F006260B3 /* libXS-C++.a */; };
 /* End PBXBuildFile section */
@@ -113,7 +113,7 @@
 		05DC06E21A5FADA300A7CF26 /* Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
 		05DC06E51A5FB36E00A7CF26 /* Atomic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Atomic.cpp; sourceTree = "<group>"; };
 		05DC06EA1A5FB38A00A7CF26 /* Atomic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Atomic.h; sourceTree = "<group>"; };
-		05DC06ED1A5FB44700A7CF26 /* XS-Atomic.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "XS-Atomic.mm"; sourceTree = "<group>"; };
+		05DC06ED1A5FB44700A7CF26 /* XS-CPP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "XS-CPP.mm"; sourceTree = "<group>"; };
 		05E71B5D1961D96100F911C4 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		05E71B631961D9D100F911C4 /* XS-C++ Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XS-C++ Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E71B711961DA1100F911C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -252,7 +252,7 @@
 			children = (
 				05E71B711961DA1100F911C4 /* Info.plist */,
 				05E71B741961DD4800F911C4 /* PrefixHeader.pch */,
-				05DC06ED1A5FB44700A7CF26 /* XS-Atomic.mm */,
+				05DC06ED1A5FB44700A7CF26 /* XS-CPP.mm */,
 			);
 			path = "XS-C++ Tests";
 			sourceTree = "<group>";
@@ -501,7 +501,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05DC06EE1A5FB44700A7CF26 /* XS-Atomic.mm in Sources */,
+				05DC06EE1A5FB44700A7CF26 /* XS-CPP.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -933,8 +933,14 @@
 				);
 				INFOPLIST_FILE = "XS-C++ Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = Libraries/GMock/build/lib/osx;
 				METAL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = (
+					"-lgmock",
+					"-lgtest",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = Libraries/GMock/build/include;
 			};
 			name = Debug;
 		};
@@ -956,8 +962,14 @@
 				);
 				INFOPLIST_FILE = "XS-C++ Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = Libraries/GMock/build/lib/osx;
 				METAL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"-lgmock",
+					"-lgtest",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = Libraries/GMock/build/include;
 			};
 			name = Release;
 		};

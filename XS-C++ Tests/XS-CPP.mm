@@ -30,17 +30,17 @@
 /* $Id$ */
 
 /*!
- * @file        XS-Atomic.mm
+ * @file        XS-CPP.mm
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Test case for XS::Atomic
+ * @abstract    Unit tests for XS-C++ (using GMock)
  */
 
-@interface XS_Atomic: XCTestCase
+@interface XS_CPP: XCTestCase
 {}
 
 @end
 
-@implementation XS_Atomic
+@implementation XS_CPP
 
 - ( void )setUp
 {
@@ -50,6 +50,19 @@
 - ( void )tearDown
 {
     [ super tearDown ];
+}
+
+- ( void )testGMockMain
+{
+    int          argc;
+    const char * argv[ 1 ];
+    
+    argc      = 1;
+    argv[ 0 ] = "XS-CPP-GMock";
+    
+    testing::InitGoogleMock( &argc, const_cast< char ** >( argv ) );
+    
+    XCTAssertEqual( RUN_ALL_TESTS(), 0, "GMock tests should return 0 - Please see the standard output for details" );
 }
 
 @end
