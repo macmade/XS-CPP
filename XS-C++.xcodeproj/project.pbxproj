@@ -61,6 +61,13 @@
 		05DC07691A5FD58500A7CF26 /* XS-PIMPL-Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07681A5FD58500A7CF26 /* XS-PIMPL-Object.cpp */; };
 		05DC076B1A5FD86F00A7CF26 /* PIMPL in Headers */ = {isa = PBXBuildFile; fileRef = 05DC076A1A5FD86200A7CF26 /* PIMPL */; settings = {ATTRIBUTES = (Public, ); }; };
 		05DC076C1A5FD8AF00A7CF26 /* PIMPL in Headers */ = {isa = PBXBuildFile; fileRef = 05DC076A1A5FD86200A7CF26 /* PIMPL */; settings = {ATTRIBUTES = (Public, ); }; };
+		05DC076E1A5FF5D100A7CF26 /* XS-Version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC076D1A5FF5D100A7CF26 /* XS-Version.cpp */; };
+		05DC07701A5FF68800A7CF26 /* Version.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DC076F1A5FF68200A7CF26 /* Version.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05DC07711A5FF68900A7CF26 /* Version.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DC076F1A5FF68200A7CF26 /* Version.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05DC07731A5FF6A300A7CF26 /* Version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07721A5FF6A300A7CF26 /* Version.cpp */; };
+		05DC07741A5FF6A300A7CF26 /* Version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07721A5FF6A300A7CF26 /* Version.cpp */; };
+		05DC07751A5FF6A300A7CF26 /* Version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07721A5FF6A300A7CF26 /* Version.cpp */; };
+		05DC07761A5FF6A300A7CF26 /* Version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07721A5FF6A300A7CF26 /* Version.cpp */; };
 		05E71B5E1961D96100F911C4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E71B5D1961D96100F911C4 /* main.cpp */; };
 		05E71B691961D9D100F911C4 /* libXS-C++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C881218C8B85F006260B3 /* libXS-C++.a */; };
 /* End PBXBuildFile section */
@@ -166,6 +173,9 @@
 		05DC07631A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompareAndSwapPointer.cpp; sourceTree = "<group>"; };
 		05DC07681A5FD58500A7CF26 /* XS-PIMPL-Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-PIMPL-Object.cpp"; sourceTree = "<group>"; };
 		05DC076A1A5FD86200A7CF26 /* PIMPL */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PIMPL; sourceTree = "<group>"; };
+		05DC076D1A5FF5D100A7CF26 /* XS-Version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Version.cpp"; sourceTree = "<group>"; };
+		05DC076F1A5FF68200A7CF26 /* Version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
+		05DC07721A5FF6A300A7CF26 /* Version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Version.cpp; sourceTree = "<group>"; };
 		05E71B5D1961D96100F911C4 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		05E71B631961D9D100F911C4 /* XS-C++ Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XS-C++ Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E71B711961DA1100F911C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -277,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				05DC07351A5FC9DB00A7CF26 /* Atomic */,
+				05DC07721A5FF6A300A7CF26 /* Version.cpp */,
 			);
 			path = source;
 			sourceTree = "<group>";
@@ -288,6 +299,7 @@
 				05DC06DF1A5FAD5100A7CF26 /* Macros.h */,
 				05DC076A1A5FD86200A7CF26 /* PIMPL */,
 				05DC06E21A5FADA300A7CF26 /* Types.h */,
+				05DC076F1A5FF68200A7CF26 /* Version.h */,
 			);
 			path = "XS-C++";
 			sourceTree = "<group>";
@@ -297,6 +309,7 @@
 			children = (
 				05DC07331A5FC4CE00A7CF26 /* XS-Atomic.cpp */,
 				05DC07681A5FD58500A7CF26 /* XS-PIMPL-Object.cpp */,
+				05DC076D1A5FF5D100A7CF26 /* XS-Version.cpp */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -356,6 +369,7 @@
 				05DC076C1A5FD8AF00A7CF26 /* PIMPL in Headers */,
 				05DC06E31A5FADA300A7CF26 /* Types.h in Headers */,
 				05DC06DC1A5FACEF00A7CF26 /* XS-C++.h in Headers */,
+				05DC07701A5FF68800A7CF26 /* Version.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +382,7 @@
 				05DC076B1A5FD86F00A7CF26 /* PIMPL in Headers */,
 				05DC06E41A5FADA300A7CF26 /* Types.h in Headers */,
 				05DC06DD1A5FACEF00A7CF26 /* XS-C++.h in Headers */,
+				05DC07711A5FF68900A7CF26 /* Version.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +576,7 @@
 				05DC07371A5FC9DB00A7CF26 /* MemoryBarrier.cpp in Sources */,
 				05DC07411A5FCC1300A7CF26 /* Increment64.cpp in Sources */,
 				05DC075A1A5FD16B00A7CF26 /* CompareAndSwap32.cpp in Sources */,
+				05DC07731A5FF6A300A7CF26 /* Version.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +594,7 @@
 				05DC07381A5FC9DB00A7CF26 /* MemoryBarrier.cpp in Sources */,
 				05DC07421A5FCC1300A7CF26 /* Increment64.cpp in Sources */,
 				05DC075B1A5FD16B00A7CF26 /* CompareAndSwap32.cpp in Sources */,
+				05DC07741A5FF6A300A7CF26 /* Version.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,6 +612,7 @@
 				05DC07391A5FC9DB00A7CF26 /* MemoryBarrier.cpp in Sources */,
 				05DC07431A5FCC1300A7CF26 /* Increment64.cpp in Sources */,
 				05DC075C1A5FD16B00A7CF26 /* CompareAndSwap32.cpp in Sources */,
+				05DC07751A5FF6A300A7CF26 /* Version.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +630,7 @@
 				05DC073A1A5FC9DB00A7CF26 /* MemoryBarrier.cpp in Sources */,
 				05DC07441A5FCC1300A7CF26 /* Increment64.cpp in Sources */,
 				05DC075D1A5FD16B00A7CF26 /* CompareAndSwap32.cpp in Sources */,
+				05DC07761A5FF6A300A7CF26 /* Version.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +639,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05DC06EE1A5FB44700A7CF26 /* XS-CPP.mm in Sources */,
+				05DC076E1A5FF5D100A7CF26 /* XS-Version.cpp in Sources */,
 				05DC07341A5FC4CE00A7CF26 /* XS-Atomic.cpp in Sources */,
 				05DC07691A5FD58500A7CF26 /* XS-PIMPL-Object.cpp in Sources */,
 			);
