@@ -30,41 +30,49 @@
 /* $Id$ */
 
 /*!
- * @file        XS-Atomic.cpp
+ * @file        Increment32.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Test case XS::Atomic
+ * @abstract    Definition of XS::Atomic::Increment32
  */
 
-using namespace testing;
+#include <XS-C++.h>
 
-TEST( XS_Atomic, Increment32 )
+#if defined( _WIN32 )
+
+#include <Windows.h>
+#include <Winnt.h>
+
+#elif defined( __APPLE__ )
+
+#include <libkern/OSAtomic.h>
+
+#else
+
+#error "XS::Atomic functions are not implemented for the current platform"
+
+#endif
+
+namespace XS
 {
-    XS::Int32 i = 0;
-    
-    ASSERT_EQ( 1, XS::Atomic::Increment32( &i ) );
-    ASSERT_EQ( 1, i );
+    namespace Atomic
+    {
+        XS::Int32 Increment32( volatile XS::Int32 * value )
+        {
+            #if defined( _WIN32 )
+            
+            return static_cast< XS::Int32 >( InterlockedIncrement( static_cast< volatile LONG * >( value ) ) );
+            
+            #elif defined( __APPLE__ )
+            
+            return static_cast< XS::Int32 >( OSAtomicIncrement32( static_cast< volatile int32_t * >( value ) ) );
+            
+            #else
+            
+            ( void )value;
+            
+            return 0;
+            
+            #endif
+        }
+    }
 }
-
-TEST( XS_Atomic, Increment64 )
-{}
-
-TEST( XS_Atomic, Decrement32 )
-{}
-
-TEST( XS_Atomic, Decrement64 )
-{}
-
-TEST( XS_Atomic, Add32 )
-{}
-
-TEST( XS_Atomic, Add64 )
-{}
-
-TEST( XS_Atomic, CompareAndSwap32 )
-{}
-
-TEST( XS_Atomic, CompareAndSwap64 )
-{}
-
-TEST( XS_Atomic, CompareAndSwapPointer )
-{}

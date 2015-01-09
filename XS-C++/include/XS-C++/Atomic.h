@@ -53,6 +53,14 @@ namespace XS
          *              - x86-64
          */
         void MemoryBarrier( void );
+        
+        /*!
+         * @function    XS::Atomic::Increment32
+         * @abstract    Atomically increments a 32 bits integer value
+         * @param       value       The value to increment
+         * @return      The incremented value
+         */
+        XS::Int32 Increment32( volatile XS::Int32 * value );
     }
 }
 

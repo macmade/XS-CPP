@@ -22,6 +22,10 @@
 		05DC07381A5FC9DB00A7CF26 /* MemoryBarrier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07361A5FC9DB00A7CF26 /* MemoryBarrier.cpp */; };
 		05DC07391A5FC9DB00A7CF26 /* MemoryBarrier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07361A5FC9DB00A7CF26 /* MemoryBarrier.cpp */; };
 		05DC073A1A5FC9DB00A7CF26 /* MemoryBarrier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07361A5FC9DB00A7CF26 /* MemoryBarrier.cpp */; };
+		05DC073C1A5FCA6800A7CF26 /* Increment32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC073B1A5FCA6800A7CF26 /* Increment32.cpp */; };
+		05DC073D1A5FCA6800A7CF26 /* Increment32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC073B1A5FCA6800A7CF26 /* Increment32.cpp */; };
+		05DC073E1A5FCA6800A7CF26 /* Increment32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC073B1A5FCA6800A7CF26 /* Increment32.cpp */; };
+		05DC073F1A5FCA6800A7CF26 /* Increment32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC073B1A5FCA6800A7CF26 /* Increment32.cpp */; };
 		05E71B5E1961D96100F911C4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E71B5D1961D96100F911C4 /* main.cpp */; };
 		05E71B691961D9D100F911C4 /* libXS-C++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C881218C8B85F006260B3 /* libXS-C++.a */; };
 /* End PBXBuildFile section */
@@ -116,6 +120,7 @@
 		05DC06ED1A5FB44700A7CF26 /* XS-CPP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "XS-CPP.mm"; sourceTree = "<group>"; };
 		05DC07331A5FC4CE00A7CF26 /* XS-Atomic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Atomic.cpp"; sourceTree = "<group>"; };
 		05DC07361A5FC9DB00A7CF26 /* MemoryBarrier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MemoryBarrier.cpp; sourceTree = "<group>"; };
+		05DC073B1A5FCA6800A7CF26 /* Increment32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Increment32.cpp; sourceTree = "<group>"; };
 		05E71B5D1961D96100F911C4 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		05E71B631961D9D100F911C4 /* XS-C++ Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XS-C++ Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E71B711961DA1100F911C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -253,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				05DC07361A5FC9DB00A7CF26 /* MemoryBarrier.cpp */,
+				05DC073B1A5FCA6800A7CF26 /* Increment32.cpp */,
 			);
 			path = Atomic;
 			sourceTree = "<group>";
@@ -488,6 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05DC073C1A5FCA6800A7CF26 /* Increment32.cpp in Sources */,
 				05DC07371A5FC9DB00A7CF26 /* MemoryBarrier.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,6 +503,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05DC073D1A5FCA6800A7CF26 /* Increment32.cpp in Sources */,
 				05DC07381A5FC9DB00A7CF26 /* MemoryBarrier.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,6 +512,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05DC073E1A5FCA6800A7CF26 /* Increment32.cpp in Sources */,
 				05DC07391A5FC9DB00A7CF26 /* MemoryBarrier.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,6 +521,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05DC073F1A5FCA6800A7CF26 /* Increment32.cpp in Sources */,
 				05DC073A1A5FC9DB00A7CF26 /* MemoryBarrier.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
