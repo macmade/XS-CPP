@@ -50,19 +50,18 @@ namespace XS
     {
         public:
             
-            IMPL( unsigned int major, unsigned int minor ): _major( major ), _minor( minor )
+            IMPL( unsigned int major, unsigned int minor, unsigned int revision ): _major( major ), _minor( minor ), _revision( revision )
             {}
             
-            IMPL( const IMPL & o ): _major( o._major ), _minor( o._minor )
-            {
-                ( void )o;
-            }
+            IMPL( const IMPL & o ): _major( o._major ), _minor( o._minor ), _revision( o._revision )
+            {}
             
             ~IMPL( void )
             {}
             
             unsigned int _major;
             unsigned int _minor;
+            unsigned int _revision;
     };
     
     #ifdef __clang__
@@ -77,12 +76,22 @@ namespace XS
 
     template class PIMPL::Object< Version >;
     
-    Version::Version( unsigned int major, unsigned int minor ): XS::PIMPL::Object< Version >( major, minor )
+    Version::Version( unsigned int major, unsigned int minor, unsigned int revision ): XS::PIMPL::Object< Version >( major, minor, revision )
     {}
     
     unsigned int Version::GetMajor( void ) const
     {
         return this->impl->_major;
+    }
+    
+    unsigned int Version::GetMinor( void ) const
+    {
+        return this->impl->_minor;
+    }
+    
+    unsigned int Version::GetRevision( void ) const
+    {
+        return this->impl->_revision;
     }
     
     /* TODO: Thread-safety */
@@ -91,14 +100,15 @@ namespace XS
         this->impl->_major = value;
     }
     
-    unsigned int Version::GetMinor( void ) const
-    {
-        return this->impl->_minor;
-    }
-    
     /* TODO: Thread-safety */
     void Version::SetMinor( unsigned int value )
     {
         this->impl->_minor = value;
+    }
+    
+    /* TODO: Thread-safety */
+    void Version::SetRevision( unsigned int value )
+    {
+        this->impl->_revision = value;
     }
 }
