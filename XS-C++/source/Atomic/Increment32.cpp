@@ -48,7 +48,7 @@
 
 #else
 
-#error "XS::Atomic functions are not implemented for the current platform"
+#error "XS::Atomic::Increment32 is not implemented for the current platform"
 
 #endif
 
