@@ -49,3 +49,16 @@ TEST( XS_Version, Major )
     
     ASSERT_EQ( 1, static_cast< int >( v1.GetMajor() ) );
 }
+
+TEST( XS_Version, Minor )
+{
+    XS::Version v1;
+    XS::Version v2( 0, 1 );
+    
+    ASSERT_EQ( 0, static_cast< int >( v1.GetMinor() ) );
+    ASSERT_EQ( 1, static_cast< int >( v2.GetMinor() ) );
+    
+    v1.SetMinor( 1 );
+    
+    ASSERT_EQ( 1, static_cast< int >( v1.GetMinor() ) );
+}
