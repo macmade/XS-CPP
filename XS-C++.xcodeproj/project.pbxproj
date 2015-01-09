@@ -12,6 +12,8 @@
 		05DC06DD1A5FACEF00A7CF26 /* XS-C++.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DC06DB1A5FACEF00A7CF26 /* XS-C++.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05DC06E01A5FAD5500A7CF26 /* Macros.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DC06DF1A5FAD5100A7CF26 /* Macros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05DC06E11A5FAD5500A7CF26 /* Macros.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DC06DF1A5FAD5100A7CF26 /* Macros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05DC06E31A5FADA300A7CF26 /* Types.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DC06E21A5FADA300A7CF26 /* Types.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05DC06E41A5FADA300A7CF26 /* Types.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DC06E21A5FADA300A7CF26 /* Types.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05E71B5E1961D96100F911C4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E71B5D1961D96100F911C4 /* main.cpp */; };
 		05E71B691961D9D100F911C4 /* libXS-C++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C881218C8B85F006260B3 /* libXS-C++.a */; };
 /* End PBXBuildFile section */
@@ -101,6 +103,7 @@
 		05BDE01918CDB2450028F339 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		05DC06DB1A5FACEF00A7CF26 /* XS-C++.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XS-C++.h"; sourceTree = "<group>"; };
 		05DC06DF1A5FAD5100A7CF26 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
+		05DC06E21A5FADA300A7CF26 /* Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
 		05E71B5D1961D96100F911C4 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		05E71B631961D9D100F911C4 /* XS-C++ Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XS-C++ Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E71B711961DA1100F911C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -219,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				05DC06DF1A5FAD5100A7CF26 /* Macros.h */,
+				05DC06E21A5FADA300A7CF26 /* Types.h */,
 			);
 			path = "XS-C++";
 			sourceTree = "<group>";
@@ -254,6 +258,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05DC06E31A5FADA300A7CF26 /* Types.h in Headers */,
 				05DC06DC1A5FACEF00A7CF26 /* XS-C++.h in Headers */,
 				05DC06E11A5FAD5500A7CF26 /* Macros.h in Headers */,
 			);
@@ -263,6 +268,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05DC06E41A5FADA300A7CF26 /* Types.h in Headers */,
 				05DC06DD1A5FACEF00A7CF26 /* XS-C++.h in Headers */,
 				05DC06E01A5FAD5500A7CF26 /* Macros.h in Headers */,
 			);
