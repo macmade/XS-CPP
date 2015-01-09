@@ -44,7 +44,7 @@ namespace XS
          * @class           XS::Threading::Mutex
          * @abstract        Mutex class
          */
-        class Mutex: public XS::PIMPL::Object< Mutex >
+        class Mutex: public XS::PIMPL::Object< Mutex >, public Lockable
         {
             public:
                 
