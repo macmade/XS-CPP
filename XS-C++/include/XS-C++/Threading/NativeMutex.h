@@ -69,6 +69,22 @@ namespace XS
                 NativeMutex( bool recursive = true );
                 
                 /*!
+                 * @function    NativeMutex
+                 * @abstract    Class copy constructor
+                 * @param       o   Another mutex to be used as data source for the initialization
+                 * @discussion  Deleted - Not copy-constructible
+                 */
+                NativeMutex( const NativeMutex & o ) = delete;
+                
+                /*!
+                 * @function    operator =
+                 * @abstract    Assignment operator
+                 * @param       o   Another mutex to use as data source
+                 * @discussion  Deleted - Not copy-assignable
+                 */
+                NativeMutex & operator =( NativeMutex o ) = delete;
+                
+                /*!
                  * @function    Lock
                  * @abstract    Locks the mutex
                  */

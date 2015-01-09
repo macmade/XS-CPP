@@ -69,6 +69,22 @@ namespace XS
                 STLMutex( bool recursive = true );
                 
                 /*!
+                 * @function    STLMutex
+                 * @abstract    Class copy constructor
+                 * @param       o   Another mutex to be used as data source for the initialization
+                 * @discussion  Deleted - Not copy-constructible
+                 */
+                STLMutex( const STLMutex & o ) = delete;
+                
+                /*!
+                 * @function    operator =
+                 * @abstract    Assignment operator
+                 * @param       o   Another mutex to use as data source
+                 * @discussion  Deleted - Not copy-assignable
+                 */
+                STLMutex & operator =( STLMutex o ) = delete;
+                
+                /*!
                  * @function    Lock
                  * @abstract    Locks the mutex
                  */

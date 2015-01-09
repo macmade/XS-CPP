@@ -55,11 +55,27 @@ namespace XS
                 /*!
                  * @function    LockGuard
                  * @abstract    Class constructor
-                 * @param       lock    ...
+                 * @param       lock    The lockable object to use
                  * @discussion  ...
                  *              
                  */
                 LockGuard( Lockable * lock );
+                
+                /*!
+                 * @function    LockGuard
+                 * @abstract    Class copy constructor
+                 * @param       o   Another mutex to be used as data source for the initialization
+                 * @discussion  Deleted - Not copy-constructible
+                 */
+                LockGuard( const LockGuard & o ) = delete;
+                
+                /*!
+                 * @function    operator =
+                 * @abstract    Assignment operator
+                 * @param       o   Another mutex to use as data source
+                 * @discussion  Deleted - Not copy-assignable
+                 */
+                LockGuard & operator =( LockGuard o ) = delete;
         };
     }
 }
