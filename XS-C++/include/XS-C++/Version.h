@@ -41,6 +41,7 @@ namespace XS
     /*!
      * @class           XS::Version
      * @abstract        Version class
+     * @discussion      This class is thread-safe
      */
     class Version: public XS::PIMPL::Object< Version >
     {
@@ -48,28 +49,128 @@ namespace XS
             
             using PIMPL::Object< Version >::impl;
             
+            /*!
+             * @typedef     XS::Version::Status
+             * @abstract    Predefined version statuses
+             */
             typedef enum
             {
-                StatusAlpha             = 0,
-                StatusBeta              = 1,
-                StatusReleaseCandidate  = 2,
-                StatusFinal             = 3
+                StatusAlpha             = 0, /*! Alpha status (-a) */
+                StatusBeta              = 1, /*! Beta status (-b) */
+                StatusReleaseCandidate  = 2, /*! Release candidate status (-rc) */
+                StatusFinal             = 3  /*! Final status (-r) */
             }
             Status;
             
+            /*!
+             * @function    Version
+             * @abstract    Class constructor
+             * @param       major       The version's major number
+             * @param       minor       The version's minor number
+             * @param       build       The version's build number
+             * @param       revision    The version's revision number
+             * @param       status      The version's status
+             */
             Version( unsigned int major = 0, unsigned int minor = 0, unsigned int build = 0, unsigned int revision = 0, Status status = StatusFinal );
+            
+            /*!
+             * @function    operator std::string
+             * @abstract    Type-casting to std::string
+             * @see         ToString
+             */
             operator std::string( void ) const;
+            
+            /*!
+             * @function    ToString
+             * @abstract    Gets a string representation of the version
+             * @return      A string representation of the object
+             * @discussion  This method will return a string representation in
+             *              the following form:
+             *              [major].[minor].[build]-[status][revision]
+             *              eg: 1.2.3-rc4
+             *              Note that for version objects with a "final" status,
+             *              the status/revision part will be ommited if the
+             *              revision number is zero.
+             */
             std::string ToString( void ) const;
+            
+            /*!
+             * @function    GetMajor
+             * @abstract    Gets the version's major number
+             * @return      The version's major number
+             */
             unsigned int GetMajor( void ) const;
+            
+            /*!
+             * @function    GetMinor
+             * @abstract    Gets the version's minor number
+             * @return      The version's minor number
+             */
             unsigned int GetMinor( void ) const;
+            
+            /*!
+             * @function    GetBuild
+             * @abstract    Gets the version's build number
+             * @return      The version's build number
+             */
             unsigned int GetBuild( void ) const;
+            
+            /*!
+             * @function    GetRevision
+             * @abstract    Gets the version's revision number
+             * @return      The version's revision number
+             */
             unsigned int GetRevision( void ) const;
+            
+            /*!
+             * @function    GetStatus
+             * @abstract    Gets the version's status
+             * @return      The version's status
+             */
             Status GetStatus( void ) const;
+            
+            /*!
+             * @function    SetMajor
+             * @abstract    Sets the version's major number
+             * @param       value   The major number to set
+             */
             void SetMajor( unsigned int value );
+            
+            /*!
+             * @function    SetMinor
+             * @abstract    Sets the version's minor number
+             * @param       value   The minor number to set
+             */
             void SetMinor( unsigned int value );
+            
+            /*!
+             * @function    SetBuild
+             * @abstract    Sets the version's build number
+             * @param       value   The build number to set
+             */
             void SetBuild( unsigned int value );
+            
+            /*!
+             * @function    SetRevision
+             * @abstract    Sets the version's revision number
+             * @param       value   The revision number to set
+             */
             void SetRevision( unsigned int value );
+            
+            /*!
+             * @function    SetStatus
+             * @abstract    Sets the version's status
+             * @param       value   The status to set
+             */
             void SetStatus( Status value );
+            
+            /*!
+             * @function    operator <<
+             * @abstract    Writes a string representation of a version object in an output stream object
+             * @param       os      The output stream object
+             * @param       obj     The version object
+             * @return      The output stream object
+             */
             friend std::ostream & operator << ( std::ostream & os, const Version & obj );
     };
 }
