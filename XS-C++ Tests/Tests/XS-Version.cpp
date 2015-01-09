@@ -73,3 +73,16 @@ TEST( XS_Version, Revision )
     
     ASSERT_EQ( 1, static_cast< int >( v1.GetRevision() ) );
 }
+
+TEST( XS_Version, Status )
+{
+    XS::Version v1;
+    XS::Version v2( 0, 1, 2, XS::Version::StatusAlpha );
+    
+    ASSERT_EQ( XS::Version::StatusFinal, static_cast< int >( v1.GetStatus() ) );
+    ASSERT_EQ( XS::Version::StatusAlpha, static_cast< int >( v2.GetStatus() ) );
+    
+    v1.SetStatus( XS::Version::StatusAlpha );
+    
+    ASSERT_EQ( XS::Version::StatusAlpha, static_cast< int >( v1.GetStatus() ) );
+}

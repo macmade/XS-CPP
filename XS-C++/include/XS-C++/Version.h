@@ -48,13 +48,24 @@ namespace XS
             
             using PIMPL::Object< Version >::impl;
             
-            Version( unsigned int major = 0, unsigned int minor = 0, unsigned int revision = 0 );
+            typedef enum
+            {
+                StatusAlpha             = 0,
+                StatusBeta              = 1,
+                StatusReleaseCandidate  = 2,
+                StatusFinal             = 3
+            }
+            Status;
+            
+            Version( unsigned int major = 0, unsigned int minor = 0, unsigned int revision = 0, Status status = StatusFinal );
             unsigned int GetMajor( void ) const;
             unsigned int GetMinor( void ) const;
             unsigned int GetRevision( void ) const;
+            Status GetStatus( void ) const;
             void SetMajor( unsigned int value );
             void SetMinor( unsigned int value );
             void SetRevision( unsigned int value );
+            void SetStatus( Status value );
     };
 }
 

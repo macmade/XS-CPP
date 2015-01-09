@@ -48,18 +48,19 @@ namespace XS
     {
         public:
             
-            IMPL( unsigned int major, unsigned int minor, unsigned int revision ): _major( major ), _minor( minor ), _revision( revision )
+            IMPL( unsigned int major, unsigned int minor, unsigned int revision, Version::Status status ): _major( major ), _minor( minor ), _revision( revision ), _status( status )
             {}
             
-            IMPL( const IMPL & o ): _major( o._major ), _minor( o._minor ), _revision( o._revision )
+            IMPL( const IMPL & o ): _major( o._major ), _minor( o._minor ), _revision( o._revision ), _status( o._status )
             {}
             
             ~IMPL( void )
             {}
             
-            unsigned int _major;
-            unsigned int _minor;
-            unsigned int _revision;
+            unsigned int    _major;
+            unsigned int    _minor;
+            unsigned int    _revision;
+            Version::Status _status;
     };
     
     #ifdef __clang__
@@ -74,7 +75,7 @@ namespace XS
 
     template class PIMPL::Object< Version >;
     
-    Version::Version( unsigned int major, unsigned int minor, unsigned int revision ): XS::PIMPL::Object< Version >( major, minor, revision )
+    Version::Version( unsigned int major, unsigned int minor, unsigned int revision, Status status ): XS::PIMPL::Object< Version >( major, minor, revision, status )
     {}
     
     unsigned int Version::GetMajor( void ) const
@@ -90,6 +91,11 @@ namespace XS
     unsigned int Version::GetRevision( void ) const
     {
         return this->impl->_revision;
+    }
+    
+    Version::Status Version::GetStatus( void ) const
+    {
+        return this->impl->_status;
     }
     
     /* TODO: Thread-safety */
@@ -108,5 +114,11 @@ namespace XS
     void Version::SetRevision( unsigned int value )
     {
         this->impl->_revision = value;
+    }
+    
+    /* TODO: Thread-safety */
+    void Version::SetStatus( Version::Status value )
+    {
+        this->impl->_status = value;
     }
 }
