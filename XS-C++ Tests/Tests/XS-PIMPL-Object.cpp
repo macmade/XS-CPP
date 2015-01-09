@@ -47,6 +47,9 @@ class Base: XS::PIMPL::Object< Base >
         Base( int x, int y ): _x( x ), _y( y )
         {}
         
+        Base( const Base & b ): _x( b._x ), _y( b._y )
+        {}
+        
         int GetX( void )
         {
             return this->_x;
@@ -98,4 +101,13 @@ TEST( XS_PIMPL_Object, BaseClassConstructorWithParams )
     
     ASSERT_EQ( 1, b.GetX() );
     ASSERT_EQ( 2, b.GetY() );
+}
+
+TEST( XS_PIMPL_Object, CopyConstructor )
+{
+    Base b1( 1, 2 );
+    Base b2( b1 );
+    
+    ASSERT_EQ( 1, b2.GetX() );
+    ASSERT_EQ( 2, b2.GetY() );
 }
