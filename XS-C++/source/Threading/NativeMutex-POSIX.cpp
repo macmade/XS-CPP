@@ -64,12 +64,41 @@ namespace XS
             }
             
             void CreateMutex( void )
-            {}
+            {
+                pthread_mutexattr_t attr;
+                
+                if( pthread_mutexattr_init( &attr ) != 0 )
+                {
+                    /* TODO: throw */
+                }
+                
+                if( this->_recursive )
+                {
+                    if( pthread_mutexattr_settype( &attr, PTHREAD_MUTEX_RECURSIVE ) != 0 )
+                    {
+                        pthread_mutexattr_destroy( &attr );
+                        
+                        /* TODO: throw */
+                    }
+                }
+                
+                if( pthread_mutex_init( &( this->_mtx ), &attr ) != 0 )
+                {
+                    pthread_mutexattr_destroy( &attr );
+                    
+                    /* TODO: throw */
+                }
+                
+                pthread_mutexattr_destroy( &attr );
+            }
             
             void DeleteMutex( void )
-            {}
+            {
+                pthread_mutex_destroy( &( this->_mtx ) );
+            }
             
-            bool _recursive;
+            bool            _recursive;
+            pthread_mutex_t _mtx;
     };
     
     #ifdef __clang__
@@ -90,14 +119,18 @@ namespace XS
         {}
         
         void NativeMutex::Lock( void )
-        {}
+        {
+            pthread_mutex_lock( &( this->impl->_mtx ) );
+        }
         
         void NativeMutex::Unlock( void )
-        {}
+        {
+            pthread_mutex_unlock( &( this->impl->_mtx ) );
+        }
         
         bool NativeMutex::TryLock( void )
         {
-            return false;
+            return ( pthread_mutex_trylock( &( this->impl->_mtx ) ) == 0 ) ? true : false;
         }
     }
 }
