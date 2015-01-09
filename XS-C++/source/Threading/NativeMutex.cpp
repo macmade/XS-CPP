@@ -28,41 +28,19 @@
  ******************************************************************************/
 
 /*!
- * @header      Mutex.h
+ * @file        NativeMutex.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Declaration of the XS::Threading::Mutex type
+ * @abstract    Definition of the XS::Threading::NativeMutex class
  */
 
-#ifndef __XSCPP_THREADING_MUTEX_H__
-#define __XSCPP_THREADING_MUTEX_H__
+#include <XS-C++.h>
 
-namespace XS
-{
-    namespace Threading
-    {
-        class STLMutex;
-        class NativeMutex;
-        
-        /*!
-         * @typedef     Mutex
-         * @abstract    Mutex object type
-         * @discussion  The mutex object type is a typedef, as the concrete
-         *              implementation may vary, depending on the
-         *              XSCPP_THREADING_USE_STL macro.
-         * @see         XSCPP_THREADING_USE_STL
-         * @see         XS::Threading::STLMutex
-         * @see         XS::Threading::NativeMutex
-         */
-        #if defined( XSCPP_THREADING_USE_STL ) && XSCPP_THREADING_USE_STL == 1
-        
-        typedef STLMutex Mutex;
-        
-        #else
-        
-        typedef NativeMutex Mutex;
-        
-        #endif
-    }
-}
+#ifdef _WIN32
 
-#endif /* __XSCPP_THREADING_MUTEX_H__ */
+#include "NativeMutex-WIN32.cpp"
+
+#else
+
+#include "NativeMutex-POSIX.cpp"
+
+#endif

@@ -77,6 +77,7 @@
 #include <XS-C++/Threading/Lockable.h>
 #include <XS-C++/Threading/Mutex.h>
 #include <XS-C++/Threading/STLMutex.h>
+#include <XS-C++/Threading/NativeMutex.h>
 
 #endif /* __cplusplus */
 #endif /* __XSCPP__ */

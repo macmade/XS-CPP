@@ -28,41 +28,51 @@
  ******************************************************************************/
 
 /*!
- * @header      Mutex.h
+ * @file        XS-Threading-Mutex-STL.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Declaration of the XS::Threading::Mutex type
+ * @abstract    Test case XS::Threading::Mutex (using STL)
  */
 
-#ifndef __XSCPP_THREADING_MUTEX_H__
-#define __XSCPP_THREADING_MUTEX_H__
+/* Forces native implementation */
+#define XSCPP_THREADING_USE_STL 0
 
-namespace XS
+#include <XS-C++.h>
+
+using namespace testing;
+
+class XS_Threading_Mutex_Native: public Test
 {
-    namespace Threading
-    {
-        class STLMutex;
-        class NativeMutex;
+    public:
         
-        /*!
-         * @typedef     Mutex
-         * @abstract    Mutex object type
-         * @discussion  The mutex object type is a typedef, as the concrete
-         *              implementation may vary, depending on the
-         *              XSCPP_THREADING_USE_STL macro.
-         * @see         XSCPP_THREADING_USE_STL
-         * @see         XS::Threading::STLMutex
-         * @see         XS::Threading::NativeMutex
-         */
-        #if defined( XSCPP_THREADING_USE_STL ) && XSCPP_THREADING_USE_STL == 1
+        XS_Threading_Mutex_Native( void ): mtx( false )
+        {}
         
-        typedef STLMutex Mutex;
-        
-        #else
-        
-        typedef NativeMutex Mutex;
-        
-        #endif
-    }
+        XS::Threading::Mutex mtx;
+        XS::Threading::Mutex rmtx;
+};
+
+TEST_F( XS_Threading_Mutex_Native, TryLock )
+{
+    ASSERT_TRUE(  mtx.TryLock() );
+    ASSERT_FALSE( mtx.TryLock() );
+    
+    ASSERT_TRUE( rmtx.TryLock() );
+    ASSERT_TRUE( rmtx.TryLock() );
+    
+    mtx.Unlock();
+    rmtx.Unlock();
+    rmtx.Unlock();
 }
 
-#endif /* __XSCPP_THREADING_MUTEX_H__ */
+TEST_F( XS_Threading_Mutex_Native, LockUnlock )
+{
+    mtx.Lock();
+    
+    ASSERT_FALSE( mtx.TryLock() );
+    
+    mtx.Unlock();
+    
+    ASSERT_TRUE(  mtx.TryLock() );
+    
+    mtx.Unlock();
+}

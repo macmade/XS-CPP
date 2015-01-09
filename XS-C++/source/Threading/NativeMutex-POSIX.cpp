@@ -28,41 +28,76 @@
  ******************************************************************************/
 
 /*!
- * @header      Mutex.h
+ * @file        NativeMutex.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Declaration of the XS::Threading::Mutex type
+ * @abstract    Definition of the XS::Threading::NativeMutex class
  */
 
-#ifndef __XSCPP_THREADING_MUTEX_H__
-#define __XSCPP_THREADING_MUTEX_H__
+#include <XS-C++.h>
+#include <XS-C++/PIMPL/Object-IMPL.h>
 
 namespace XS
 {
+    #ifdef __clang__
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wpadded"
+    #endif
+    
+    template<>
+    class PIMPL::Object< Threading::NativeMutex >::IMPL
+    {
+        public:
+            
+            IMPL( bool recursive ): _recursive( recursive )
+            {
+                this->CreateMutex();
+            }
+            
+            IMPL( const IMPL & o ): _recursive( o._recursive )
+            {
+                 this->CreateMutex();
+            }
+            
+            ~IMPL( void )
+            {
+                this->DeleteMutex();
+            }
+            
+            void CreateMutex( void )
+            {}
+            
+            void DeleteMutex( void )
+            {}
+            
+            bool _recursive;
+    };
+    
+    #ifdef __clang__
+    #pragma clang diagnostic pop
+    #endif
+    
+    template<>
+    void PIMPL::Object< Threading::NativeMutex >::D::operator ()( PIMPL::Object< Threading::NativeMutex >::IMPL * p )
+    {
+        delete p;
+    }
+
+    template class PIMPL::Object< Threading::NativeMutex >;
+    
     namespace Threading
     {
-        class STLMutex;
-        class NativeMutex;
+        NativeMutex::NativeMutex( bool recursive ): XS::PIMPL::Object< NativeMutex >( recursive )
+        {}
         
-        /*!
-         * @typedef     Mutex
-         * @abstract    Mutex object type
-         * @discussion  The mutex object type is a typedef, as the concrete
-         *              implementation may vary, depending on the
-         *              XSCPP_THREADING_USE_STL macro.
-         * @see         XSCPP_THREADING_USE_STL
-         * @see         XS::Threading::STLMutex
-         * @see         XS::Threading::NativeMutex
-         */
-        #if defined( XSCPP_THREADING_USE_STL ) && XSCPP_THREADING_USE_STL == 1
+        void NativeMutex::Lock( void )
+        {}
         
-        typedef STLMutex Mutex;
+        void NativeMutex::Unlock( void )
+        {}
         
-        #else
-        
-        typedef NativeMutex Mutex;
-        
-        #endif
+        bool NativeMutex::TryLock( void )
+        {
+            return false;
+        }
     }
 }
-
-#endif /* __XSCPP_THREADING_MUTEX_H__ */
