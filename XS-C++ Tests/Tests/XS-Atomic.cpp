@@ -101,7 +101,7 @@ TEST( XS_Atomic, CompareAndSwap32Failure )
     ASSERT_EQ( 0, i );
 }
 
-TEST( XS_Atomic, DISABLED_CompareAndSwap64Success )
+TEST( XS_Atomic, CompareAndSwap64Success )
 {
     XS::Int64 i = 0;
     
