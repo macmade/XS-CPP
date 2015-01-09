@@ -87,6 +87,16 @@ class Base: XS::PIMPL::Object< Base >
         int _y;
 };
 
+class Derived: public Base
+{
+    public:
+        
+        int GetZ( void )
+        {
+            return 0;
+        }
+};
+
 TEST( XS_PIMPL_Object, BaseClassGetter )
 {
     Base b;
@@ -141,4 +151,13 @@ TEST( XS_PIMPL_Object, AssigmnentOperator )
     
     ASSERT_EQ( 1, b2.GetX() );
     ASSERT_EQ( 2, b2.GetY() );
+}
+
+TEST( XS_PIMPL_Object, DerivedClassGetter )
+{
+    Derived d;
+    
+    ASSERT_EQ( 0, d.GetX() );
+    ASSERT_EQ( 0, d.GetY() );
+    ASSERT_EQ( 0, d.GetZ() );
 }
