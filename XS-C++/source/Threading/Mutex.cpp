@@ -78,5 +78,13 @@ namespace XS
     {
         Mutex::Mutex( bool recursive ): XS::PIMPL::Object< Mutex >( recursive )
         {}
+        
+        bool Mutex::TryLock( void )
+        {
+            return false;
+        }
+        
+        void Mutex::Unlock( void )
+        {}
     }
 }

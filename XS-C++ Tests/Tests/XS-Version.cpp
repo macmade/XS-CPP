@@ -33,6 +33,8 @@
  * @abstract    Test case XS::Version
  */
 
+#include <XS-C++.h>
+
 using namespace testing;
 
 TEST( XS_Version, Major )

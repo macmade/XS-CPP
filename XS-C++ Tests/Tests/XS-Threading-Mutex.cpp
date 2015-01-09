@@ -33,6 +33,8 @@
  * @abstract    Test case XS::Threading::Mutex
  */
 
+#include <XS-C++.h>
+
 using namespace testing;
 
 TEST( XS_Threading_Mutex, TryLock )

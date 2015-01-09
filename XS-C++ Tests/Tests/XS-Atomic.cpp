@@ -33,6 +33,8 @@
  * @abstract    Test case XS::Atomic
  */
 
+#include <XS-C++.h>
+
 using namespace testing;
 
 TEST( XS_Atomic, Increment32 )
