@@ -28,54 +28,57 @@
  ******************************************************************************/
 
 /*!
- * @header      XS-C++.h
+ * @header      Mutex.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    XS-C++ main header file
+ * @abstract    Declaration of the XS::Threading::Locakble interface
  */
 
-#ifndef __XSCPP__
-#define __XSCPP__
-#ifdef  __cplusplus
+#ifndef __XSCPP_THREADING_LOCKABLE_H__
+#define __XSCPP_THREADING_LOCKABLE_H__
 
-/*!
- * @define      XSCPP_HAS_CPP11
- * @abstract    Whether the compiler has ISO C++ 2011 support
- */
-#if defined( __cplusplus ) && ( __cplusplus > 199711L || ( defined( _MSC_VER ) && _MSC_VER >= 1800 ) )
-#define XSCPP_HAS_CPP11         1
-#endif
+namespace XS
+{
+    namespace Threading
+    {
+        /*!
+         * @class           XS::Threading::Lockable
+         * @abstract        Interface for lockable objects
+         */
+        class Lockable
+        {
+            public:
+                
+                /*!
+                 * @function    ~Lockable
+                 * @abstract    Class destructor
+                 * @discussion  Nothing to do here - The destructor is defined
+                 *              so the compiler does not complain about the
+                 *              class having virtual functions without a
+                 *              virtual destructor.
+                 */
+                virtual ~Lockable( void )
+                {}
+                
+                /*!
+                 * @function    Lock
+                 * @abstract    Locks the object
+                 */
+                virtual void Lock( void ) = 0;
+                
+                /*!
+                 * @function    Unlock
+                 * @abstract    Unlock the object
+                 */
+                virtual void Unlock( void ) = 0;
+                
+                /*!
+                 * @function    TryLock
+                 * @abstract    Tries to lock the object
+                 * @return      True if the object was successfully locked, otherwise false
+                 */
+                virtual bool TryLock( void ) = 0;
+        };
+    }
+}
 
-/*!
- * @define      XSCPP_THREADING_USE_STL
- * @abstract    Whether to use the ISO C++ 2011 thread support library
- * @discussion  If not defined previously to 0 (before inclusion of this header
- *              file, this macro will be defined to 1, meaning the ISO C++ 2011
- *              thread support library will be used instead of native thread
- *              functions (eg. pthread on POSIX).
- */
-#ifndef XSCPP_THREADING_USE_STL
-#define XSCPP_THREADING_USE_STL    1
-#endif
-
-/* ISO C++ 2011 is required */
-#ifndef XSCPP_HAS_CPP11
-#error "The XS-Labs C++ Utility Library requires ISO C++ 2011"
-#endif
-
-/* Includes from the C++ STL */
-#include <algorithm>
-#include <memory>
-#include <string>
-#include <iostream>
-
-/* Includes from XS-C++ */
-#include <XS-C++/Macros.h>
-#include <XS-C++/Types.h>
-#include <XS-C++/Atomic.h>
-#include <XS-C++/PIMPL/Object.h>
-#include <XS-C++/Version.h>
-#include <XS-C++/Threading/Lockable.h>
-#include <XS-C++/Threading/Mutex.h>
-
-#endif /* __cplusplus */
-#endif /* __XSCPP__ */
+#endif /* __XSCPP_THREADING_LOCKABLE_H__ */
