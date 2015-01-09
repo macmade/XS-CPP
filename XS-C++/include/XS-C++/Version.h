@@ -70,6 +70,7 @@ namespace XS
             void SetBuild( unsigned int value );
             void SetRevision( unsigned int value );
             void SetStatus( Status value );
+            friend std::ostream & operator << ( std::ostream & os, const Version & obj );
     };
 }
 

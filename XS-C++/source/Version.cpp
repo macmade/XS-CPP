@@ -184,4 +184,11 @@ namespace XS
     {
         this->impl->_status = value;
     }
+    
+    std::ostream & operator << ( std::ostream & os, const Version & obj )
+    {
+        os << obj.ToString();
+        
+        return os;
+    }
 }
