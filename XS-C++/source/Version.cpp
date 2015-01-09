@@ -48,11 +48,11 @@ namespace XS
     {
         public:
             
-            IMPL( unsigned int major, unsigned int minor, unsigned int revision, Version::Status status ): _major( major ), _minor( minor ), _revision( revision ), _status( status )
+            IMPL( unsigned int major, unsigned int minor, unsigned int build, Version::Status status ): _major( major ), _minor( minor ), _build( build ), _status( status )
             {}
             
             /* TODO: Thread-safety */
-            IMPL( const IMPL & o ): _major( o._major ), _minor( o._minor ), _revision( o._revision ), _status( o._status )
+            IMPL( const IMPL & o ): _major( o._major ), _minor( o._minor ), _build( o._build ), _status( o._status )
             {}
             
             ~IMPL( void )
@@ -60,7 +60,7 @@ namespace XS
             
             unsigned int    _major;
             unsigned int    _minor;
-            unsigned int    _revision;
+            unsigned int    _build;
             Version::Status _status;
     };
     
@@ -76,7 +76,7 @@ namespace XS
 
     template class PIMPL::Object< Version >;
     
-    Version::Version( unsigned int major, unsigned int minor, unsigned int revision, Status status ): XS::PIMPL::Object< Version >( major, minor, revision, status )
+    Version::Version( unsigned int major, unsigned int minor, unsigned int build, Status status ): XS::PIMPL::Object< Version >( major, minor, build, status )
     {}
     
     unsigned int Version::GetMajor( void ) const
@@ -89,9 +89,9 @@ namespace XS
         return this->impl->_minor;
     }
     
-    unsigned int Version::GetRevision( void ) const
+    unsigned int Version::GetBuild( void ) const
     {
-        return this->impl->_revision;
+        return this->impl->_build;
     }
     
     Version::Status Version::GetStatus( void ) const
@@ -112,9 +112,9 @@ namespace XS
     }
     
     /* TODO: Thread-safety */
-    void Version::SetRevision( unsigned int value )
+    void Version::SetBuild( unsigned int value )
     {
-        this->impl->_revision = value;
+        this->impl->_build = value;
     }
     
     /* TODO: Thread-safety */

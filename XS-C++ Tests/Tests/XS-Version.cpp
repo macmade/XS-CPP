@@ -61,17 +61,17 @@ TEST( XS_Version, Minor )
     ASSERT_EQ( 1, static_cast< int >( v1.GetMinor() ) );
 }
 
-TEST( XS_Version, Revision )
+TEST( XS_Version, Build )
 {
     XS::Version v1;
     XS::Version v2( 0, 1, 2 );
     
-    ASSERT_EQ( 0, static_cast< int >( v1.GetRevision() ) );
-    ASSERT_EQ( 2, static_cast< int >( v2.GetRevision() ) );
+    ASSERT_EQ( 0, static_cast< int >( v1.GetBuild() ) );
+    ASSERT_EQ( 2, static_cast< int >( v2.GetBuild() ) );
     
-    v1.SetRevision( 1 );
+    v1.SetBuild( 1 );
     
-    ASSERT_EQ( 1, static_cast< int >( v1.GetRevision() ) );
+    ASSERT_EQ( 1, static_cast< int >( v1.GetBuild() ) );
 }
 
 TEST( XS_Version, Status )
