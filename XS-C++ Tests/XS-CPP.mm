@@ -35,6 +35,18 @@
  * @abstract    Unit tests for XS-C++ (using GMock)
  */
 
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wvariadic-macros"
+#pragma clang diagnostic ignored "-Wgnu-statement-expression"
+#endif
+
+#import <XCTest/XCTest.h>
+
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+
 @interface XS_CPP: XCTestCase
 {}
 

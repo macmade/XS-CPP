@@ -38,12 +38,6 @@
 #ifndef __XSCPP_TESTS_PREFIX_H__
 #define __XSCPP_TESTS_PREFIX_H__
 
-#ifdef __clang__
-#pragma clang diagnostic ignored "-Wvariadic-macros"
-#pragma clang diagnostic ignored "-Wgnu-statement-expression"
-#endif
-
-#import <XCTest/XCTest.h>
 #import <XS-C++.h>
 #import "gmock/gmock.h"
 
