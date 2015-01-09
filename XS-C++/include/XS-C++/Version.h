@@ -30,7 +30,7 @@
 /*!
  * @header      Version.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Declaration of the XS::Version
+ * @abstract    Declaration of the XS::Version class
  */
 
 #ifndef __XSCPP_VERSION_H__
