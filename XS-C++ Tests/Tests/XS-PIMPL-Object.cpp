@@ -87,7 +87,7 @@ class Base: XS::PIMPL::Object< Base >
         int _y;
 };
 
-class Derived: public Base
+class Derived: public Base, public XS::PIMPL::Object< Derived >
 {
     public:
         
