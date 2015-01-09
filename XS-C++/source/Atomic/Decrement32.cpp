@@ -30,54 +30,49 @@
 /* $Id$ */
 
 /*!
- * @header      Atomic.h
+ * @file        Decrement32.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Declaration of the XS::Atomic functions
+ * @abstract    Definition of XS::Atomic::Decrement32
  */
 
-#ifndef __XSCPP_ATOMIC_H__
-#define __XSCPP_ATOMIC_H__
+#include <XS-C++.h>
+
+#if defined( _WIN32 )
+
+#include <Windows.h>
+#include <Winnt.h>
+
+#elif defined( __APPLE__ )
+
+#include <libkern/OSAtomic.h>
+
+#else
+
+#error "XS::Atomic::Decrement32 is not implemented for the current platform"
+
+#endif
 
 namespace XS
 {
     namespace Atomic
     {
-        /*!
-         * @function    XS::Atomic::MemoryBarrier
-         * @abstract    Issues a memory barrier/fence
-         * @discussion  Currently, this function is implemented for the
-         *              following architectures:
-         *              - ARMv7
-         *              - ARM64
-         *              - x86
-         *              - x86-64
-         */
-        void MemoryBarrier( void );
-        
-        /*!
-         * @function    XS::Atomic::Increment32
-         * @abstract    Atomically increments a 32 bits integer value
-         * @param       value       The value to increment
-         * @return      The incremented value
-         */
-        XS::Int32 Increment32( volatile XS::Int32 * value );
-        
-        /*!
-         * @function    XS::Atomic::Increment64
-         * @abstract    Atomically increments a 32 bits integer value
-         * @param       value       The value to increment
-         * @return      The incremented value
-         */
-        XS::Int64 Increment64( volatile XS::Int64 * value );
-        
-        /*!
-         * @function    XS::Atomic::Decrement32
-         * @abstract    Atomically decrements a 64 bits integer value
-         * @param       value       The value to decrement
-         * @return      The decremented value
-         */
-        XS::Int32 Decrement32( volatile XS::Int32 * value );
+        XS::Int32 Decrement32( volatile XS::Int32 * value )
+        {
+            #if defined( _WIN32 )
+            
+            return static_cast< XS::Int32 >( InterlockedDecrement( static_cast< volatile LONG * >( value ) ) );
+            
+            #elif defined( __APPLE__ )
+            
+            return static_cast< XS::Int32 >( OSAtomicDecrement32( static_cast< volatile int32_t * >( value ) ) );
+            
+            #else
+            
+            ( void )value;
+            
+            return 0;
+            
+            #endif
+        }
     }
 }
-
-#endif /* __XSCPP_ATOMIC_H__ */

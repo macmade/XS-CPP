@@ -54,7 +54,12 @@ TEST( XS_Atomic, Increment64 )
 }
 
 TEST( XS_Atomic, Decrement32 )
-{}
+{
+    XS::Int32 i = 0;
+    
+    ASSERT_EQ( -1, XS::Atomic::Decrement32( &i ) );
+    ASSERT_EQ( -1, i );
+}
 
 TEST( XS_Atomic, Decrement64 )
 {}
