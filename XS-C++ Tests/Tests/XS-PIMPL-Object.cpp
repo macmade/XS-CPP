@@ -100,6 +100,9 @@ class Derived: public Base
         Derived( const Derived & d ): Base( d ), _z( d._z )
         {}
         
+        Derived( const Derived && d ): Base( d ), _z( d._z )
+        {}
+        
         int GetZ( void )
         {
             return this->_z;
@@ -206,6 +209,16 @@ TEST( XS_PIMPL_Object, DerivedClassCopyConstructor )
 {
     Derived d1( 1, 2, 3 );
     Derived d2( d1 );
+    
+    ASSERT_EQ( 1, d2.GetX() );
+    ASSERT_EQ( 2, d2.GetY() );
+    ASSERT_EQ( 3, d2.GetZ() );
+}
+
+TEST( XS_PIMPL_Object, DerivedClassMoveConstructor )
+{
+    Derived d1( 1, 2, 3 );
+    Derived d2 = std::move( d1 );
     
     ASSERT_EQ( 1, d2.GetX() );
     ASSERT_EQ( 2, d2.GetY() );
