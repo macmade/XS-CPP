@@ -28,57 +28,34 @@
  ******************************************************************************/
 
 /*!
- * @header      XS-C++.h
+ * @file        XS-Threading-LockGuard.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    XS-C++ main header file
+ * @abstract    Test case XS::Threading::LockGuard
  */
 
-#ifndef __XSCPP__
-#define __XSCPP__
-#ifdef  __cplusplus
+#include <XS-C++.h>
 
-/*!
- * @define      XSCPP_HAS_CPP11
- * @abstract    Whether the compiler has ISO C++ 2011 support
- */
-#if defined( __cplusplus ) && ( __cplusplus > 199711L || ( defined( _MSC_VER ) && _MSC_VER >= 1800 ) )
-#define XSCPP_HAS_CPP11         1
-#endif
+using namespace testing;
 
-/*!
- * @define      XSCPP_THREADING_USE_STL
- * @abstract    Whether to use the ISO C++ 2011 thread support library
- * @discussion  If not defined previously to 0 (before inclusion of this header
- *              file, this macro will be defined to 1, meaning the ISO C++ 2011
- *              thread support library will be used instead of native thread
- *              functions (eg. pthread on POSIX).
- */
-#ifndef XSCPP_THREADING_USE_STL
-#define XSCPP_THREADING_USE_STL    1
-#endif
+class XS_Threading_Mutex_LockGuard: public Test
+{
+    public:
+        
+        XS_Threading_Mutex_LockGuard( void ): mtx( false )
+        {}
+        
+        XS::Threading::Mutex mtx;
+};
 
-/* ISO C++ 2011 is required */
-#ifndef XSCPP_HAS_CPP11
-#error "The XS-Labs C++ Utility Library requires ISO C++ 2011"
-#endif
-
-/* Includes from the C++ STL */
-#include <algorithm>
-#include <memory>
-#include <string>
-#include <iostream>
-
-/* Includes from XS-C++ */
-#include <XS-C++/Macros.h>
-#include <XS-C++/Types.h>
-#include <XS-C++/Atomic.h>
-#include <XS-C++/PIMPL/Object.h>
-#include <XS-C++/Version.h>
-#include <XS-C++/Threading/Lockable.h>
-#include <XS-C++/Threading/LockGuard.h>
-#include <XS-C++/Threading/Mutex.h>
-#include <XS-C++/Threading/STLMutex.h>
-#include <XS-C++/Threading/NativeMutex.h>
-
-#endif /* __cplusplus */
-#endif /* __XSCPP__ */
+TEST_F( XS_Threading_Mutex_LockGuard, ScopedLockUnlock )
+{
+    {
+        XS::Threading::LockGuard lock( &mtx );
+        
+        ASSERT_FALSE( mtx.TryLock() );
+    }
+    
+    ASSERT_TRUE( mtx.TryLock() );
+    
+    mtx.Unlock();
+}
