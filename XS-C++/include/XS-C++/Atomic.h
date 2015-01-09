@@ -113,6 +113,16 @@ namespace XS
          * @return      True if the comparison was equal and the swap occured, otherwise false
          */
         bool CompareAndSwap32( XS::Int32 oldValue, XS::Int32 newValue, volatile XS::Int32 * value );
+        
+        /*!
+         * @function    XS::Atomic::CompareAndSwap64
+         * @abstract    Performs an atomic compare and swap on 64 bits integer values
+         * @param       oldValue    The value to compare to (old value)
+         * @param       newValue    The value to swap (new value)
+         * @param       value       A pointer to the 64 bits integer value to compare and swap
+         * @return      True if the comparison was equal and the swap occured, otherwise false
+         */
+        bool CompareAndSwap64( XS::Int64 oldValue, XS::Int64 newValue, volatile XS::Int64 * value );
     }
 }
 
