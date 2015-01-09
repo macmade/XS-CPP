@@ -94,6 +94,15 @@ namespace XS
          * @return      The new value
          */
         XS::Int32 Add32( XS::Int32 amount, volatile XS::Int32 * value );
+        
+        /*!
+         * @function    XS::Atomic::Add64
+         * @abstract    Atomically adds to a 64 bits value
+         * @param       amount      The amount to add
+         * @param       value       The 64 bits value to modify
+         * @return      The new value
+         */
+        XS::Int64 Add64( XS::Int64 amount, volatile XS::Int64 * value );
     }
 }
 
