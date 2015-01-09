@@ -50,10 +50,11 @@ namespace XS
                 
                 using PIMPL::Object< Mutex >::impl;
                 
-                Mutex( bool recursive = false );
+                Mutex( bool recursive = true );
                 
-                bool TryLock( void );
+                void Lock( void );
                 void Unlock( void );
+                bool TryLock( void );
         };
     }
 }

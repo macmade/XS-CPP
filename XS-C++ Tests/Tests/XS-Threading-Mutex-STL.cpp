@@ -49,4 +49,27 @@ class XS_Threading_Mutex_STL: public Test
 };
 
 TEST_F( XS_Threading_Mutex_STL, TryLock )
-{}
+{
+    ASSERT_TRUE(  mtx.TryLock() );
+    ASSERT_FALSE( mtx.TryLock() );
+    
+    ASSERT_TRUE( rmtx.TryLock() );
+    ASSERT_TRUE( rmtx.TryLock() );
+    
+    mtx.Unlock();
+    rmtx.Unlock();
+    rmtx.Unlock();
+}
+
+TEST_F( XS_Threading_Mutex_STL, LockUnlock )
+{
+    mtx.Lock();
+    
+    ASSERT_FALSE( mtx.TryLock() );
+    
+    mtx.Unlock();
+    
+    ASSERT_TRUE(  mtx.TryLock() );
+    
+    mtx.Unlock();
+}

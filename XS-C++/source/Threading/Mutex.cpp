@@ -28,9 +28,9 @@
  ******************************************************************************/
 
 /*!
- * @file        Version.cpp
+ * @file        Mutex-STL.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Definition of the XS::Threading::Mutex class
+ * @abstract    Definition of the XS::Threading::Mutex class (STL implementation)
  */
 
 #include <XS-C++.h>
@@ -48,18 +48,47 @@ namespace XS
     {
         public:
             
-            IMPL( bool recursive )
+            IMPL( bool recursive ): _recursive( recursive )
             {
-                ( void )recursive;
+                this->CreateMutex();
             }
             
-            IMPL( const IMPL & o )
+            IMPL( const IMPL & o ): _recursive( o._recursive )
             {
-                ( void )o;
+                 this->CreateMutex();
             }
             
             ~IMPL( void )
-            {}
+            {
+                this->DeleteMutex();
+            }
+            
+            void CreateMutex( void )
+            {
+                if( this->_recursive )
+                {
+                    this->_mtx  = nullptr;
+                    this->_rmtx = new std::recursive_mutex;
+                }
+                else
+                {
+                    this->_mtx  = new std::mutex;
+                    this->_rmtx = nullptr;
+                }
+            }
+            
+            void DeleteMutex( void )
+            {
+                delete this->_mtx;
+                delete this->_rmtx;
+                
+                this->_mtx  = nullptr;
+                this->_rmtx = nullptr;
+            }
+            
+            bool                   _recursive;
+            std::mutex           * _mtx;
+            std::recursive_mutex * _rmtx;
     };
     
     #ifdef __clang__
@@ -79,12 +108,38 @@ namespace XS
         Mutex::Mutex( bool recursive ): XS::PIMPL::Object< Mutex >( recursive )
         {}
         
-        bool Mutex::TryLock( void )
+        void Mutex::Lock( void )
         {
-            return false;
+            if( this->impl->_recursive )
+            {
+                this->impl->_rmtx->lock();
+            }
+            else
+            {
+                this->impl->_mtx->lock();
+            }
         }
         
         void Mutex::Unlock( void )
-        {}
+        {
+            if( this->impl->_recursive )
+            {
+                this->impl->_rmtx->unlock();
+            }
+            else
+            {
+                this->impl->_mtx->unlock();
+            }
+        }
+        
+        bool Mutex::TryLock( void )
+        {
+            if( this->impl->_recursive )
+            {
+                return this->impl->_rmtx->try_lock();
+            }
+            
+            return this->impl->_mtx->try_lock();
+        }
     }
 }
