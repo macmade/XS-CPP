@@ -51,6 +51,7 @@ namespace XS
             IMPL( unsigned int major, unsigned int minor, unsigned int revision, Version::Status status ): _major( major ), _minor( minor ), _revision( revision ), _status( status )
             {}
             
+            /* TODO: Thread-safety */
             IMPL( const IMPL & o ): _major( o._major ), _minor( o._minor ), _revision( o._revision ), _status( o._status )
             {}
             
