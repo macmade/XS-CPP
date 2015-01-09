@@ -58,6 +58,7 @@
 		05DC07651A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07631A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp */; };
 		05DC07661A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07631A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp */; };
 		05DC07671A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07631A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp */; };
+		05DC07691A5FD58500A7CF26 /* XS-PIMPL-Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07681A5FD58500A7CF26 /* XS-PIMPL-Object.cpp */; };
 		05E71B5E1961D96100F911C4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E71B5D1961D96100F911C4 /* main.cpp */; };
 		05E71B691961D9D100F911C4 /* libXS-C++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C881218C8B85F006260B3 /* libXS-C++.a */; };
 /* End PBXBuildFile section */
@@ -161,6 +162,7 @@
 		05DC07591A5FD16B00A7CF26 /* CompareAndSwap32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompareAndSwap32.cpp; sourceTree = "<group>"; };
 		05DC075E1A5FD28B00A7CF26 /* CompareAndSwap64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompareAndSwap64.cpp; sourceTree = "<group>"; };
 		05DC07631A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompareAndSwapPointer.cpp; sourceTree = "<group>"; };
+		05DC07681A5FD58500A7CF26 /* XS-PIMPL-Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-PIMPL-Object.cpp"; sourceTree = "<group>"; };
 		05E71B5D1961D96100F911C4 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		05E71B631961D9D100F911C4 /* XS-C++ Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XS-C++ Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E71B711961DA1100F911C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				05DC07331A5FC4CE00A7CF26 /* XS-Atomic.cpp */,
+				05DC07681A5FD58500A7CF26 /* XS-PIMPL-Object.cpp */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 			files = (
 				05DC06EE1A5FB44700A7CF26 /* XS-CPP.mm in Sources */,
 				05DC07341A5FC4CE00A7CF26 /* XS-Atomic.cpp in Sources */,
+				05DC07691A5FD58500A7CF26 /* XS-PIMPL-Object.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
