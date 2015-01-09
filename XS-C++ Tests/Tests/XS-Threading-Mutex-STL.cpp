@@ -28,17 +28,25 @@
  ******************************************************************************/
 
 /*!
- * @file        XS-Threading-Mutex.cpp
+ * @file        XS-Threading-Mutex-STL.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Test case XS::Threading::Mutex
+ * @abstract    Test case XS::Threading::Mutex (using STL)
  */
 
 #include <XS-C++.h>
 
 using namespace testing;
 
-TEST( XS_Threading_Mutex, TryLock )
+class XS_Threading_Mutex_STL: public Test
 {
-    XS::Threading::Mutex mtx;
-    XS::Threading::Mutex rmtx( false );
-}
+    public:
+        
+        XS_Threading_Mutex_STL( void ): mtx( false )
+        {}
+        
+        XS::Threading::Mutex mtx;
+        XS::Threading::Mutex rmtx;
+};
+
+TEST_F( XS_Threading_Mutex_STL, TryLock )
+{}

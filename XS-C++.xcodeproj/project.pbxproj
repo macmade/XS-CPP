@@ -68,7 +68,7 @@
 		05DC07741A5FF6A300A7CF26 /* Version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07721A5FF6A300A7CF26 /* Version.cpp */; };
 		05DC07751A5FF6A300A7CF26 /* Version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07721A5FF6A300A7CF26 /* Version.cpp */; };
 		05DC07761A5FF6A300A7CF26 /* Version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07721A5FF6A300A7CF26 /* Version.cpp */; };
-		05DC07781A600E3500A7CF26 /* XS-Threading-Mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07771A600E3500A7CF26 /* XS-Threading-Mutex.cpp */; };
+		05DC07781A600E3500A7CF26 /* XS-Threading-Mutex-STL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07771A600E3500A7CF26 /* XS-Threading-Mutex-STL.cpp */; };
 		05DC077B1A600EFC00A7CF26 /* Threading in Headers */ = {isa = PBXBuildFile; fileRef = 05DC07791A600EE500A7CF26 /* Threading */; settings = {ATTRIBUTES = (Public, ); }; };
 		05DC077C1A600F0300A7CF26 /* Threading in Headers */ = {isa = PBXBuildFile; fileRef = 05DC07791A600EE500A7CF26 /* Threading */; settings = {ATTRIBUTES = (Public, ); }; };
 		05DC077F1A600F9400A7CF26 /* Mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC077E1A600F9400A7CF26 /* Mutex.cpp */; };
@@ -183,7 +183,7 @@
 		05DC076D1A5FF5D100A7CF26 /* XS-Version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Version.cpp"; sourceTree = "<group>"; };
 		05DC076F1A5FF68200A7CF26 /* Version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
 		05DC07721A5FF6A300A7CF26 /* Version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Version.cpp; sourceTree = "<group>"; };
-		05DC07771A600E3500A7CF26 /* XS-Threading-Mutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Threading-Mutex.cpp"; sourceTree = "<group>"; };
+		05DC07771A600E3500A7CF26 /* XS-Threading-Mutex-STL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Threading-Mutex-STL.cpp"; sourceTree = "<group>"; };
 		05DC07791A600EE500A7CF26 /* Threading */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Threading; sourceTree = "<group>"; };
 		05DC077E1A600F9400A7CF26 /* Mutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mutex.cpp; sourceTree = "<group>"; };
 		05E71B5D1961D96100F911C4 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -321,7 +321,7 @@
 			children = (
 				05DC07331A5FC4CE00A7CF26 /* XS-Atomic.cpp */,
 				05DC07681A5FD58500A7CF26 /* XS-PIMPL-Object.cpp */,
-				05DC07771A600E3500A7CF26 /* XS-Threading-Mutex.cpp */,
+				05DC07771A600E3500A7CF26 /* XS-Threading-Mutex-STL.cpp */,
 				05DC076D1A5FF5D100A7CF26 /* XS-Version.cpp */,
 			);
 			path = Tests;
@@ -665,7 +665,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05DC07781A600E3500A7CF26 /* XS-Threading-Mutex.cpp in Sources */,
+				05DC07781A600E3500A7CF26 /* XS-Threading-Mutex-STL.cpp in Sources */,
 				05DC06EE1A5FB44700A7CF26 /* XS-CPP.mm in Sources */,
 				05DC076E1A5FF5D100A7CF26 /* XS-Version.cpp in Sources */,
 				05DC07341A5FC4CE00A7CF26 /* XS-Atomic.cpp in Sources */,
