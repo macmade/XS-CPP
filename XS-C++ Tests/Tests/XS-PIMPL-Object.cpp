@@ -41,15 +41,33 @@ class Base: XS::PIMPL::Object< Base >
 {
     public:
         
+        Base( void ): _x( 0 ), _y( 0 )
+        {}
+        
         int GetX( void )
         {
-            return 0;
+            return this->_x;
         }
         
         int GetY( void )
         {
-            return 0;
+            return this->_y;
         }
+        
+        void SetX( int x )
+        {
+            this->_x = x;
+        }
+        
+        void SetY( int y )
+        {
+            this->_y = y;
+        }
+        
+    private:
+        
+        int _x;
+        int _y;
 };
 
 TEST( XS_PIMPL_Object, BaseClassGetter )
@@ -58,4 +76,15 @@ TEST( XS_PIMPL_Object, BaseClassGetter )
     
     ASSERT_EQ( 0, b.GetX() );
     ASSERT_EQ( 0, b.GetY() );
+}
+
+TEST( XS_PIMPL_Object, BaseClassSetter )
+{
+    Base b;
+    
+    b.SetX( 1 );
+    b.SetY( 2 );
+    
+    ASSERT_EQ( 1, b.GetX() );
+    ASSERT_EQ( 2, b.GetY() );
 }
