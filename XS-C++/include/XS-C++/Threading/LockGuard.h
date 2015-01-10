@@ -56,7 +56,9 @@ namespace XS
                  * @function    LockGuard
                  * @abstract    Class constructor
                  * @param       lock    The lockable object to use
-                 * @discussion  ...
+                 * @discussion  When constructed, the lock guard will
+                 *              automatically lock the lockable object.
+                 *              When destructed, it will unlock it.
                  *              
                  */
                 LockGuard( Lockable * lock );
