@@ -48,19 +48,23 @@ namespace XS
     {
         public:
             
-            IMPL( std::string reason, int code )
+            IMPL( std::string reason, int code ): _code( code ), _reason( reason )
             {
-                ( void )reason;
-                ( void )code;
+                this->_what = "Exception code: "
+                            + std::to_string( this->_code )
+                            + " - "
+                            + this->_reason;
             }
             
-            IMPL( const IMPL & o )
-            {
-                ( void )o;
-            }
+            IMPL( const IMPL & o ): _code( o._code ), _reason( o._reason ), _what( o._what )
+            {}
             
             ~IMPL( void )
             {}
+            
+            int         _code;
+            std::string _reason;
+            std::string _what;
     };
     
     #ifdef __clang__
@@ -77,4 +81,19 @@ namespace XS
     
     Exception::Exception( std::string reason, int code ): PIMPL::Object< Exception >( reason, code )
     {}
+          
+    std::string Exception::GetReason( void ) const
+    {
+        return this->impl->_reason;
+    }
+    
+    int Exception::GetCode( void ) const
+    {
+        return this->impl->_code;
+    }
+    
+    const char * Exception::what() const noexcept
+    {
+        return this->impl->_what.c_str();
+    }
 }

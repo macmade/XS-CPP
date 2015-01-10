@@ -57,6 +57,10 @@ namespace XS
              * @param       code    The exception's code, if any
              */
             Exception( std::string reason, int code = 0 );
+            
+            std::string GetReason( void ) const;
+            int GetCode( void ) const;
+            const char * what( void ) const noexcept;
     };
 }
 

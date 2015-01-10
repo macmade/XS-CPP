@@ -45,7 +45,20 @@ static void __throw( void )
     throw e;
 }
 
-TEST( XS_EXCEPTION, ThrowCatchSTDException )
+TEST( XS_Exception, ThrowCatchSTDException )
 {
     ASSERT_THROW( __throw(), std::exception );
+}
+
+TEST( XS_Exception, What )
+{
+    XS::Exception e( "Test exception", 42 );
+    std::string   what;
+    
+    what = "Exception code: "
+         + std::to_string( e.GetCode() )
+         + " - "
+         + e.GetReason();
+    
+    ASSERT_EQ( what, e.what() );
 }
