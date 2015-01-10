@@ -28,15 +28,20 @@
  ******************************************************************************/
 
 /*!
- * @file        Version.cpp
+ * @file        ToStringable.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Definitions related to the XS::ToStringable interface
+ * @abstract    Definition of the XS::ToStringable interface
  */
 
 #include <XS-C++.h>
 
 namespace XS
-{    
+{
+    ToStringable::operator std::string( void ) const
+    {
+        return this->ToString();
+    }
+    
     std::ostream & operator << ( std::ostream & os, const ToStringable & obj )
     {
         os << obj.ToString();

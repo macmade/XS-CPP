@@ -74,13 +74,6 @@ namespace XS
             Version( unsigned int major = 0, unsigned int minor = 0, unsigned int build = 0, unsigned int revision = 0, Status status = StatusFinal );
             
             /*!
-             * @function    operator std::string
-             * @abstract    Type-casting to std::string
-             * @see         ToString
-             */
-            operator std::string( void ) const;
-            
-            /*!
              * @function    ToString
              * @abstract    Gets a string representation of the version
              * @return      A string representation of the object

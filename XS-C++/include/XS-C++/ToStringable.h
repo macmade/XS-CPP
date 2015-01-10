@@ -28,7 +28,7 @@
  ******************************************************************************/
 
 /*!
- * @header      Mutex.h
+ * @header      ToStringable.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
  * @abstract    Declaration of the XS::ToStringable interface
  */
@@ -63,6 +63,13 @@ namespace XS
              * @return      The string representation of the object
              */
             virtual std::string ToString( void ) const = 0;
+            
+            /*!
+             * @function    operator std::string
+             * @abstract    Type-casting to std::string
+             * @see         ToString
+             */
+            virtual operator std::string( void ) const;
             
             /*!
              * @function    operator <<

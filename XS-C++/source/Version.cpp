@@ -88,11 +88,6 @@ namespace XS
     Version::Version( unsigned int major, unsigned int minor, unsigned int build, unsigned int revision, Status status ): XS::PIMPL::Object< Version >( major, minor, build, revision, status )
     {}
     
-    Version::operator std::string( void ) const
-    {
-        return this->ToString();
-    }
-    
     std::string Version::ToString( void ) const
     {
         std::string  v;
