@@ -43,7 +43,7 @@ namespace XS
      * @abstract        Version class
      * @discussion      This class is thread-safe
      */
-    class Version: public XS::PIMPL::Object< Version >, public XS::ToStringable
+    class Version: public XS::PIMPL::Object< Version >, public ToStringable
     {
         public:
             
