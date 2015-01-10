@@ -96,4 +96,9 @@ namespace XS
     {
         return this->impl->_what.c_str();
     }
+    
+    std::string Exception::ToString( void ) const
+    {
+        return this->impl->_what;
+    }
 }

@@ -44,7 +44,7 @@ namespace XS
      * @discussion      All exception thrown by XS-C++ are instances of
      *                  this class.
      */
-    class Exception: public XS::PIMPL::Object< Exception >, public std::exception
+    class Exception: public XS::PIMPL::Object< Exception >, public std::exception, public ToStringable
     {
         public:
             
@@ -61,6 +61,7 @@ namespace XS
             std::string GetReason( void ) const;
             int GetCode( void ) const;
             const char * what( void ) const noexcept;
+            std::string ToString( void ) const;
     };
 }
 
