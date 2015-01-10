@@ -43,7 +43,7 @@ namespace XS
      * @abstract        Version class
      * @discussion      This class is thread-safe
      */
-    class Version: public XS::PIMPL::Object< Version >
+    class Version: public XS::PIMPL::Object< Version >, public XS::ToStringable
     {
         public:
             
@@ -163,15 +163,6 @@ namespace XS
              * @param       value   The status to set
              */
             void SetStatus( Status value );
-            
-            /*!
-             * @function    operator <<
-             * @abstract    Writes a string representation of a version object in an output stream object
-             * @param       os      The output stream object
-             * @param       obj     The version object
-             * @return      The output stream object
-             */
-            friend std::ostream & operator << ( std::ostream & os, const Version & obj );
     };
 }
 
