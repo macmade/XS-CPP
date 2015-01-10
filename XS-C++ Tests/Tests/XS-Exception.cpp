@@ -36,3 +36,16 @@
 #include <XS-C++.h>
 
 using namespace testing;
+
+static void __throw( void );
+static void __throw( void )
+{
+    XS::Exception e( "Test exception", 42 );
+    
+    throw e;
+}
+
+TEST( XS_EXCEPTION, ThrowCatchSTDException )
+{
+    ASSERT_THROW( __throw(), std::exception );
+}
