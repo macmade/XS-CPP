@@ -48,18 +48,11 @@
 
 using namespace testing;
 
-@interface XS_CPP: XCTestCase
-{}
-
-@end
-
 static std::vector< const TestCase * > * __t = nullptr;
 
 static void __f( id self, SEL _cmd );
 static void __f( id self, SEL _cmd )
 {
-    NSString         * cmdName;
-    NSArray          * cmdParts;
     std::string        testCaseName;
     std::string        testInfoName;
     int                i;
@@ -67,24 +60,11 @@ static void __f( id self, SEL _cmd )
     const TestInfo   * testInfo;
     const TestResult * testResult;
     
-    ( void )self;
-    
-    /* Gets GMock test name infos from the current selector */
-    cmdName  = [ NSString stringWithCString: sel_getName( _cmd ) encoding: NSUTF8StringEncoding ];
-    cmdParts = [ cmdName componentsSeparatedByString: @"." ];
-    
-    if( cmdParts.count < 3 )
-    {
-        XCTAssertEqual( static_cast< NSInteger >( cmdParts.count ), 3, "Cannot determine GMock test from current selector" );
-        
-        return;
-    }
-    
     /* Name of the GMock test case to analyze */
-    testCaseName = std::string( [ [ cmdParts objectAtIndex: 1 ] UTF8String ] );
+    testCaseName = std::string( [ NSStringFromClass( [ self class ] ) UTF8String ] );
     
     /* Name of the GMock test to analyze */
-    testInfoName = std::string( [ [ cmdParts objectAtIndex: 2 ] UTF8String ] );
+    testInfoName = std::string( [ [ NSStringFromSelector( _cmd ) substringFromIndex: 4 ] UTF8String ] );
     
     /* Process each stored GMock test case */
     for( const TestCase * testCase: *( __t ) )
@@ -199,6 +179,11 @@ static void __dtor( void )
     delete __t;
 }
 
+@interface XS_CPP: NSObject
+{}
+
+@end
+
 @implementation XS_CPP
 
 + ( void )initialize
@@ -242,12 +227,6 @@ static void __dtor( void )
         SEL              sel;
         NSString       * testName;
         
-        /* Gets the XS_CPP class, as we're goint to add methods to it */
-        cls = objc_getClass( "XS_CPP" );
-        
-        /* IMP for the generic XCTest method we'll use for each GMock test */
-        imp = reinterpret_cast< IMP >( __f );
-        
         /* Storage for the GMock test cases */
         __t = new std::vector< const TestCase * >;
         
@@ -267,6 +246,9 @@ static void __dtor( void )
             /* Stores the test case */
             __t->push_back( testCase );
             
+            /* Creates a new Objective-C class for the test case */
+            cls = objc_allocateClassPair( objc_getClass( "XCTestCase" ), testCase->name(), 0 );
+            
             /* Number of tests in the test case */
             testInfoCount = testCase->total_test_count();
             
@@ -281,24 +263,20 @@ static void __dtor( void )
                 }
                 
                 /* XCTest method name and selector */
-                testName = [ NSString stringWithFormat: @"testGMock.%s.%s", testCase->name(), testInfo->name() ];
+                testName = [ NSString stringWithFormat: @"test%s", testInfo->name() ];
                 sel      = sel_registerName( testName.UTF8String );
+                
+                /* IMP for the generic XCTest method */
+                imp = reinterpret_cast< IMP >( __f );
                 
                 /* Adds the XCTest method to the class, so Xcode will run it */
                 class_addMethod( cls, sel, imp, "v@:" );
             }
+            
+            /* Registers the new class with the Objective-C runtime */
+            objc_registerClassPair( cls );
         }
     }
-}
-
-- ( void )setUp
-{
-    [ super setUp ];
-}
-
-- ( void )tearDown
-{
-    [ super tearDown ];
 }
 
 @end
