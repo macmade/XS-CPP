@@ -69,6 +69,7 @@ static void __f( id self, SEL _cmd )
     
     ( void )self;
     
+    /* Gets GMock test name infos from the current selector */
     cmdName  = [ NSString stringWithCString: sel_getName( _cmd ) encoding: NSUTF8StringEncoding ];
     cmdParts = [ cmdName componentsSeparatedByString: @"." ];
     
@@ -79,18 +80,25 @@ static void __f( id self, SEL _cmd )
         return;
     }
     
+    /* Name of the GMock test case to analyze */
     testCaseName = std::string( [ [ cmdParts objectAtIndex: 1 ] UTF8String ] );
+    
+    /* Name of the GMock test to analyze */
     testInfoName = std::string( [ [ cmdParts objectAtIndex: 2 ] UTF8String ] );
     
+    /* Process each stored GMock test case */
     for( const TestCase * testCase: *( __t ) )
     {
         if( std::string( testCase->name() ) != testCaseName )
         {
+            /* Not the current test case */
             continue;
         }
         
+        /* Number of tests in the test case */
         n = testCase->total_test_count();
         
+        /* Process each test in the test case */
         for( i = 0; i < n; i++ )
         {
             testInfo = testCase->GetTestInfo( i );
@@ -102,7 +110,14 @@ static void __f( id self, SEL _cmd )
             
             if( std::string( testInfo->name() ) != testInfoName )
             {
+                /* Not the current test */
                 continue;
+            }
+            
+            if( testInfo->should_run() == false )
+            {
+                /* Test is disabled */
+                return;
             }
             
             testResult = testInfo->result();
