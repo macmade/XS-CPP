@@ -28,48 +28,13 @@
  ******************************************************************************/
 
 /*!
- * @file        Mutex-STL.cpp
+ * @file        Semaphore.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Test case XS::Threading::Mutex (using STL)
+ * @abstract    Test case XS::Threading::Semaphore
  */
 
 #include <XS-C++.h>
 
 using namespace testing;
 
-class XS_Threading_Mutex_STL: public Test
-{
-    public:
-        
-        XS_Threading_Mutex_STL( void ): mtx( false )
-        {}
-        
-        XS::Threading::Mutex mtx;
-        XS::Threading::Mutex rmtx;
-};
 
-TEST_F( XS_Threading_Mutex_STL, TryLock )
-{
-    ASSERT_TRUE(  mtx.TryLock() );
-    ASSERT_FALSE( mtx.TryLock() );
-    
-    ASSERT_TRUE( rmtx.TryLock() );
-    ASSERT_TRUE( rmtx.TryLock() );
-    
-    mtx.Unlock();
-    rmtx.Unlock();
-    rmtx.Unlock();
-}
-
-TEST_F( XS_Threading_Mutex_STL, LockUnlock )
-{
-    mtx.Lock();
-    
-    ASSERT_FALSE( mtx.TryLock() );
-    
-    mtx.Unlock();
-    
-    ASSERT_TRUE(  mtx.TryLock() );
-    
-    mtx.Unlock();
-}

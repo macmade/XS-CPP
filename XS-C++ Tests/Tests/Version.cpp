@@ -28,7 +28,7 @@
  ******************************************************************************/
 
 /*!
- * @file        XS-Version.cpp
+ * @file        Version.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
  * @abstract    Test case XS::Version
  */
