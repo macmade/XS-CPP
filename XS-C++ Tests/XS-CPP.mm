@@ -129,7 +129,62 @@ static void __f( id self, SEL _cmd )
                 return;
             }
             
-            XCTAssertTrue( testResult->Passed(), "GMock test failed - Please check the standard output for details" );
+            if( testResult->Passed() )
+            {
+                /* Test has passed */
+                XCTAssertTrue( true );
+                
+                return;
+            }
+            
+            /* Test has failed */
+            {
+                int        testPartResultCount;
+                int        j;
+                NSString * summary;
+                
+                /* Number of test part results */
+                testPartResultCount = testResult->total_part_count();
+                
+                /* Process each test part result */
+                for( j = 0; j < testPartResultCount; j++ )
+                {
+                    const TestPartResult & testPartResult = testResult->GetTestPartResult( j );
+                    
+                    if( testPartResult.type() != TestPartResult::kFatalFailure )
+                    {
+                        /* Successfull part */
+                        continue;
+                    }
+                    
+                    /* First line of the summary */
+                    summary = [ NSString stringWithCString: testPartResult.summary() encoding: NSUTF8StringEncoding ];
+                    summary = [ [ summary componentsSeparatedByString: @"\n" ] firstObject ];
+                    
+                    /* Fails the test */
+                    XCTAssertTrue
+                    (
+                        false,
+                        "Failed GMock test - %s.%s - %s\n"
+                        "\n"
+                        "--------------------------------------------------------------------------------\n"
+                        "Test:        %s.%s\n"
+                        "File name:   %s\n"
+                        "Line number: %i\n"
+                        "--------------------------------------------------------------------------------\n"
+                        "%s\n"
+                        "--------------------------------------------------------------------------------\n",
+                        testCaseName.c_str(),
+                        testInfoName.c_str(),
+                        summary.UTF8String,
+                        testCaseName.c_str(),
+                        testInfoName.c_str(),
+                        ( testPartResult.file_name() == nullptr ) ? "" : testPartResult.file_name(),
+                        testPartResult.line_number(),
+                        testPartResult.message()
+                    );
+                }
+            }
             
             return;
         }
