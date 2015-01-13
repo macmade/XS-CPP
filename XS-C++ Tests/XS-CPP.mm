@@ -179,7 +179,7 @@ static void __dtor( void )
     delete __t;
 }
 
-@interface XS_CPP: NSObject
+@interface XS_CPP: XCTestCase
 {}
 
 @end
@@ -278,5 +278,8 @@ static void __dtor( void )
         }
     }
 }
+
+- ( void )test
+{}
 
 @end
