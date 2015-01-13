@@ -1181,6 +1181,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XS-C++ Tests/PrefixHeader.pch";
 				GCC_WARN_PEDANTIC = NO;
@@ -1210,6 +1211,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XS-C++ Tests/PrefixHeader.pch";
 				GCC_WARN_PEDANTIC = NO;
