@@ -40,17 +40,172 @@
 #endif
 
 #import <XCTest/XCTest.h>
+#import <objc/runtime.h>
 
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif
+
+using namespace testing;
 
 @interface XS_CPP: XCTestCase
 {}
 
 @end
 
+static std::vector< const TestCase * > * __t = nullptr;
+
+static void __f( id self, SEL _cmd );
+static void __f( id self, SEL _cmd )
+{
+    NSString         * cmdName;
+    NSArray          * cmdParts;
+    std::string        testCaseName;
+    std::string        testInfoName;
+    int                i;
+    int                n;
+    const TestInfo   * testInfo;
+    const TestResult * testResult;
+    
+    ( void )self;
+    
+    cmdName  = [ NSString stringWithCString: sel_getName( _cmd ) encoding: NSUTF8StringEncoding ];
+    cmdParts = [ cmdName componentsSeparatedByString: @"." ];
+    
+    if( cmdParts.count < 3 )
+    {
+        XCTAssertEqual( static_cast< NSInteger >( cmdParts.count ), 3, "Cannot determine GMock test from current selector" );
+        
+        return;
+    }
+    
+    testCaseName = std::string( [ [ cmdParts objectAtIndex: 1 ] UTF8String ] );
+    testInfoName = std::string( [ [ cmdParts objectAtIndex: 2 ] UTF8String ] );
+    
+    for( const TestCase * testCase: *( __t ) )
+    {
+        if( std::string( testCase->name() ) != testCaseName )
+        {
+            continue;
+        }
+        
+        n = testCase->total_test_count();
+        
+        for( i = 0; i < n; i++ )
+        {
+            testInfo = testCase->GetTestInfo( i );
+            
+            if( testInfo == nullptr )
+            {
+                continue;
+            }
+            
+            if( std::string( testInfo->name() ) != testInfoName )
+            {
+                continue;
+            }
+            
+            testResult = testInfo->result();
+            
+            if( testResult == nullptr )
+            {
+                XCTAssertNotEqual( testResult, nullptr, "Invalid GMock test result" );
+                
+                return;
+            }
+            
+            XCTAssertTrue( testResult->Passed(), "GMock test failed - Please check the standard output for details" );
+            
+            return;
+        }
+    }
+    
+    XCTAssertTrue( false, "Cannot determine GMock test from current selector" );
+}
+
+static void __dtor( void ) __attribute__( ( destructor ) );
+static void __dtor( void )
+{
+    delete __t;
+}
+
 @implementation XS_CPP
+
++ ( void )initialize
+{
+    if( self != [ XS_CPP self ] )
+    {
+        return;
+    }
+    
+    /* Initializes GMock */
+    {
+        int          argc;
+        const char * argv[ 1 ];
+        
+        argc      = 1;
+        argv[ 0 ] = "XS-CPP-GMock";
+        
+        testing::InitGoogleMock( &argc, const_cast< char ** >( argv ) );
+    }
+    
+    /* Runs all GMock tests */
+    {
+        int res;
+        
+        res = RUN_ALL_TESTS();
+        
+        ( void )res;
+    }
+    
+    /* Stores all GMock test cases and creates XCTest methods for each one */
+    {
+        const TestCase * testCase;
+        const TestInfo * testInfo;
+        int              testCaseCount;
+        int              testInfoCount;
+        int              i;
+        int              j;
+        Class            cls;
+        IMP              imp;
+        SEL              sel;
+        NSString       * testName;
+        
+        cls           = objc_getClass( "XS_CPP" );
+        imp           = reinterpret_cast< IMP >( __f );
+        __t           = new std::vector< const TestCase * >;
+        testCaseCount = UnitTest::GetInstance()->total_test_case_count();
+        
+        for( i = 0; i < testCaseCount; i++ )
+        {
+            testCase = UnitTest::GetInstance()->GetTestCase( i );
+            
+            if( testCase == nullptr )
+            {
+                continue;
+            }
+            
+            testInfoCount = testCase->total_test_count();
+            
+            __t->push_back( testCase );
+            
+            for( j = 0; j < testInfoCount; j++ )
+            {
+                testInfo = testCase->GetTestInfo( j );
+                
+                if( testInfo == nullptr )
+                {
+                    continue;
+                }
+                
+                testName = [ NSString stringWithFormat: @"testGMock.%s.%s", testCase->name(), testInfo->name() ];
+                sel      = sel_registerName( testName.UTF8String );
+                
+                class_addMethod( cls, sel, imp, "v@:" );
+            }
+        }
+    }
+}
 
 - ( void )setUp
 {
@@ -60,19 +215,6 @@
 - ( void )tearDown
 {
     [ super tearDown ];
-}
-
-- ( void )testGMockMain
-{
-    int          argc;
-    const char * argv[ 1 ];
-    
-    argc      = 1;
-    argv[ 0 ] = "XS-CPP-GMock";
-    
-    testing::InitGoogleMock( &argc, const_cast< char ** >( argv ) );
-    
-    XCTAssertEqual( RUN_ALL_TESTS(), 0, "GMock tests should return 0 - Please see the standard output for details" );
 }
 
 @end
