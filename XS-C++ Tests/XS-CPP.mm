@@ -48,7 +48,8 @@
 
 using namespace testing;
 
-static std::vector< const TestCase * > * __t = nullptr;
+static bool                              __inited = false;
+static std::vector< const TestCase * > * __t      = nullptr;
 
 static void __f( id self, SEL _cmd );
 static void __f( id self, SEL _cmd )
@@ -271,6 +272,9 @@ static void __dtor( void )
                 
                 /* Adds the XCTest method to the class, so Xcode will run it */
                 class_addMethod( cls, sel, imp, "v@:" );
+                
+                /* We have tests from GMock */
+                __inited = true;
             }
             
             /* Registers the new class with the Objective-C runtime */
@@ -279,7 +283,9 @@ static void __dtor( void )
     }
 }
 
-- ( void )test
-{}
+- ( void )testGMock
+{
+    XCTAssertTrue( __inited, "No GMock test" );
+}
 
 @end
