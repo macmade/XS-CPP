@@ -1,3 +1,7 @@
 language: objective-c
 xcode_project: XS-C++.xcodeproj
 xcode_scheme: XS-C++ Example
+before_install:
+- brew unlink xctool
+- brew update
+- brew install xctool
