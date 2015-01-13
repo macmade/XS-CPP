@@ -155,6 +155,7 @@ static void __dtor( void )
         
         res = RUN_ALL_TESTS();
         
+        /* warn_unused_result */
         ( void )res;
     }
     
@@ -171,11 +172,19 @@ static void __dtor( void )
         SEL              sel;
         NSString       * testName;
         
-        cls           = objc_getClass( "XS_CPP" );
-        imp           = reinterpret_cast< IMP >( __f );
-        __t           = new std::vector< const TestCase * >;
+        /* Gets the XS_CPP class, as we're goint to add methods to it */
+        cls = objc_getClass( "XS_CPP" );
+        
+        /* IMP for the generic XCTest method we'll use for each GMock test */
+        imp = reinterpret_cast< IMP >( __f );
+        
+        /* Storage for the GMock test cases */
+        __t = new std::vector< const TestCase * >;
+        
+        /* Number of available GMock test cases */
         testCaseCount = UnitTest::GetInstance()->total_test_case_count();
         
+        /* Process each test case */
         for( i = 0; i < testCaseCount; i++ )
         {
             testCase = UnitTest::GetInstance()->GetTestCase( i );
@@ -185,10 +194,13 @@ static void __dtor( void )
                 continue;
             }
             
-            testInfoCount = testCase->total_test_count();
-            
+            /* Stores the test case */
             __t->push_back( testCase );
             
+            /* Number of tests in the test case */
+            testInfoCount = testCase->total_test_count();
+            
+            /* Process each test in the test case */
             for( j = 0; j < testInfoCount; j++ )
             {
                 testInfo = testCase->GetTestInfo( j );
@@ -198,9 +210,11 @@ static void __dtor( void )
                     continue;
                 }
                 
+                /* XCTest method name and selector */
                 testName = [ NSString stringWithFormat: @"testGMock.%s.%s", testCase->name(), testInfo->name() ];
                 sel      = sel_registerName( testName.UTF8String );
                 
+                /* Adds the XCTest method to the class, so Xcode will run it */
                 class_addMethod( cls, sel, imp, "v@:" );
             }
         }
