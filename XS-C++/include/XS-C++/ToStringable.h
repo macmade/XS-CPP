@@ -30,7 +30,7 @@
 /*!
  * @header      ToStringable.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Declaration of the XS::ToStringable interface
+ * @abstract    Declaration of the XS::ToStringable abstract class
  */
 
 #ifndef __XSCPP_TO_STRINGABLE_H__
@@ -40,22 +40,35 @@ namespace XS
 {
     /*!
      * @class           XS::ToStringable
-     * @abstract        Interface for objects having a string representation
+     * @abstract        Abstract class for objects having a string representation
      */
     class ToStringable
     {
         public:
             
             /*!
+             * @function    ToStringable
+             * @abstract    Class constructor
+             */
+            ToStringable( void );
+            
+            /*!
+             * @function    ToStringable
+             * @abstract    Class copy constructor
+             */
+            ToStringable( const ToStringable & object );
+            
+            /*!
+             * @function    ToStringable
+             * @abstract    Class move constructor
+             */
+            ToStringable( const ToStringable && object );
+            
+            /*!
              * @function    ~ToStringable
              * @abstract    Class destructor
-             * @discussion  Nothing to do here - The destructor is defined
-             *              so the compiler does not complain about the
-             *              class having virtual functions without a
-             *              virtual destructor.
              */
-            virtual ~ToStringable( void )
-            {}
+            virtual ~ToStringable( void );
             
             /*!
              * @function    ToString
