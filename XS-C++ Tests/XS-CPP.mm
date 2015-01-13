@@ -205,14 +205,26 @@ static void __dtor( void )
         testing::InitGoogleMock( &argc, const_cast< char ** >( argv ) );
     }
     
-    /* Runs all GMock tests */
+    /*
+     * Support for xctool
+     * 
+     * The xctool helper will use otest-query-osx to query all tests in
+     * the bundle, expecting JSON output in stdout.
+     * As the GMock output is not JSON, we don't run the tests in such a case.
+     * The Objective-C classes for each GMock test cases will still be
+     * created, and the tests correctly run when necessary.
+     */
+    if( [ [ [ NSProcessInfo processInfo ] processName ] isEqualToString: @"otest-query-osx" ] == NO )
     {
-        int res;
-        
-        res = RUN_ALL_TESTS();
-        
-        /* warn_unused_result */
-        ( void )res;
+        /* Runs all GMock tests */
+        {
+            int res;
+            
+            res = RUN_ALL_TESTS();
+            
+            /* warn_unused_result */
+            ( void )res;
+        }
     }
     
     /* Stores all GMock test cases and creates XCTest methods for each one */
