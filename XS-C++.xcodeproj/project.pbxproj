@@ -11,8 +11,8 @@
 		052537761A6538510031BE63 /* Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0525376C1A6538510031BE63 /* Exception.cpp */; };
 		052537771A6538510031BE63 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0525376E1A6538510031BE63 /* Object.cpp */; };
 		052537781A6538510031BE63 /* LockGuard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052537701A6538510031BE63 /* LockGuard.cpp */; };
-		052537791A6538510031BE63 /* Mutex-Native.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052537711A6538510031BE63 /* Mutex-Native.cpp */; };
-		0525377A1A6538510031BE63 /* Mutex-STL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052537721A6538510031BE63 /* Mutex-STL.cpp */; };
+		052537791A6538510031BE63 /* NativeMutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052537711A6538510031BE63 /* NativeMutex.cpp */; };
+		0525377A1A6538510031BE63 /* STLMutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052537721A6538510031BE63 /* STLMutex.cpp */; };
 		0525377B1A6538510031BE63 /* ToStringable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052537731A6538510031BE63 /* ToStringable.cpp */; };
 		0525377C1A6538510031BE63 /* Version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052537741A6538510031BE63 /* Version.cpp */; };
 		056C884118C8C232006260B3 /* libXS-C++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C881218C8B85F006260B3 /* libXS-C++.a */; };
@@ -239,8 +239,8 @@
 		0525376C1A6538510031BE63 /* Exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Exception.cpp; sourceTree = "<group>"; };
 		0525376E1A6538510031BE63 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
 		052537701A6538510031BE63 /* LockGuard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LockGuard.cpp; sourceTree = "<group>"; };
-		052537711A6538510031BE63 /* Mutex-Native.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Mutex-Native.cpp"; sourceTree = "<group>"; };
-		052537721A6538510031BE63 /* Mutex-STL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Mutex-STL.cpp"; sourceTree = "<group>"; };
+		052537711A6538510031BE63 /* NativeMutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NativeMutex.cpp; sourceTree = "<group>"; };
+		052537721A6538510031BE63 /* STLMutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = STLMutex.cpp; sourceTree = "<group>"; };
 		052537731A6538510031BE63 /* ToStringable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToStringable.cpp; sourceTree = "<group>"; };
 		052537741A6538510031BE63 /* Version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Version.cpp; sourceTree = "<group>"; };
 		056C87CE18C8B0F8006260B3 /* XS-C++ Example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "XS-C++ Example"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -349,8 +349,8 @@
 			isa = PBXGroup;
 			children = (
 				052537701A6538510031BE63 /* LockGuard.cpp */,
-				052537711A6538510031BE63 /* Mutex-Native.cpp */,
-				052537721A6538510031BE63 /* Mutex-STL.cpp */,
+				052537711A6538510031BE63 /* NativeMutex.cpp */,
+				052537721A6538510031BE63 /* STLMutex.cpp */,
 				05FFA38C1A69918F006E1B9B /* Semaphore.cpp */,
 			);
 			path = Threading;
@@ -883,8 +883,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				052537791A6538510031BE63 /* Mutex-Native.cpp in Sources */,
-				0525377A1A6538510031BE63 /* Mutex-STL.cpp in Sources */,
+				052537791A6538510031BE63 /* NativeMutex.cpp in Sources */,
+				0525377A1A6538510031BE63 /* STLMutex.cpp in Sources */,
 				0525377B1A6538510031BE63 /* ToStringable.cpp in Sources */,
 				052537781A6538510031BE63 /* LockGuard.cpp in Sources */,
 				052537761A6538510031BE63 /* Exception.cpp in Sources */,
