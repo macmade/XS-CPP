@@ -112,14 +112,37 @@ TEST( XS_Threading_Semaphore, UnnamedWaitSignal )
     sem.Signal();
 }
 
+TEST( XS_Threading_Semaphore, NamedWaitSignal )
+{
+    XS::Threading::Semaphore sem1( 1, "XSCPPTestSemaphore1" );
+    XS::Threading::Semaphore sem2( 1, "XSCPPTestSemaphore1" );
+    
+    sem1.Wait();
+    
+    ASSERT_FALSE( sem1.TryWait() );
+    ASSERT_FALSE( sem2.TryWait() );
+    
+    sem1.Signal();
+    
+    ASSERT_TRUE( sem2.TryWait() );
+    ASSERT_FALSE( sem1.TryWait() );
+    
+    sem2.Signal();
+}
+
 TEST( XS_Threading_Semaphore, UnnamedThrowOnInvalidCount )
 {
     ASSERT_THROW( XS::Threading::Semaphore( 0 ), XS::Exception );
 }
 
+TEST( XS_Threading_Semaphore, NamedThrowOnInvalidCount )
+{
+    ASSERT_THROW( XS::Threading::Semaphore( 0, "XSCPPTestSemaphore0" ), XS::Exception );
+}
+
 TEST( XS_Threading_Semaphore, IsNamed )
 {
-    XS::Threading::Semaphore sem1( 1, "XSCPPTestSemaphore" );
+    XS::Threading::Semaphore sem1( 1, "XSCPPTestSemaphore1" );
     XS::Threading::Semaphore sem2;
     
     ASSERT_TRUE( sem1.IsNamed() );
