@@ -2,6 +2,7 @@ XS-Labs / C++ Utility Library
 =============================
 
 [![Build Status](https://img.shields.io/travis/macmade/XS-CPP.svg?branch=master&style=flat)](https://travis-ci.org/macmade/XS-CPP)
+[![Coverage Status](https://img.shields.io/coveralls/macmade/XS-CPP.svg?branch=master&style=flat)](https://coveralls.io/r/macmade/XS-CPP?branch=master)
 [![Issues](http://img.shields.io/github/issues/macmade/XS-CPP.svg?style=flat)](https://github.com/macmade/XS-CPP/issues)
 ![Status](https://img.shields.io/badge/status-active-brightgreen.svg?style=flat)
 ![License](https://img.shields.io/badge/license-boost-brightgreen.svg?style=flat)
