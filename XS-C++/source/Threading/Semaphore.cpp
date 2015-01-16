@@ -107,7 +107,7 @@ namespace XS
         {
             if( count == 0 )
             {
-                XS::Exception e( "Cannot initialize a semaphore with a zero count" );
+                XS::Exception e( "Cannot initialize a semaphore with zero as count" );
                 
                 throw e;
             }
