@@ -49,6 +49,8 @@ namespace XS
                 using PIMPL::Object< Semaphore >::impl;
                 
                 Semaphore( unsigned int count = 1 );
+                Semaphore( const Semaphore & o ) = delete;
+                Semaphore & operator =( Semaphore o ) = delete;
                 bool TryWait( void );
                 void Signal( void );
         };
