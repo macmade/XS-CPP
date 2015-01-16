@@ -34,6 +34,7 @@
  */
 
 #include <XS-C++.h>
+#include <GoogleMock/GoogleMock.h>
 
 using namespace testing;
 

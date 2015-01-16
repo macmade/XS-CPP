@@ -37,6 +37,7 @@
 #define XSCPP_THREADING_USE_STL 0
 
 #include <XS-C++.h>
+#include <GoogleMock/GoogleMock.h>
 
 using namespace testing;
 
