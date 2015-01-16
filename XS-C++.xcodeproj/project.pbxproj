@@ -24,7 +24,6 @@
 		05DC06E41A5FADA300A7CF26 /* Types.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DC06E21A5FADA300A7CF26 /* Types.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05DC06EB1A5FB38A00A7CF26 /* Atomic.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DC06EA1A5FB38A00A7CF26 /* Atomic.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05DC06EC1A5FB38A00A7CF26 /* Atomic.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DC06EA1A5FB38A00A7CF26 /* Atomic.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		05DC06EE1A5FB44700A7CF26 /* XS-CPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05DC06ED1A5FB44700A7CF26 /* XS-CPP.mm */; };
 		05DC07371A5FC9DB00A7CF26 /* MemoryBarrier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07361A5FC9DB00A7CF26 /* MemoryBarrier.cpp */; };
 		05DC07381A5FC9DB00A7CF26 /* MemoryBarrier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07361A5FC9DB00A7CF26 /* MemoryBarrier.cpp */; };
 		05DC07391A5FC9DB00A7CF26 /* MemoryBarrier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07361A5FC9DB00A7CF26 /* MemoryBarrier.cpp */; };
@@ -199,7 +198,6 @@
 		05DC06DF1A5FAD5100A7CF26 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
 		05DC06E21A5FADA300A7CF26 /* Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
 		05DC06EA1A5FB38A00A7CF26 /* Atomic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Atomic.h; sourceTree = "<group>"; };
-		05DC06ED1A5FB44700A7CF26 /* XS-CPP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "XS-CPP.mm"; sourceTree = "<group>"; };
 		05DC07361A5FC9DB00A7CF26 /* MemoryBarrier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MemoryBarrier.cpp; sourceTree = "<group>"; };
 		05DC073B1A5FCA6800A7CF26 /* Increment32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Increment32.cpp; sourceTree = "<group>"; };
 		05DC07401A5FCC1300A7CF26 /* Increment64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Increment64.cpp; sourceTree = "<group>"; };
@@ -430,7 +428,6 @@
 			children = (
 				05E71B711961DA1100F911C4 /* Info.plist */,
 				05E71B741961DD4800F911C4 /* PrefixHeader.pch */,
-				05DC06ED1A5FB44700A7CF26 /* XS-CPP.mm */,
 				05DC07321A5FC4CE00A7CF26 /* Tests */,
 			);
 			path = "XS-C++ Tests";
@@ -754,7 +751,6 @@
 				0525377A1A6538510031BE63 /* Mutex-STL.cpp in Sources */,
 				0525377B1A6538510031BE63 /* ToStringable.cpp in Sources */,
 				052537781A6538510031BE63 /* LockGuard.cpp in Sources */,
-				05DC06EE1A5FB44700A7CF26 /* XS-CPP.mm in Sources */,
 				052537761A6538510031BE63 /* Exception.cpp in Sources */,
 				0525377C1A6538510031BE63 /* Version.cpp in Sources */,
 				05DC07A41A61466A00A7CF26 /* Exception.cpp in Sources */,
@@ -1384,14 +1380,8 @@
 				);
 				INFOPLIST_FILE = "XS-C++ Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = Libraries/GMock/build/lib/osx;
 				METAL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = (
-					"-lgmock",
-					"-lgtest",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = Libraries/GMock/build/include;
 			};
 			name = GCov;
 		};
@@ -1414,14 +1404,8 @@
 				);
 				INFOPLIST_FILE = "XS-C++ Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = Libraries/GMock/build/lib/osx;
 				METAL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = (
-					"-lgmock",
-					"-lgtest",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = Libraries/GMock/build/include;
 			};
 			name = Debug;
 		};
@@ -1444,14 +1428,8 @@
 				);
 				INFOPLIST_FILE = "XS-C++ Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = Libraries/GMock/build/lib/osx;
 				METAL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = (
-					"-lgmock",
-					"-lgtest",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = Libraries/GMock/build/include;
 			};
 			name = Release;
 		};
