@@ -28,9 +28,8 @@
  ******************************************************************************/
 
 /*!
- * @header      STLMutex.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Declaration of the XS::Threading::STLMutex class
+ * @brief       Declaration of the XS::Threading::STLMutex class
  */
 
 #ifndef __XSCPP_THREADING_STL_MUTEX_H__
@@ -41,8 +40,7 @@ namespace XS
     namespace Threading
     {
         /*!
-         * @class           XS::Threading::STLMutex
-         * @abstract        Mutex class
+         * @brief           Mutex class
          */
         class STLMutex: public XS::PIMPL::Object< STLMutex >, public Lockable
         {
@@ -51,59 +49,53 @@ namespace XS
                 using PIMPL::Object< STLMutex >::impl;
                 
                 /*!
-                 * @function    STLMutex
-                 * @abstract    Class constructor
+                 * @brief       Class constructor
                  * @param       recursive   Whether to create a recursive mutex or not
-                 * @discussion  If the mutex if created as recursive (default),
-                 *              it may be successfully locked multiple times by
-                 *              the same thread.
-                 *              If the mutex isn't recursive, a dead-lock will
-                 *              occur if it is locked twice from the same
-                 *              thread.
-                 *              Note that if a recursive mutex is locked
-                 *              multiple times by a thread, each call to the
-                 *              'Lock' method shall be balanced by a call to
-                 *              the 'Unlock' method.
-                 *              
+                 * 
+                 * If the mutex if created as recursive (default), it may be
+                 * successfully locked multiple times by the same thread.
+                 * If the mutex isn't recursive, a dead-lock will occur if it is
+                 * locked twice from the same thread.
+                 * Note that if a recursive mutex is locked multiple times by
+                 * a thread, each call to the 'Lock' method shall be balanced by
+                 * a call to the 'Unlock' method.
                  */
                 STLMutex( bool recursive = true );
                 
                 /*!
-                 * @function    STLMutex
-                 * @abstract    Class copy constructor
+                 * @brief       Class copy constructor
                  * @param       o   Another mutex to be used as data source for the initialization
-                 * @discussion  Deleted - Not copy-constructible
+                 * 
+                 * Deleted - Not copy-constructible
                  */
                 STLMutex( const STLMutex & o ) = delete;
                 
                 /*!
-                 * @function    operator =
-                 * @abstract    Assignment operator
+                 * @brief       Assignment operator
                  * @param       o   Another mutex to use as data source
-                 * @discussion  Deleted - Not copy-assignable
+                 * 
+                 * Deleted - Not copy-assignable
                  */
                 STLMutex & operator =( STLMutex o ) = delete;
                 
                 /*!
-                 * @function    Lock
-                 * @abstract    Locks the mutex
+                 * @brief       Locks the mutex
                  */
                 void Lock( void );
                 
                 /*!
-                 * @function    Unlock
-                 * @abstract    Unlocks the mutex
+                 * @brief       Unlocks the mutex
                  */
                 void Unlock( void );
                 
                 /*!
-                 * @function    TryLock
-                 * @abstract    Tries to lock the mutex
+                 * @brief       Tries to lock the mutex
                  * @return      True if the mutex was successfully locked, otherwise false
-                 * @discussion  This method will return 'true' if called
-                 *              multiple times from the same thread.
-                 *              Note that each call to this method still needs
-                 *              to be balanced by a call to the 'unlock' method.
+                 * 
+                 * This method will return 'true' if called multiple times from
+                 * the same thread.
+                 * Note that each call to this method still needs to be balanced
+                 * by a call to the 'unlock' method.
                  */
                 bool TryLock( void );
         };

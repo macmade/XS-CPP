@@ -28,13 +28,12 @@
  ******************************************************************************/
 
 /*!
- * @header      Object-IMPL.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Private delcarations of the XS::PIMPL::Object template class
- * @discussion  This header shall be included in implementations of PIMPL
- *              classes.
- *              Note that explicit template instanciation is required after the
- *              declaration of the IMPL class.
+ * @brief       Private delcarations of the XS::PIMPL::Object template class
+ * 
+ * This header shall be included in implementations of PIMPL classes.
+ * Note that explicit template instanciation is required after the declaration
+ * of the IMPL class.
  */
 
 #include <XS-C++.h>

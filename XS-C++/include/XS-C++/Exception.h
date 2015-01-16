@@ -28,9 +28,8 @@
  ******************************************************************************/
 
 /*!
- * @header      Exception.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Declaration of the XS::Exception class
+ * @brief       Declaration of the XS::Exception class
  */
 
 #ifndef __XSCPP_EXCEPTION_H__
@@ -39,10 +38,9 @@
 namespace XS
 {
     /*!
-     * @class           XS::Exception
-     * @abstract        Exception class
-     * @discussion      All exception thrown by XS-C++ are instances of
-     *                  this class.
+     * @brief           Exception class
+     * 
+     * All exception thrown by XS-C++ are instances of this class.
      */
     class Exception: public XS::PIMPL::Object< Exception >, public std::exception, public ToStringable
     {
@@ -51,38 +49,34 @@ namespace XS
             using PIMPL::Object< Exception >::impl;
             
             /*!
-             * @function    Exception
-             * @abstract    Class constructor
+             * @brief       Class constructor
              * @param       reason  The exception's reason
              * @param       code    The exception's code, if any
              */
             Exception( std::string reason, int code = 0 );
             
             /*!
-             * @function    GetReason
-             * @abstract    Gets the exception's reason
+             * @brief       Gets the exception's reason
              * @return      The exception's reason
              */
             std::string GetReason( void ) const;
             
             /*!
-             * @function    GetCode
-             * @abstract    Gets the exception's code
+             * @brief       Gets the exception's code
              * @return      The exception's code
              */
             int GetCode( void ) const;
             
             /*!
-             * @function    what
-             * @abstract    Gets a string representation of the exception
+             * @brief       Gets a string representation of the exception
              * @return      A string representation of the exception
-             * @discussion  From std::exception
+             * 
+             * From std::exception
              */
             const char * what( void ) const noexcept;
             
             /*!
-             * @function    ToString
-             * @abstract    Gets a string representation of the exception
+             * @brief       Gets a string representation of the exception
              * @return      A string representation of the exception
              */
             std::string ToString( void ) const;

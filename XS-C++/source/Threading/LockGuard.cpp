@@ -30,7 +30,7 @@
 /*!
  * @file        LockGuard.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Definition of the XS::Threading::LockGuard class
+ * @brief       Definition of the XS::Threading::LockGuard class
  */
 
 #include <XS-C++.h>

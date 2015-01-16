@@ -30,7 +30,7 @@
 /*!
  * @file        LockGuard.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Test case XS::Threading::LockGuard
+ * @brief       Test case XS::Threading::LockGuard
  */
 
 #include <XS-C++.h>

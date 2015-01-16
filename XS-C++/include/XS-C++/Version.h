@@ -28,9 +28,8 @@
  ******************************************************************************/
 
 /*!
- * @header      Version.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Declaration of the XS::Version class
+ * @brief       Declaration of the XS::Version class
  */
 
 #ifndef __XSCPP_VERSION_H__
@@ -39,9 +38,9 @@
 namespace XS
 {
     /*!
-     * @class           XS::Version
-     * @abstract        Version class
-     * @discussion      This class is thread-safe
+     * @brief           Version class
+     * 
+     * This class is thread-safe
      */
     class Version: public XS::PIMPL::Object< Version >, public ToStringable
     {
@@ -50,8 +49,7 @@ namespace XS
             using PIMPL::Object< Version >::impl;
             
             /*!
-             * @typedef     XS::Version::Status
-             * @abstract    Predefined version statuses
+             * @brief       Predefined version statuses
              */
             typedef enum
             {
@@ -63,8 +61,7 @@ namespace XS
             Status;
             
             /*!
-             * @function    Version
-             * @abstract    Class constructor
+             * @brief       Class constructor
              * @param       major       The version's major number
              * @param       minor       The version's minor number
              * @param       build       The version's build number
@@ -74,85 +71,75 @@ namespace XS
             Version( unsigned int major = 0, unsigned int minor = 0, unsigned int build = 0, unsigned int revision = 0, Status status = StatusFinal );
             
             /*!
-             * @function    ToString
-             * @abstract    Gets a string representation of the version
+             * @brief       Gets a string representation of the version
              * @return      A string representation of the version
-             * @discussion  This method will return a string representation in
-             *              the following form:
-             *              [major].[minor].[build]-[status][revision]
-             *              eg: 1.2.3-rc4
-             *              Note that for version objects with a "final" status,
-             *              the status/revision part will be ommited if the
-             *              revision number is zero.
+             * 
+             * This method will return a string representation in the following
+             * form:
+             *     [major].[minor].[build]-[status][revision]
+             *     eg: 1.2.3-rc4
+             * Note that for version objects with a "final" status, the
+             * status/revision part will be ommited if the revision number is
+             * zero.
              */
             std::string ToString( void ) const;
             
             /*!
-             * @function    GetMajor
-             * @abstract    Gets the version's major number
+             * @brief       Gets the version's major number
              * @return      The version's major number
              */
             unsigned int GetMajor( void ) const;
             
             /*!
-             * @function    GetMinor
-             * @abstract    Gets the version's minor number
+             * @brief       Gets the version's minor number
              * @return      The version's minor number
              */
             unsigned int GetMinor( void ) const;
             
             /*!
-             * @function    GetBuild
-             * @abstract    Gets the version's build number
+             * @brief       Gets the version's build number
              * @return      The version's build number
              */
             unsigned int GetBuild( void ) const;
             
             /*!
-             * @function    GetRevision
-             * @abstract    Gets the version's revision number
+             * @brief       Gets the version's revision number
              * @return      The version's revision number
              */
             unsigned int GetRevision( void ) const;
             
             /*!
-             * @function    GetStatus
-             * @abstract    Gets the version's status
+             * @brief       Gets the version's status
              * @return      The version's status
              */
             Status GetStatus( void ) const;
             
             /*!
-             * @function    SetMajor
-             * @abstract    Sets the version's major number
+             * @brief       Sets the version's major number
              * @param       value   The major number to set
              */
             void SetMajor( unsigned int value );
             
             /*!
-             * @function    SetMinor
-             * @abstract    Sets the version's minor number
+             * @brief       Sets the version's minor number
              * @param       value   The minor number to set
              */
             void SetMinor( unsigned int value );
             
             /*!
-             * @function    SetBuild
-             * @abstract    Sets the version's build number
+             * @brief       Sets the version's build number
              * @param       value   The build number to set
              */
             void SetBuild( unsigned int value );
             
             /*!
-             * @function    SetRevision
-             * @abstract    Sets the version's revision number
+             * @brief       Sets the version's revision number
              * @param       value   The revision number to set
              */
             void SetRevision( unsigned int value );
             
             /*!
-             * @function    SetStatus
-             * @abstract    Sets the version's status
+             * @brief       Sets the version's status
              * @param       value   The status to set
              */
             void SetStatus( Status value );

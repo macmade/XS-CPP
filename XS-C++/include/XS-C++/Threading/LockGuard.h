@@ -28,9 +28,8 @@
  ******************************************************************************/
 
 /*!
- * @header      LockGuard.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Declaration of the XS::Threading::LockGuard class
+ * @brief       Declaration of the XS::Threading::LockGuard class
  */
 
 #ifndef __XSCPP_THREADING_LOCK_GUARD_H__
@@ -43,8 +42,7 @@ namespace XS
         class Lockable;
         
         /*!
-         * @class           XS::Threading::LockGuard
-         * @abstract        Lock guard class
+         * @brief           Lock guard class
          */
         class LockGuard: public XS::PIMPL::Object< LockGuard >
         {
@@ -53,29 +51,29 @@ namespace XS
                 using PIMPL::Object< LockGuard >::impl;
                 
                 /*!
-                 * @function    LockGuard
-                 * @abstract    Class constructor
+                 * @brief       Class constructor
                  * @param       lock    The lockable object to use
-                 * @discussion  When constructed, the lock guard will
-                 *              automatically lock the lockable object.
-                 *              When destructed, it will unlock it.
+                 * 
+                 * When constructed, the lock guard will automatically lock the
+                 * lockable object.
+                 * When destructed, it will unlock it.
                  *              
                  */
                 LockGuard( Lockable * lock );
                 
                 /*!
-                 * @function    LockGuard
-                 * @abstract    Class copy constructor
+                 * @brief       Class copy constructor
                  * @param       o   Another mutex to be used as data source for the initialization
-                 * @discussion  Deleted - Not copy-constructible
+                 * 
+                 * Deleted - Not copy-constructible
                  */
                 LockGuard( const LockGuard & o ) = delete;
                 
                 /*!
-                 * @function    operator =
-                 * @abstract    Assignment operator
+                 * @brief       Assignment operator
                  * @param       o   Another mutex to use as data source
-                 * @discussion  Deleted - Not copy-assignable
+                 * 
+                 * Deleted - Not copy-assignable
                  */
                 LockGuard & operator =( LockGuard o ) = delete;
         };

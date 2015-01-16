@@ -30,7 +30,7 @@
 /*!
  * @file        CompareAndSwap64.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Definition of XS::Atomic::CompareAndSwap64
+ * @brief       Definition of XS::Atomic::CompareAndSwap64
  */
 
 #include <XS-C++.h>

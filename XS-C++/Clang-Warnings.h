@@ -28,9 +28,8 @@
  ******************************************************************************/
 
 /*!
- * @header      Clang-Warnings.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Extra warning flags for Clang
+ * @brief       Extra warning flags for Clang
  */
 
 #ifndef __XSCPP_WARNINGS__

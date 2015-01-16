@@ -30,7 +30,7 @@
 /*!
  * @file        Exception.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Test case XS::Exception
+ * @brief       Test case XS::Exception
  */
 
 #include <XS-C++.h>

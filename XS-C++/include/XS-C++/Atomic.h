@@ -28,9 +28,8 @@
  ******************************************************************************/
 
 /*!
- * @header      Atomic.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Declaration of the XS::Atomic functions
+ * @brief       Declaration of the XS::Atomic functions
  */
 
 #ifndef __XSCPP_ATOMIC_H__
@@ -41,52 +40,47 @@ namespace XS
     namespace Atomic
     {
         /*!
-         * @function    XS::Atomic::MemoryBarrier
-         * @abstract    Issues a memory barrier/fence
-         * @discussion  Currently, this function is implemented for the
-         *              following architectures:
-         *              - ARMv7
-         *              - ARM64
-         *              - x86
-         *              - x86-64
+         * @brief       Issues a memory barrier/fence
+         * 
+         * Currently, this function is implemented for the following
+         * architectures:
+         *     - ARMv7
+         *     - ARM64
+         *     - x86
+         *     - x86-64
          */
         void MemoryBarrier( void );
         
         /*!
-         * @function    XS::Atomic::Increment32
-         * @abstract    Atomically increments a 32 bits integer value
+         * @brief       Atomically increments a 32 bits integer value
          * @param       value       The value to increment
          * @return      The incremented value
          */
         XS::Int32 Increment32( volatile XS::Int32 * value );
         
         /*!
-         * @function    XS::Atomic::Increment64
-         * @abstract    Atomically increments a 32 bits integer value
+         * @brief       Atomically increments a 32 bits integer value
          * @param       value       The value to increment
          * @return      The incremented value
          */
         XS::Int64 Increment64( volatile XS::Int64 * value );
         
         /*!
-         * @function    XS::Atomic::Decrement32
-         * @abstract    Atomically decrements a 64 bits integer value
+         * @brief       Atomically decrements a 64 bits integer value
          * @param       value       The value to decrement
          * @return      The decremented value
          */
         XS::Int32 Decrement32( volatile XS::Int32 * value );
         
         /*!
-         * @function    XS::Atomic::Decrement64
-         * @abstract    Atomically decrements a 64 bits integer value
+         * @brief       Atomically decrements a 64 bits integer value
          * @param       value       The value to decrement
          * @return      The decremented value
          */
         XS::Int64 Decrement64( volatile XS::Int64 * value );
         
         /*!
-         * @function    XS::Atomic::Add32
-         * @abstract    Atomically adds to a 32 bits value
+         * @brief       Atomically adds to a 32 bits value
          * @param       amount      The amount to add
          * @param       value       The 32 bits value to modify
          * @return      The new value
@@ -94,8 +88,7 @@ namespace XS
         XS::Int32 Add32( XS::Int32 amount, volatile XS::Int32 * value );
         
         /*!
-         * @function    XS::Atomic::Add64
-         * @abstract    Atomically adds to a 64 bits value
+         * @brief       Atomically adds to a 64 bits value
          * @param       amount      The amount to add
          * @param       value       The 64 bits value to modify
          * @return      The new value
@@ -103,8 +96,7 @@ namespace XS
         XS::Int64 Add64( XS::Int64 amount, volatile XS::Int64 * value );
         
         /*!
-         * @function    XS::Atomic::CompareAndSwap32
-         * @abstract    Performs an atomic compare and swap on 32 bits integer values
+         * @brief       Performs an atomic compare and swap on 32 bits integer values
          * @param       oldValue    The value to compare to (old value)
          * @param       newValue    The value to swap (new value)
          * @param       value       A pointer to the 32 bits integer value to compare and swap
@@ -113,8 +105,7 @@ namespace XS
         bool CompareAndSwap32( XS::Int32 oldValue, XS::Int32 newValue, volatile XS::Int32 * value );
         
         /*!
-         * @function    XS::Atomic::CompareAndSwap64
-         * @abstract    Performs an atomic compare and swap on 64 bits integer values
+         * @brief       Performs an atomic compare and swap on 64 bits integer values
          * @param       oldValue    The value to compare to (old value)
          * @param       newValue    The value to swap (new value)
          * @param       value       A pointer to the 64 bits integer value to compare and swap
@@ -123,8 +114,7 @@ namespace XS
         bool CompareAndSwap64( XS::Int64 oldValue, XS::Int64 newValue, volatile XS::Int64 * value );
         
         /*!
-         * @function    XS::Atomic::CompareAndSwapPointer
-         * @abstract    Performs an atomic compare and swap on pointer values
+         * @brief       Performs an atomic compare and swap on pointer values
          * @param       oldValue    The value to compare to (old value)
          * @param       newValue    The value to swap (new value)
          * @param       value       A pointer to the pointer value to compare and swap

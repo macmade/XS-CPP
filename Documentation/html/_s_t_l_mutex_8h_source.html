@@ -135,51 +135,51 @@ $(document).ready(function(){initNavTree('_s_t_l_mutex_8h_source.html','');});
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * DEALINGS IN THE SOFTWARE.</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#ifndef __XSCPP_THREADING_STL_MUTEX_H__</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define __XSCPP_THREADING_STL_MUTEX_H__</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_x_s.html">XS</a></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">namespace </span>Threading</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html">   47</a></span>&#160;        <span class="keyword">class </span><a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html">STLMutex</a>: <span class="keyword">public</span> <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">XS::PIMPL::Object</a>&lt; STLMutex &gt;, <span class="keyword">public</span> <a class="code" href="class_x_s_1_1_threading_1_1_lockable.html">Lockable</a></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#ifndef __XSCPP_THREADING_STL_MUTEX_H__</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#define __XSCPP_THREADING_STL_MUTEX_H__</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_x_s.html">XS</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">namespace </span>Threading</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html">   45</a></span>&#160;        <span class="keyword">class </span><a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html">STLMutex</a>: <span class="keyword">public</span> <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">XS::PIMPL::Object</a>&lt; STLMutex &gt;, <span class="keyword">public</span> <a class="code" href="class_x_s_1_1_threading_1_1_lockable.html">Lockable</a></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="keyword">using</span> <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">PIMPL::Object&lt; STLMutex &gt;::impl</a>;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="keyword">using</span> <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">PIMPL::Object&lt; STLMutex &gt;::impl</a>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#afbf61ef5592e35c373fd54232f4d0924">STLMutex</a>( <span class="keywordtype">bool</span> recursive = <span class="keyword">true</span> );</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#afbf61ef5592e35c373fd54232f4d0924">STLMutex</a>( <span class="keyword">const</span> <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html">STLMutex</a> &amp; o ) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html">STLMutex</a> &amp; <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#a0e159f6ac729cb557026edabbb403308">operator =</a>( <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html">STLMutex</a> o ) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <span class="keywordtype">void</span> <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#aa6041c2b8557be1c1b3f1bca1a2a86f5">Lock</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="keywordtype">void</span> <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#a96388b959c48e433132921219e747661">Unlock</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keywordtype">bool</span> <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#a21fbbb6cba78c60f7507375e0dec6d3e">TryLock</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        };</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __XSCPP_THREADING_STL_MUTEX_H__ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="class_x_s_1_1_threading_1_1_s_t_l_mutex_html_a96388b959c48e433132921219e747661"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#a96388b959c48e433132921219e747661">XS::Threading::STLMutex::Unlock</a></div><div class="ttdeci">void Unlock(void)</div></div>
-<div class="ttc" id="class_x_s_1_1_threading_1_1_s_t_l_mutex_html"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html">XS::Threading::STLMutex</a></div><div class="ttdef"><b>Definition:</b> <a href="_s_t_l_mutex_8h_source.html#l00047">STLMutex.h:47</a></div></div>
-<div class="ttc" id="class_x_s_1_1_threading_1_1_lockable_html"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_lockable.html">XS::Threading::Lockable</a></div><div class="ttdef"><b>Definition:</b> <a href="_lockable_8h_source.html#l00047">Lockable.h:47</a></div></div>
-<div class="ttc" id="namespace_x_s_html"><div class="ttname"><a href="namespace_x_s.html">XS</a></div><div class="ttdef"><b>Definition:</b> <a href="_atomic_8h_source.html#l00039">Atomic.h:39</a></div></div>
-<div class="ttc" id="class_x_s_1_1_threading_1_1_s_t_l_mutex_html_afbf61ef5592e35c373fd54232f4d0924"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#afbf61ef5592e35c373fd54232f4d0924">XS::Threading::STLMutex::STLMutex</a></div><div class="ttdeci">STLMutex(bool recursive=true)</div></div>
-<div class="ttc" id="class_x_s_1_1_threading_1_1_s_t_l_mutex_html_aa6041c2b8557be1c1b3f1bca1a2a86f5"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#aa6041c2b8557be1c1b3f1bca1a2a86f5">XS::Threading::STLMutex::Lock</a></div><div class="ttdeci">void Lock(void)</div></div>
-<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">XS::PIMPL::Object</a></div><div class="ttdef"><b>Definition:</b> <a href="_object_8h_source.html#l00049">Object.h:49</a></div></div>
-<div class="ttc" id="class_x_s_1_1_threading_1_1_s_t_l_mutex_html_a21fbbb6cba78c60f7507375e0dec6d3e"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#a21fbbb6cba78c60f7507375e0dec6d3e">XS::Threading::STLMutex::TryLock</a></div><div class="ttdeci">bool TryLock(void)</div></div>
-<div class="ttc" id="class_x_s_1_1_threading_1_1_s_t_l_mutex_html_a0e159f6ac729cb557026edabbb403308"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#a0e159f6ac729cb557026edabbb403308">XS::Threading::STLMutex::operator=</a></div><div class="ttdeci">STLMutex &amp; operator=(STLMutex o)=delete</div></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#afbf61ef5592e35c373fd54232f4d0924">STLMutex</a>( <span class="keywordtype">bool</span> recursive = <span class="keyword">true</span> );</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#afbf61ef5592e35c373fd54232f4d0924">STLMutex</a>( <span class="keyword">const</span> <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html">STLMutex</a> &amp; o ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html">STLMutex</a> &amp; <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#a0e159f6ac729cb557026edabbb403308">operator =</a>( <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html">STLMutex</a> o ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="keywordtype">void</span> <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#aa6041c2b8557be1c1b3f1bca1a2a86f5">Lock</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="keywordtype">void</span> <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#a96388b959c48e433132921219e747661">Unlock</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                <span class="keywordtype">bool</span> <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#a21fbbb6cba78c60f7507375e0dec6d3e">TryLock</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        };</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __XSCPP_THREADING_STL_MUTEX_H__ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="class_x_s_1_1_threading_1_1_s_t_l_mutex_html_a96388b959c48e433132921219e747661"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#a96388b959c48e433132921219e747661">XS::Threading::STLMutex::Unlock</a></div><div class="ttdeci">void Unlock(void)</div><div class="ttdoc">Unlocks the mutex. </div></div>
+<div class="ttc" id="class_x_s_1_1_threading_1_1_s_t_l_mutex_html"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html">XS::Threading::STLMutex</a></div><div class="ttdoc">Mutex class. </div><div class="ttdef"><b>Definition:</b> <a href="_s_t_l_mutex_8h_source.html#l00045">STLMutex.h:45</a></div></div>
+<div class="ttc" id="class_x_s_1_1_threading_1_1_lockable_html"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_lockable.html">XS::Threading::Lockable</a></div><div class="ttdoc">Interface for lockable objects. </div><div class="ttdef"><b>Definition:</b> <a href="_lockable_8h_source.html#l00045">Lockable.h:45</a></div></div>
+<div class="ttc" id="namespace_x_s_html"><div class="ttname"><a href="namespace_x_s.html">XS</a></div><div class="ttdoc">Declaration of the XS::Atomic functions. </div><div class="ttdef"><b>Definition:</b> <a href="_atomic_8h_source.html#l00038">Atomic.h:38</a></div></div>
+<div class="ttc" id="class_x_s_1_1_threading_1_1_s_t_l_mutex_html_afbf61ef5592e35c373fd54232f4d0924"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#afbf61ef5592e35c373fd54232f4d0924">XS::Threading::STLMutex::STLMutex</a></div><div class="ttdeci">STLMutex(bool recursive=true)</div><div class="ttdoc">Class constructor. </div></div>
+<div class="ttc" id="class_x_s_1_1_threading_1_1_s_t_l_mutex_html_aa6041c2b8557be1c1b3f1bca1a2a86f5"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#aa6041c2b8557be1c1b3f1bca1a2a86f5">XS::Threading::STLMutex::Lock</a></div><div class="ttdeci">void Lock(void)</div><div class="ttdoc">Locks the mutex. </div></div>
+<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">XS::PIMPL::Object</a></div><div class="ttdoc">Generic PIMPL class. </div><div class="ttdef"><b>Definition:</b> <a href="_object_8h_source.html#l00047">Object.h:47</a></div></div>
+<div class="ttc" id="class_x_s_1_1_threading_1_1_s_t_l_mutex_html_a21fbbb6cba78c60f7507375e0dec6d3e"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#a21fbbb6cba78c60f7507375e0dec6d3e">XS::Threading::STLMutex::TryLock</a></div><div class="ttdeci">bool TryLock(void)</div><div class="ttdoc">Tries to lock the mutex. </div></div>
+<div class="ttc" id="class_x_s_1_1_threading_1_1_s_t_l_mutex_html_a0e159f6ac729cb557026edabbb403308"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#a0e159f6ac729cb557026edabbb403308">XS::Threading::STLMutex::operator=</a></div><div class="ttdeci">STLMutex &amp; operator=(STLMutex o)=delete</div><div class="ttdoc">Assignment operator. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_9b4e05ba0ee1d1f1d59494c17d9a9d0d.html">XS-C++</a></li><li class="navelem"><a class="el" href="dir_60347c85858558e0a60d8d36f0870d73.html">Threading</a></li><li class="navelem"><a class="el" href="_s_t_l_mutex_8h.html">STLMutex.h</a></li>
-    <li class="footer">Generated on Fri Jan 16 2015 18:47:53 for XS-Labs / C++ Utility Library by
+    <li class="footer">Generated on Fri Jan 16 2015 19:10:45 for XS-Labs / C++ Utility Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

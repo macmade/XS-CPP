@@ -28,9 +28,8 @@
  ******************************************************************************/
 
 /*!
- * @header      XS-C++.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    XS-C++ main header file
+ * @brief       XS-C++ main header file
  */
 
 #ifndef __XSCPP__
@@ -39,7 +38,7 @@
 
 /*!
  * @define      XSCPP_HAS_CPP11
- * @abstract    Whether the compiler has ISO C++ 2011 support
+ * @brief       Whether the compiler has ISO C++ 2011 support
  */
 #if defined( __cplusplus ) && ( __cplusplus > 199711L || ( defined( _MSC_VER ) && _MSC_VER >= 1800 ) )
 #define XSCPP_HAS_CPP11         1
@@ -47,11 +46,11 @@
 
 /*!
  * @define      XSCPP_THREADING_USE_STL
- * @abstract    Whether to use the ISO C++ 2011 thread support library
- * @discussion  If not defined previously to 0 (before inclusion of this header
- *              file, this macro will be defined to 1, meaning the ISO C++ 2011
- *              thread support library will be used instead of native thread
- *              functions (eg. pthread on POSIX).
+ * @brief       Whether to use the ISO C++ 2011 thread support library
+ * 
+ * If not defined previously to 0 (before inclusion of this header file, this
+ * macro will be defined to 1, meaning the ISO C++ 2011 thread support library
+ * will be used instead of native thread functions (eg. pthread on POSIX).
  */
 #ifndef XSCPP_THREADING_USE_STL
 #define XSCPP_THREADING_USE_STL    1

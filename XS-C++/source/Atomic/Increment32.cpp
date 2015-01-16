@@ -30,7 +30,7 @@
 /*!
  * @file        Increment32.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Definition of XS::Atomic::Increment32
+ * @brief       Definition of XS::Atomic::Increment32
  */
 
 #include <XS-C++.h>

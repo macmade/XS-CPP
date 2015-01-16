@@ -28,9 +28,8 @@
  ******************************************************************************/
 
 /*!
- * @header      Types.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    XS-C++ common types
+ * @brief       XS-C++ common types
  */
 
 #ifndef __XSCPP_TYPES_H__
@@ -49,8 +48,7 @@ extern "C" {
 namespace XS
 {
     /*!
-     * @typedef     XS::Int8
-     * @abstract    Exact-width 8 bits signed integer
+     * @brief       Exact-width 8 bits signed integer
      */
     #ifdef _WIN32
     typedef __int8 Int8;
@@ -59,8 +57,7 @@ namespace XS
     #endif
     
     /*!
-     * @typedef     XS::UInt8
-     * @abstract    Exact-width 8 bits unsigned integer
+     * @brief       Exact-width 8 bits unsigned integer
      */
     #ifdef _WIN32
     typedef unsigned __int8 UInt8;
@@ -69,8 +66,7 @@ namespace XS
     #endif
     
     /*!
-     * @typedef     XS::Int16
-     * @abstract    Exact-width 16 bits signed integer
+     * @brief       Exact-width 16 bits signed integer
      */
     #ifdef _WIN32
     typedef __int16 Int16;
@@ -79,8 +75,7 @@ namespace XS
     #endif
     
     /*!
-     * @typedef     XS::UInt16
-     * @abstract    Exact-width 16 bits unsigned integer
+     * @brief       Exact-width 16 bits unsigned integer
      */
     #ifdef _WIN32
     typedef unsigned __int16 UInt16;
@@ -89,8 +84,7 @@ namespace XS
     #endif
     
     /*!
-     * @typedef     XS::Int32
-     * @abstract    Exact-width 32 bits signed integer
+     * @brief       Exact-width 32 bits signed integer
      */
     #ifdef _WIN32
     typedef __int32 Int32;
@@ -99,8 +93,7 @@ namespace XS
     #endif
     
     /*!
-     * @typedef     XS::UInt32
-     * @abstract    Exact-width 32 bits unsigned integer
+     * @brief       Exact-width 32 bits unsigned integer
      */
     #ifdef _WIN32
     typedef unsigned __int32 UInt32;
@@ -109,8 +102,7 @@ namespace XS
     #endif
     
     /*!
-     * @typedef     XS::Int64
-     * @abstract    Exact-width 64 bits signed integer
+     * @brief       Exact-width 64 bits signed integer
      */
     #ifdef _WIN32
     typedef __int64 Int64;
@@ -119,8 +111,7 @@ namespace XS
     #endif
     
     /*!
-     * @typedef     XS::UInt64
-     * @abstract    Exact-width 64 bits unsigned integer
+     * @brief       Exact-width 64 bits unsigned integer
      */
     #ifdef _WIN32
     typedef unsigned __int64 UInt64;
@@ -129,74 +120,62 @@ namespace XS
     #endif
     
     /*!
-     * @var         XS::Int8Max
-     * @abstract    Maximum value for XS::Int8
+     * @brief       Maximum value for XS::Int8
      */
     const Int8 Int8Max = 0x7F;
     
     /*!
-     * @var         XS::Int16Max
-     * @abstract    Maximum value for XS::Int16
+     * @brief       Maximum value for XS::Int16
      */
     const Int16 Int16Max = 0x7FFF;
     
     /*!
-     * @var         XS::Int32Max
-     * @abstract    Maximum value for XS::Int32
+     * @brief       Maximum value for XS::Int32
      */
     const Int32 Int32Max = 0x7FFFFFFF;
     
     /*!
-     * @var         XS::Int64Max
-     * @abstract    Maximum value for XS::Int64
+     * @brief       Maximum value for XS::Int64
      */
     const Int64 Int64Max = 0x7FFFFFFFFFFFFFFF;
     
     /*!
-     * @var         XS::UInt8Max
-     * @abstract    Maximum value for XS::UInt8
+     * @brief       Maximum value for XS::UInt8
      */
     const UInt8 UInt8Max = 0xFF;
     
     /*!
-     * @var         XS::UInt16Max
-     * @abstract    Maximum value for XS::UInt16
+     * @brief       Maximum value for XS::UInt16
      */
     const UInt16 UInt16Max = 0xFFFF;
     
     /*!
-     * @var         XS::UInt32Max
-     * @abstract    Maximum value for XS::UInt32
+     * @brief       Maximum value for XS::UInt32
      */
     const UInt32 UInt32Max = 0xFFFFFFFF;
     
     /*!
-     * @var         XS::UInt64Max
-     * @abstract    Maximum value for XS::UInt64
+     * @brief       Maximum value for XS::UInt64
      */
     const UInt64 UInt64Max = 0xFFFFFFFFFFFFFF;
     
     /*!
-     * @var         XS::Int8Min
-     * @abstract    Minimum value for XS::Int8
+     * @brief       Minimum value for XS::Int8
      */
     const Int8 Int8Min = static_cast< Int8  >( -Int8Max - 1 );
     
     /*!
-     * @var         XS::Int16Min
-     * @abstract    Minimum value for XS::Int16
+     * @brief       Minimum value for XS::Int16
      */
     const Int16 Int16Min = static_cast< Int16 >( -Int16Max - 1 );
     
     /*!
-     * @var         XS::Int32Min
-     * @abstract    Minimum value for XS::Int32
+     * @brief       Minimum value for XS::Int32
      */
     const Int32 Int32Min = static_cast< Int32 >( -Int32Max - 1 );
     
     /*!
-     * @var         XS::Int64Min
-     * @abstract    Minimum value for XS::Int64
+     * @brief       Minimum value for XS::Int64
      */
     const Int64 Int64Min = static_cast< Int64 >( -Int64Max - 1 );
 }

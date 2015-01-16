@@ -28,9 +28,8 @@
  ******************************************************************************/
 
 /*!
- * @header      Macros.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    XS-C++ common macros
+ * @brief       XS-C++ common macros
  */
 
 #ifndef __XSCPP_MACROS_H__

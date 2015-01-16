@@ -30,7 +30,7 @@
 /*!
  * @file        STLMutex.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Definition of the XS::Threading::STLMutex class
+ * @brief       Definition of the XS::Threading::STLMutex class
  */
 
 #include <XS-C++.h>

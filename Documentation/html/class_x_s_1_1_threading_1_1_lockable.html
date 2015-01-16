@@ -113,6 +113,9 @@ $(document).ready(function(){initNavTree('class_x_s_1_1_threading_1_1_lockable.h
 </div><!--header-->
 <div class="contents">
 
+<p>Interface for lockable objects.  
+ <a href="class_x_s_1_1_threading_1_1_lockable.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_lockable_8h_source.html">Lockable.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for XS::Threading::Lockable:</div>
@@ -120,26 +123,30 @@ Inheritance diagram for XS::Threading::Lockable:</div>
  <div class="center">
   <img src="class_x_s_1_1_threading_1_1_lockable.png" usemap="#XS::Threading::Lockable_map" alt=""/>
   <map id="XS::Threading::Lockable_map" name="XS::Threading::Lockable_map">
-<area href="class_x_s_1_1_threading_1_1_native_mutex.html" alt="XS::Threading::NativeMutex" shape="rect" coords="0,56,168,80"/>
-<area href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html" alt="XS::Threading::STLMutex" shape="rect" coords="178,56,346,80"/>
+<area href="class_x_s_1_1_threading_1_1_native_mutex.html" title="Mutex class. " alt="XS::Threading::NativeMutex" shape="rect" coords="0,56,168,80"/>
+<area href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html" title="Mutex class. " alt="XS::Threading::STLMutex" shape="rect" coords="178,56,346,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a497c29d56e4920ec40bf25195d999e33"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_s_1_1_threading_1_1_lockable.html#a497c29d56e4920ec40bf25195d999e33">~Lockable</a> (void)</td></tr>
+<tr class="memdesc:a497c29d56e4920ec40bf25195d999e33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor.  <a href="#a497c29d56e4920ec40bf25195d999e33">More...</a><br /></td></tr>
 <tr class="separator:a497c29d56e4920ec40bf25195d999e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a518e56496b0afdfb063ad398573e6634"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_s_1_1_threading_1_1_lockable.html#a518e56496b0afdfb063ad398573e6634">Lock</a> (void)=0</td></tr>
+<tr class="memdesc:a518e56496b0afdfb063ad398573e6634"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locks the object.  <a href="#a518e56496b0afdfb063ad398573e6634">More...</a><br /></td></tr>
 <tr class="separator:a518e56496b0afdfb063ad398573e6634"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2346296d254a33126c8ecd1c660a1a7e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_s_1_1_threading_1_1_lockable.html#a2346296d254a33126c8ecd1c660a1a7e">Unlock</a> (void)=0</td></tr>
+<tr class="memdesc:a2346296d254a33126c8ecd1c660a1a7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlock the object.  <a href="#a2346296d254a33126c8ecd1c660a1a7e">More...</a><br /></td></tr>
 <tr class="separator:a2346296d254a33126c8ecd1c660a1a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf2fb15f922fb64d8522d152e212de30"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_s_1_1_threading_1_1_lockable.html#abf2fb15f922fb64d8522d152e212de30">TryLock</a> (void)=0</td></tr>
+<tr class="memdesc:abf2fb15f922fb64d8522d152e212de30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to lock the object.  <a href="#abf2fb15f922fb64d8522d152e212de30">More...</a><br /></td></tr>
 <tr class="separator:abf2fb15f922fb64d8522d152e212de30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Interface for lockable objects </p>
+<div class="textblock"><p>Interface for lockable objects. </p>
 
-<p>Definition at line <a class="el" href="_lockable_8h_source.html#l00047">47</a> of file <a class="el" href="_lockable_8h_source.html">Lockable.h</a>.</p>
+<p>Definition at line <a class="el" href="_lockable_8h_source.html#l00045">45</a> of file <a class="el" href="_lockable_8h_source.html">Lockable.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a497c29d56e4920ec40bf25195d999e33"></a>
 <div class="memitem">
@@ -162,9 +169,11 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>~Lockable  Class destructor  Nothing to do here - The destructor is defined so the compiler does not complain about the class having virtual functions without a virtual destructor. </p>
 
-<p>Definition at line <a class="el" href="_lockable_8h_source.html#l00059">59</a> of file <a class="el" href="_lockable_8h_source.html">Lockable.h</a>.</p>
+<p>Class destructor. </p>
+<p>Nothing to do here - The destructor is defined so the compiler does not complain about the class having virtual functions without a virtual destructor. </p>
+
+<p>Definition at line <a class="el" href="_lockable_8h_source.html#l00056">56</a> of file <a class="el" href="_lockable_8h_source.html">Lockable.h</a>.</p>
 
 </div>
 </div>
@@ -190,7 +199,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Lock  Locks the object </p>
+
+<p>Locks the object. </p>
 
 <p>Implemented in <a class="el" href="class_x_s_1_1_threading_1_1_native_mutex.html#a819cac1cc241c3863e231825a0d8c3e0">XS::Threading::NativeMutex</a>, and <a class="el" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#aa6041c2b8557be1c1b3f1bca1a2a86f5">XS::Threading::STLMutex</a>.</p>
 
@@ -217,7 +227,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>TryLock  Tries to lock the object </p><dl class="section return"><dt>Returns</dt><dd>True if the object was successfully locked, otherwise false </dd></dl>
+
+<p>Tries to lock the object. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the object was successfully locked, otherwise false </dd></dl>
 
 <p>Implemented in <a class="el" href="class_x_s_1_1_threading_1_1_native_mutex.html#ade3e680eadc4a42315d1f1c267b3fba2">XS::Threading::NativeMutex</a>, and <a class="el" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#a21fbbb6cba78c60f7507375e0dec6d3e">XS::Threading::STLMutex</a>.</p>
 
@@ -244,7 +256,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Unlock  Unlock the object </p>
+
+<p>Unlock the object. </p>
 
 <p>Implemented in <a class="el" href="class_x_s_1_1_threading_1_1_native_mutex.html#a56d7196db1bc6c4df634812c9877f7c9">XS::Threading::NativeMutex</a>, and <a class="el" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html#a96388b959c48e433132921219e747661">XS::Threading::STLMutex</a>.</p>
 
@@ -259,7 +272,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_x_s.html">XS</a></li><li class="navelem"><a class="el" href="namespace_x_s_1_1_threading.html">Threading</a></li><li class="navelem"><a class="el" href="class_x_s_1_1_threading_1_1_lockable.html">Lockable</a></li>
-    <li class="footer">Generated on Fri Jan 16 2015 18:47:53 for XS-Labs / C++ Utility Library by
+    <li class="footer">Generated on Fri Jan 16 2015 19:10:45 for XS-Labs / C++ Utility Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

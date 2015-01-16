@@ -30,7 +30,7 @@
 /*!
  * @file        ToStringable.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Definition of the XS::ToStringable abstract class
+ * @brief       Definition of the XS::ToStringable abstract class
  */
 
 #include <XS-C++.h>

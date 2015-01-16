@@ -28,9 +28,8 @@
  ******************************************************************************/
 
 /*!
- * @header      Mutex.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Declaration of the XS::Threading::Locakble interface
+ * @brief       Declaration of the XS::Threading::Locakble interface
  */
 
 #ifndef __XSCPP_THREADING_LOCKABLE_H__
@@ -41,39 +40,34 @@ namespace XS
     namespace Threading
     {
         /*!
-         * @class           XS::Threading::Lockable
-         * @abstract        Interface for lockable objects
+         * @brief           Interface for lockable objects
          */
         class Lockable
         {
             public:
                 
                 /*!
-                 * @function    ~Lockable
-                 * @abstract    Class destructor
-                 * @discussion  Nothing to do here - The destructor is defined
-                 *              so the compiler does not complain about the
-                 *              class having virtual functions without a
-                 *              virtual destructor.
+                 * @brief       Class destructor
+                 * 
+                 * Nothing to do here - The destructor is defined so the
+                 * compiler does not complain about the class having virtual
+                 * functions without a virtual destructor.
                  */
                 virtual ~Lockable( void )
                 {}
                 
                 /*!
-                 * @function    Lock
-                 * @abstract    Locks the object
+                 * @brief       Locks the object
                  */
                 virtual void Lock( void ) = 0;
                 
                 /*!
-                 * @function    Unlock
-                 * @abstract    Unlock the object
+                 * @brief       Unlock the object
                  */
                 virtual void Unlock( void ) = 0;
                 
                 /*!
-                 * @function    TryLock
-                 * @abstract    Tries to lock the object
+                 * @brief       Tries to lock the object
                  * @return      True if the object was successfully locked, otherwise false
                  */
                 virtual bool TryLock( void ) = 0;

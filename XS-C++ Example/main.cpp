@@ -30,7 +30,7 @@
 /*!
  * @file        main.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    XS-C++ example executable
+ * @brief       XS-C++ example executable
  */
 
 #include <XS-C++.h>

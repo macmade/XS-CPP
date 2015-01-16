@@ -135,44 +135,44 @@ $(document).ready(function(){initNavTree('_lock_guard_8h_source.html','');});
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * DEALINGS IN THE SOFTWARE.</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#ifndef __XSCPP_THREADING_LOCK_GUARD_H__</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define __XSCPP_THREADING_LOCK_GUARD_H__</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_x_s.html">XS</a></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">namespace </span>Threading</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">class </span>Lockable;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_x_s_1_1_threading_1_1_lock_guard.html">   49</a></span>&#160;        <span class="keyword">class </span><a class="code" href="class_x_s_1_1_threading_1_1_lock_guard.html">LockGuard</a>: <span class="keyword">public</span> <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">XS::PIMPL::Object</a>&lt; LockGuard &gt;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#ifndef __XSCPP_THREADING_LOCK_GUARD_H__</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#define __XSCPP_THREADING_LOCK_GUARD_H__</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_x_s.html">XS</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">namespace </span>Threading</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">class </span>Lockable;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_x_s_1_1_threading_1_1_lock_guard.html">   47</a></span>&#160;        <span class="keyword">class </span><a class="code" href="class_x_s_1_1_threading_1_1_lock_guard.html">LockGuard</a>: <span class="keyword">public</span> <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">XS::PIMPL::Object</a>&lt; LockGuard &gt;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="keyword">using</span> <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">PIMPL::Object&lt; LockGuard &gt;::impl</a>;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <span class="keyword">using</span> <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">PIMPL::Object&lt; LockGuard &gt;::impl</a>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <a class="code" href="class_x_s_1_1_threading_1_1_lock_guard.html#a9fe0b81c3ccba12a9d8a4315514be4e0">LockGuard</a>( <a class="code" href="class_x_s_1_1_threading_1_1_lockable.html">Lockable</a> * lock );</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <a class="code" href="class_x_s_1_1_threading_1_1_lock_guard.html#a9fe0b81c3ccba12a9d8a4315514be4e0">LockGuard</a>( <span class="keyword">const</span> <a class="code" href="class_x_s_1_1_threading_1_1_lock_guard.html">LockGuard</a> &amp; o ) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <a class="code" href="class_x_s_1_1_threading_1_1_lock_guard.html">LockGuard</a> &amp; <a class="code" href="class_x_s_1_1_threading_1_1_lock_guard.html#a173ce61b7185967425440785e9d7fc88">operator =</a>( <a class="code" href="class_x_s_1_1_threading_1_1_lock_guard.html">LockGuard</a> o ) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        };</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __XSCPP_THREADING_LOCK_GUARD_H__ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="class_x_s_1_1_threading_1_1_lock_guard_html_a9fe0b81c3ccba12a9d8a4315514be4e0"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_lock_guard.html#a9fe0b81c3ccba12a9d8a4315514be4e0">XS::Threading::LockGuard::LockGuard</a></div><div class="ttdeci">LockGuard(Lockable *lock)</div></div>
-<div class="ttc" id="class_x_s_1_1_threading_1_1_lockable_html"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_lockable.html">XS::Threading::Lockable</a></div><div class="ttdef"><b>Definition:</b> <a href="_lockable_8h_source.html#l00047">Lockable.h:47</a></div></div>
-<div class="ttc" id="namespace_x_s_html"><div class="ttname"><a href="namespace_x_s.html">XS</a></div><div class="ttdef"><b>Definition:</b> <a href="_atomic_8h_source.html#l00039">Atomic.h:39</a></div></div>
-<div class="ttc" id="class_x_s_1_1_threading_1_1_lock_guard_html"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_lock_guard.html">XS::Threading::LockGuard</a></div><div class="ttdef"><b>Definition:</b> <a href="_lock_guard_8h_source.html#l00049">LockGuard.h:49</a></div></div>
-<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">XS::PIMPL::Object</a></div><div class="ttdef"><b>Definition:</b> <a href="_object_8h_source.html#l00049">Object.h:49</a></div></div>
-<div class="ttc" id="class_x_s_1_1_threading_1_1_lock_guard_html_a173ce61b7185967425440785e9d7fc88"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_lock_guard.html#a173ce61b7185967425440785e9d7fc88">XS::Threading::LockGuard::operator=</a></div><div class="ttdeci">LockGuard &amp; operator=(LockGuard o)=delete</div></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <a class="code" href="class_x_s_1_1_threading_1_1_lock_guard.html#a9fe0b81c3ccba12a9d8a4315514be4e0">LockGuard</a>( <a class="code" href="class_x_s_1_1_threading_1_1_lockable.html">Lockable</a> * lock );</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <a class="code" href="class_x_s_1_1_threading_1_1_lock_guard.html#a9fe0b81c3ccba12a9d8a4315514be4e0">LockGuard</a>( <span class="keyword">const</span> <a class="code" href="class_x_s_1_1_threading_1_1_lock_guard.html">LockGuard</a> &amp; o ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <a class="code" href="class_x_s_1_1_threading_1_1_lock_guard.html">LockGuard</a> &amp; <a class="code" href="class_x_s_1_1_threading_1_1_lock_guard.html#a173ce61b7185967425440785e9d7fc88">operator =</a>( <a class="code" href="class_x_s_1_1_threading_1_1_lock_guard.html">LockGuard</a> o ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        };</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __XSCPP_THREADING_LOCK_GUARD_H__ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="class_x_s_1_1_threading_1_1_lock_guard_html_a9fe0b81c3ccba12a9d8a4315514be4e0"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_lock_guard.html#a9fe0b81c3ccba12a9d8a4315514be4e0">XS::Threading::LockGuard::LockGuard</a></div><div class="ttdeci">LockGuard(Lockable *lock)</div><div class="ttdoc">Class constructor. </div></div>
+<div class="ttc" id="class_x_s_1_1_threading_1_1_lockable_html"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_lockable.html">XS::Threading::Lockable</a></div><div class="ttdoc">Interface for lockable objects. </div><div class="ttdef"><b>Definition:</b> <a href="_lockable_8h_source.html#l00045">Lockable.h:45</a></div></div>
+<div class="ttc" id="namespace_x_s_html"><div class="ttname"><a href="namespace_x_s.html">XS</a></div><div class="ttdoc">Declaration of the XS::Atomic functions. </div><div class="ttdef"><b>Definition:</b> <a href="_atomic_8h_source.html#l00038">Atomic.h:38</a></div></div>
+<div class="ttc" id="class_x_s_1_1_threading_1_1_lock_guard_html"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_lock_guard.html">XS::Threading::LockGuard</a></div><div class="ttdoc">Lock guard class. </div><div class="ttdef"><b>Definition:</b> <a href="_lock_guard_8h_source.html#l00047">LockGuard.h:47</a></div></div>
+<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">XS::PIMPL::Object</a></div><div class="ttdoc">Generic PIMPL class. </div><div class="ttdef"><b>Definition:</b> <a href="_object_8h_source.html#l00047">Object.h:47</a></div></div>
+<div class="ttc" id="class_x_s_1_1_threading_1_1_lock_guard_html_a173ce61b7185967425440785e9d7fc88"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_lock_guard.html#a173ce61b7185967425440785e9d7fc88">XS::Threading::LockGuard::operator=</a></div><div class="ttdeci">LockGuard &amp; operator=(LockGuard o)=delete</div><div class="ttdoc">Assignment operator. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_9b4e05ba0ee1d1f1d59494c17d9a9d0d.html">XS-C++</a></li><li class="navelem"><a class="el" href="dir_60347c85858558e0a60d8d36f0870d73.html">Threading</a></li><li class="navelem"><a class="el" href="_lock_guard_8h.html">LockGuard.h</a></li>
-    <li class="footer">Generated on Fri Jan 16 2015 18:47:53 for XS-Labs / C++ Utility Library by
+    <li class="footer">Generated on Fri Jan 16 2015 19:10:45 for XS-Labs / C++ Utility Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

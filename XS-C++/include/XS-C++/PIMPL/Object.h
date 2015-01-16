@@ -28,9 +28,8 @@
  ******************************************************************************/
 
 /*!
- * @header      Object.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Declaration of the XS::PIMPL::Object template class
+ * @brief       Declaration of the XS::PIMPL::Object template class
  */
 
 #ifndef __XSCPP_PIMPL_OBJECT_H__
@@ -41,9 +40,8 @@ namespace XS
     namespace PIMPL
     {
         /*!
-         * @class           XS::PIMPL::Object
-         * @abstract        Generic PIMPL class
-         * @templatefield   T   The class extending XS::PIMPL::Object
+         * @brief           Generic PIMPL class
+         * @tparam          T   The class extending XS::PIMPL::Object
          */
         template< class T >
         class Object
@@ -51,43 +49,37 @@ namespace XS
             public:
                 
                 /*!
-                 * @function    Object
-                 * @abstract    Class constructor
+                 * @brief       Class constructor
                  */
                 template< typename ... A > 
                 Object( A ... args );
                 
                 /*!
-                 * @function    Object
-                 * @abstract    Class copy constructor
+                 * @brief       Class copy constructor
                  * @param       o   Another object to be used as data source for the initialization
                  */
                 Object( const Object & o );
                 
                 /*!
-                 * @function    Object
-                 * @abstract    Class move constructor
+                 * @brief       Class move constructor
                  * @param       o   Another object to be used as data source for the initialization
                  */
                 Object( Object && o );
                 
                 /*!
-                 * @function    ~Object
-                 * @abstract    Class destructor
+                 * @brief       Class destructor
                  */
                 virtual ~Object( void );
                 
                 /*!
-                 * @function    operator =
-                 * @abstract    Assignment operator
+                 * @brief       Assignment operator
                  * @param       o   Another object to use as data source
                  */
                 Object< T > & operator =( Object o );
                 
                 /*!
-                 * @function        swap
-                 * @abstract        ADL - Swap function for XS::PIMPL::Object
-                 * @templatefield   U   The class extending XS::PIMPL::Object
+                 * @brief           ADL - Swap function for XS::PIMPL::Object
+                 * @tparam          U   The class extending XS::PIMPL::Object
                  * @param           o1  The first object to swap
                  * @param           o2  The second object to swap
                  */
@@ -100,28 +92,25 @@ namespace XS
                 class  IMPL;
                 
                 /*!
-                 * @class           XS::PIMPL::Object::D
-                 * @abstract        Deleter class for the private implementation
+                 * @brief           Deleter class for the private implementation
                  */
                 class D
                 {
                     public:
                         
                         /*!
-                         * @function    operator ()
-                         * @abstract    ...
+                         * @brief       Function call operator
                          * @param       p   The private implementation pointer that needs to be deleted
-                         * @discussion  This method shall be defined manually
-                         *              for all classes extending XS::PIMPL::Object,
-                         *              as there is no way to delete a pointer
-                         *              to a forward class.
+                         * 
+                         * This method shall be defined manually for all classes
+                         * extending XS::PIMPL::Object, as there is no way to
+                         * delete a pointer to a forward class.
                          */
                         void operator ()( IMPL * p );
                 };
                 
                 /*!
-                 * @var         impl
-                 * @abstract    A pointer to the class' private implementation
+                 * @brief       A pointer to the class' private implementation
                  */
                 std::unique_ptr< IMPL, D > impl;
         };

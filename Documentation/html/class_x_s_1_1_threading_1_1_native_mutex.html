@@ -113,6 +113,9 @@ $(document).ready(function(){initNavTree('class_x_s_1_1_threading_1_1_native_mut
 </div><!--header-->
 <div class="contents">
 
+<p>Mutex class.  
+ <a href="class_x_s_1_1_threading_1_1_native_mutex.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_native_mutex_8h_source.html">NativeMutex.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for XS::Threading::NativeMutex:</div>
@@ -121,43 +124,55 @@ Inheritance diagram for XS::Threading::NativeMutex:</div>
   <img src="class_x_s_1_1_threading_1_1_native_mutex.png" usemap="#XS::Threading::NativeMutex_map" alt=""/>
   <map id="XS::Threading::NativeMutex_map" name="XS::Threading::NativeMutex_map">
 <area href="class_x_s_1_1_p_i_m_p_l_1_1_object.html" alt="XS::PIMPL::Object&lt; NativeMutex &gt;" shape="rect" coords="0,0,209,24"/>
-<area href="class_x_s_1_1_threading_1_1_lockable.html" alt="XS::Threading::Lockable" shape="rect" coords="219,0,428,24"/>
+<area href="class_x_s_1_1_threading_1_1_lockable.html" title="Interface for lockable objects. " alt="XS::Threading::Lockable" shape="rect" coords="219,0,428,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0c56187c15ff903a3789c1c1bb89f60e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_s_1_1_threading_1_1_native_mutex.html#a0c56187c15ff903a3789c1c1bb89f60e">NativeMutex</a> (bool recursive=true)</td></tr>
+<tr class="memdesc:a0c56187c15ff903a3789c1c1bb89f60e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="#a0c56187c15ff903a3789c1c1bb89f60e">More...</a><br /></td></tr>
 <tr class="separator:a0c56187c15ff903a3789c1c1bb89f60e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af17dafd1bfc77b5c25afff2be7ff530e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_s_1_1_threading_1_1_native_mutex.html#af17dafd1bfc77b5c25afff2be7ff530e">NativeMutex</a> (const <a class="el" href="class_x_s_1_1_threading_1_1_native_mutex.html">NativeMutex</a> &amp;o)=delete</td></tr>
+<tr class="memdesc:af17dafd1bfc77b5c25afff2be7ff530e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class copy constructor.  <a href="#af17dafd1bfc77b5c25afff2be7ff530e">More...</a><br /></td></tr>
 <tr class="separator:af17dafd1bfc77b5c25afff2be7ff530e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96c1773216b58bcb519277a453f682ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_x_s_1_1_threading_1_1_native_mutex.html">NativeMutex</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_s_1_1_threading_1_1_native_mutex.html#a96c1773216b58bcb519277a453f682ef">operator=</a> (<a class="el" href="class_x_s_1_1_threading_1_1_native_mutex.html">NativeMutex</a> o)=delete</td></tr>
+<tr class="memdesc:a96c1773216b58bcb519277a453f682ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignment operator.  <a href="#a96c1773216b58bcb519277a453f682ef">More...</a><br /></td></tr>
 <tr class="separator:a96c1773216b58bcb519277a453f682ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a819cac1cc241c3863e231825a0d8c3e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_s_1_1_threading_1_1_native_mutex.html#a819cac1cc241c3863e231825a0d8c3e0">Lock</a> (void)</td></tr>
+<tr class="memdesc:a819cac1cc241c3863e231825a0d8c3e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locks the mutex.  <a href="#a819cac1cc241c3863e231825a0d8c3e0">More...</a><br /></td></tr>
 <tr class="separator:a819cac1cc241c3863e231825a0d8c3e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56d7196db1bc6c4df634812c9877f7c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_s_1_1_threading_1_1_native_mutex.html#a56d7196db1bc6c4df634812c9877f7c9">Unlock</a> (void)</td></tr>
+<tr class="memdesc:a56d7196db1bc6c4df634812c9877f7c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlocks the mutex.  <a href="#a56d7196db1bc6c4df634812c9877f7c9">More...</a><br /></td></tr>
 <tr class="separator:a56d7196db1bc6c4df634812c9877f7c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade3e680eadc4a42315d1f1c267b3fba2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_s_1_1_threading_1_1_native_mutex.html#ade3e680eadc4a42315d1f1c267b3fba2">TryLock</a> (void)</td></tr>
+<tr class="memdesc:ade3e680eadc4a42315d1f1c267b3fba2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to lock the mutex.  <a href="#ade3e680eadc4a42315d1f1c267b3fba2">More...</a><br /></td></tr>
 <tr class="separator:ade3e680eadc4a42315d1f1c267b3fba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_x_s_1_1_p_i_m_p_l_1_1_object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_x_s_1_1_p_i_m_p_l_1_1_object')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">XS::PIMPL::Object&lt; NativeMutex &gt;</a></td></tr>
 <tr class="memitem:a817c1ea47e804c6dd242a63a8185c54e inherit pub_methods_class_x_s_1_1_p_i_m_p_l_1_1_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a817c1ea47e804c6dd242a63a8185c54e">Object</a> (A...args)</td></tr>
+<tr class="memdesc:a817c1ea47e804c6dd242a63a8185c54e inherit pub_methods_class_x_s_1_1_p_i_m_p_l_1_1_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="#a817c1ea47e804c6dd242a63a8185c54e">More...</a><br /></td></tr>
 <tr class="separator:a817c1ea47e804c6dd242a63a8185c54e inherit pub_methods_class_x_s_1_1_p_i_m_p_l_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addeed93085d8f3a993b1f12679d3b233 inherit pub_methods_class_x_s_1_1_p_i_m_p_l_1_1_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#addeed93085d8f3a993b1f12679d3b233">Object</a> (const <a class="el" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">Object</a> &amp;o)</td></tr>
+<tr class="memdesc:addeed93085d8f3a993b1f12679d3b233 inherit pub_methods_class_x_s_1_1_p_i_m_p_l_1_1_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class copy constructor.  <a href="#addeed93085d8f3a993b1f12679d3b233">More...</a><br /></td></tr>
 <tr class="separator:addeed93085d8f3a993b1f12679d3b233 inherit pub_methods_class_x_s_1_1_p_i_m_p_l_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a965e5cbabcf0dec2f50179368bb1d3e5 inherit pub_methods_class_x_s_1_1_p_i_m_p_l_1_1_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a965e5cbabcf0dec2f50179368bb1d3e5">Object</a> (<a class="el" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">Object</a> &amp;&amp;o)</td></tr>
+<tr class="memdesc:a965e5cbabcf0dec2f50179368bb1d3e5 inherit pub_methods_class_x_s_1_1_p_i_m_p_l_1_1_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class move constructor.  <a href="#a965e5cbabcf0dec2f50179368bb1d3e5">More...</a><br /></td></tr>
 <tr class="separator:a965e5cbabcf0dec2f50179368bb1d3e5 inherit pub_methods_class_x_s_1_1_p_i_m_p_l_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2d5d10ab476e0a06e230b43dbb40d38 inherit pub_methods_class_x_s_1_1_p_i_m_p_l_1_1_object"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#ac2d5d10ab476e0a06e230b43dbb40d38">~Object</a> (void)</td></tr>
+<tr class="memdesc:ac2d5d10ab476e0a06e230b43dbb40d38 inherit pub_methods_class_x_s_1_1_p_i_m_p_l_1_1_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor.  <a href="#ac2d5d10ab476e0a06e230b43dbb40d38">More...</a><br /></td></tr>
 <tr class="separator:ac2d5d10ab476e0a06e230b43dbb40d38 inherit pub_methods_class_x_s_1_1_p_i_m_p_l_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a661fc62e7299fc7e4f7c82f558a35fd0 inherit pub_methods_class_x_s_1_1_p_i_m_p_l_1_1_object"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">Object</a>&lt; NativeMutex &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a661fc62e7299fc7e4f7c82f558a35fd0">operator=</a> (<a class="el" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">Object</a> o)</td></tr>
+<tr class="memdesc:a661fc62e7299fc7e4f7c82f558a35fd0 inherit pub_methods_class_x_s_1_1_p_i_m_p_l_1_1_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignment operator.  <a href="#a661fc62e7299fc7e4f7c82f558a35fd0">More...</a><br /></td></tr>
 <tr class="separator:a661fc62e7299fc7e4f7c82f558a35fd0 inherit pub_methods_class_x_s_1_1_p_i_m_p_l_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_x_s_1_1_threading_1_1_lockable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_x_s_1_1_threading_1_1_lockable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_x_s_1_1_threading_1_1_lockable.html">XS::Threading::Lockable</a></td></tr>
 <tr class="memitem:a497c29d56e4920ec40bf25195d999e33 inherit pub_methods_class_x_s_1_1_threading_1_1_lockable"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_s_1_1_threading_1_1_lockable.html#a497c29d56e4920ec40bf25195d999e33">~Lockable</a> (void)</td></tr>
+<tr class="memdesc:a497c29d56e4920ec40bf25195d999e33 inherit pub_methods_class_x_s_1_1_threading_1_1_lockable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor.  <a href="#a497c29d56e4920ec40bf25195d999e33">More...</a><br /></td></tr>
 <tr class="separator:a497c29d56e4920ec40bf25195d999e33 inherit pub_methods_class_x_s_1_1_threading_1_1_lockable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Mutex class </p>
+<div class="textblock"><p>Mutex class. </p>
 
-<p>Definition at line <a class="el" href="_native_mutex_8h_source.html#l00047">47</a> of file <a class="el" href="_native_mutex_8h_source.html">NativeMutex.h</a>.</p>
+<p>Definition at line <a class="el" href="_native_mutex_8h_source.html#l00045">45</a> of file <a class="el" href="_native_mutex_8h_source.html">NativeMutex.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a0c56187c15ff903a3789c1c1bb89f60e"></a>
 <div class="memitem">
@@ -172,12 +187,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p><a class="el" href="class_x_s_1_1_threading_1_1_native_mutex.html">NativeMutex</a>  Class constructor </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Class constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">recursive</td><td>Whether to create a recursive mutex or not  If the mutex if created as recursive (default), it may be successfully locked multiple times by the same thread. If the mutex isn't recursive, a dead-lock will occur if it is locked twice from the same thread. Note that if a recursive mutex is locked multiple times by a thread, each call to the 'Lock' method shall be balanced by a call to the 'Unlock' method. </td></tr>
+    <tr><td class="paramname">recursive</td><td>Whether to create a recursive mutex or not</td></tr>
   </table>
   </dd>
 </dl>
+<p>If the mutex if created as recursive (default), it may be successfully locked multiple times by the same thread. If the mutex isn't recursive, a dead-lock will occur if it is locked twice from the same thread. Note that if a recursive mutex is locked multiple times by a thread, each call to the 'Lock' method shall be balanced by a call to the 'Unlock' method. </p>
 
 </div>
 </div>
@@ -202,12 +220,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><a class="el" href="class_x_s_1_1_threading_1_1_native_mutex.html">NativeMutex</a>  Class copy constructor </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Class copy constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">o</td><td>Another mutex to be used as data source for the initialization  Deleted - Not copy-constructible </td></tr>
+    <tr><td class="paramname">o</td><td>Another mutex to be used as data source for the initialization</td></tr>
   </table>
   </dd>
 </dl>
+<p>Deleted - Not copy-constructible </p>
 
 </div>
 </div>
@@ -233,7 +254,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Lock  Locks the mutex </p>
+
+<p>Locks the mutex. </p>
 
 <p>Implements <a class="el" href="class_x_s_1_1_threading_1_1_lockable.html#a518e56496b0afdfb063ad398573e6634">XS::Threading::Lockable</a>.</p>
 
@@ -260,12 +282,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>operator =  Assignment operator </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Assignment operator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">o</td><td>Another mutex to use as data source  Deleted - Not copy-assignable </td></tr>
+    <tr><td class="paramname">o</td><td>Another mutex to use as data source</td></tr>
   </table>
   </dd>
 </dl>
+<p>Deleted - Not copy-assignable </p>
 
 </div>
 </div>
@@ -290,7 +315,10 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>TryLock  Tries to lock the mutex </p><dl class="section return"><dt>Returns</dt><dd>True if the mutex was successfully locked, otherwise false  This method will return 'true' if called multiple times from the same thread. Note that each call to this method still needs to be balanced by a call to the 'unlock' method. </dd></dl>
+
+<p>Tries to lock the mutex. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the mutex was successfully locked, otherwise false</dd></dl>
+<p>This method will return 'true' if called multiple times from the same thread. Note that each call to this method still needs to be balanced by a call to the 'unlock' method. </p>
 
 <p>Implements <a class="el" href="class_x_s_1_1_threading_1_1_lockable.html#abf2fb15f922fb64d8522d152e212de30">XS::Threading::Lockable</a>.</p>
 
@@ -317,7 +345,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Unlock  Unlocks the mutex </p>
+
+<p>Unlocks the mutex. </p>
 
 <p>Implements <a class="el" href="class_x_s_1_1_threading_1_1_lockable.html#a2346296d254a33126c8ecd1c660a1a7e">XS::Threading::Lockable</a>.</p>
 
@@ -332,7 +361,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_x_s.html">XS</a></li><li class="navelem"><a class="el" href="namespace_x_s_1_1_threading.html">Threading</a></li><li class="navelem"><a class="el" href="class_x_s_1_1_threading_1_1_native_mutex.html">NativeMutex</a></li>
-    <li class="footer">Generated on Fri Jan 16 2015 18:47:53 for XS-Labs / C++ Utility Library by
+    <li class="footer">Generated on Fri Jan 16 2015 19:10:45 for XS-Labs / C++ Utility Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

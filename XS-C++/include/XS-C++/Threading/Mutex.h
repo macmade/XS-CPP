@@ -28,9 +28,8 @@
  ******************************************************************************/
 
 /*!
- * @header      Mutex.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Declaration of the XS::Threading::Mutex type
+ * @brief       Declaration of the XS::Threading::Mutex type
  */
 
 #ifndef __XSCPP_THREADING_MUTEX_H__
@@ -44,14 +43,13 @@ namespace XS
         class NativeMutex;
         
         /*!
-         * @typedef     Mutex
-         * @abstract    Mutex object type
-         * @discussion  The mutex object type is a typedef, as the concrete
-         *              implementation may vary, depending on the
-         *              XSCPP_THREADING_USE_STL macro.
+         * @brief       Mutex object type
          * @see         XSCPP_THREADING_USE_STL
          * @see         XS::Threading::STLMutex
          * @see         XS::Threading::NativeMutex
+         * 
+         * The mutex object type is a typedef, as the concrete implementation
+         * may vary, depending on the XSCPP_THREADING_USE_STL macro.
          */
         #if defined( XSCPP_THREADING_USE_STL ) && XSCPP_THREADING_USE_STL == 1
         

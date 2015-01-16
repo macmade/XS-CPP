@@ -28,9 +28,8 @@
  ******************************************************************************/
 
 /*!
- * @header      PrefixHeader.pch
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    XS-C++ precompiled header
+ * @brief       XS-C++ precompiled header
  */
 
 #ifndef __XSCPP_PREFIX_H__

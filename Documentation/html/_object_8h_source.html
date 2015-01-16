@@ -135,67 +135,67 @@ $(document).ready(function(){initNavTree('_object_8h_source.html','');});
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * DEALINGS IN THE SOFTWARE.</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#ifndef __XSCPP_PIMPL_OBJECT_H__</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define __XSCPP_PIMPL_OBJECT_H__</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_x_s.html">XS</a></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">namespace </span>PIMPL</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">template</span>&lt; <span class="keyword">class</span> T &gt;</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">   49</a></span>&#160;        <span class="keyword">class </span><a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">Object</a></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <span class="keyword">template</span>&lt; <span class="keyword">typename</span> ... A &gt; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a817c1ea47e804c6dd242a63a8185c54e">Object</a>( A ... args );</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a817c1ea47e804c6dd242a63a8185c54e">Object</a>( <span class="keyword">const</span> Object &amp; o );</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a817c1ea47e804c6dd242a63a8185c54e">Object</a>( Object &amp;&amp; o );</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#ifndef __XSCPP_PIMPL_OBJECT_H__</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#define __XSCPP_PIMPL_OBJECT_H__</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_x_s.html">XS</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">namespace </span>PIMPL</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">template</span>&lt; <span class="keyword">class</span> T &gt;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">   47</a></span>&#160;        <span class="keyword">class </span><a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">Object</a></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="keyword">template</span>&lt; <span class="keyword">typename</span> ... A &gt; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a817c1ea47e804c6dd242a63a8185c54e">Object</a>( A ... args );</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a817c1ea47e804c6dd242a63a8185c54e">Object</a>( <span class="keyword">const</span> Object &amp; o );</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a817c1ea47e804c6dd242a63a8185c54e">Object</a>( Object &amp;&amp; o );</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="keyword">virtual</span> <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#ac2d5d10ab476e0a06e230b43dbb40d38">~Object</a>( <span class="keywordtype">void</span> );</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keyword">virtual</span> <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#ac2d5d10ab476e0a06e230b43dbb40d38">~Object</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">Object&lt; T &gt;</a> &amp; <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a661fc62e7299fc7e4f7c82f558a35fd0">operator =</a>( Object o );</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">Object&lt; T &gt;</a> &amp; <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a661fc62e7299fc7e4f7c82f558a35fd0">operator =</a>( Object o );</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keyword">template</span>&lt; <span class="keyword">class</span> U &gt;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keyword">friend</span> <span class="keywordtype">void</span> <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a17a00341410259557c10f4cea47f6d68">swap</a>( <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">Object&lt; U &gt;</a> &amp; o1, <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">Object&lt; U &gt;</a> &amp; o2 );</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                </div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#adf6dbfff8bfb61476273371eb3f3d016">   99</a></span>&#160;                <span class="keyword">friend</span> <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#adf6dbfff8bfb61476273371eb3f3d016">T</a>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                <span class="keyword">class  </span>IMPL;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                </div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="class_x_s_1_1_p_i_m_p_l_1_1_object_1_1_d.html">  106</a></span>&#160;                <span class="keyword">class </span><a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object_1_1_d.html">D</a></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                        </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                        <span class="keywordtype">void</span> <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object_1_1_d.html#abb0b17b7bee9764e06b3454ed8db46eb">operator ()</a>( IMPL * p );</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                };</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                </div>
-<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a48469d6bd70a6b22ec4f987cbf5fe8fe">  126</a></span>&#160;                std::unique_ptr&lt; IMPL, D &gt; <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a48469d6bd70a6b22ec4f987cbf5fe8fe">impl</a>;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        };</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __XSCPP_PIMPL_OBJECT_H__ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html_a48469d6bd70a6b22ec4f987cbf5fe8fe"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a48469d6bd70a6b22ec4f987cbf5fe8fe">XS::PIMPL::Object::impl</a></div><div class="ttdeci">std::unique_ptr&lt; IMPL, D &gt; impl</div><div class="ttdef"><b>Definition:</b> <a href="_object_8h_source.html#l00126">Object.h:126</a></div></div>
-<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html_a817c1ea47e804c6dd242a63a8185c54e"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a817c1ea47e804c6dd242a63a8185c54e">XS::PIMPL::Object::Object</a></div><div class="ttdeci">Object(A...args)</div><div class="ttdef"><b>Definition:</b> <a href="_object-_i_m_p_l_8h_source.html#l00048">Object-IMPL.h:48</a></div></div>
-<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html_a17a00341410259557c10f4cea47f6d68"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a17a00341410259557c10f4cea47f6d68">XS::PIMPL::Object::swap</a></div><div class="ttdeci">friend void swap(Object&lt; U &gt; &amp;o1, Object&lt; U &gt; &amp;o2)</div><div class="ttdef"><b>Definition:</b> <a href="_object-_i_m_p_l_8h_source.html#l00075">Object-IMPL.h:75</a></div></div>
-<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_1_1_d_html"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object_1_1_d.html">XS::PIMPL::Object::D</a></div><div class="ttdef"><b>Definition:</b> <a href="_object_8h_source.html#l00106">Object.h:106</a></div></div>
-<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_1_1_d_html_abb0b17b7bee9764e06b3454ed8db46eb"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object_1_1_d.html#abb0b17b7bee9764e06b3454ed8db46eb">XS::PIMPL::Object::D::operator()</a></div><div class="ttdeci">void operator()(IMPL *p)</div></div>
-<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html_ac2d5d10ab476e0a06e230b43dbb40d38"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#ac2d5d10ab476e0a06e230b43dbb40d38">XS::PIMPL::Object::~Object</a></div><div class="ttdeci">virtual ~Object(void)</div><div class="ttdef"><b>Definition:</b> <a href="_object-_i_m_p_l_8h_source.html#l00063">Object-IMPL.h:63</a></div></div>
-<div class="ttc" id="namespace_x_s_html"><div class="ttname"><a href="namespace_x_s.html">XS</a></div><div class="ttdef"><b>Definition:</b> <a href="_atomic_8h_source.html#l00039">Atomic.h:39</a></div></div>
-<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html_adf6dbfff8bfb61476273371eb3f3d016"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#adf6dbfff8bfb61476273371eb3f3d016">XS::PIMPL::Object::T</a></div><div class="ttdeci">friend T</div><div class="ttdef"><b>Definition:</b> <a href="_object_8h_source.html#l00099">Object.h:99</a></div></div>
-<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">XS::PIMPL::Object</a></div><div class="ttdef"><b>Definition:</b> <a href="_object_8h_source.html#l00049">Object.h:49</a></div></div>
-<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html_a661fc62e7299fc7e4f7c82f558a35fd0"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a661fc62e7299fc7e4f7c82f558a35fd0">XS::PIMPL::Object::operator=</a></div><div class="ttdeci">Object&lt; T &gt; &amp; operator=(Object o)</div><div class="ttdef"><b>Definition:</b> <a href="_object-_i_m_p_l_8h_source.html#l00067">Object-IMPL.h:67</a></div></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <span class="keyword">template</span>&lt; <span class="keyword">class</span> U &gt;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keyword">friend</span> <span class="keywordtype">void</span> <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a17a00341410259557c10f4cea47f6d68">swap</a>( <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">Object&lt; U &gt;</a> &amp; o1, <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">Object&lt; U &gt;</a> &amp; o2 );</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#adf6dbfff8bfb61476273371eb3f3d016">   91</a></span>&#160;                <span class="keyword">friend</span> <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#adf6dbfff8bfb61476273371eb3f3d016">T</a>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="keyword">class  </span>IMPL;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                </div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="class_x_s_1_1_p_i_m_p_l_1_1_object_1_1_d.html">   97</a></span>&#160;                <span class="keyword">class </span><a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object_1_1_d.html">D</a></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                        </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                        <span class="keywordtype">void</span> <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object_1_1_d.html#abb0b17b7bee9764e06b3454ed8db46eb">operator ()</a>( IMPL * p );</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                };</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                </div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a29475d98e29b0a988bdd015140d87db9">  115</a></span>&#160;                std::unique_ptr&lt; IMPL, D &gt; <a class="code" href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a29475d98e29b0a988bdd015140d87db9">impl</a>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        };</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __XSCPP_PIMPL_OBJECT_H__ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html_a817c1ea47e804c6dd242a63a8185c54e"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a817c1ea47e804c6dd242a63a8185c54e">XS::PIMPL::Object::Object</a></div><div class="ttdeci">Object(A...args)</div><div class="ttdoc">Class constructor. </div><div class="ttdef"><b>Definition:</b> <a href="_object-_i_m_p_l_8h_source.html#l00047">Object-IMPL.h:47</a></div></div>
+<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html_a17a00341410259557c10f4cea47f6d68"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a17a00341410259557c10f4cea47f6d68">XS::PIMPL::Object::swap</a></div><div class="ttdeci">friend void swap(Object&lt; U &gt; &amp;o1, Object&lt; U &gt; &amp;o2)</div><div class="ttdoc">ADL - Swap function for XS::PIMPL::Object. </div><div class="ttdef"><b>Definition:</b> <a href="_object-_i_m_p_l_8h_source.html#l00074">Object-IMPL.h:74</a></div></div>
+<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_1_1_d_html"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object_1_1_d.html">XS::PIMPL::Object::D</a></div><div class="ttdoc">Deleter class for the private implementation. </div><div class="ttdef"><b>Definition:</b> <a href="_object_8h_source.html#l00097">Object.h:97</a></div></div>
+<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_1_1_d_html_abb0b17b7bee9764e06b3454ed8db46eb"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object_1_1_d.html#abb0b17b7bee9764e06b3454ed8db46eb">XS::PIMPL::Object::D::operator()</a></div><div class="ttdeci">void operator()(IMPL *p)</div><div class="ttdoc">Function call operator. </div></div>
+<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html_ac2d5d10ab476e0a06e230b43dbb40d38"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#ac2d5d10ab476e0a06e230b43dbb40d38">XS::PIMPL::Object::~Object</a></div><div class="ttdeci">virtual ~Object(void)</div><div class="ttdoc">Class destructor. </div><div class="ttdef"><b>Definition:</b> <a href="_object-_i_m_p_l_8h_source.html#l00062">Object-IMPL.h:62</a></div></div>
+<div class="ttc" id="namespace_x_s_html"><div class="ttname"><a href="namespace_x_s.html">XS</a></div><div class="ttdoc">Declaration of the XS::Atomic functions. </div><div class="ttdef"><b>Definition:</b> <a href="_atomic_8h_source.html#l00038">Atomic.h:38</a></div></div>
+<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html_adf6dbfff8bfb61476273371eb3f3d016"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#adf6dbfff8bfb61476273371eb3f3d016">XS::PIMPL::Object::T</a></div><div class="ttdeci">friend T</div><div class="ttdef"><b>Definition:</b> <a href="_object_8h_source.html#l00091">Object.h:91</a></div></div>
+<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html_a29475d98e29b0a988bdd015140d87db9"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a29475d98e29b0a988bdd015140d87db9">XS::PIMPL::Object::impl</a></div><div class="ttdeci">std::unique_ptr&lt; IMPL, D &gt; impl</div><div class="ttdoc">A pointer to the class&#39; private implementation. </div><div class="ttdef"><b>Definition:</b> <a href="_object_8h_source.html#l00115">Object.h:115</a></div></div>
+<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html">XS::PIMPL::Object</a></div><div class="ttdoc">Generic PIMPL class. </div><div class="ttdef"><b>Definition:</b> <a href="_object_8h_source.html#l00047">Object.h:47</a></div></div>
+<div class="ttc" id="class_x_s_1_1_p_i_m_p_l_1_1_object_html_a661fc62e7299fc7e4f7c82f558a35fd0"><div class="ttname"><a href="class_x_s_1_1_p_i_m_p_l_1_1_object.html#a661fc62e7299fc7e4f7c82f558a35fd0">XS::PIMPL::Object::operator=</a></div><div class="ttdeci">Object&lt; T &gt; &amp; operator=(Object o)</div><div class="ttdoc">Assignment operator. </div><div class="ttdef"><b>Definition:</b> <a href="_object-_i_m_p_l_8h_source.html#l00066">Object-IMPL.h:66</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_9b4e05ba0ee1d1f1d59494c17d9a9d0d.html">XS-C++</a></li><li class="navelem"><a class="el" href="dir_d18842b8b4a0c9190f03b6da6e39531e.html">PIMPL</a></li><li class="navelem"><a class="el" href="_object_8h.html">Object.h</a></li>
-    <li class="footer">Generated on Fri Jan 16 2015 18:47:53 for XS-Labs / C++ Utility Library by
+    <li class="footer">Generated on Fri Jan 16 2015 19:10:45 for XS-Labs / C++ Utility Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

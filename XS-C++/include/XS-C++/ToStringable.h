@@ -28,9 +28,8 @@
  ******************************************************************************/
 
 /*!
- * @header      ToStringable.h
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Declaration of the XS::ToStringable abstract class
+ * @brief       Declaration of the XS::ToStringable abstract class
  */
 
 #ifndef __XSCPP_TO_STRINGABLE_H__
@@ -39,54 +38,46 @@
 namespace XS
 {
     /*!
-     * @class           XS::ToStringable
-     * @abstract        Abstract class for objects having a string representation
+     * @brief           Abstract class for objects having a string representation
      */
     class ToStringable
     {
         public:
             
             /*!
-             * @function    ToStringable
-             * @abstract    Class constructor
+             * @brief       Class constructor
              */
             ToStringable( void );
             
             /*!
-             * @function    ToStringable
-             * @abstract    Class copy constructor
+             * @brief       Class copy constructor
              */
             ToStringable( const ToStringable & object );
             
             /*!
-             * @function    ToStringable
-             * @abstract    Class move constructor
+             * @brief       Class move constructor
              */
             ToStringable( const ToStringable && object );
             
             /*!
-             * @function    ~ToStringable
-             * @abstract    Class destructor
+             * @brief       Class destructor
              */
             virtual ~ToStringable( void );
             
             /*!
-             * @function    ToString
-             * @abstract    Gets a string representation of the object
+             * @brief       Gets a string representation of the object
              * @return      The string representation of the object
              */
             virtual std::string ToString( void ) const = 0;
             
             /*!
-             * @function    operator std::string
-             * @abstract    Type-casting to std::string
+             * @brief       Type-casting to std::string
              * @see         ToString
              */
             virtual operator std::string( void ) const;
             
             /*!
-             * @function    operator <<
-             * @abstract    Writes a string representation of an object in an output stream object
+             * @brief       Writes a string representation of an object in an output stream object
              * @param       os      The output stream object
              * @param       obj     The object
              * @return      The output stream object

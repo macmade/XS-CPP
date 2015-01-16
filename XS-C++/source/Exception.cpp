@@ -30,7 +30,7 @@
 /*!
  * @file        Version.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Definition of the XS::Version class
+ * @brief       Definition of the XS::Version class
  */
 
 #include <XS-C++.h>

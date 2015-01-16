@@ -30,7 +30,7 @@
 /*!
  * @file        CompareAndSwapPointer.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Definition of XS::Atomic::CompareAndSwapPointer
+ * @brief       Definition of XS::Atomic::CompareAndSwapPointer
  */
 
 #include <XS-C++.h>

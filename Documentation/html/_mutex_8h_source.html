@@ -135,39 +135,40 @@ $(document).ready(function(){initNavTree('_mutex_8h_source.html','');});
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * DEALINGS IN THE SOFTWARE.</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#ifndef __XSCPP_THREADING_MUTEX_H__</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define __XSCPP_THREADING_MUTEX_H__</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_x_s.html">XS</a></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">namespace </span>Threading</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">class </span>STLMutex;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">class </span>NativeMutex;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">        #if defined( XSCPP_THREADING_USE_STL ) &amp;&amp; XSCPP_THREADING_USE_STL == 1</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#ifndef __XSCPP_THREADING_MUTEX_H__</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#define __XSCPP_THREADING_MUTEX_H__</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_x_s.html">XS</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">namespace </span>Threading</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">class </span>STLMutex;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="namespace_x_s_1_1_threading.html#aad31851c3ad34559d4077ed5dc02c494">   43</a></span>&#160;        <span class="keyword">class </span><a class="code" href="class_x_s_1_1_threading_1_1_native_mutex.html">NativeMutex</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">        #if defined( XSCPP_THREADING_USE_STL ) &amp;&amp; XSCPP_THREADING_USE_STL == 1</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">typedef</span> <a class="code" href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html">STLMutex</a> <a class="code" href="namespace_x_s_1_1_threading.html#aad31851c3ad34559d4077ed5dc02c494">Mutex</a>;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">typedef</span> STLMutex <a class="code" href="namespace_x_s_1_1_threading.html#a53b74ab86155f47bde897b7a79f044fc">Mutex</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">        #else</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">        #else</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">typedef</span> <a class="code" href="class_x_s_1_1_threading_1_1_native_mutex.html">NativeMutex</a> <a class="code" href="namespace_x_s_1_1_threading.html#aad31851c3ad34559d4077ed5dc02c494">Mutex</a>;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        </div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="namespace_x_s_1_1_threading.html#a53b74ab86155f47bde897b7a79f044fc">   62</a></span>&#160;        <span class="keyword">typedef</span> <a class="code" href="class_x_s_1_1_threading_1_1_native_mutex.html">NativeMutex</a> <a class="code" href="namespace_x_s_1_1_threading.html#a53b74ab86155f47bde897b7a79f044fc">Mutex</a>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">        #endif</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __XSCPP_THREADING_MUTEX_H__ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="class_x_s_1_1_threading_1_1_native_mutex_html"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_native_mutex.html">XS::Threading::NativeMutex</a></div><div class="ttdef"><b>Definition:</b> <a href="_native_mutex_8h_source.html#l00047">NativeMutex.h:47</a></div></div>
-<div class="ttc" id="namespace_x_s_html"><div class="ttname"><a href="namespace_x_s.html">XS</a></div><div class="ttdef"><b>Definition:</b> <a href="_atomic_8h_source.html#l00039">Atomic.h:39</a></div></div>
-<div class="ttc" id="namespace_x_s_1_1_threading_html_a53b74ab86155f47bde897b7a79f044fc"><div class="ttname"><a href="namespace_x_s_1_1_threading.html#a53b74ab86155f47bde897b7a79f044fc">XS::Threading::Mutex</a></div><div class="ttdeci">NativeMutex Mutex</div><div class="ttdef"><b>Definition:</b> <a href="_mutex_8h_source.html#l00062">Mutex.h:62</a></div></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">        #endif</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __XSCPP_THREADING_MUTEX_H__ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="namespace_x_s_1_1_threading_html_aad31851c3ad34559d4077ed5dc02c494"><div class="ttname"><a href="namespace_x_s_1_1_threading.html#aad31851c3ad34559d4077ed5dc02c494">XS::Threading::Mutex</a></div><div class="ttdeci">NativeMutex Mutex</div><div class="ttdoc">Mutex object type. </div><div class="ttdef"><b>Definition:</b> <a href="_mutex_8h_source.html#l00043">Mutex.h:43</a></div></div>
+<div class="ttc" id="class_x_s_1_1_threading_1_1_s_t_l_mutex_html"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_s_t_l_mutex.html">XS::Threading::STLMutex</a></div><div class="ttdoc">Mutex class. </div><div class="ttdef"><b>Definition:</b> <a href="_s_t_l_mutex_8h_source.html#l00045">STLMutex.h:45</a></div></div>
+<div class="ttc" id="class_x_s_1_1_threading_1_1_native_mutex_html"><div class="ttname"><a href="class_x_s_1_1_threading_1_1_native_mutex.html">XS::Threading::NativeMutex</a></div><div class="ttdoc">Mutex class. </div><div class="ttdef"><b>Definition:</b> <a href="_native_mutex_8h_source.html#l00045">NativeMutex.h:45</a></div></div>
+<div class="ttc" id="namespace_x_s_html"><div class="ttname"><a href="namespace_x_s.html">XS</a></div><div class="ttdoc">Declaration of the XS::Atomic functions. </div><div class="ttdef"><b>Definition:</b> <a href="_atomic_8h_source.html#l00038">Atomic.h:38</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_9b4e05ba0ee1d1f1d59494c17d9a9d0d.html">XS-C++</a></li><li class="navelem"><a class="el" href="dir_60347c85858558e0a60d8d36f0870d73.html">Threading</a></li><li class="navelem"><a class="el" href="_mutex_8h.html">Mutex.h</a></li>
-    <li class="footer">Generated on Fri Jan 16 2015 18:47:53 for XS-Labs / C++ Utility Library by
+    <li class="footer">Generated on Fri Jan 16 2015 19:10:45 for XS-Labs / C++ Utility Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

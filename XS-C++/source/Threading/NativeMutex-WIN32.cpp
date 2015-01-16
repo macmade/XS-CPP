@@ -30,7 +30,7 @@
 /*!
  * @file        NativeMutex.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Definition of the XS::Threading::NativeMutex class
+ * @brief       Definition of the XS::Threading::NativeMutex class
  */
 
 #include <XS-C++.h>
