@@ -36,6 +36,12 @@
 #include <XS-C++.h>
 #include <XS-C++/PIMPL/Object-IMPL.h>
 
+#ifdef __APPLE__
+#include <mach/mach_init.h>
+#include <mach/task.h>
+#include <mach/semaphore.h>
+#endif
+
 namespace XS
 {
     #ifdef __clang__
@@ -49,15 +55,37 @@ namespace XS
         public:
             
             IMPL( void )
-            {}
+            {
+                this->CreateSemaphore();
+            }
             
             IMPL( const IMPL & o )
             {
                 ( void )o;
+                
+                this->CreateSemaphore();
             }
             
             ~IMPL( void )
-            {}
+            {
+                this->DeleteSemaphore();
+            }
+            
+            void CreateSemaphore( void )
+            {
+                if( semaphore_create( mach_task_self(), &( this->_semaphore ), SYNC_POLICY_FIFO, 1 ) != KERN_SUCCESS )
+                {
+                    /* TODO: throw */
+                    throw 0;
+                }
+            }
+            
+            void DeleteSemaphore( void )
+            {
+                semaphore_destroy( mach_task_self(), this->_semaphore );
+            }
+            
+            semaphore_t _semaphore;
     };
     
     #ifdef __clang__
@@ -76,5 +104,22 @@ namespace XS
     {
         Semaphore::Semaphore( void ): XS::PIMPL::Object< Semaphore >()
         {}
+        
+        bool Semaphore::TryWait( void )
+        {
+            {
+                mach_timespec_t ts;
+                
+                ts.tv_sec  = 0;
+                ts.tv_nsec = 0;
+                
+                return ( semaphore_timedwait( this->impl->_semaphore, ts ) == KERN_SUCCESS ) ? true : false;
+            }
+        }
+        
+        void Semaphore::Signal( void )
+        {
+            semaphore_signal( this->impl->_semaphore );
+        }
     }
 }

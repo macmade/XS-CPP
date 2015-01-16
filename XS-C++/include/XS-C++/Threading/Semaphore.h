@@ -49,6 +49,8 @@ namespace XS
                 using PIMPL::Object< Semaphore >::impl;
                 
                 Semaphore( void );
+                bool TryWait( void );
+                void Signal( void );
         };
     }
 }

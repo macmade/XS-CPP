@@ -38,7 +38,12 @@
 
 using namespace testing;
 
-TEST( XS_Threading_Semaphore, UnnamedTryWait )
+TEST( XS_Threading_Semaphore, UnnamedBinaryTryWait )
 {
     XS::Threading::Semaphore sem;
+    
+    ASSERT_TRUE( sem.TryWait() );
+    ASSERT_FALSE( sem.TryWait() );
+    
+    sem.Signal();
 }
