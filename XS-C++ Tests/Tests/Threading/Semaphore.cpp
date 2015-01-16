@@ -59,3 +59,10 @@ TEST( XS_Threading_Semaphore, UnnamedTryWait )
     sem.Signal();
     sem.Signal();
 }
+
+TEST( XS_Threading_Semaphore, UnnamedThrowOnInvalidCount )
+{
+    XS::Threading::Semaphore sem;
+    
+    ASSERT_THROW( sem = XS::Threading::Semaphore( 0 ), XS::Exception );
+}

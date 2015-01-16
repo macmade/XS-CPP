@@ -54,7 +54,7 @@ namespace XS
     {
         public:
             
-            IMPL( int count ): _count( count )
+            IMPL( unsigned int count ): _count( count )
             {
                 this->CreateSemaphore();
             }
@@ -73,7 +73,7 @@ namespace XS
             
             void CreateSemaphore( void )
             {
-                if( semaphore_create( mach_task_self(), &( this->_semaphore ), SYNC_POLICY_FIFO, this->_count ) != KERN_SUCCESS )
+                if( semaphore_create( mach_task_self(), &( this->_semaphore ), SYNC_POLICY_FIFO, static_cast< int >( this->_count ) ) != KERN_SUCCESS )
                 {
                     /* TODO: throw */
                     throw 0;
@@ -85,8 +85,8 @@ namespace XS
                 semaphore_destroy( mach_task_self(), this->_semaphore );
             }
             
-            int         _count;
-            semaphore_t _semaphore;
+            unsigned int _count;
+            semaphore_t  _semaphore;
     };
     
     #ifdef __clang__
@@ -103,8 +103,15 @@ namespace XS
     
     namespace Threading
     {
-        Semaphore::Semaphore( int count ): XS::PIMPL::Object< Semaphore >( count )
-        {}
+        Semaphore::Semaphore( unsigned int count ): XS::PIMPL::Object< Semaphore >( count )
+        {
+            if( count == 0 )
+            {
+                XS::Exception e( "Cannot initialize a semaphore with a zero count" );
+                
+                throw e;
+            }
+        }
         
         bool Semaphore::TryWait( void )
         {
