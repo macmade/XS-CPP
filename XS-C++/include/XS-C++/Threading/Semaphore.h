@@ -52,6 +52,7 @@ namespace XS
                 Semaphore( const Semaphore & o ) = delete;
                 Semaphore & operator =( Semaphore o ) = delete;
                 bool TryWait( void );
+                void Wait( void );
                 void Signal( void );
                 bool IsNamed( void );
                 std::string GetName( void );

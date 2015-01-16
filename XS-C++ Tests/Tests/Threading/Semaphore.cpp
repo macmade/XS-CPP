@@ -82,7 +82,9 @@ TEST( XS_Threading_Semaphore, UnnamedWaitSignal )
 {
     XS::Threading::Semaphore sem( 1 );
     
-    ASSERT_TRUE( sem.TryWait() );
+    sem.Wait();
+    
+    ASSERT_FALSE( sem.TryWait() );
     
     sem.Signal();
     
