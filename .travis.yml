@@ -3,5 +3,15 @@ xcode_project: XS-C++.xcodeproj
 xcode_scheme: XS-C++ Example
 before_install:
 - brew unlink xctool
+- brew unlink pyenv
 - brew update
 - brew install xctool
+- brew install pyenv
+- eval "$(pyenv init -)"
+- pyenv install 2.7.6
+- pyenv global 2.7.6
+- pyenv rehash
+- pip install cpp-coveralls
+- pyenv rehash
+after_success:
+- ./Scripts/coveralls.sh -i XS-C++
