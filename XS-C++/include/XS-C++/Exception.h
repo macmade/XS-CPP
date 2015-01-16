@@ -58,9 +58,33 @@ namespace XS
              */
             Exception( std::string reason, int code = 0 );
             
+            /*!
+             * @function    GetReason
+             * @abstract    Gets the exception's reason
+             * @return      The exception's reason
+             */
             std::string GetReason( void ) const;
+            
+            /*!
+             * @function    GetCode
+             * @abstract    Gets the exception's code
+             * @return      The exception's code
+             */
             int GetCode( void ) const;
+            
+            /*!
+             * @function    what
+             * @abstract    Gets a string representation of the exception
+             * @return      A string representation of the exception
+             * @discussion  From std::exception
+             */
             const char * what( void ) const noexcept;
+            
+            /*!
+             * @function    ToString
+             * @abstract    Gets a string representation of the exception
+             * @return      A string representation of the exception
+             */
             std::string ToString( void ) const;
     };
 }

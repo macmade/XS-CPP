@@ -76,7 +76,7 @@ namespace XS
             /*!
              * @function    ToString
              * @abstract    Gets a string representation of the version
-             * @return      A string representation of the object
+             * @return      A string representation of the version
              * @discussion  This method will return a string representation in
              *              the following form:
              *              [major].[minor].[build]-[status][revision]
