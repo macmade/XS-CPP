@@ -36,6 +36,9 @@
 #include <XS-C++.h>
 #include <XS-C++/PIMPL/Object-IMPL.h>
 
+#include <sys/semaphore.h>
+#include <fcntl.h>
+
 #ifdef __APPLE__
 #include <mach/mach_init.h>
 #include <mach/task.h>
@@ -76,7 +79,16 @@ namespace XS
                     throw Exception( "Cannot initialize a semaphore with zero as count" );
                 }
                 
-                if( semaphore_create( mach_task_self(), &( this->_semaphore ), SYNC_POLICY_FIFO, static_cast< int >( this->_count ) ) != KERN_SUCCESS )
+                if( this->_name.length() > 0 )
+                {
+                    this->_semp = sem_open( this->_name.c_str(), O_CREAT, S_IRUSR | S_IWUSR, this->_count );
+                    
+                    if( this->_semp == nullptr )
+                    {
+                        throw Exception( "Error initializing the semaphore object" );
+                    }
+                }
+                else if( semaphore_create( mach_task_self(), &( this->_semaphore ), SYNC_POLICY_FIFO, static_cast< int >( this->_count ) ) != KERN_SUCCESS )
                 {
                     throw Exception( "Error initializing the semaphore object" );
                 }
@@ -84,11 +96,19 @@ namespace XS
             
             void DeleteSemaphore( void )
             {
-                semaphore_destroy( mach_task_self(), this->_semaphore );
+                if( this->_name.length() > 0 )
+                {
+                    sem_close( this->_semp );
+                }
+                else
+                {
+                    semaphore_destroy( mach_task_self(), this->_semaphore );
+                }
             }
             
             unsigned int _count;
             std::string  _name;
+            sem_t      * _semp;
             semaphore_t  _semaphore;
     };
     
@@ -111,19 +131,33 @@ namespace XS
         
         bool Semaphore::TryWait( void )
         {
+            if( this->IsNamed() )
             {
-                mach_timespec_t ts;
-                
-                ts.tv_sec  = 0;
-                ts.tv_nsec = 0;
-                
-                return ( semaphore_timedwait( this->impl->_semaphore, ts ) == KERN_SUCCESS ) ? true : false;
+                return ( sem_trywait( this->impl->_semp ) == 0 ) ? true : false;
+            }
+            else
+            {
+                {
+                    mach_timespec_t ts;
+                    
+                    ts.tv_sec  = 0;
+                    ts.tv_nsec = 0;
+                    
+                    return ( semaphore_timedwait( this->impl->_semaphore, ts ) == KERN_SUCCESS ) ? true : false;
+                }
             }
         }
         
         void Semaphore::Signal( void )
         {
-            semaphore_signal( this->impl->_semaphore );
+            if( this->IsNamed() )
+            {
+                sem_post( this->impl->_semp );
+            }
+            else
+            {
+                semaphore_signal( this->impl->_semaphore );
+            }
         }
         
         bool Semaphore::IsNamed( void )
