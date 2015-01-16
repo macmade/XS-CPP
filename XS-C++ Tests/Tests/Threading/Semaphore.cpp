@@ -47,3 +47,15 @@ TEST( XS_Threading_Semaphore, UnnamedBinaryTryWait )
     
     sem.Signal();
 }
+
+TEST( XS_Threading_Semaphore, UnnamedTryWait )
+{
+    XS::Threading::Semaphore sem( 2 );
+    
+    ASSERT_TRUE( sem.TryWait() );
+    ASSERT_TRUE( sem.TryWait() );
+    ASSERT_FALSE( sem.TryWait() );
+    
+    sem.Signal();
+    sem.Signal();
+}

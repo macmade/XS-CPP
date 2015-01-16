@@ -54,12 +54,12 @@ namespace XS
     {
         public:
             
-            IMPL( void )
+            IMPL( int count ): _count( count )
             {
                 this->CreateSemaphore();
             }
             
-            IMPL( const IMPL & o )
+            IMPL( const IMPL & o ): _count( o._count )
             {
                 ( void )o;
                 
@@ -73,7 +73,7 @@ namespace XS
             
             void CreateSemaphore( void )
             {
-                if( semaphore_create( mach_task_self(), &( this->_semaphore ), SYNC_POLICY_FIFO, 1 ) != KERN_SUCCESS )
+                if( semaphore_create( mach_task_self(), &( this->_semaphore ), SYNC_POLICY_FIFO, this->_count ) != KERN_SUCCESS )
                 {
                     /* TODO: throw */
                     throw 0;
@@ -85,6 +85,7 @@ namespace XS
                 semaphore_destroy( mach_task_self(), this->_semaphore );
             }
             
+            int         _count;
             semaphore_t _semaphore;
     };
     
@@ -102,7 +103,7 @@ namespace XS
     
     namespace Threading
     {
-        Semaphore::Semaphore( void ): XS::PIMPL::Object< Semaphore >()
+        Semaphore::Semaphore( int count ): XS::PIMPL::Object< Semaphore >( count )
         {}
         
         bool Semaphore::TryWait( void )
