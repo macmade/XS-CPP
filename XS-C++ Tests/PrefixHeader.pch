@@ -36,6 +36,6 @@
 #ifndef __XSCPP_TESTS_PREFIX_H__
 #define __XSCPP_TESTS_PREFIX_H__
 
-#import "gmock/gmock.h"
+#import <GoogleMock/GoogleMock.h>
 
 #endif /* __XSCPP_TESTS_PREFIX_H__ */
