@@ -80,6 +80,7 @@
 #include <XS-C++/Threading/Mutex.h>
 #include <XS-C++/Threading/STLMutex.h>
 #include <XS-C++/Threading/NativeMutex.h>
+#include <XS-C++/Threading/Semaphore.h>
 
 #endif /* __cplusplus */
 #endif /* __XSCPP__ */

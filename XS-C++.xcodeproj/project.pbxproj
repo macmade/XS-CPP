@@ -104,6 +104,11 @@
 		05FFA37F1A696E81006E1B9B /* gmock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05FFA37A1A696E75006E1B9B /* gmock.framework */; };
 		05FFA3801A696E85006E1B9B /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05FFA37C1A696E75006E1B9B /* gtest.framework */; };
 		05FFA3811A696E88006E1B9B /* GoogleMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05FFA3781A696E75006E1B9B /* GoogleMock.framework */; };
+		05FFA38D1A69918F006E1B9B /* Semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FFA38C1A69918F006E1B9B /* Semaphore.cpp */; };
+		05FFA3901A6992E8006E1B9B /* Semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FFA38F1A6992E8006E1B9B /* Semaphore.cpp */; };
+		05FFA3911A6992E8006E1B9B /* Semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FFA38F1A6992E8006E1B9B /* Semaphore.cpp */; };
+		05FFA3921A6992E8006E1B9B /* Semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FFA38F1A6992E8006E1B9B /* Semaphore.cpp */; };
+		05FFA3931A6992E8006E1B9B /* Semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FFA38F1A6992E8006E1B9B /* Semaphore.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -278,6 +283,8 @@
 		05E71B711961DA1100F911C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05E71B741961DD4800F911C4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		05FFA3701A696E75006E1B9B /* GoogleMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GoogleMock.xcodeproj; path = "Submodules/gmock-xcode/GoogleMock.xcodeproj"; sourceTree = "<group>"; };
+		05FFA38C1A69918F006E1B9B /* Semaphore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Semaphore.cpp; sourceTree = "<group>"; };
+		05FFA38F1A6992E8006E1B9B /* Semaphore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Semaphore.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,6 +352,7 @@
 				052537701A6538510031BE63 /* LockGuard.cpp */,
 				052537711A6538510031BE63 /* Mutex-Native.cpp */,
 				052537721A6538510031BE63 /* Mutex-STL.cpp */,
+				05FFA38C1A69918F006E1B9B /* Semaphore.cpp */,
 			);
 			path = Threading;
 			sourceTree = "<group>";
@@ -468,6 +476,7 @@
 				05DC07921A60326100A7CF26 /* NativeMutex-WIN32.cpp */,
 				05DC078C1A6031D300A7CF26 /* NativeMutex.cpp */,
 				05DC077E1A600F9400A7CF26 /* STLMutex.cpp */,
+				05FFA38F1A6992E8006E1B9B /* Semaphore.cpp */,
 			);
 			path = Threading;
 			sourceTree = "<group>";
@@ -785,6 +794,7 @@
 				05DC07461A5FCD4700A7CF26 /* Decrement32.cpp in Sources */,
 				05DC074B1A5FCF2C00A7CF26 /* Decrement64.cpp in Sources */,
 				05DC07961A603CF900A7CF26 /* LockGuard.cpp in Sources */,
+				05FFA3901A6992E8006E1B9B /* Semaphore.cpp in Sources */,
 				05DC078D1A6031D300A7CF26 /* NativeMutex.cpp in Sources */,
 				05DC073C1A5FCA6800A7CF26 /* Increment32.cpp in Sources */,
 				05DC07551A5FD06400A7CF26 /* Add64.cpp in Sources */,
@@ -808,6 +818,7 @@
 				05DC07471A5FCD4700A7CF26 /* Decrement32.cpp in Sources */,
 				05DC074C1A5FCF2C00A7CF26 /* Decrement64.cpp in Sources */,
 				05DC07971A603CF900A7CF26 /* LockGuard.cpp in Sources */,
+				05FFA3911A6992E8006E1B9B /* Semaphore.cpp in Sources */,
 				05DC078E1A6031D300A7CF26 /* NativeMutex.cpp in Sources */,
 				05DC073D1A5FCA6800A7CF26 /* Increment32.cpp in Sources */,
 				05DC07561A5FD06400A7CF26 /* Add64.cpp in Sources */,
@@ -831,6 +842,7 @@
 				05DC07481A5FCD4700A7CF26 /* Decrement32.cpp in Sources */,
 				05DC074D1A5FCF2C00A7CF26 /* Decrement64.cpp in Sources */,
 				05DC07981A603CF900A7CF26 /* LockGuard.cpp in Sources */,
+				05FFA3921A6992E8006E1B9B /* Semaphore.cpp in Sources */,
 				05DC078F1A6031D300A7CF26 /* NativeMutex.cpp in Sources */,
 				05DC073E1A5FCA6800A7CF26 /* Increment32.cpp in Sources */,
 				05DC07571A5FD06400A7CF26 /* Add64.cpp in Sources */,
@@ -854,6 +866,7 @@
 				05DC07491A5FCD4700A7CF26 /* Decrement32.cpp in Sources */,
 				05DC074E1A5FCF2C00A7CF26 /* Decrement64.cpp in Sources */,
 				05DC07991A603CF900A7CF26 /* LockGuard.cpp in Sources */,
+				05FFA3931A6992E8006E1B9B /* Semaphore.cpp in Sources */,
 				05DC07901A6031D300A7CF26 /* NativeMutex.cpp in Sources */,
 				05DC073F1A5FCA6800A7CF26 /* Increment32.cpp in Sources */,
 				05DC07581A5FD06400A7CF26 /* Add64.cpp in Sources */,
@@ -880,6 +893,7 @@
 				0525377C1A6538510031BE63 /* Version.cpp in Sources */,
 				05DC07A41A61466A00A7CF26 /* Exception.cpp in Sources */,
 				052537771A6538510031BE63 /* Object.cpp in Sources */,
+				05FFA38D1A69918F006E1B9B /* Semaphore.cpp in Sources */,
 				052537751A6538510031BE63 /* Atomic.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

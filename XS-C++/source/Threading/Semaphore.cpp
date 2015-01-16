@@ -30,14 +30,51 @@
 /*!
  * @file        Semaphore.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Test case XS::Threading::Semaphore
+ * @brief       Definition of the XS::Threading::Semaphore class
  */
 
 #include <XS-C++.h>
+#include <XS-C++/PIMPL/Object-IMPL.h>
 
-using namespace testing;
-
-TEST( XS_Threading_Semaphore, UnnamedTryWait )
+namespace XS
 {
-    XS::Threading::Semaphore sem;
+    #ifdef __clang__
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wpadded"
+    #endif
+    
+    template<>
+    class PIMPL::Object< Threading::Semaphore >::IMPL
+    {
+        public:
+            
+            IMPL( void )
+            {}
+            
+            IMPL( const IMPL & o )
+            {
+                ( void )o;
+            }
+            
+            ~IMPL( void )
+            {}
+    };
+    
+    #ifdef __clang__
+    #pragma clang diagnostic pop
+    #endif
+    
+    template<>
+    void PIMPL::Object< Threading::Semaphore >::D::operator ()( PIMPL::Object< Threading::Semaphore >::IMPL * p )
+    {
+        delete p;
+    }
+
+    template class PIMPL::Object< Threading::Semaphore >;
+    
+    namespace Threading
+    {
+        Semaphore::Semaphore( void ): XS::PIMPL::Object< Semaphore >()
+        {}
+    }
 }

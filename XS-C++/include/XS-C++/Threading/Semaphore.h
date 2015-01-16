@@ -28,16 +28,29 @@
  ******************************************************************************/
 
 /*!
- * @file        Semaphore.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @abstract    Test case XS::Threading::Semaphore
+ * @brief       Declaration of the XS::Threading::Semaphore class
  */
 
-#include <XS-C++.h>
+#ifndef __XSCPP_THREADING_SEMAPHORE_H__
+#define __XSCPP_THREADING_SEMAPHORE_H__
 
-using namespace testing;
-
-TEST( XS_Threading_Semaphore, UnnamedTryWait )
+namespace XS
 {
-    XS::Threading::Semaphore sem;
+    namespace Threading
+    {
+        /*!
+         * @brief           Semaphore class
+         */
+        class Semaphore: public XS::PIMPL::Object< Semaphore >
+        {
+            public:
+                
+                using PIMPL::Object< Semaphore >::impl;
+                
+                Semaphore( void );
+        };
+    }
 }
+
+#endif /* __XSCPP_THREADING_SEMAPHORE_H__ */
