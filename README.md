@@ -8,6 +8,12 @@ XS-Labs / C++ Utility Library
 ![License](https://img.shields.io/badge/license-boost-brightgreen.svg?style=flat)
 [![Contact](https://img.shields.io/badge/contact-@macmade-blue.svg?style=flat)](https://twitter.com/macmade)
 
+API Reference
+-------------
+
+The complete API reference can be found at:  
+http://doc.xs-labs.com/XS-CPP/
+
 License
 -------
 
