@@ -60,3 +60,8 @@ TEST_F( XS_Threading_Mutex_LockGuard, ScopedLockUnlock )
     
     mtx.Unlock();
 }
+
+TEST_F( XS_Threading_Mutex_LockGuard, ThrowWithNullMutex )
+{
+    ASSERT_THROW( XS::Threading::LockGuard( nullptr ), XS::Exception );
+}

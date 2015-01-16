@@ -52,8 +52,7 @@ namespace XS
             {
                 if( lock == nullptr )
                 {
-                    /* TODO: throw */
-                    throw 0;
+                    throw XS::Exception( "Cannot initialize a lock guard with a NULL lockable object" );
                 }
                 
                 this->_lock->Lock();
