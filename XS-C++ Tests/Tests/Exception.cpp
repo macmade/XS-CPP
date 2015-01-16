@@ -62,3 +62,10 @@ TEST( XS_Exception, What )
     
     ASSERT_EQ( what, e.what() );
 }
+
+TEST( XS_Exception, WhatToString )
+{
+    XS::Exception e( "Test exception", 42 );
+    
+    ASSERT_EQ( e.ToString(), std::string( e.what() ) );
+}
