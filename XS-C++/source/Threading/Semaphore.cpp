@@ -148,6 +148,18 @@ namespace XS
             }
         }
         
+        void Semaphore::Wait( void )
+        {
+            if( this->IsNamed() )
+            {
+                sem_wait( this->impl->_semp );
+            }
+            else
+            {
+                semaphore_wait( this->impl->_semaphore );
+            }
+        }
+        
         void Semaphore::Signal( void )
         {
             if( this->IsNamed() )

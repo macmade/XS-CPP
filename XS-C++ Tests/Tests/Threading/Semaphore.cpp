@@ -50,8 +50,8 @@ TEST( XS_Threading_Semaphore, UnnamedBinaryTryWait )
 
 TEST( XS_Threading_Semaphore, NamedBinaryTryWait )
 {
-    XS::Threading::Semaphore sem1( 1, "XSCPPTestSemaphore" );
-    XS::Threading::Semaphore sem2( 1, "XSCPPTestSemaphore" );
+    XS::Threading::Semaphore sem1( 1, "XSCPPTestSemaphore1" );
+    XS::Threading::Semaphore sem2( 1, "XSCPPTestSemaphore1" );
     
     ASSERT_TRUE( sem1.TryWait() );
     ASSERT_FALSE( sem1.TryWait() );
@@ -76,6 +76,25 @@ TEST( XS_Threading_Semaphore, UnnamedTryWait )
     
     sem.Signal();
     sem.Signal();
+}
+
+TEST( XS_Threading_Semaphore, NamedTryWait )
+{
+    XS::Threading::Semaphore sem1( 2, "XSCPPTestSemaphore2" );
+    XS::Threading::Semaphore sem2( 2, "XSCPPTestSemaphore2" );
+    
+    ASSERT_TRUE( sem1.TryWait() );
+    ASSERT_TRUE( sem1.TryWait() );
+    ASSERT_FALSE( sem1.TryWait() );
+    ASSERT_FALSE( sem2.TryWait() );
+    
+    sem1.Signal();
+    
+    ASSERT_TRUE( sem2.TryWait() );
+    ASSERT_FALSE( sem1.TryWait() );
+    
+    sem1.Signal();
+    sem2.Signal();
 }
 
 TEST( XS_Threading_Semaphore, UnnamedWaitSignal )
