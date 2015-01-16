@@ -48,11 +48,13 @@ namespace XS
                 
                 using PIMPL::Object< Semaphore >::impl;
                 
-                Semaphore( unsigned int count = 1 );
+                Semaphore( unsigned int count = 1, std::string name = "" );
                 Semaphore( const Semaphore & o ) = delete;
                 Semaphore & operator =( Semaphore o ) = delete;
                 bool TryWait( void );
                 void Signal( void );
+                bool IsNamed( void );
+                std::string GetName( void );
         };
     }
 }

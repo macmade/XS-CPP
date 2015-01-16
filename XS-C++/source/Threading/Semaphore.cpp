@@ -54,15 +54,13 @@ namespace XS
     {
         public:
             
-            IMPL( unsigned int count ): _count( count )
+            IMPL( unsigned int count, std::string name ): _count( count ), _name( name )
             {
                 this->CreateSemaphore();
             }
             
-            IMPL( const IMPL & o ): _count( o._count )
+            IMPL( const IMPL & o ): _count( o._count ), _name( o._name )
             {
-                ( void )o;
-                
                 this->CreateSemaphore();
             }
             
@@ -90,6 +88,7 @@ namespace XS
             }
             
             unsigned int _count;
+            std::string  _name;
             semaphore_t  _semaphore;
     };
     
@@ -107,7 +106,7 @@ namespace XS
     
     namespace Threading
     {
-        Semaphore::Semaphore( unsigned int count ): XS::PIMPL::Object< Semaphore >( count )
+        Semaphore::Semaphore( unsigned int count, std::string name ): XS::PIMPL::Object< Semaphore >( count, name )
         {}
         
         bool Semaphore::TryWait( void )
@@ -125,6 +124,16 @@ namespace XS
         void Semaphore::Signal( void )
         {
             semaphore_signal( this->impl->_semaphore );
+        }
+        
+        bool Semaphore::IsNamed( void )
+        {
+            return this->impl->_name.length() > 0;
+        }
+        
+        std::string Semaphore::GetName( void )
+        {
+            return this->impl->_name;
         }
     }
 }
