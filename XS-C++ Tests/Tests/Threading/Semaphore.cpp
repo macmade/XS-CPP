@@ -151,9 +151,9 @@ TEST( XS_Threading_Semaphore, IsNamed )
 
 TEST( XS_Threading_Semaphore, GetName )
 {
-    XS::Threading::Semaphore sem1( 1, "XSCPPTestSemaphore" );
+    XS::Threading::Semaphore sem1( 1, "XSCPPTestSemaphore1" );
     XS::Threading::Semaphore sem2;
     
-    ASSERT_EQ( sem1.GetName(), "XSCPPTestSemaphore" );
+    ASSERT_EQ( sem1.GetName(), "XSCPPTestSemaphore1" );
     ASSERT_EQ( sem2.GetName(), "" );
 }
