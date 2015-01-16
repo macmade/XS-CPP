@@ -105,19 +105,8 @@ namespace XS
     #pragma clang diagnostic pop
     #endif
     
-    template<>
-    void PIMPL::Object< Threading::NativeMutex >::D::operator ()( PIMPL::Object< Threading::NativeMutex >::IMPL * p )
-    {
-        delete p;
-    }
-
-    template class PIMPL::Object< Threading::NativeMutex >;
-    
     namespace Threading
     {
-        NativeMutex::NativeMutex( bool recursive ): XS::PIMPL::Object< NativeMutex >( recursive )
-        {}
-        
         void NativeMutex::Lock( void )
         {
             pthread_mutex_lock( &( this->impl->_mtx ) );
