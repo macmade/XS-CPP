@@ -60,6 +60,19 @@ TEST( XS_Threading_Semaphore, UnnamedTryWait )
     sem.Signal();
 }
 
+TEST( XS_Threading_Semaphore, UnnamedWaitSignal )
+{
+    XS::Threading::Semaphore sem( 1 );
+    
+    ASSERT_TRUE( sem.TryWait() );
+    
+    sem.Signal();
+    
+    ASSERT_TRUE( sem.TryWait() );
+    
+    sem.Signal();
+}
+
 TEST( XS_Threading_Semaphore, UnnamedThrowOnInvalidCount )
 {
     XS::Threading::Semaphore sem;
