@@ -69,8 +69,7 @@ namespace XS
                 
                 if( pthread_mutexattr_init( &attr ) != 0 )
                 {
-                    /* TODO: throw */
-                    throw 0;
+                    throw Exception( "Error initializing the mutex object" );
                 }
                 
                 if( this->_recursive )
@@ -79,8 +78,7 @@ namespace XS
                     {
                         pthread_mutexattr_destroy( &attr );
                         
-                        /* TODO: throw */
-                        throw 0;
+                        throw Exception( "Error initializing the mutex object" );
                     }
                 }
                 
@@ -88,8 +86,7 @@ namespace XS
                 {
                     pthread_mutexattr_destroy( &attr );
                     
-                    /* TODO: throw */
-                    throw 0;
+                    throw Exception( "Error initializing the mutex object" );
                 }
                 
                 pthread_mutexattr_destroy( &attr );

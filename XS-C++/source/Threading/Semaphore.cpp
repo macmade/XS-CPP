@@ -75,13 +75,12 @@ namespace XS
             {
                 if( this->_count == 0 )
                 {
-                    throw XS::Exception( "Cannot initialize a semaphore with zero as count" );
+                    throw Exception( "Cannot initialize a semaphore with zero as count" );
                 }
                 
                 if( semaphore_create( mach_task_self(), &( this->_semaphore ), SYNC_POLICY_FIFO, static_cast< int >( this->_count ) ) != KERN_SUCCESS )
                 {
-                    /* TODO: throw */
-                    throw 0;
+                    throw Exception( "Error initializing the semaphore object" );
                 }
             }
             
