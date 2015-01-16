@@ -92,13 +92,10 @@ namespace XS
         return this->impl->_code;
     }
     
-    const char * Exception::what() const noexcept
+    std::ostream & operator << ( std::ostream & os, const Exception & e )
     {
-        return this->impl->_what.c_str();
-    }
-    
-    std::string Exception::ToString( void ) const
-    {
-        return this->impl->_what;
+        os << e.impl->_what;
+        
+        return os;
     }
 }

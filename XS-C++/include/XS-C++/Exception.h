@@ -41,8 +41,11 @@ namespace XS
      * @brief           Exception class
      * 
      * All exception thrown by XS-C++ are instances of this class.
+     * Note that this class does not inherits from XS::ToStringable or
+     * std::exception, in order to avoid issues with try/catch blocks.
+     * Always explicitely catch XS::Exception when needed.
      */
-    class Exception: public XS::PIMPL::Object< Exception >, public std::exception, public ToStringable
+    class Exception: public XS::PIMPL::Object< Exception >
     {
         public:
             
@@ -68,18 +71,12 @@ namespace XS
             int GetCode( void ) const;
             
             /*!
-             * @brief       Gets a string representation of the exception
-             * @return      A string representation of the exception
-             * 
-             * From std::exception
+             * @brief       Writes a string representation of the exception in an output stream object
+             * @param       os      The output stream object
+             * @param       e       The exception
+             * @return      The output stream object
              */
-            const char * what( void ) const noexcept;
-            
-            /*!
-             * @brief       Gets a string representation of the exception
-             * @return      A string representation of the exception
-             */
-            std::string ToString( void ) const;
+            friend std::ostream & operator << ( std::ostream & os, const Exception & e );
     };
 }
 

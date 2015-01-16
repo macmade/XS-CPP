@@ -46,27 +46,26 @@ static void __throw( void )
     throw e;
 }
 
-TEST( XS_Exception, ThrowCatchSTDException )
+TEST( XS_Exception, ThrowCatchXSException )
 {
-    ASSERT_THROW( __throw(), std::exception );
+    ASSERT_THROW( __throw(), XS::Exception );
 }
 
-TEST( XS_Exception, What )
+TEST( XS_Exception, OStream )
 {
-    XS::Exception e( "Test exception", 42 );
-    std::string   what;
+    char                 buf[ 128 ];
+    std::stringstream    ss;
+    std::string          what;
+    XS::Exception        e( "Test exception", 42 );
     
     what = "Exception code: "
          + std::to_string( e.GetCode() )
          + " - "
          + e.GetReason();
     
-    ASSERT_EQ( what, e.what() );
-}
-
-TEST( XS_Exception, WhatToString )
-{
-    XS::Exception e( "Test exception", 42 );
+    ss << e;
     
-    ASSERT_EQ( e.ToString(), std::string( e.what() ) );
+    ss.get( buf, sizeof( buf ) );
+    
+    ASSERT_EQ( what, std::string( buf ) );
 }
