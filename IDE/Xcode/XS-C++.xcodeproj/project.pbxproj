@@ -243,6 +243,8 @@
 		052537721A6538510031BE63 /* STLMutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = STLMutex.cpp; sourceTree = "<group>"; };
 		052537731A6538510031BE63 /* ToStringable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToStringable.cpp; sourceTree = "<group>"; };
 		052537741A6538510031BE63 /* Version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Version.cpp; sourceTree = "<group>"; };
+		054511EF1A6A0ACA002B8F92 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = Makefile; path = ../../Makefile; sourceTree = "<group>"; };
+		054511F31A6A0AFF002B8F92 /* coveralls.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = coveralls.sh; sourceTree = "<group>"; };
 		056C87CE18C8B0F8006260B3 /* XS-C++ Example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "XS-C++ Example"; sourceTree = BUILT_PRODUCTS_DIR; };
 		056C881218C8B85F006260B3 /* libXS-C++.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libXS-C++.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		056C884A18C8C547006260B3 /* libXS-C++.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "libXS-C++.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -359,14 +361,25 @@
 			path = Threading;
 			sourceTree = "<group>";
 		};
+		054511F11A6A0AFF002B8F92 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				054511F31A6A0AFF002B8F92 /* coveralls.sh */,
+			);
+			name = Scripts;
+			path = ../../Scripts;
+			sourceTree = "<group>";
+		};
 		056C87C518C8B0F8006260B3 = {
 			isa = PBXGroup;
 			children = (
 				05FFA3701A696E75006E1B9B /* GoogleMock.xcodeproj */,
+				054511EF1A6A0ACA002B8F92 /* Makefile */,
 				051F09651946EB70004B6E47 /* README.md */,
 				05BDE00918CDB2450028F339 /* XS-C++ */,
 				05E71B6F1961DA1100F911C4 /* XS-C++ Tests */,
 				05E71B5C1961D96100F911C4 /* XS-C++ Example */,
+				054511F11A6A0AFF002B8F92 /* Scripts */,
 				056C880D18C8B50E006260B3 /* Frameworks */,
 				056C87CF18C8B0F8006260B3 /* Products */,
 			);
