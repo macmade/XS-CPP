@@ -251,6 +251,9 @@
 		05BDE00A18CDB2450028F339 /* Clang-Warnings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Clang-Warnings.h"; sourceTree = "<group>"; };
 		05BDE01818CDB2450028F339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05BDE01918CDB2450028F339 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		05CADA111A69DD0F00C9E9DC /* Semaphore-APPLE.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Semaphore-APPLE.cpp"; sourceTree = "<group>"; };
+		05CADA121A69DD0F00C9E9DC /* Semaphore-POSIX.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Semaphore-POSIX.cpp"; sourceTree = "<group>"; };
+		05CADA131A69DD0F00C9E9DC /* Semaphore-WIN32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Semaphore-WIN32.cpp"; sourceTree = "<group>"; };
 		05DC06DB1A5FACEF00A7CF26 /* XS-C++.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XS-C++.h"; sourceTree = "<group>"; };
 		05DC06DF1A5FAD5100A7CF26 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
 		05DC06E21A5FADA300A7CF26 /* Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
@@ -475,6 +478,9 @@
 				05DC07921A60326100A7CF26 /* NativeMutex-WIN32.cpp */,
 				05DC078C1A6031D300A7CF26 /* NativeMutex.cpp */,
 				05DC077E1A600F9400A7CF26 /* STLMutex.cpp */,
+				05CADA111A69DD0F00C9E9DC /* Semaphore-APPLE.cpp */,
+				05CADA121A69DD0F00C9E9DC /* Semaphore-POSIX.cpp */,
+				05CADA131A69DD0F00C9E9DC /* Semaphore-WIN32.cpp */,
 				05FFA38F1A6992E8006E1B9B /* Semaphore.cpp */,
 			);
 			path = Threading;

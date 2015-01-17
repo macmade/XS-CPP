@@ -34,44 +34,60 @@
  */
 
 #include <XS-C++.h>
-
-#if defined( _WIN32 )
-
-#include "Semaphore-WIN32.cpp"
-
-#elif defined( __APPLE__ )
-
-#include "Semaphore-APPLE.cpp"
-
-#else
-
-#include "Semaphore-POSIX.cpp"
-
-#endif
+#include <XS-C++/PIMPL/Object-IMPL.h>
 
 namespace XS
 {
+    #ifdef __clang__
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wpadded"
+    #endif
+    
     template<>
-    void PIMPL::Object< Threading::Semaphore >::D::operator ()( PIMPL::Object< Threading::Semaphore >::IMPL * p )
+    class PIMPL::Object< Threading::Semaphore >::IMPL
     {
-        delete p;
-    }
-
-    template class PIMPL::Object< Threading::Semaphore >;
+        public:
+            
+            IMPL( unsigned int count, std::string name ): _count( count ), _name( name )
+            {
+                this->CreateSemaphore();
+            }
+            
+            IMPL( const IMPL & o ): _count( o._count ), _name( o._name )
+            {
+                this->CreateSemaphore();
+            }
+            
+            ~IMPL( void )
+            {
+                this->DeleteSemaphore();
+            }
+            
+            void CreateSemaphore( void )
+            {}
+            
+            void DeleteSemaphore( void )
+            {}
+            
+            unsigned int _count;
+            std::string  _name;
+    };
+    
+    #ifdef __clang__
+    #pragma clang diagnostic pop
+    #endif
     
     namespace Threading
     {
-        Semaphore::Semaphore( unsigned int count, std::string name ): XS::PIMPL::Object< Semaphore >( count, name )
+        bool Semaphore::TryWait( void )
+        {
+            return false;
+        }
+        
+        void Semaphore::Wait( void )
         {}
         
-        bool Semaphore::IsNamed( void )
-        {
-            return this->impl->_name.length() > 0;
-        }
-        
-        std::string Semaphore::GetName( void )
-        {
-            return this->impl->_name;
-        }
+        void Semaphore::Signal( void )
+        {}
     }
 }
