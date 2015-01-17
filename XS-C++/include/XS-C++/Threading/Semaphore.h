@@ -49,8 +49,23 @@ namespace XS
                 using PIMPL::Object< Semaphore >::impl;
                 
                 Semaphore( unsigned int count = 1, std::string name = "" );
+                
+                /*!
+                 * @brief   Class copy constructor
+                 * @param   o   Another semaphore to be used as data source for the initialization
+                 * 
+                 * Deleted - Not copy-constructible
+                 */
                 Semaphore( const Semaphore & o ) = delete;
+                
+                /*!
+                 * @brief   Assignment operator
+                 * @param   o   Another semaphore to use as data source
+                 * 
+                 * Deleted - Not copy-assignable
+                 */
                 Semaphore & operator =( Semaphore o ) = delete;
+                
                 bool TryWait( void );
                 void Wait( void );
                 void Signal( void );

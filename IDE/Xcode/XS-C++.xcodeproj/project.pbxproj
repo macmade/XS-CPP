@@ -16,6 +16,9 @@
 		0525377B1A6538510031BE63 /* ToStringable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052537731A6538510031BE63 /* ToStringable.cpp */; };
 		0525377C1A6538510031BE63 /* Version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052537741A6538510031BE63 /* Version.cpp */; };
 		056C884118C8C232006260B3 /* libXS-C++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C881218C8B85F006260B3 /* libXS-C++.a */; };
+		05CADA291A69E91E00C9E9DC /* gmock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CADA1E1A69E7FA00C9E9DC /* gmock.framework */; };
+		05CADA2A1A69E91E00C9E9DC /* GoogleMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CADA1C1A69E7FA00C9E9DC /* GoogleMock.framework */; };
+		05CADA2B1A69E91E00C9E9DC /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CADA201A69E7FA00C9E9DC /* gtest.framework */; };
 		05DC06DC1A5FACEF00A7CF26 /* XS-C++.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DC06DB1A5FACEF00A7CF26 /* XS-C++.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05DC06DD1A5FACEF00A7CF26 /* XS-C++.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DC06DB1A5FACEF00A7CF26 /* XS-C++.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05DC06E01A5FAD5500A7CF26 /* Macros.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DC06DF1A5FAD5100A7CF26 /* Macros.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -101,9 +104,6 @@
 		05DC07AC1A6149A700A7CF26 /* ToStringable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07A81A6149A700A7CF26 /* ToStringable.cpp */; };
 		05E71B5E1961D96100F911C4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E71B5D1961D96100F911C4 /* main.cpp */; };
 		05E71B691961D9D100F911C4 /* libXS-C++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C881218C8B85F006260B3 /* libXS-C++.a */; };
-		05FFA37F1A696E81006E1B9B /* gmock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05FFA37A1A696E75006E1B9B /* gmock.framework */; };
-		05FFA3801A696E85006E1B9B /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05FFA37C1A696E75006E1B9B /* gtest.framework */; };
-		05FFA3811A696E88006E1B9B /* GoogleMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05FFA3781A696E75006E1B9B /* GoogleMock.framework */; };
 		05FFA38D1A69918F006E1B9B /* Semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FFA38C1A69918F006E1B9B /* Semaphore.cpp */; };
 		05FFA3901A6992E8006E1B9B /* Semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FFA38F1A6992E8006E1B9B /* Semaphore.cpp */; };
 		05FFA3911A6992E8006E1B9B /* Semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FFA38F1A6992E8006E1B9B /* Semaphore.cpp */; };
@@ -154,61 +154,61 @@
 			remoteGlobalIDString = 056C88A918C8C8AC006260B3;
 			remoteInfo = "CF++ iOS Static Library";
 		};
-		05E71B6A1961D9D100F911C4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 056C87C618C8B0F8006260B3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 056C881118C8B85F006260B3;
-			remoteInfo = "CF++ Mac Static Library";
-		};
-		05FFA3771A696E75006E1B9B /* PBXContainerItemProxy */ = {
+		05CADA1B1A69E7FA00C9E9DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 05FFA3701A696E75006E1B9B /* GoogleMock.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 05818F861A685AEA0072A469;
 			remoteInfo = GoogleMock;
 		};
-		05FFA3791A696E75006E1B9B /* PBXContainerItemProxy */ = {
+		05CADA1D1A69E7FA00C9E9DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 05FFA3701A696E75006E1B9B /* GoogleMock.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 05E96ABD1A68600C00204102;
 			remoteInfo = gmock;
 		};
-		05FFA37B1A696E75006E1B9B /* PBXContainerItemProxy */ = {
+		05CADA1F1A69E7FA00C9E9DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 05FFA3701A696E75006E1B9B /* GoogleMock.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 05E96B1F1A68634900204102;
 			remoteInfo = gtest;
 		};
-		05FFA37D1A696E75006E1B9B /* PBXContainerItemProxy */ = {
+		05CADA211A69E7FA00C9E9DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 05FFA3701A696E75006E1B9B /* GoogleMock.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 05818F901A685AEA0072A469;
 			remoteInfo = GoogleMockTests;
 		};
-		05FFA3821A696E8C006E1B9B /* PBXContainerItemProxy */ = {
+		05CADA231A69E91800C9E9DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 05FFA3701A696E75006E1B9B /* GoogleMock.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 05818F851A685AEA0072A469;
 			remoteInfo = GoogleMock;
 		};
-		05FFA3841A696E8C006E1B9B /* PBXContainerItemProxy */ = {
+		05CADA251A69E91800C9E9DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 05FFA3701A696E75006E1B9B /* GoogleMock.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 05E96AAE1A68600C00204102;
 			remoteInfo = gmock;
 		};
-		05FFA3861A696E8C006E1B9B /* PBXContainerItemProxy */ = {
+		05CADA271A69E91800C9E9DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 05FFA3701A696E75006E1B9B /* GoogleMock.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 05E96B0A1A68634900204102;
 			remoteInfo = gtest;
+		};
+		05E71B6A1961D9D100F911C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 056C87C618C8B0F8006260B3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 056C881118C8B85F006260B3;
+			remoteInfo = "CF++ Mac Static Library";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -234,7 +234,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		051F09651946EB70004B6E47 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		051F09651946EB70004B6E47 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		0525376B1A6538510031BE63 /* Atomic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Atomic.cpp; sourceTree = "<group>"; };
 		0525376C1A6538510031BE63 /* Exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Exception.cpp; sourceTree = "<group>"; };
 		0525376E1A6538510031BE63 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 		05E71B5D1961D96100F911C4 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		05E71B631961D9D100F911C4 /* XS-C++ Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XS-C++ Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E71B711961DA1100F911C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		05FFA3701A696E75006E1B9B /* GoogleMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GoogleMock.xcodeproj; path = "Submodules/gmock-xcode/GoogleMock.xcodeproj"; sourceTree = "<group>"; };
+		05FFA3701A696E75006E1B9B /* GoogleMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GoogleMock.xcodeproj; path = "../../Submodules/gmock-xcode/GoogleMock.xcodeproj"; sourceTree = "<group>"; };
 		05FFA38C1A69918F006E1B9B /* Semaphore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Semaphore.cpp; sourceTree = "<group>"; };
 		05FFA38F1A6992E8006E1B9B /* Semaphore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Semaphore.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -330,9 +330,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05FFA3811A696E88006E1B9B /* GoogleMock.framework in Frameworks */,
-				05FFA37F1A696E81006E1B9B /* gmock.framework in Frameworks */,
-				05FFA3801A696E85006E1B9B /* gtest.framework in Frameworks */,
+				05CADA2A1A69E91E00C9E9DC /* GoogleMock.framework in Frameworks */,
+				05CADA291A69E91E00C9E9DC /* gmock.framework in Frameworks */,
+				05CADA2B1A69E91E00C9E9DC /* gtest.framework in Frameworks */,
 				05E71B691961D9D100F911C4 /* libXS-C++.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,7 +401,8 @@
 				05BDE01918CDB2450028F339 /* PrefixHeader.pch */,
 				05BDE01A18CDB2450028F339 /* source */,
 			);
-			path = "XS-C++";
+			name = "XS-C++";
+			path = "../../XS-C++";
 			sourceTree = "<group>";
 		};
 		05BDE00B18CDB2450028F339 /* include */ = {
@@ -423,6 +424,17 @@
 				05DC07721A5FF6A300A7CF26 /* Version.cpp */,
 			);
 			path = source;
+			sourceTree = "<group>";
+		};
+		05CADA151A69E7FA00C9E9DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05CADA1C1A69E7FA00C9E9DC /* GoogleMock.framework */,
+				05CADA1E1A69E7FA00C9E9DC /* gmock.framework */,
+				05CADA201A69E7FA00C9E9DC /* gtest.framework */,
+				05CADA221A69E7FA00C9E9DC /* GoogleMockTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		05DC06DE1A5FAD5100A7CF26 /* XS-C++ */ = {
@@ -491,7 +503,8 @@
 			children = (
 				05E71B5D1961D96100F911C4 /* main.cpp */,
 			);
-			path = "XS-C++ Example";
+			name = "XS-C++ Example";
+			path = "../../XS-C++ Example";
 			sourceTree = "<group>";
 		};
 		05E71B6F1961DA1100F911C4 /* XS-C++ Tests */ = {
@@ -500,18 +513,8 @@
 				05E71B711961DA1100F911C4 /* Info.plist */,
 				05DC07321A5FC4CE00A7CF26 /* Tests */,
 			);
-			path = "XS-C++ Tests";
-			sourceTree = "<group>";
-		};
-		05FFA3711A696E75006E1B9B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				05FFA3781A696E75006E1B9B /* GoogleMock.framework */,
-				05FFA37A1A696E75006E1B9B /* gmock.framework */,
-				05FFA37C1A696E75006E1B9B /* gtest.framework */,
-				05FFA37E1A696E75006E1B9B /* GoogleMockTests.xctest */,
-			);
-			name = Products;
+			name = "XS-C++ Tests";
+			path = "../../XS-C++ Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -661,9 +664,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				05FFA3831A696E8C006E1B9B /* PBXTargetDependency */,
-				05FFA3851A696E8C006E1B9B /* PBXTargetDependency */,
-				05FFA3871A696E8C006E1B9B /* PBXTargetDependency */,
+				05CADA241A69E91800C9E9DC /* PBXTargetDependency */,
+				05CADA261A69E91800C9E9DC /* PBXTargetDependency */,
+				05CADA281A69E91800C9E9DC /* PBXTargetDependency */,
 				05E71B6B1961D9D100F911C4 /* PBXTargetDependency */,
 				05169CA11962ACD80082861C /* PBXTargetDependency */,
 				05169CA31962ACD80082861C /* PBXTargetDependency */,
@@ -700,7 +703,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 05FFA3711A696E75006E1B9B /* Products */;
+					ProductGroup = 05CADA151A69E7FA00C9E9DC /* Products */;
 					ProjectRef = 05FFA3701A696E75006E1B9B /* GoogleMock.xcodeproj */;
 				},
 			);
@@ -717,32 +720,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		05FFA3781A696E75006E1B9B /* GoogleMock.framework */ = {
+		05CADA1C1A69E7FA00C9E9DC /* GoogleMock.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = GoogleMock.framework;
-			remoteRef = 05FFA3771A696E75006E1B9B /* PBXContainerItemProxy */;
+			remoteRef = 05CADA1B1A69E7FA00C9E9DC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		05FFA37A1A696E75006E1B9B /* gmock.framework */ = {
+		05CADA1E1A69E7FA00C9E9DC /* gmock.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = gmock.framework;
-			remoteRef = 05FFA3791A696E75006E1B9B /* PBXContainerItemProxy */;
+			remoteRef = 05CADA1D1A69E7FA00C9E9DC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		05FFA37C1A696E75006E1B9B /* gtest.framework */ = {
+		05CADA201A69E7FA00C9E9DC /* gtest.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = gtest.framework;
-			remoteRef = 05FFA37B1A696E75006E1B9B /* PBXContainerItemProxy */;
+			remoteRef = 05CADA1F1A69E7FA00C9E9DC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		05FFA37E1A696E75006E1B9B /* GoogleMockTests.xctest */ = {
+		05CADA221A69E7FA00C9E9DC /* GoogleMockTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = GoogleMockTests.xctest;
-			remoteRef = 05FFA37D1A696E75006E1B9B /* PBXContainerItemProxy */;
+			remoteRef = 05CADA211A69E7FA00C9E9DC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -776,7 +779,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export | egrep '(BUILT_PRODUCTS_DIR)|(CURRENT_ARCH)|(OBJECT_FILE_DIR_normal)|(SRCROOT)|(OBJROOT)' > Scripts/xcenv.sh\n";
+			shellScript = "export | egrep '(BUILT_PRODUCTS_DIR)|(CURRENT_ARCH)|(OBJECT_FILE_DIR_normal)|(SRCROOT)|(OBJROOT)' > ../../Scripts/xcenv.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -935,25 +938,25 @@
 			target = 056C88A918C8C8AC006260B3 /* XS-C++ iOS Static Library */;
 			targetProxy = 056C88D118C8C93C006260B3 /* PBXContainerItemProxy */;
 		};
+		05CADA241A69E91800C9E9DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GoogleMock;
+			targetProxy = 05CADA231A69E91800C9E9DC /* PBXContainerItemProxy */;
+		};
+		05CADA261A69E91800C9E9DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = gmock;
+			targetProxy = 05CADA251A69E91800C9E9DC /* PBXContainerItemProxy */;
+		};
+		05CADA281A69E91800C9E9DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = gtest;
+			targetProxy = 05CADA271A69E91800C9E9DC /* PBXContainerItemProxy */;
+		};
 		05E71B6B1961D9D100F911C4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 056C881118C8B85F006260B3 /* XS-C++ Mac Static Library */;
 			targetProxy = 05E71B6A1961D9D100F911C4 /* PBXContainerItemProxy */;
-		};
-		05FFA3831A696E8C006E1B9B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GoogleMock;
-			targetProxy = 05FFA3821A696E8C006E1B9B /* PBXContainerItemProxy */;
-		};
-		05FFA3851A696E8C006E1B9B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = gmock;
-			targetProxy = 05FFA3841A696E8C006E1B9B /* PBXContainerItemProxy */;
-		};
-		05FFA3871A696E8C006E1B9B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = gtest;
-			targetProxy = 05FFA3861A696E8C006E1B9B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1173,7 +1176,7 @@
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
 				PRODUCT_NAME = "XS-C++ Example";
 			};
@@ -1184,7 +1187,7 @@
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
 				PRODUCT_NAME = "XS-C++ Example";
 			};
@@ -1196,10 +1199,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XS-C++/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
 				PRODUCT_NAME = "XS-C++";
 				SKIP_INSTALL = YES;
@@ -1212,10 +1215,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XS-C++/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
 				PRODUCT_NAME = "XS-C++";
 				SKIP_INSTALL = YES;
@@ -1228,10 +1231,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XS-C++/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
 				PRODUCT_NAME = "XS-C++";
 			};
@@ -1243,10 +1246,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XS-C++/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
 				PRODUCT_NAME = "XS-C++";
 			};
@@ -1260,12 +1263,12 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XS-C++/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
-				INFOPLIST_FILE = "XS-C++/Info.plist";
+				INFOPLIST_FILE = "../../XS-C++/Info.plist";
 				PRODUCT_NAME = "XS-C++";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1279,12 +1282,12 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XS-C++/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
-				INFOPLIST_FILE = "XS-C++/Info.plist";
+				INFOPLIST_FILE = "../../XS-C++/Info.plist";
 				PRODUCT_NAME = "XS-C++";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1296,10 +1299,10 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = /tmp/CF__.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XS-C++/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1316,10 +1319,10 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = /tmp/CF__.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XS-C++/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1443,7 +1446,7 @@
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
 				PRODUCT_NAME = "XS-C++ Example";
 			};
@@ -1455,10 +1458,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XS-C++/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
 				PRODUCT_NAME = "XS-C++";
 				SKIP_INSTALL = YES;
@@ -1471,10 +1474,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XS-C++/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
 				PRODUCT_NAME = "XS-C++";
 			};
@@ -1488,12 +1491,12 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XS-C++/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
-				INFOPLIST_FILE = "XS-C++/Info.plist";
+				INFOPLIST_FILE = "../../XS-C++/Info.plist";
 				PRODUCT_NAME = "XS-C++";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1505,10 +1508,10 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = /tmp/CF__.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XS-C++/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1532,9 +1535,9 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Applications/Xcode6-Beta2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
-				INFOPLIST_FILE = "XS-C++ Tests/Info.plist";
+				INFOPLIST_FILE = "../../XS-C++ Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1554,9 +1557,9 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Applications/Xcode6-Beta2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
-				INFOPLIST_FILE = "XS-C++ Tests/Info.plist";
+				INFOPLIST_FILE = "../../XS-C++ Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1576,9 +1579,9 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Applications/Xcode6-Beta2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
-					"XS-C++/include",
+					"../../XS-C++/include",
 				);
-				INFOPLIST_FILE = "XS-C++ Tests/Info.plist";
+				INFOPLIST_FILE = "../../XS-C++ Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
