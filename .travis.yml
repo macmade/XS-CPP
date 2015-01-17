@@ -1,6 +1,6 @@
 language: objective-c
-xcode_project: IDE/Xcode/XS-C++.xcodeproj
-xcode_scheme: XS-C++ Example
+compiler: clang
+script: make && make test
 before_install:
 - brew unlink xctool
 - brew unlink pyenv
@@ -15,5 +15,4 @@ before_install:
 - pip install cpp-coveralls
 - pyenv rehash
 after_success:
-- doxygen Documentation/XS-C++.doxygen
 - ./Scripts/coveralls.sh -i XS-C++

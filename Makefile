@@ -154,6 +154,8 @@ _CC += -DDEBUG=1
 _CC += -g
 endif
 
+_LIBS = -lpthread -lc++
+
 # iOS SDK root
 _IOS_SDK_PATH := /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS$(IOS_SDK).sdk
 
@@ -172,7 +174,7 @@ COLOR_PURPLE                            := "\x1b[35;01m"
 COLOR_CYAN                              := "\x1b[36;01m"
 
 # Pretty printing
-_PRINT_FILE = $(call _PRINT,$(1),$(2),$(patsubst %.,%,$(subst /,.,$(dir $(patsubst $(DIR_SRC)%,%,$<)))).)$(COLOR_GRAY)"$(notdir $(3))"$(COLOR_NONE)
+_PRINT_FILE = $(call _PRINT,$(1),$(2),XS.$(patsubst %.,%,$(subst /,.,$(subst ./,,$(dir $(patsubst $(DIR_SRC)%,%,$<))/))))$(COLOR_GRAY)"$(notdir $(3))"$(COLOR_NONE)
 ifeq ($(findstring 1,$(DEBUG)),)
 _PRINT      = "["$(COLOR_GREEN)" $(PRODUCT) "$(COLOR_NONE)"]> $(1) [ "$(COLOR_CYAN)"Release - $(2)"$(COLOR_NONE)" ]: "$(COLOR_YELLOW)"$(3)"$(COLOR_NONE)
 else
@@ -194,8 +196,13 @@ endif
 _MAKE_VERSION_MAJOR := $(shell echo $(MAKE_VERSION) | cut -f1 -d.)
 _MAKE_4             := $(shell [ $(_MAKE_VERSION_MAJOR) -ge 4 ] && echo true)
 
+# Check for the xctool utility
+_XCTOOL             := $(shell which xctool )
+_HAS_XCTOOL         := $(shell if [ -f "$(_XCTOOL)" ]; then echo true; else echo false; fi )
+
 # Check for the xcodebuild utility
-_HAS_XCBUILD        := $(shell if [ -f "/usr/bin/xcodebuild" ]; then echo true; else echo false; fi )
+_XCBUILD            := $(shell which xcodebuild )
+_HAS_XCBUILD        := $(shell if [ -f "$(_XCBUILD)" ]; then echo true; else echo false; fi )
 
 #-------------------------------------------------------------------------------
 # Built-in targets
@@ -236,6 +243,7 @@ _MAKE_FRAMEWORK_BIN = $(CC)                                                 \
     -compatibility_version 1                                                \
     -current_version 1                                                      \
     -install_name /Library/Frameworks/$(2)$(EXT_FRAMEWORK)/Versions/A/$(2)  \
+    $(_LIBS)                                                                \
     -o $(3)                                                                 \
     $(4)
 
@@ -248,6 +256,7 @@ _MAKE_DYLIB_BIN = $(CC)                             \
     -single_module                                  \
     -compatibility_version 1                        \
     -current_version 1                              \
+    $(_LIBS)                                        \
     -o $(3)$(EXT_DYLIB)                             \
     $(4)
 
@@ -309,11 +318,16 @@ test-debug: debug
 # Test target
 _test:
 	
+ifeq ($(_HAS_XCTOOL),true)
+	@echo $(call _PRINT,Testing,universal,Building and running unit tests)
+	@$(_XCTOOL) -project IDE/Xcode/$(PRODUCT).xcodeproj -scheme "$(PRODUCT) Example" test
+else
 ifeq ($(_HAS_XCBUILD),true)
 	@echo $(call _PRINT,Testing,universal,Building and running unit tests)
-	@/usr/bin/xcodebuild -scheme "$(PRODUCT) Example" test
+	@$(_XCBUILD) -project IDE/Xcode/$(PRODUCT).xcodeproj -scheme "$(PRODUCT) Example" test
 else
 	@echo $(call _PRINT,Testing,universal,Skipping unit tests - xcodebuild is not installed)
+endif
 endif
 
 # Cleans all build files
