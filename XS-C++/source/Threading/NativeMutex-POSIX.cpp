@@ -35,6 +35,7 @@
 
 #include <XS-C++.h>
 #include <XS-C++/PIMPL/Object-IMPL.h>
+#include <pthread.h>
 
 namespace XS
 {
