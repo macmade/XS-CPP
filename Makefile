@@ -28,13 +28,41 @@
 #-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
+# Build type
+#-------------------------------------------------------------------------------
+
+# Checks if we're on OS-X to determine the build type
+ifeq ($(findstring Darwin, $(shell uname)),)
+    _BUILD_TYPE     := unix-like
+else
+    _BUILD_TYPE     := os-x
+endif
+
+# Make version (version 4 allows parallel builds with output sync) 
+_MAKE_VERSION_MAJOR := $(shell echo $(MAKE_VERSION) | cut -f1 -d.)
+_MAKE_4             := $(shell [ $(_MAKE_VERSION_MAJOR) -ge 4 ] && echo true)
+
+# Check for the xctool utility
+_XCTOOL             := $(shell which xctool )
+_HAS_XCTOOL         := $(shell if [ -f "$(_XCTOOL)" ]; then echo true; else echo false; fi )
+
+# Check for the xcodebuild utility
+_XCBUILD            := $(shell which xcodebuild )
+_HAS_XCBUILD        := $(shell if [ -f "$(_XCBUILD)" ]; then echo true; else echo false; fi )
+
+#-------------------------------------------------------------------------------
 # Configuration
 #-------------------------------------------------------------------------------
 
 CC          := clang
+MAKE        := make -s
+SHELL       := /bin/bash
+OPTIM       := Os
+
+ifeq ($(_HAS_XCBUILD),true)
 MAC_TARGET  := $(shell xcodebuild -showsdks | grep macosx | tail -1 | perl -pe 's/[^-]+-sdk [^0-9]+(.*)/\1/g')
 IOS_SDK     := $(shell xcodebuild -showsdks | grep iphoneos | tail -1 | perl -pe 's/[^-]+-sdk [^0-9]+(.*)/\1/g')
-OPTIM       := Os
+endif
 
 #-------------------------------------------------------------------------------
 # Products
@@ -120,11 +148,11 @@ _FILES_C       += $(call _GET_C_FILES, $(DIR_SRC)Atomic/)
 _FILES_C       += $(call _GET_C_FILES, $(DIR_SRC)Threading/)
 
 # Platform specific files not to include in compilation
-_FILES_EXCLUDE  = Threading/NativeMutex-WIN32.cpp
-_FILES_EXCLUDE += Threading/NativeMutex-POSIX.cpp
-_FILES_EXCLUDE += Threading/Semaphore-APPLE.cpp
-_FILES_EXCLUDE += Threading/Semaphore-POSIX.cpp
-_FILES_EXCLUDE += Threading/Semaphore-WIN32.cpp
+_FILES_EXCLUDE  =   Threading/NativeMutex-WIN32.cpp \
+                    Threading/NativeMutex-POSIX.cpp \
+                    Threading/Semaphore-APPLE.cpp   \
+                    Threading/Semaphore-POSIX.cpp   \
+                    Threading/Semaphore-WIN32.cpp
 
 # Gets only the file name of the C files
 _FILES_C_REL   := $(subst $(DIR_SRC),,$(_FILES_C))
@@ -180,29 +208,6 @@ _PRINT      = "["$(COLOR_GREEN)" $(PRODUCT) "$(COLOR_NONE)"]> $(1) [ "$(COLOR_CY
 else
 _PRINT      = "["$(COLOR_GREEN)" $(PRODUCT) "$(COLOR_NONE)"]> $(1) [ "$(COLOR_CYAN)"Debug - $(2)"$(COLOR_NONE)" ]: "$(COLOR_YELLOW)"$(3)"$(COLOR_NONE)
 endif
-
-#-------------------------------------------------------------------------------
-# Build type
-#-------------------------------------------------------------------------------
-
-# Checks if we're on OS-X to determine the build type
-ifeq ($(findstring Darwin, $(shell uname)),)
-    _BUILD_TYPE     := unix-like
-else
-    _BUILD_TYPE     := os-x
-endif
-
-# Make version (version 4 allows parallel builds with output sync) 
-_MAKE_VERSION_MAJOR := $(shell echo $(MAKE_VERSION) | cut -f1 -d.)
-_MAKE_4             := $(shell [ $(_MAKE_VERSION_MAJOR) -ge 4 ] && echo true)
-
-# Check for the xctool utility
-_XCTOOL             := $(shell which xctool )
-_HAS_XCTOOL         := $(shell if [ -f "$(_XCTOOL)" ]; then echo true; else echo false; fi )
-
-# Check for the xcodebuild utility
-_XCBUILD            := $(shell which xcodebuild )
-_HAS_XCBUILD        := $(shell if [ -f "$(_XCBUILD)" ]; then echo true; else echo false; fi )
 
 #-------------------------------------------------------------------------------
 # Built-in targets
@@ -274,7 +279,7 @@ all: release debug
 # Documentation
 doc:
 	
-	@echo $(call _PRINT,Documentation,universal,Generating the documentation)
+	@echo -e $(call _PRINT,Documentation,universal,Generating the documentation)
 	@doxygen Documentation/$(PRODUCT).doxygen
 	
 # Release build (parallel if available)
@@ -319,14 +324,14 @@ test-debug: debug
 _test:
 	
 ifeq ($(_HAS_XCTOOL),true)
-	@echo $(call _PRINT,Testing,universal,Building and running unit tests)
+	@echo -e $(call _PRINT,Testing,universal,Building and running unit tests)
 	@$(_XCTOOL) -project IDE/Xcode/$(PRODUCT).xcodeproj -scheme "$(PRODUCT) Example" test
 else
 ifeq ($(_HAS_XCBUILD),true)
-	@echo $(call _PRINT,Testing,universal,Building and running unit tests)
+	@echo -e $(call _PRINT,Testing,universal,Building and running unit tests)
 	@$(_XCBUILD) -project IDE/Xcode/$(PRODUCT).xcodeproj -scheme "$(PRODUCT) Example" test
 else
-	@echo $(call _PRINT,Testing,universal,Skipping unit tests - xcodebuild is not installed)
+	@echo -e $(call _PRINT,Testing,universal,Skipping unit tests - xcodebuild is not installed)
 endif
 endif
 
@@ -339,27 +344,27 @@ clean:
 # Clean target
 _clean:
 	
-	@echo $(call _PRINT,Cleaning,i386,Cleaning all intermediate files)
+	@echo -e $(call _PRINT,Cleaning,i386,Cleaning all intermediate files)
 	@rm -rf $(DIR_BUILD_TEMP_INTEL_32_OBJ)*
 	@rm -rf $(DIR_BUILD_TEMP_INTEL_32_BIN)*
 	
-	@echo $(call _PRINT,Cleaning,x86-64,Cleaning all intermediate files)
+	@echo -e $(call _PRINT,Cleaning,x86-64,Cleaning all intermediate files)
 	@rm -rf $(DIR_BUILD_TEMP_INTEL_64_OBJ)*
 	@rm -rf $(DIR_BUILD_TEMP_INTEL_64_BIN)*
 	
-	@echo $(call _PRINT,Cleaning,armv7,Cleaning all intermediate files)
+	@echo -e $(call _PRINT,Cleaning,armv7,Cleaning all intermediate files)
 	@rm -rf $(DIR_BUILD_TEMP_ARM_7_OBJ)*
 	@rm -rf $(DIR_BUILD_TEMP_ARM_7_BIN)*
 	
-	@echo $(call _PRINT,Cleaning,armv7s,Cleaning all intermediate files)
+	@echo -e $(call _PRINT,Cleaning,armv7s,Cleaning all intermediate files)
 	@rm -rf $(DIR_BUILD_TEMP_ARM_7S_OBJ)*
 	@rm -rf $(DIR_BUILD_TEMP_ARM_7S_BIN)*
 	
-	@echo $(call _PRINT,Cleaning,arm64,Cleaning all intermediate files)
+	@echo -e $(call _PRINT,Cleaning,arm64,Cleaning all intermediate files)
 	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)*
 	@rm -rf $(DIR_BUILD_TEMP_ARM_64_BIN)*
 	
-	@echo $(call _PRINT,Cleaning,universal,Cleaning all product files)
+	@echo -e $(call _PRINT,Cleaning,universal,Cleaning all product files)
 	@rm -rf $(DIR_BUILD_PRODUCTS)*
 
 # Build for OS-X
@@ -375,76 +380,76 @@ unix-like: lib dylib
 # Builds a static library (generic)
 lib: i386 x86-64
 	
-	@echo $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Linking the i386 binary)
+	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Linking the i386 binary)
 	@libtool -static -arch_only i386 -o $(DIR_BUILD_TEMP_INTEL_32_BIN)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O)
 	
-	@echo $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Linking the x86-64 binary)
+	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Linking the x86-64 binary)
 	@libtool -static -arch_only x86_64 -o $(DIR_BUILD_TEMP_INTEL_64_BIN)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O)
 	
-	@echo $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Linking the universal binary)
+	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Linking the universal binary)
 	@libtool -static $(DIR_BUILD_TEMP_INTEL_32_BIN)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_64_BIN)$(PRODUCT_LIB)$(EXT_LIB) -o $(DIR_BUILD_PRODUCTS)$(PRODUCT_LIB)$(EXT_LIB)
 	
 ifeq ($(findstring 1,$(DEBUG)),)
-	@echo $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Stripping the debug symbols)
+	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Stripping the debug symbols)
 	@strip -S $(DIR_BUILD_PRODUCTS)$(PRODUCT_LIB)$(EXT_LIB)
 endif
 	
 # Builds a dynamic library (generic)
 dylib: i386 x86-64
 	
-	@echo $(call _PRINT,$(PRODUCT_DYLIB)$(EXT_DYLIB),universal,Linking the i386 binary)
+	@echo -e $(call _PRINT,$(PRODUCT_DYLIB)$(EXT_DYLIB),universal,Linking the i386 binary)
 	@$(call _MAKE_DYLIB_BIN,i386,$(PRODUCT_DYLIB),$(DIR_BUILD_TEMP_INTEL_32_BIN)$(PRODUCT_DYLIB),$(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O))
 	
-	@echo $(call _PRINT,$(PRODUCT_DYLIB)$(EXT_DYLIB),universal,Linking the x86-64 binary)
+	@echo -e $(call _PRINT,$(PRODUCT_DYLIB)$(EXT_DYLIB),universal,Linking the x86-64 binary)
 	@$(call _MAKE_DYLIB_BIN,x86_64,$(PRODUCT_DYLIB),$(DIR_BUILD_TEMP_INTEL_64_BIN)$(PRODUCT_DYLIB),$(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O))
 	
-	@echo $(call _PRINT,$(PRODUCT_LIB)$(EXT_DYLIB),universal,Linking the universal binary)
+	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_DYLIB),universal,Linking the universal binary)
 	@lipo -create $(DIR_BUILD_TEMP_INTEL_32_BIN)$(PRODUCT_DYLIB)$(EXT_DYLIB) $(DIR_BUILD_TEMP_INTEL_64_BIN)$(PRODUCT_DYLIB)$(EXT_DYLIB) -output $(DIR_BUILD_PRODUCTS)$(PRODUCT_DYLIB)$(EXT_DYLIB)
 	
 ifeq ($(findstring 1,$(DEBUG)),)
-	@echo $(call _PRINT,$(PRODUCT_LIB)$(EXT_DYLIB),universal,Stripping the debug symbols)
+	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_DYLIB),universal,Stripping the debug symbols)
 	@strip -S $(DIR_BUILD_PRODUCTS)$(PRODUCT_LIB)$(EXT_DYLIB)
 endif
 
 # Builds an iOS static library (OS-X only)
 ios-lib: armv7 armv7s arm64
 	
-	@echo $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Linking the armv7 binary)
+	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Linking the armv7 binary)
 	@libtool -static -arch_only armv7 -o $(DIR_BUILD_TEMP_ARM_7_BIN)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_ARM_7_OBJ)$(PRODUCT)$(EXT_O)
 	
-	@echo $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Linking the armv7s binary)
+	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Linking the armv7s binary)
 	@libtool -static -arch_only armv7s -o $(DIR_BUILD_TEMP_ARM_7S_BIN)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_ARM_7S_OBJ)$(PRODUCT)$(EXT_O)
 	
-	@echo $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Linking the arm64 binary)
+	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Linking the arm64 binary)
 	@libtool -static -arch_only arm64 -o $(DIR_BUILD_TEMP_ARM_64_BIN)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
 	
-	@echo $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Linking the universal binary)
+	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Linking the universal binary)
 	@libtool -static $(DIR_BUILD_TEMP_ARM_7_BIN)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_ARM_7S_BIN)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_ARM_64_BIN)$(PRODUCT_IOS_LIB)$(EXT_LIB) -o $(DIR_BUILD_PRODUCTS)$(PRODUCT_IOS_LIB)$(EXT_LIB)
 	
 ifeq ($(findstring 1,$(DEBUG)),)
-	@echo $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Stripping the debug symbols)
+	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Stripping the debug symbols)
 	@strip -S $(DIR_BUILD_PRODUCTS)$(PRODUCT_IOS_LIB)$(EXT_LIB)
 endif
 
 # Builds an Mac framework (OS-X only)
 mac-framework: i386 x86-64
 	
-	@echo $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Creating the directory structure)
+	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Creating the directory structure)
 	@rm -rf $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)
 	@mkdir -p $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Headers/
 	@mkdir -p $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/
 	
-	@echo $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Creating the symbolic links)
+	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Creating the symbolic links)
 	@ln -s A/ $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/Current
 	@ln -s Versions/A/Headers/ $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Headers
 	@ln -s Versions/A/Resources/ $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Resources
 	@ln -s Versions/A/$(PRODUCT_MAC_FRAMEWORK) $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/$(PRODUCT_MAC_FRAMEWORK)
 
-	@echo $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Copying the public header files)
+	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Copying the public header files)
 	@cp -rf $(DIR_INC)$(PRODUCT).h $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Headers/
 	@cp -rf $(DIR_INC)$(PRODUCT)/* $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Headers/
 	
-	@echo $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Creating the Info.plist file)
+	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Creating the Info.plist file)
 	@cp -rf $(DIR_RES)Info.plist $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/Info.plist
 	@plutil -insert BuildMachineOSBuild -string $(shell sw_vers -buildVersion) $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/Info.plist
 	@plutil -insert DTSDKName -string macosx$(MAC_TARGET) $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/Info.plist
@@ -455,55 +460,55 @@ mac-framework: i386 x86-64
 	@plutil -insert DTXcode -string $(call _XCODE_SDK_VALUE,DTXcode)
 	@plutil -insert DTXcodeBuild -string $(call _XCODE_SDK_VALUE,DTXcodeBuild)
 	
-	@echo $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Copying the bundle resources)
+	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Copying the bundle resources)
 	@:
 	
-	@echo $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Linking the i386 binary)
+	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Linking the i386 binary)
 	@$(call _MAKE_FRAMEWORK_BIN,i386,$(PRODUCT_MAC_FRAMEWORK),$(DIR_BUILD_TEMP_INTEL_32_BIN)$(PRODUCT_MAC_FRAMEWORK),$(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O))
 	
-	@echo $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Linking the x86-64 binary)
+	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Linking the x86-64 binary)
 	@$(call _MAKE_FRAMEWORK_BIN,x86_64,$(PRODUCT_MAC_FRAMEWORK),$(DIR_BUILD_TEMP_INTEL_64_BIN)$(PRODUCT_MAC_FRAMEWORK),$(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O))
 	
-	@echo $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Linking the universal binary)
+	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Linking the universal binary)
 	@lipo -create $(DIR_BUILD_TEMP_INTEL_32_BIN)$(PRODUCT_MAC_FRAMEWORK) $(DIR_BUILD_TEMP_INTEL_64_BIN)$(PRODUCT_MAC_FRAMEWORK) -output $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/$(PRODUCT_MAC_FRAMEWORK)
 	
 ifeq ($(findstring 1,$(DEBUG)),)
-	@echo $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Stripping the debug symbols)
+	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Stripping the debug symbols)
 	@strip -S $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/$(PRODUCT_MAC_FRAMEWORK)
 endif
 
 # Target: i386
 i386: $(_FILES_C_BUILD_INTEL_32)
 	
-	@echo $(call _PRINT,Linking object files,i386,$(PRODUCT)$(EXT_O))
+	@echo -e $(call _PRINT,Linking object files,i386,$(PRODUCT)$(EXT_O))
 	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
 	@ld -r $(_FILES_C_BUILD_INTEL_32) -o $(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O)
 
 # Target: x86-64
 x86-64: $(_FILES_C_BUILD_INTEL_64)
 	
-	@echo $(call _PRINT,Linking object files,x86-64,$(PRODUCT)$(EXT_O))
+	@echo -e $(call _PRINT,Linking object files,x86-64,$(PRODUCT)$(EXT_O))
 	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
 	@ld -r $(_FILES_C_BUILD_INTEL_64) -o $(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O)
 
 # Target: armv7
 armv7: $(_FILES_C_BUILD_ARM_7)
 	
-	@echo $(call _PRINT,Linking object files,armv7,$(PRODUCT)$(EXT_O))
+	@echo -e $(call _PRINT,Linking object files,armv7,$(PRODUCT)$(EXT_O))
 	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
 	@ld -r $(_FILES_C_BUILD_ARM_7) -o $(DIR_BUILD_TEMP_ARM_7_OBJ)$(PRODUCT)$(EXT_O)
 
 # Target: armv7s
 armv7s: $(_FILES_C_BUILD_ARM_7S)
 	
-	@echo $(call _PRINT,Linking object files,armv7s,$(PRODUCT)$(EXT_O))
+	@echo -e $(call _PRINT,Linking object files,armv7s,$(PRODUCT)$(EXT_O))
 	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
 	@ld -r $(_FILES_C_BUILD_ARM_7S) -o $(DIR_BUILD_TEMP_ARM_7S_OBJ)$(PRODUCT)$(EXT_O)
 
 # Target: arm64
 arm64: $(_FILES_C_BUILD_ARM_64)
 	
-	@echo $(call _PRINT,Linking object files,arm64,$(PRODUCT)$(EXT_O))
+	@echo -e $(call _PRINT,Linking object files,arm64,$(PRODUCT)$(EXT_O))
 	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
 	@ld -r $(_FILES_C_BUILD_ARM_64) -o $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
 
@@ -516,29 +521,29 @@ arm64: $(_FILES_C_BUILD_ARM_64)
 # Target: i386 object file
 $(DIR_BUILD_TEMP_INTEL_32_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
 	
-	@echo $(call _PRINT_FILE,"Compiling C file",i386,$<)
+	@echo -e $(call _PRINT_FILE,"Compiling C file",i386,$<)
 	@$(_CC) -arch i386 -o $@ -c $<
 
 # Target: x86_64 object file
 $(DIR_BUILD_TEMP_INTEL_64_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
 	
-	@echo $(call _PRINT_FILE,"Compiling C file",x86-64,$<)
+	@echo -e $(call _PRINT_FILE,"Compiling C file",x86-64,$<)
 	@$(_CC) -arch x86_64 -o $@ -c $<
 
 # Target: armv7 object file
 $(DIR_BUILD_TEMP_ARM_7_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
 	
-	@echo $(call _PRINT_FILE,"Compiling C file",armv7,$<)
+	@echo -e $(call _PRINT_FILE,"Compiling C file",armv7,$<)
 	@$(_CC) -arch armv7 -isysroot $(_IOS_SDK_PATH) -o $@ -c $<
 
 # Target: armv7s object file
 $(DIR_BUILD_TEMP_ARM_7S_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
 	
-	@echo $(call _PRINT_FILE,"Compiling C file",armv7s,$<)
+	@echo -e $(call _PRINT_FILE,"Compiling C file",armv7s,$<)
 	@$(_CC) -arch armv7s -isysroot $(_IOS_SDK_PATH) -o $@ -c $<
 
 # Target: arm64 object file
 $(DIR_BUILD_TEMP_ARM_64_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
 	
-	@echo $(call _PRINT_FILE,"Compiling C file",arm64,$<)
+	@echo -e $(call _PRINT_FILE,"Compiling C file",arm64,$<)
 	@$(_CC) -arch arm64 -isysroot $(_IOS_SDK_PATH) -o $@ -c $<
