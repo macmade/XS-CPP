@@ -267,7 +267,7 @@ _XCODE_SDK_VALUE = "$(shell /usr/libexec/PlistBuddy -c "Print $(1)" /Application
 #-------------------------------------------------------------------------------
 
 # Main Target
-all: release debug doc
+all: release debug
 	
 	@:
 	
