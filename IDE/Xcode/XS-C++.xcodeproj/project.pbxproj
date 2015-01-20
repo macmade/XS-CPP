@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		052537751A6538510031BE63 /* Atomic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0525376B1A6538510031BE63 /* Atomic.cpp */; };
-		052537761A6538510031BE63 /* Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0525376C1A6538510031BE63 /* Exception.cpp */; };
-		052537771A6538510031BE63 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0525376E1A6538510031BE63 /* Object.cpp */; };
-		052537781A6538510031BE63 /* LockGuard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052537701A6538510031BE63 /* LockGuard.cpp */; };
-		052537791A6538510031BE63 /* NativeMutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052537711A6538510031BE63 /* NativeMutex.cpp */; };
-		0525377A1A6538510031BE63 /* STLMutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052537721A6538510031BE63 /* STLMutex.cpp */; };
-		0525377B1A6538510031BE63 /* ToStringable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052537731A6538510031BE63 /* ToStringable.cpp */; };
-		0525377C1A6538510031BE63 /* Version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052537741A6538510031BE63 /* Version.cpp */; };
 		056C884118C8C232006260B3 /* libXS-C++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C881218C8B85F006260B3 /* libXS-C++.a */; };
+		0590A5B31A6F08EF00BFF0BF /* XS-Atomic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5AA1A6F08EF00BFF0BF /* XS-Atomic.cpp */; };
+		0590A5B41A6F08EF00BFF0BF /* XS-Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5AB1A6F08EF00BFF0BF /* XS-Exception.cpp */; };
+		0590A5B51A6F08EF00BFF0BF /* XS-PIMPL-Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5AC1A6F08EF00BFF0BF /* XS-PIMPL-Object.cpp */; };
+		0590A5B61A6F08EF00BFF0BF /* XS-Threading-LockGuard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5AD1A6F08EF00BFF0BF /* XS-Threading-LockGuard.cpp */; };
+		0590A5B71A6F08EF00BFF0BF /* XS-Threading-NativeMutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5AE1A6F08EF00BFF0BF /* XS-Threading-NativeMutex.cpp */; };
+		0590A5B81A6F08EF00BFF0BF /* XS-Threading-Semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5AF1A6F08EF00BFF0BF /* XS-Threading-Semaphore.cpp */; };
+		0590A5B91A6F08EF00BFF0BF /* XS-Threading-STLMutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5B01A6F08EF00BFF0BF /* XS-Threading-STLMutex.cpp */; };
+		0590A5BA1A6F08EF00BFF0BF /* XS-ToStringable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5B11A6F08EF00BFF0BF /* XS-ToStringable.cpp */; };
+		0590A5BB1A6F08EF00BFF0BF /* XS-Version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5B21A6F08EF00BFF0BF /* XS-Version.cpp */; };
 		05CADA291A69E91E00C9E9DC /* gmock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CADA1E1A69E7FA00C9E9DC /* gmock.framework */; };
 		05CADA2A1A69E91E00C9E9DC /* GoogleMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CADA1C1A69E7FA00C9E9DC /* GoogleMock.framework */; };
 		05CADA2B1A69E91E00C9E9DC /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CADA201A69E7FA00C9E9DC /* gtest.framework */; };
@@ -104,7 +105,6 @@
 		05DC07AC1A6149A700A7CF26 /* ToStringable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07A81A6149A700A7CF26 /* ToStringable.cpp */; };
 		05E71B5E1961D96100F911C4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E71B5D1961D96100F911C4 /* main.cpp */; };
 		05E71B691961D9D100F911C4 /* libXS-C++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C881218C8B85F006260B3 /* libXS-C++.a */; };
-		05FFA38D1A69918F006E1B9B /* Semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FFA38C1A69918F006E1B9B /* Semaphore.cpp */; };
 		05FFA3901A6992E8006E1B9B /* Semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FFA38F1A6992E8006E1B9B /* Semaphore.cpp */; };
 		05FFA3911A6992E8006E1B9B /* Semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FFA38F1A6992E8006E1B9B /* Semaphore.cpp */; };
 		05FFA3921A6992E8006E1B9B /* Semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FFA38F1A6992E8006E1B9B /* Semaphore.cpp */; };
@@ -235,14 +235,6 @@
 
 /* Begin PBXFileReference section */
 		051F09651946EB70004B6E47 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
-		0525376B1A6538510031BE63 /* Atomic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Atomic.cpp; sourceTree = "<group>"; };
-		0525376C1A6538510031BE63 /* Exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Exception.cpp; sourceTree = "<group>"; };
-		0525376E1A6538510031BE63 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
-		052537701A6538510031BE63 /* LockGuard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LockGuard.cpp; sourceTree = "<group>"; };
-		052537711A6538510031BE63 /* NativeMutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NativeMutex.cpp; sourceTree = "<group>"; };
-		052537721A6538510031BE63 /* STLMutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = STLMutex.cpp; sourceTree = "<group>"; };
-		052537731A6538510031BE63 /* ToStringable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToStringable.cpp; sourceTree = "<group>"; };
-		052537741A6538510031BE63 /* Version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Version.cpp; sourceTree = "<group>"; };
 		054511EF1A6A0ACA002B8F92 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = Makefile; path = ../../Makefile; sourceTree = "<group>"; };
 		054511F31A6A0AFF002B8F92 /* coveralls.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = coveralls.sh; sourceTree = "<group>"; };
 		056C87CE18C8B0F8006260B3 /* XS-C++ Example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "XS-C++ Example"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -250,6 +242,15 @@
 		056C884A18C8C547006260B3 /* libXS-C++.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "libXS-C++.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
 		056C885F18C8C76B006260B3 /* XS-C++.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "XS-C++.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		056C88AA18C8C8AC006260B3 /* libXS-C++.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libXS-C++.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0590A5AA1A6F08EF00BFF0BF /* XS-Atomic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Atomic.cpp"; sourceTree = "<group>"; };
+		0590A5AB1A6F08EF00BFF0BF /* XS-Exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Exception.cpp"; sourceTree = "<group>"; };
+		0590A5AC1A6F08EF00BFF0BF /* XS-PIMPL-Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-PIMPL-Object.cpp"; sourceTree = "<group>"; };
+		0590A5AD1A6F08EF00BFF0BF /* XS-Threading-LockGuard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Threading-LockGuard.cpp"; sourceTree = "<group>"; };
+		0590A5AE1A6F08EF00BFF0BF /* XS-Threading-NativeMutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Threading-NativeMutex.cpp"; sourceTree = "<group>"; };
+		0590A5AF1A6F08EF00BFF0BF /* XS-Threading-Semaphore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Threading-Semaphore.cpp"; sourceTree = "<group>"; };
+		0590A5B01A6F08EF00BFF0BF /* XS-Threading-STLMutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Threading-STLMutex.cpp"; sourceTree = "<group>"; };
+		0590A5B11A6F08EF00BFF0BF /* XS-ToStringable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-ToStringable.cpp"; sourceTree = "<group>"; };
+		0590A5B21A6F08EF00BFF0BF /* XS-Version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Version.cpp"; sourceTree = "<group>"; };
 		05BDE00A18CDB2450028F339 /* Clang-Warnings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Clang-Warnings.h"; sourceTree = "<group>"; };
 		05BDE01818CDB2450028F339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05BDE01918CDB2450028F339 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -287,7 +288,6 @@
 		05E71B631961D9D100F911C4 /* XS-C++ Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XS-C++ Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E71B711961DA1100F911C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05FFA3701A696E75006E1B9B /* GoogleMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GoogleMock.xcodeproj; path = "../../Submodules/gmock-xcode/GoogleMock.xcodeproj"; sourceTree = "<group>"; };
-		05FFA38C1A69918F006E1B9B /* Semaphore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Semaphore.cpp; sourceTree = "<group>"; };
 		05FFA38F1A6992E8006E1B9B /* Semaphore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Semaphore.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -342,25 +342,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0525376D1A6538510031BE63 /* PIMPL */ = {
-			isa = PBXGroup;
-			children = (
-				0525376E1A6538510031BE63 /* Object.cpp */,
-			);
-			path = PIMPL;
-			sourceTree = "<group>";
-		};
-		0525376F1A6538510031BE63 /* Threading */ = {
-			isa = PBXGroup;
-			children = (
-				052537701A6538510031BE63 /* LockGuard.cpp */,
-				052537711A6538510031BE63 /* NativeMutex.cpp */,
-				052537721A6538510031BE63 /* STLMutex.cpp */,
-				05FFA38C1A69918F006E1B9B /* Semaphore.cpp */,
-			);
-			path = Threading;
-			sourceTree = "<group>";
-		};
 		054511F11A6A0AFF002B8F92 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,7 +358,7 @@
 				054511EF1A6A0ACA002B8F92 /* Makefile */,
 				051F09651946EB70004B6E47 /* README.md */,
 				05BDE00918CDB2450028F339 /* XS-C++ */,
-				05E71B6F1961DA1100F911C4 /* XS-C++ Tests */,
+				05E71B6F1961DA1100F911C4 /* Unit-Tests */,
 				05E71B5C1961D96100F911C4 /* XS-C++ Example */,
 				054511F11A6A0AFF002B8F92 /* Scripts */,
 				056C880D18C8B50E006260B3 /* Frameworks */,
@@ -465,19 +446,6 @@
 			path = "XS-C++";
 			sourceTree = "<group>";
 		};
-		05DC07321A5FC4CE00A7CF26 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				0525376B1A6538510031BE63 /* Atomic.cpp */,
-				0525376C1A6538510031BE63 /* Exception.cpp */,
-				0525376D1A6538510031BE63 /* PIMPL */,
-				0525376F1A6538510031BE63 /* Threading */,
-				052537731A6538510031BE63 /* ToStringable.cpp */,
-				052537741A6538510031BE63 /* Version.cpp */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
 		05DC07351A5FC9DB00A7CF26 /* Atomic */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,14 +488,22 @@
 			path = "../../XS-C++ Example";
 			sourceTree = "<group>";
 		};
-		05E71B6F1961DA1100F911C4 /* XS-C++ Tests */ = {
+		05E71B6F1961DA1100F911C4 /* Unit-Tests */ = {
 			isa = PBXGroup;
 			children = (
 				05E71B711961DA1100F911C4 /* Info.plist */,
-				05DC07321A5FC4CE00A7CF26 /* Tests */,
+				0590A5AA1A6F08EF00BFF0BF /* XS-Atomic.cpp */,
+				0590A5AB1A6F08EF00BFF0BF /* XS-Exception.cpp */,
+				0590A5AC1A6F08EF00BFF0BF /* XS-PIMPL-Object.cpp */,
+				0590A5AD1A6F08EF00BFF0BF /* XS-Threading-LockGuard.cpp */,
+				0590A5AE1A6F08EF00BFF0BF /* XS-Threading-NativeMutex.cpp */,
+				0590A5AF1A6F08EF00BFF0BF /* XS-Threading-Semaphore.cpp */,
+				0590A5B01A6F08EF00BFF0BF /* XS-Threading-STLMutex.cpp */,
+				0590A5B11A6F08EF00BFF0BF /* XS-ToStringable.cpp */,
+				0590A5B21A6F08EF00BFF0BF /* XS-Version.cpp */,
 			);
-			name = "XS-C++ Tests";
-			path = "../../XS-C++ Tests";
+			name = "Unit-Tests";
+			path = "../../Unit-Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -905,16 +881,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				052537791A6538510031BE63 /* NativeMutex.cpp in Sources */,
-				0525377A1A6538510031BE63 /* STLMutex.cpp in Sources */,
-				0525377B1A6538510031BE63 /* ToStringable.cpp in Sources */,
-				052537781A6538510031BE63 /* LockGuard.cpp in Sources */,
-				052537761A6538510031BE63 /* Exception.cpp in Sources */,
-				0525377C1A6538510031BE63 /* Version.cpp in Sources */,
+				0590A5B71A6F08EF00BFF0BF /* XS-Threading-NativeMutex.cpp in Sources */,
+				0590A5B61A6F08EF00BFF0BF /* XS-Threading-LockGuard.cpp in Sources */,
 				05DC07A41A61466A00A7CF26 /* Exception.cpp in Sources */,
-				052537771A6538510031BE63 /* Object.cpp in Sources */,
-				05FFA38D1A69918F006E1B9B /* Semaphore.cpp in Sources */,
-				052537751A6538510031BE63 /* Atomic.cpp in Sources */,
+				0590A5B91A6F08EF00BFF0BF /* XS-Threading-STLMutex.cpp in Sources */,
+				0590A5B31A6F08EF00BFF0BF /* XS-Atomic.cpp in Sources */,
+				0590A5BA1A6F08EF00BFF0BF /* XS-ToStringable.cpp in Sources */,
+				0590A5B81A6F08EF00BFF0BF /* XS-Threading-Semaphore.cpp in Sources */,
+				0590A5BB1A6F08EF00BFF0BF /* XS-Version.cpp in Sources */,
+				0590A5B51A6F08EF00BFF0BF /* XS-PIMPL-Object.cpp in Sources */,
+				0590A5B41A6F08EF00BFF0BF /* XS-Exception.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
