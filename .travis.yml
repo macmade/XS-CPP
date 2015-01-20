@@ -1,3 +1,6 @@
 language: objective-c
 compiler: clang
 script: make && make test
+after_success:
+- cd /tmp && git clone https://github.com/macmade/xcode-coveralls.git
+- cd /tmp/xcode-coveralls && sudo xctool --project xcode-coveralls.xcodeproj --scheme xcode-coveralls DSTROOT=/ install
