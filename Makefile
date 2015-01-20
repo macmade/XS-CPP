@@ -325,11 +325,11 @@ _test:
 	
 ifeq ($(_HAS_XCTOOL),true)
 	@echo -e $(call _PRINT,Testing,universal,Building and running unit tests)
-	@$(_XCTOOL) -project IDE/Xcode/$(PRODUCT).xcodeproj -scheme "$(PRODUCT) Example" test
+	@$(_XCTOOL) -project IDE/Xcode/$(PRODUCT).xcodeproj -scheme "$(PRODUCT) Mac Static Library" test
 else
 ifeq ($(_HAS_XCBUILD),true)
 	@echo -e $(call _PRINT,Testing,universal,Building and running unit tests)
-	@$(_XCBUILD) -project IDE/Xcode/$(PRODUCT).xcodeproj -scheme "$(PRODUCT) Example" test
+	@$(_XCBUILD) -project IDE/Xcode/$(PRODUCT).xcodeproj -scheme "$(PRODUCT) Mac Static Library" test
 else
 	@echo -e $(call _PRINT,Testing,universal,Skipping unit tests - xcodebuild is not installed)
 endif
