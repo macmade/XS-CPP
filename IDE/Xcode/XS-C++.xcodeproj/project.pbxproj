@@ -498,6 +498,7 @@
 				056C880E18C8B85F006260B3 /* Sources */,
 				056C880F18C8B85F006260B3 /* Frameworks */,
 				056C881018C8B85F006260B3 /* Headers */,
+				0590A5BC1A6F0E7C00BFF0BF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -672,6 +673,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0590A5BC1A6F0E7C00BFF0BF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export | egrep '(BUILT_PRODUCTS_DIR)|(CURRENT_ARCH)|(OBJECT_FILE_DIR_normal)|(SRCROOT)|(OBJROOT)' > xcenv.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		056C880E18C8B85F006260B3 /* Sources */ = {
