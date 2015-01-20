@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		056C884118C8C232006260B3 /* libXS-C++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C881218C8B85F006260B3 /* libXS-C++.a */; };
 		0590A5B31A6F08EF00BFF0BF /* XS-Atomic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5AA1A6F08EF00BFF0BF /* XS-Atomic.cpp */; };
 		0590A5B41A6F08EF00BFF0BF /* XS-Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5AB1A6F08EF00BFF0BF /* XS-Exception.cpp */; };
 		0590A5B51A6F08EF00BFF0BF /* XS-PIMPL-Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5AC1A6F08EF00BFF0BF /* XS-PIMPL-Object.cpp */; };
@@ -103,7 +102,6 @@
 		05DC07AA1A6149A700A7CF26 /* ToStringable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07A81A6149A700A7CF26 /* ToStringable.cpp */; };
 		05DC07AB1A6149A700A7CF26 /* ToStringable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07A81A6149A700A7CF26 /* ToStringable.cpp */; };
 		05DC07AC1A6149A700A7CF26 /* ToStringable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07A81A6149A700A7CF26 /* ToStringable.cpp */; };
-		05E71B5E1961D96100F911C4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E71B5D1961D96100F911C4 /* main.cpp */; };
 		05E71B691961D9D100F911C4 /* libXS-C++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C881218C8B85F006260B3 /* libXS-C++.a */; };
 		05FFA3901A6992E8006E1B9B /* Semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FFA38F1A6992E8006E1B9B /* Semaphore.cpp */; };
 		05FFA3911A6992E8006E1B9B /* Semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FFA38F1A6992E8006E1B9B /* Semaphore.cpp */; };
@@ -125,34 +123,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 056C881118C8B85F006260B3;
 			remoteInfo = "CF++ Mac Static Library";
-		};
-		056C883F18C8C22E006260B3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 056C87C618C8B0F8006260B3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 056C881118C8B85F006260B3;
-			remoteInfo = "CF++";
-		};
-		056C884E18C8C577006260B3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 056C87C618C8B0F8006260B3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 056C884918C8C547006260B3;
-			remoteInfo = "CF++ Mac Synamic Library";
-		};
-		056C888D18C8C7F0006260B3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 056C87C618C8B0F8006260B3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 056C885E18C8C76B006260B3;
-			remoteInfo = "CF++";
-		};
-		056C88D118C8C93C006260B3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 056C87C618C8B0F8006260B3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 056C88A918C8C8AC006260B3;
-			remoteInfo = "CF++ iOS Static Library";
 		};
 		05CADA1B1A69E7FA00C9E9DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -213,15 +183,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		056C87CC18C8B0F8006260B3 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 		056C88A818C8C8AC006260B3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -237,7 +198,6 @@
 		051F09651946EB70004B6E47 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		054511EF1A6A0ACA002B8F92 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = Makefile; path = ../../Makefile; sourceTree = "<group>"; };
 		054511F31A6A0AFF002B8F92 /* coveralls.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = coveralls.sh; sourceTree = "<group>"; };
-		056C87CE18C8B0F8006260B3 /* XS-C++ Example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "XS-C++ Example"; sourceTree = BUILT_PRODUCTS_DIR; };
 		056C881218C8B85F006260B3 /* libXS-C++.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libXS-C++.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		056C884A18C8C547006260B3 /* libXS-C++.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "libXS-C++.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
 		056C885F18C8C76B006260B3 /* XS-C++.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "XS-C++.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -284,7 +244,6 @@
 		05DC079F1A61466A00A7CF26 /* Exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Exception.cpp; sourceTree = "<group>"; };
 		05DC07A51A61489300A7CF26 /* ToStringable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToStringable.h; sourceTree = "<group>"; };
 		05DC07A81A6149A700A7CF26 /* ToStringable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToStringable.cpp; sourceTree = "<group>"; };
-		05E71B5D1961D96100F911C4 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		05E71B631961D9D100F911C4 /* XS-C++ Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XS-C++ Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E71B711961DA1100F911C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05FFA3701A696E75006E1B9B /* GoogleMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GoogleMock.xcodeproj; path = "../../Submodules/gmock-xcode/GoogleMock.xcodeproj"; sourceTree = "<group>"; };
@@ -292,14 +251,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		056C87CB18C8B0F8006260B3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				056C884118C8C232006260B3 /* libXS-C++.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		056C880F18C8B85F006260B3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -359,7 +310,6 @@
 				051F09651946EB70004B6E47 /* README.md */,
 				05BDE00918CDB2450028F339 /* XS-C++ */,
 				05E71B6F1961DA1100F911C4 /* Unit-Tests */,
-				05E71B5C1961D96100F911C4 /* XS-C++ Example */,
 				054511F11A6A0AFF002B8F92 /* Scripts */,
 				056C880D18C8B50E006260B3 /* Frameworks */,
 				056C87CF18C8B0F8006260B3 /* Products */,
@@ -369,7 +319,6 @@
 		056C87CF18C8B0F8006260B3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				056C87CE18C8B0F8006260B3 /* XS-C++ Example */,
 				056C881218C8B85F006260B3 /* libXS-C++.a */,
 				056C884A18C8C547006260B3 /* libXS-C++.dylib */,
 				056C885F18C8C76B006260B3 /* XS-C++.framework */,
@@ -479,15 +428,6 @@
 			path = Threading;
 			sourceTree = "<group>";
 		};
-		05E71B5C1961D96100F911C4 /* XS-C++ Example */ = {
-			isa = PBXGroup;
-			children = (
-				05E71B5D1961D96100F911C4 /* main.cpp */,
-			);
-			name = "XS-C++ Example";
-			path = "../../XS-C++ Example";
-			sourceTree = "<group>";
-		};
 		05E71B6F1961DA1100F911C4 /* Unit-Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,27 +491,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		056C87CD18C8B0F8006260B3 /* XS-C++ Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 056C87D718C8B0F8006260B3 /* Build configuration list for PBXNativeTarget "XS-C++ Example" */;
-			buildPhases = (
-				056C87CA18C8B0F8006260B3 /* Sources */,
-				056C87CB18C8B0F8006260B3 /* Frameworks */,
-				056C87CC18C8B0F8006260B3 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				056C884018C8C22E006260B3 /* PBXTargetDependency */,
-				056C884F18C8C577006260B3 /* PBXTargetDependency */,
-				056C888E18C8C7F0006260B3 /* PBXTargetDependency */,
-				056C88D218C8C93C006260B3 /* PBXTargetDependency */,
-			);
-			name = "XS-C++ Example";
-			productName = Testing;
-			productReference = 056C87CE18C8B0F8006260B3 /* XS-C++ Example */;
-			productType = "com.apple.product-type.tool";
-		};
 		056C881118C8B85F006260B3 /* XS-C++ Mac Static Library */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 056C881318C8B85F006260B3 /* Build configuration list for PBXNativeTarget "XS-C++ Mac Static Library" */;
@@ -698,7 +617,6 @@
 			);
 			projectRoot = "";
 			targets = (
-				056C87CD18C8B0F8006260B3 /* XS-C++ Example */,
 				056C881118C8B85F006260B3 /* XS-C++ Mac Static Library */,
 				056C884918C8C547006260B3 /* XS-C++ Mac Dynamic Library */,
 				056C885E18C8C76B006260B3 /* XS-C++ Mac Framework */,
@@ -773,14 +691,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		056C87CA18C8B0F8006260B3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				05E71B5E1961D96100F911C4 /* main.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		056C880E18C8B85F006260B3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -906,26 +816,6 @@
 			isa = PBXTargetDependency;
 			target = 056C881118C8B85F006260B3 /* XS-C++ Mac Static Library */;
 			targetProxy = 05169CA21962ACD80082861C /* PBXContainerItemProxy */;
-		};
-		056C884018C8C22E006260B3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 056C881118C8B85F006260B3 /* XS-C++ Mac Static Library */;
-			targetProxy = 056C883F18C8C22E006260B3 /* PBXContainerItemProxy */;
-		};
-		056C884F18C8C577006260B3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 056C884918C8C547006260B3 /* XS-C++ Mac Dynamic Library */;
-			targetProxy = 056C884E18C8C577006260B3 /* PBXContainerItemProxy */;
-		};
-		056C888E18C8C7F0006260B3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 056C885E18C8C76B006260B3 /* XS-C++ Mac Framework */;
-			targetProxy = 056C888D18C8C7F0006260B3 /* PBXContainerItemProxy */;
-		};
-		056C88D218C8C93C006260B3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 056C88A918C8C8AC006260B3 /* XS-C++ iOS Static Library */;
-			targetProxy = 056C88D118C8C93C006260B3 /* PBXContainerItemProxy */;
 		};
 		05CADA241A69E91800C9E9DC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1157,28 +1047,6 @@
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
-			};
-			name = Release;
-		};
-		056C87D818C8B0F8006260B3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"../../XS-C++/include",
-				);
-				PRODUCT_NAME = "XS-C++ Example";
-			};
-			name = Debug;
-		};
-		056C87D918C8B0F8006260B3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"../../XS-C++/include",
-				);
-				PRODUCT_NAME = "XS-C++ Example";
 			};
 			name = Release;
 		};
@@ -1430,17 +1298,6 @@
 			};
 			name = GCov;
 		};
-		05818F711A66028D0072A469 /* GCov */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"../../XS-C++/include",
-				);
-				PRODUCT_NAME = "XS-C++ Example";
-			};
-			name = GCov;
-		};
 		05818F721A66028D0072A469 /* GCov */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1526,7 +1383,7 @@
 					"/Applications/Xcode6-Beta2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
 					"../../XS-C++/include",
 				);
-				INFOPLIST_FILE = "../../XS-C++ Tests/Info.plist";
+				INFOPLIST_FILE = "../../Unit-Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1548,7 +1405,7 @@
 					"/Applications/Xcode6-Beta2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
 					"../../XS-C++/include",
 				);
-				INFOPLIST_FILE = "../../XS-C++ Tests/Info.plist";
+				INFOPLIST_FILE = "../../Unit-Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1570,7 +1427,7 @@
 					"/Applications/Xcode6-Beta2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
 					"../../XS-C++/include",
 				);
-				INFOPLIST_FILE = "../../XS-C++ Tests/Info.plist";
+				INFOPLIST_FILE = "../../Unit-Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1586,16 +1443,6 @@
 				056C87D518C8B0F8006260B3 /* Debug */,
 				05818F701A66028D0072A469 /* GCov */,
 				056C87D618C8B0F8006260B3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		056C87D718C8B0F8006260B3 /* Build configuration list for PBXNativeTarget "XS-C++ Example" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				056C87D818C8B0F8006260B3 /* Debug */,
-				05818F711A66028D0072A469 /* GCov */,
-				056C87D918C8B0F8006260B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
