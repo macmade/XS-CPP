@@ -1,1 +1,2 @@
-xcenv.sh
+xcenv-lib.sh
+xcenv-tests.sh
