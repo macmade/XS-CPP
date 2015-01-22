@@ -435,8 +435,11 @@ ifeq ($(findstring 1,$(DEBUG)),)
 	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),x86-64,Stripping the debug symbols)
 	@strip -S $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_LIB)$(EXT_LIB)
 	
+ifeq ($(_BUILD_TYPE),os-x)
 	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Stripping the debug symbols)
 	@strip -S $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_LIB)$(EXT_LIB)
+endif
+	
 endif
 	
 # Builds a dynamic library (generic)
@@ -460,8 +463,11 @@ ifeq ($(findstring 1,$(DEBUG)),)
 	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_DYLIB),x86-64,Stripping the debug symbols)
 	@strip -S $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_LIB)$(EXT_DYLIB)
 	
+ifeq ($(_BUILD_TYPE),os-x)
 	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_DYLIB),universal,Stripping the debug symbols)
 	@strip -S $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_LIB)$(EXT_DYLIB)
+endif
+	
 endif
 
 # Builds an iOS static library (OS-X only)
