@@ -28,7 +28,6 @@
  ******************************************************************************/
 
 /*!
- * @file        Increment64.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
  * @brief       Definition of XS::Atomic::Increment64
  */
