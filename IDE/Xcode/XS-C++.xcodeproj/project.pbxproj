@@ -211,6 +211,7 @@
 		0590A5B01A6F08EF00BFF0BF /* XS-Threading-STLMutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Threading-STLMutex.cpp"; sourceTree = "<group>"; };
 		0590A5B11A6F08EF00BFF0BF /* XS-ToStringable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-ToStringable.cpp"; sourceTree = "<group>"; };
 		0590A5B21A6F08EF00BFF0BF /* XS-Version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Version.cpp"; sourceTree = "<group>"; };
+		0590A5C61A70803500BFF0BF /* GMock-Main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "GMock-Main.c"; sourceTree = "<group>"; };
 		05BDE00A18CDB2450028F339 /* Clang-Warnings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Clang-Warnings.h"; sourceTree = "<group>"; };
 		05BDE01818CDB2450028F339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05BDE01918CDB2450028F339 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -432,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				05E71B711961DA1100F911C4 /* Info.plist */,
+				0590A5C61A70803500BFF0BF /* GMock-Main.c */,
 				0590A5AA1A6F08EF00BFF0BF /* XS-Atomic.cpp */,
 				0590A5AB1A6F08EF00BFF0BF /* XS-Exception.cpp */,
 				0590A5AC1A6F08EF00BFF0BF /* XS-PIMPL-Object.cpp */,
