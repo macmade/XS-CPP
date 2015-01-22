@@ -135,8 +135,12 @@ EXT_C           := .cpp
 EXT_H           := .h
 EXT_O           := .o
 EXT_LIB         := .a
-EXT_DYLIB       := .dylib
 EXT_FRAMEWORK   := .framework
+ifeq ($(_BUILD_TYPE),os-x)
+EXT_DYLIB       := .dylib
+else
+EXT_DYLIB       := .so
+endif
 
 # Adds the suffixes used in this file
 .SUFFIXES: $(EXT_C) $(EXT_H) $(EXT_O)
@@ -180,7 +184,7 @@ _FILES_C_BUILD_ARM_64   = $(addprefix $(DIR_BUILD_TEMP_ARM_64_OBJ),$(_FILES_C_OB
 # Commands configuration
 #-------------------------------------------------------------------------------
 
-_CC = $(CC) -Werror -$(OPTIM) -stdlib=libc++ -std=c++11 -fno-strict-aliasing -I$(DIR_INC)
+_CC = $(CC) -Werror -fPIC -$(OPTIM) -std=c++11 -stdlib=libc++ -fno-strict-aliasing -I$(DIR_INC)
 
 # C compiler - Debug mode
 ifneq ($(findstring 1,$(DEBUG)),)
@@ -274,6 +278,7 @@ _MAKE_FRAMEWORK_BIN = $(CC)                                                 \
     -o $(3)                                                                 \
     $(4)
 
+ifeq ($(_BUILD_TYPE),os-x)
 _MAKE_DYLIB_BIN = $(CC)                             \
     -Werror                                         \
     -arch $(1)                                      \
@@ -286,6 +291,16 @@ _MAKE_DYLIB_BIN = $(CC)                             \
     $(_LIBS)                                        \
     -o $(3)$(EXT_DYLIB)                             \
     $(4)
+else
+_MAKE_DYLIB_BIN = $(CC)                             \
+    -Werror                                         \
+    -shared                                         \
+    -m$(1)                                          \
+    -Wl,-soname,$(2)$(EXT_DYLIB)                    \
+    $(_LIBS)                                        \
+    -o $(3)$(EXT_DYLIB)                             \
+    $(4)
+endif
 
 _XCODE_SDK_VALUE = "$(shell /usr/libexec/PlistBuddy -c "Print $(1)" /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Info.plist)"
 
@@ -417,10 +432,10 @@ unix-like: lib dylib
 # Builds a static library (generic)
 lib: i386 x86-64
 	
-	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Linking the i386 binary)
+	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),i386,Linking the i386 binary)
 	@ar rcs $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O)
 	
-	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Linking the x86-64 binary)
+	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),x86-64,Linking the x86-64 binary)
 	@ar rcs $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O)
 	
 ifeq ($(_BUILD_TYPE),os-x)
@@ -445,15 +460,21 @@ endif
 # Builds a dynamic library (generic)
 dylib: i386 x86-64
 	
-	@echo -e $(call _PRINT,$(PRODUCT_DYLIB)$(EXT_DYLIB),universal,Linking the i386 binary)
+ifeq ($(_BUILD_TYPE),os-x)
+	@echo -e $(call _PRINT,$(PRODUCT_DYLIB)$(EXT_DYLIB),i386,Linking the i386 binary)
 	@$(call _MAKE_DYLIB_BIN,i386,$(PRODUCT_DYLIB),$(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_DYLIB),$(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O))
 	
-	@echo -e $(call _PRINT,$(PRODUCT_DYLIB)$(EXT_DYLIB),universal,Linking the x86-64 binary)
+	@echo -e $(call _PRINT,$(PRODUCT_DYLIB)$(EXT_DYLIB),x86-64,Linking the x86-64 binary)
 	@$(call _MAKE_DYLIB_BIN,x86_64,$(PRODUCT_DYLIB),$(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_DYLIB),$(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O))
 	
-ifeq ($(_BUILD_TYPE),os-x)
 	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_DYLIB),universal,Linking the universal binary)
 	@lipo -create $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_DYLIB)$(EXT_DYLIB) $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_DYLIB)$(EXT_DYLIB) -output $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_DYLIB)$(EXT_DYLIB)
+else
+	@echo -e $(call _PRINT,$(PRODUCT_DYLIB)$(EXT_DYLIB),i386,Linking the i386 binary)
+	@$(call _MAKE_DYLIB_BIN,32,$(PRODUCT_DYLIB),$(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_DYLIB),$(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O))
+	
+	@echo -e $(call _PRINT,$(PRODUCT_DYLIB)$(EXT_DYLIB),x86-64,Linking the x86-64 binary)
+	@$(call _MAKE_DYLIB_BIN,64,$(PRODUCT_DYLIB),$(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_DYLIB),$(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O))
 endif
 	
 ifeq ($(findstring 1,$(DEBUG)),)
@@ -473,13 +494,13 @@ endif
 # Builds an iOS static library (OS-X only)
 ios-lib: armv7 armv7s arm64
 	
-	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Linking the armv7 binary)
+	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),armv7,Linking the armv7 binary)
 	@libtool -static -arch_only armv7 -o $(DIR_BUILD_PRODUCTS_ARM_7)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_ARM_7_OBJ)$(PRODUCT)$(EXT_O)
 	
-	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Linking the armv7s binary)
+	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),armv7s,Linking the armv7s binary)
 	@libtool -static -arch_only armv7s -o $(DIR_BUILD_PRODUCTS_ARM_7S)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_ARM_7S_OBJ)$(PRODUCT)$(EXT_O)
 	
-	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Linking the arm64 binary)
+	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),arm64,Linking the arm64 binary)
 	@libtool -static -arch_only arm64 -o $(DIR_BUILD_PRODUCTS_ARM_64)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
 	
 	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Linking the universal binary)
@@ -539,10 +560,10 @@ mac-framework: i386 x86-64
 	@rm -rf $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)
 	@cp -a $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK) $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)
 	
-	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Linking the i386 binary)
+	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),i386,Linking the i386 binary)
 	@$(call _MAKE_FRAMEWORK_BIN,i386,$(PRODUCT_MAC_FRAMEWORK),$(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/$(PRODUCT_MAC_FRAMEWORK),$(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O))
 	
-	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Linking the x86-64 binary)
+	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),x86-64,Linking the x86-64 binary)
 	@$(call _MAKE_FRAMEWORK_BIN,x86_64,$(PRODUCT_MAC_FRAMEWORK),$(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/$(PRODUCT_MAC_FRAMEWORK),$(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O))
 	
 	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Linking the universal binary)
