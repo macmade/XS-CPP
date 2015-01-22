@@ -271,7 +271,7 @@ _MAKE_DYLIB_BIN = $(CC)                             \
     -o $(3)$(EXT_DYLIB)                             \
     $(4)
 
-_XCODE_SDK_VALUE = "$(shell /usr/libexec/PlistBuddy -c "Print $(1)" /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Info.plist)" $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/Info.plist
+_XCODE_SDK_VALUE = "$(shell /usr/libexec/PlistBuddy -c "Print $(1)" /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Info.plist)"
 
 #-------------------------------------------------------------------------------
 # Phony targets
@@ -477,46 +477,54 @@ endif
 mac-framework: i386 x86-64
 	
 	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Creating the directory structure)
-	@rm -rf $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)
-	@mkdir -p $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Headers/
-	@mkdir -p $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/
+	@rm -rf $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)
+	@mkdir -p $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Headers/
+	@mkdir -p $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/
 	
 	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Creating the symbolic links)
-	@ln -s A/ $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/Current
-	@ln -s Versions/A/Headers/ $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Headers
-	@ln -s Versions/A/Resources/ $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Resources
-	@ln -s Versions/A/$(PRODUCT_MAC_FRAMEWORK) $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/$(PRODUCT_MAC_FRAMEWORK)
+	@ln -s A/ $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/Current
+	@ln -s Versions/A/Headers/ $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Headers
+	@ln -s Versions/A/Resources/ $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Resources
+	@ln -s Versions/A/$(PRODUCT_MAC_FRAMEWORK) $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/$(PRODUCT_MAC_FRAMEWORK)
 
 	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Copying the public header files)
-	@cp -rf $(DIR_INC)$(PRODUCT).h $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Headers/
-	@cp -rf $(DIR_INC)$(PRODUCT)/* $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Headers/
+	@cp -rf $(DIR_INC)$(PRODUCT).h $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Headers/
+	@cp -rf $(DIR_INC)$(PRODUCT)/* $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Headers/
 	
 	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Creating the Info.plist file)
-	@cp -rf $(DIR_RES)Info.plist $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/Info.plist
-	@plutil -insert BuildMachineOSBuild -string $(shell sw_vers -buildVersion) $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/Info.plist
-	@plutil -insert DTSDKName -string macosx$(MAC_TARGET) $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/Info.plist
-	@plutil -insert DTCompiler -string $(call _XCODE_SDK_VALUE,DTCompiler)
-	@plutil -insert DTPlatformBuild -string $(call _XCODE_SDK_VALUE,DTPlatformBuild)
-	@plutil -insert DTPlatformVersion -string $(call _XCODE_SDK_VALUE,DTPlatformVersion)
-	@plutil -insert DTSDKBuild -string $(call _XCODE_SDK_VALUE,DTSDKBuild)
-	@plutil -insert DTXcode -string $(call _XCODE_SDK_VALUE,DTXcode)
-	@plutil -insert DTXcodeBuild -string $(call _XCODE_SDK_VALUE,DTXcodeBuild)
+	@cp -rf $(DIR_RES)Info.plist $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/Info.plist
+	@plutil -insert BuildMachineOSBuild -string $(shell sw_vers -buildVersion) $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/Info.plist
+	@plutil -insert DTSDKName -string macosx$(MAC_TARGET) $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/Info.plist
+	@plutil -insert DTCompiler -string $(call _XCODE_SDK_VALUE,DTCompiler) $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/Info.plist
+	@plutil -insert DTPlatformBuild -string $(call _XCODE_SDK_VALUE,DTPlatformBuild) $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/Info.plist
+	@plutil -insert DTPlatformVersion -string $(call _XCODE_SDK_VALUE,DTPlatformVersion) $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/Info.plist
+	@plutil -insert DTSDKBuild -string $(call _XCODE_SDK_VALUE,DTSDKBuild) $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/Info.plist
+	@plutil -insert DTXcode -string $(call _XCODE_SDK_VALUE,DTXcode) $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/Info.plist
+	@plutil -insert DTXcodeBuild -string $(call _XCODE_SDK_VALUE,DTXcodeBuild) $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/Resources/Info.plist
 	
 	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Copying the bundle resources)
 	@:
 	
+	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),i386,Copying the framework structure)
+	@rm -rf $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)
+	@cp -a $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK) $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)
+	
+	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),x86-64,Copying the framework structure)
+	@rm -rf $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)
+	@cp -a $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK) $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)
+	
 	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Linking the i386 binary)
-	@$(call _MAKE_FRAMEWORK_BIN,i386,$(PRODUCT_MAC_FRAMEWORK),$(DIR_BUILD_TEMP_INTEL_32_BIN)$(PRODUCT_MAC_FRAMEWORK),$(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O))
+	@$(call _MAKE_FRAMEWORK_BIN,i386,$(PRODUCT_MAC_FRAMEWORK),$(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/$(PRODUCT_MAC_FRAMEWORK),$(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O))
 	
 	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Linking the x86-64 binary)
-	@$(call _MAKE_FRAMEWORK_BIN,x86_64,$(PRODUCT_MAC_FRAMEWORK),$(DIR_BUILD_TEMP_INTEL_64_BIN)$(PRODUCT_MAC_FRAMEWORK),$(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O))
+	@$(call _MAKE_FRAMEWORK_BIN,x86_64,$(PRODUCT_MAC_FRAMEWORK),$(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/$(PRODUCT_MAC_FRAMEWORK),$(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O))
 	
 	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Linking the universal binary)
-	@lipo -create $(DIR_BUILD_TEMP_INTEL_32_BIN)$(PRODUCT_MAC_FRAMEWORK) $(DIR_BUILD_TEMP_INTEL_64_BIN)$(PRODUCT_MAC_FRAMEWORK) -output $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/$(PRODUCT_MAC_FRAMEWORK)
+	@lipo -create $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/$(PRODUCT_MAC_FRAMEWORK) $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/$(PRODUCT_MAC_FRAMEWORK) -output $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/$(PRODUCT_MAC_FRAMEWORK)
 	
 ifeq ($(findstring 1,$(DEBUG)),)
 	@echo -e $(call _PRINT,$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK),universal,Stripping the debug symbols)
-	@strip -S $(DIR_BUILD_PRODUCTS)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/$(PRODUCT_MAC_FRAMEWORK)
+	@strip -S $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_MAC_FRAMEWORK)$(EXT_FRAMEWORK)/Versions/A/$(PRODUCT_MAC_FRAMEWORK)
 endif
 
 # Target: i386
