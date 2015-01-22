@@ -522,13 +522,13 @@ arm64: $(_FILES_C_BUILD_ARM_64)
 $(DIR_BUILD_TEMP_INTEL_32_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
 	
 	@echo -e $(call _PRINT_FILE,"Compiling C file",i386,$<)
-	@$(_CC) -arch i386 -o $@ -c $<
+	@$(_CC) -m32 -o $@ -c $<
 
 # Target: x86_64 object file
 $(DIR_BUILD_TEMP_INTEL_64_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
 	
 	@echo -e $(call _PRINT_FILE,"Compiling C file",x86-64,$<)
-	@$(_CC) -arch x86_64 -o $@ -c $<
+	@$(_CC) -m64 -o $@ -c $<
 
 # Target: armv7 object file
 $(DIR_BUILD_TEMP_ARM_7_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
