@@ -62,7 +62,6 @@
 #endif
 
 /* Includes from the C++ STL */
-#include <algorithm>
 #include <memory>
 #include <string>
 #include <iostream>
