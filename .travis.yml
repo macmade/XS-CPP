@@ -1,4 +1,4 @@
-language: objective-c
+language: cpp
 compiler: clang
 script: make && make test
 before_install:
@@ -7,8 +7,8 @@ before_install:
 after_success:
 - if [ "$TRAVIS_OS_NAME" == "osx" ]; then bash Scripts/coveralls.sh; fi
 os:
-  - linux
   - osx
+  - linux
 matrix:
     allow_failures:
         - os: linux
