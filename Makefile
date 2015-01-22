@@ -113,11 +113,15 @@ DIR_BUILD_TEMP_ARM_7S_BIN       := $(DIR_BUILD_TEMP_ARM_7S)bin/
 DIR_BUILD_TEMP_ARM_7S_OBJ       := $(DIR_BUILD_TEMP_ARM_7S)obj/
 DIR_BUILD_TEMP_ARM_64_BIN       := $(DIR_BUILD_TEMP_ARM_64)bin/
 DIR_BUILD_TEMP_ARM_64_OBJ       := $(DIR_BUILD_TEMP_ARM_64)obj/
+DIR_BUILD_TESTS                 := $(DIR)Build/Tests/
+DIR_BUILD_TESTS_BIN             := $(DIR_BUILD_TESTS)obj/
+DIR_BUILD_TESTS_OBJ             := $(DIR_BUILD_TESTS)bin/
 
 # Source directories
 DIR_INC                         := $(DIR)$(PRODUCT)/include/
 DIR_SRC                         := $(DIR)$(PRODUCT)/source/
 DIR_RES                         := $(DIR)$(PRODUCT)/
+DIR_TESTS                       := $(DIR)Unit-Tests/
 
 #-------------------------------------------------------------------------------
 # Search paths
