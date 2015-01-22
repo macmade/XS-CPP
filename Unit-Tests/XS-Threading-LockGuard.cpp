@@ -28,7 +28,7 @@
  ******************************************************************************/
 
 /*!
- * @file        LockGuard.cpp
+ * @file        XS-Threading-LockGuard.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
  * @brief       Test case XS::Threading::LockGuard
  */

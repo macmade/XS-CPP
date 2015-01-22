@@ -28,7 +28,7 @@
  ******************************************************************************/
 
 /*!
- * @file        Mutex-Native.cpp
+ * @file        XS-Threading-Mutex-Native.cpp
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
  * @brief       Test case XS::Threading::Mutex (using native implementation)
  */
