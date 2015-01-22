@@ -35,6 +35,58 @@
 #ifndef __XSCPP_MACROS_H__
 #define __XSCPP_MACROS_H__
 
+/*!
+ * @brief   Checks whether a builtin function is supported
+ * @param   The name of the builtin function
+ * @return  0 - Compatibility with non-clang compilers.
+ */
+#ifndef __has_builtin
+#define __has_builtin( _x_ )                0
+#endif
 
+/*!
+ * @brief   Checks whether a feature is supported
+ * @param   The name of the feature
+ * @return  0 - Compatibility with non-clang compilers.
+ */
+#ifndef __has_feature
+#define __has_feature( _x_ )                0
+#endif
+
+/*!
+ * @brief   Checks whether an extension is supported
+ * @param   The name of the extension
+ * @return  Same as __has_feature - Compatibility with pre-3.0 compilers.
+ */
+#ifndef __has_extension
+#define __has_extension                     __has_feature
+#endif
+
+/*!
+ * @brief   Checks whether a C++ attribute is supported
+ * @param   The name of the C++ attribute
+ * @return  0 - Compatibility with non-clang compilers.
+ */
+#ifndef __has_cpp_attribute
+#define __has_cpp_attribute( _x_ )          0
+#endif
+
+/*!
+ * @brief   Checks whether an attribute is supported
+ * @param   The name of the attribute
+ * @return  0 - Compatibility with non-clang compilers.
+ */
+#ifndef __has_attribute
+#define __has_attribute( _x_ )              0
+#endif
+
+/*!
+ * @brief   Checks whether a MS attribute is supported
+ * @param   The name of the MS attribute
+ * @return  0 - Compatibility with non-clang compilers.
+ */
+#ifndef __has_declspec_attribute
+#define __has_declspec_attribute( _x_ )     0
+#endif
 
 #endif /* __XSCPP_MACROS_H__ */
