@@ -63,11 +63,13 @@ namespace XS
             
             return static_cast< XS::Int64 >( OSAtomicIncrement64( static_cast< volatile int64_t * >( value ) ) );
             
+            #elif defined( __clang__ ) && __has_builtin( __sync_add_and_fetch )
+            
+            return __sync_add_and_fetch( value, 1 );
+            
             #else
             
-            ( void )value;
-            
-            return 0;
+            #error "XS::Atomic::Increment64 is not implemented for the current platform"
             
             #endif
         }

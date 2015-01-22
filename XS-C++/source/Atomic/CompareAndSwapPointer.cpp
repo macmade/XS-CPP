@@ -63,13 +63,13 @@ namespace XS
             
             return ( OSAtomicCompareAndSwapPtr( oldValue, newValue, value ) ) ? true : false;
             
+            #elif defined( __clang__ ) && __has_builtin( __sync_bool_compare_and_swap )
+            
+            return __sync_bool_compare_and_swap( value, oldValue, newValue );
+            
             #else
             
-            ( void )oldValue;
-            ( void )newValue;
-            ( void )value;
-            
-            return false;
+            #error "XS::Atomic::CompareAndSwapPointer is not implemented for the current platform"
             
             #endif
         }

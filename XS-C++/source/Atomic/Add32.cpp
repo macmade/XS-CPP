@@ -43,10 +43,6 @@
 
 #include <libkern/OSAtomic.h>
 
-#else
-
-#error "XS::Atomic::Add32 is not implemented for the current platform"
-
 #endif
 
 namespace XS
@@ -63,12 +59,13 @@ namespace XS
             
             return static_cast< XS::Int32 >( OSAtomicAdd32( static_cast< int32_t >( amount ), static_cast< volatile int32_t * >( value ) ) );
             
+            #elif defined( __clang__ ) && __has_builtin( __sync_add_and_fetch )
+            
+            return __sync_add_and_fetch( value, amount );
+            
             #else
             
-            ( void )amount;
-            ( void )value;
-            
-            return 0;
+            #error "XS::Atomic::Add32 is not implemented for the current platform"
             
             #endif
         }

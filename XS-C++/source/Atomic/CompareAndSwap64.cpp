@@ -63,13 +63,13 @@ namespace XS
             
             return ( OSAtomicCompareAndSwap64( static_cast< int64_t >( oldValue ), static_cast< int64_t >( newValue ), static_cast< volatile int64_t * >( value ) ) ) ? true : false;
             
+            #elif defined( __clang__ ) && __has_builtin( __sync_bool_compare_and_swap )
+            
+            return __sync_bool_compare_and_swap( value, oldValue, newValue );
+            
             #else
             
-            ( void )oldValue;
-            ( void )newValue;
-            ( void )value;
-            
-            return false;
+            #error "XS::Atomic::CompareAndSwap64 is not implemented for the current platform"
             
             #endif
         }
