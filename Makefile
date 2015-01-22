@@ -90,6 +90,12 @@ endif
 
 # Relative build directories
 DIR_BUILD_PRODUCTS              := $(DIR_BUILD)Products/
+DIR_BUILD_PRODUCTS_INTEL_32     := $(DIR_BUILD_PRODUCTS)i386/
+DIR_BUILD_PRODUCTS_INTEL_64     := $(DIR_BUILD_PRODUCTS)x86_64/
+DIR_BUILD_PRODUCTS_ARM_7        := $(DIR_BUILD_PRODUCTS)armv7/
+DIR_BUILD_PRODUCTS_ARM_7S       := $(DIR_BUILD_PRODUCTS)armv7s/
+DIR_BUILD_PRODUCTS_ARM_64       := $(DIR_BUILD_PRODUCTS)arm64/
+DIR_BUILD_PRODUCTS_UNIVERSAL    := $(DIR_BUILD_PRODUCTS)universal/
 DIR_BUILD_TEMP                  := $(DIR_BUILD)Intermediates/
 DIR_BUILD_TEMP                  := $(DIR_BUILD)Intermediates/
 DIR_BUILD_TEMP_INTEL_32         := $(DIR_BUILD_TEMP)i386/
@@ -364,8 +370,23 @@ _clean:
 	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)*
 	@rm -rf $(DIR_BUILD_TEMP_ARM_64_BIN)*
 	
+	@echo -e $(call _PRINT,Cleaning,i386,Cleaning all product files)
+	@rm -rf $(DIR_BUILD_PRODUCTS_INTEL_32)*
+	
+	@echo -e $(call _PRINT,Cleaning,x86-64,Cleaning all product files)
+	@rm -rf $(DIR_BUILD_PRODUCTS_INTEL_64)*
+	
+	@echo -e $(call _PRINT,Cleaning,armv7,Cleaning all product files)
+	@rm -rf $(DIR_BUILD_PRODUCTS_ARM_7)*
+	
+	@echo -e $(call _PRINT,Cleaning,armv7s,Cleaning all product files)
+	@rm -rf $(DIR_BUILD_PRODUCTS_ARM_7S)*
+	
+	@echo -e $(call _PRINT,Cleaning,arm64,Cleaning all product files)
+	@rm -rf $(DIR_BUILD_PRODUCTS_ARM_64)*
+	
 	@echo -e $(call _PRINT,Cleaning,universal,Cleaning all product files)
-	@rm -rf $(DIR_BUILD_PRODUCTS)*
+	@rm -rf $(DIR_BUILD_PRODUCTS_UNIVERSAL)*
 
 # Build for OS-X
 os-x: lib dylib mac-framework ios-lib
