@@ -418,13 +418,15 @@ unix-like: lib dylib
 lib: i386 x86-64
 	
 	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Linking the i386 binary)
-	@libtool -static -arch_only i386 -o $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O)
+	@ar rcs $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O)
 	
 	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Linking the x86-64 binary)
-	@libtool -static -arch_only x86_64 -o $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O)
+	@ar rcs $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O)
 	
+ifeq ($(_BUILD_TYPE),os-x)
 	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Linking the universal binary)
 	@libtool -static $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_LIB)$(EXT_LIB) -o $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_LIB)$(EXT_LIB)
+endif
 	
 ifeq ($(findstring 1,$(DEBUG)),)
 	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),i386,Stripping the debug symbols)
@@ -446,8 +448,10 @@ dylib: i386 x86-64
 	@echo -e $(call _PRINT,$(PRODUCT_DYLIB)$(EXT_DYLIB),universal,Linking the x86-64 binary)
 	@$(call _MAKE_DYLIB_BIN,x86_64,$(PRODUCT_DYLIB),$(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_DYLIB),$(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O))
 	
+ifeq ($(_BUILD_TYPE),os-x)
 	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_DYLIB),universal,Linking the universal binary)
 	@lipo -create $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_DYLIB)$(EXT_DYLIB) $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_DYLIB)$(EXT_DYLIB) -output $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_DYLIB)$(EXT_DYLIB)
+endif
 	
 ifeq ($(findstring 1,$(DEBUG)),)
 	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_DYLIB),i386,Stripping the debug symbols)
