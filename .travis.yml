@@ -2,7 +2,13 @@ language: objective-c
 compiler: clang
 script: make && make test
 before_install:
-- git clone https://github.com/macmade/xcode-coveralls.git /tmp/xcode-coveralls
-- sudo xctool --project /tmp/xcode-coveralls/xcode-coveralls.xcodeproj --scheme xcode-coveralls DSTROOT=/ install
+- if [ "$TRAVIS_OS_NAME" == "osx" ]; then git clone https://github.com/macmade/xcode-coveralls.git /tmp/xcode-coveralls; fi
+- if [ "$TRAVIS_OS_NAME" == "osx" ]; then sudo xctool --project /tmp/xcode-coveralls/xcode-coveralls.xcodeproj --scheme xcode-coveralls DSTROOT=/ install; fi
 after_success:
-- bash Scripts/coveralls.sh
+- if [ "$TRAVIS_OS_NAME" == "osx" ]; then bash Scripts/coveralls.sh; fi
+os:
+  - linux
+  - osx
+matrix:
+    allow_failures:
+        - os: linux
