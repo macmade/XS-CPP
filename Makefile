@@ -402,54 +402,75 @@ unix-like: lib dylib
 lib: i386 x86-64
 	
 	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Linking the i386 binary)
-	@libtool -static -arch_only i386 -o $(DIR_BUILD_TEMP_INTEL_32_BIN)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O)
+	@libtool -static -arch_only i386 -o $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O)
 	
 	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Linking the x86-64 binary)
-	@libtool -static -arch_only x86_64 -o $(DIR_BUILD_TEMP_INTEL_64_BIN)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O)
+	@libtool -static -arch_only x86_64 -o $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O)
 	
 	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Linking the universal binary)
-	@libtool -static $(DIR_BUILD_TEMP_INTEL_32_BIN)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_64_BIN)$(PRODUCT_LIB)$(EXT_LIB) -o $(DIR_BUILD_PRODUCTS)$(PRODUCT_LIB)$(EXT_LIB)
+	@libtool -static $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_LIB)$(EXT_LIB) -o $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_LIB)$(EXT_LIB)
 	
 ifeq ($(findstring 1,$(DEBUG)),)
+	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),i386,Stripping the debug symbols)
+	@strip -S $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_LIB)$(EXT_LIB)
+	
+	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),x86-64,Stripping the debug symbols)
+	@strip -S $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_LIB)$(EXT_LIB)
+	
 	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Stripping the debug symbols)
-	@strip -S $(DIR_BUILD_PRODUCTS)$(PRODUCT_LIB)$(EXT_LIB)
+	@strip -S $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_LIB)$(EXT_LIB)
 endif
 	
 # Builds a dynamic library (generic)
 dylib: i386 x86-64
 	
 	@echo -e $(call _PRINT,$(PRODUCT_DYLIB)$(EXT_DYLIB),universal,Linking the i386 binary)
-	@$(call _MAKE_DYLIB_BIN,i386,$(PRODUCT_DYLIB),$(DIR_BUILD_TEMP_INTEL_32_BIN)$(PRODUCT_DYLIB),$(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O))
+	@$(call _MAKE_DYLIB_BIN,i386,$(PRODUCT_DYLIB),$(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_DYLIB),$(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O))
 	
 	@echo -e $(call _PRINT,$(PRODUCT_DYLIB)$(EXT_DYLIB),universal,Linking the x86-64 binary)
-	@$(call _MAKE_DYLIB_BIN,x86_64,$(PRODUCT_DYLIB),$(DIR_BUILD_TEMP_INTEL_64_BIN)$(PRODUCT_DYLIB),$(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O))
+	@$(call _MAKE_DYLIB_BIN,x86_64,$(PRODUCT_DYLIB),$(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_DYLIB),$(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O))
 	
 	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_DYLIB),universal,Linking the universal binary)
-	@lipo -create $(DIR_BUILD_TEMP_INTEL_32_BIN)$(PRODUCT_DYLIB)$(EXT_DYLIB) $(DIR_BUILD_TEMP_INTEL_64_BIN)$(PRODUCT_DYLIB)$(EXT_DYLIB) -output $(DIR_BUILD_PRODUCTS)$(PRODUCT_DYLIB)$(EXT_DYLIB)
+	@lipo -create $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_DYLIB)$(EXT_DYLIB) $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_DYLIB)$(EXT_DYLIB) -output $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_DYLIB)$(EXT_DYLIB)
 	
 ifeq ($(findstring 1,$(DEBUG)),)
+	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_DYLIB),i386,Stripping the debug symbols)
+	@strip -S $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_LIB)$(EXT_DYLIB)
+	
+	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_DYLIB),x86-64,Stripping the debug symbols)
+	@strip -S $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_LIB)$(EXT_DYLIB)
+	
 	@echo -e $(call _PRINT,$(PRODUCT_LIB)$(EXT_DYLIB),universal,Stripping the debug symbols)
-	@strip -S $(DIR_BUILD_PRODUCTS)$(PRODUCT_LIB)$(EXT_DYLIB)
+	@strip -S $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_LIB)$(EXT_DYLIB)
 endif
 
 # Builds an iOS static library (OS-X only)
 ios-lib: armv7 armv7s arm64
 	
 	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Linking the armv7 binary)
-	@libtool -static -arch_only armv7 -o $(DIR_BUILD_TEMP_ARM_7_BIN)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_ARM_7_OBJ)$(PRODUCT)$(EXT_O)
+	@libtool -static -arch_only armv7 -o $(DIR_BUILD_PRODUCTS_ARM_7)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_ARM_7_OBJ)$(PRODUCT)$(EXT_O)
 	
 	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Linking the armv7s binary)
-	@libtool -static -arch_only armv7s -o $(DIR_BUILD_TEMP_ARM_7S_BIN)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_ARM_7S_OBJ)$(PRODUCT)$(EXT_O)
+	@libtool -static -arch_only armv7s -o $(DIR_BUILD_PRODUCTS_ARM_7S)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_ARM_7S_OBJ)$(PRODUCT)$(EXT_O)
 	
 	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Linking the arm64 binary)
-	@libtool -static -arch_only arm64 -o $(DIR_BUILD_TEMP_ARM_64_BIN)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
+	@libtool -static -arch_only arm64 -o $(DIR_BUILD_PRODUCTS_ARM_64)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
 	
 	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Linking the universal binary)
-	@libtool -static $(DIR_BUILD_TEMP_ARM_7_BIN)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_ARM_7S_BIN)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_ARM_64_BIN)$(PRODUCT_IOS_LIB)$(EXT_LIB) -o $(DIR_BUILD_PRODUCTS)$(PRODUCT_IOS_LIB)$(EXT_LIB)
+	@libtool -static $(DIR_BUILD_PRODUCTS_ARM_7)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_PRODUCTS_ARM_7S)$(PRODUCT_IOS_LIB)$(EXT_LIB) $(DIR_BUILD_PRODUCTS_ARM_64)$(PRODUCT_IOS_LIB)$(EXT_LIB) -o $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_IOS_LIB)$(EXT_LIB)
 	
 ifeq ($(findstring 1,$(DEBUG)),)
+	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),armv7,Stripping the debug symbols)
+	@strip -S $(DIR_BUILD_PRODUCTS_ARM_7)$(PRODUCT_IOS_LIB)$(EXT_LIB)
+	
+	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),armv7s,Stripping the debug symbols)
+	@strip -S $(DIR_BUILD_PRODUCTS_ARM_7S)$(PRODUCT_IOS_LIB)$(EXT_LIB)
+	
+	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),arm64,Stripping the debug symbols)
+	@strip -S $(DIR_BUILD_PRODUCTS_ARM_64)$(PRODUCT_IOS_LIB)$(EXT_LIB)
+	
 	@echo -e $(call _PRINT,$(PRODUCT_IOS_LIB)$(EXT_LIB),universal,Stripping the debug symbols)
-	@strip -S $(DIR_BUILD_PRODUCTS)$(PRODUCT_IOS_LIB)$(EXT_LIB)
+	@strip -S $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_IOS_LIB)$(EXT_LIB)
 endif
 
 # Builds an Mac framework (OS-X only)
