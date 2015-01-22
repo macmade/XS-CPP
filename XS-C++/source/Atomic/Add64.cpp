@@ -59,7 +59,7 @@ namespace XS
             
             return static_cast< XS::Int64 >( OSAtomicAdd64( static_cast< int64_t >( amount ), static_cast< volatile int64_t * >( value ) ) );
             
-            #elif defined( __clang__ ) && __has_builtin( __sync_add_and_fetch )
+            #elif __has_builtin( __sync_add_and_fetch )
             
             return __sync_add_and_fetch( value, amount );
             
