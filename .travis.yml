@@ -2,10 +2,11 @@ language: cpp
 compiler: clang
 script: make && make test
 before_install:
-- if [ "$TRAVIS_OS_NAME" == "osx" ]; then git clone https://github.com/macmade/xcode-coveralls.git /tmp/xcode-coveralls; fi
-- if [ "$TRAVIS_OS_NAME" == "osx" ]; then sudo xctool --project /tmp/xcode-coveralls/xcode-coveralls.xcodeproj --scheme xcode-coveralls DSTROOT=/ install; fi
+- if [ "$TRAVIS_OS_NAME" == "osx" ];   bash Scripts/travis-osx-before.sh; fi
+- if [ "$TRAVIS_OS_NAME" == "linux" ]; bash Scripts/travis-linux-before.sh; fi
 after_success:
-- if [ "$TRAVIS_OS_NAME" == "osx" ]; then bash Scripts/coveralls.sh; fi
+- if [ "$TRAVIS_OS_NAME" == "osx" ];   then bash Scripts/travis-osx-after.sh;   fi
+- if [ "$TRAVIS_OS_NAME" == "linux" ]; then bash Scripts/travis-linux-after.sh; fi
 os:
   - osx
   - linux
