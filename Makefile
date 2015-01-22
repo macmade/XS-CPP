@@ -114,8 +114,8 @@ DIR_BUILD_TEMP_ARM_7S_OBJ       := $(DIR_BUILD_TEMP_ARM_7S)obj/
 DIR_BUILD_TEMP_ARM_64_BIN       := $(DIR_BUILD_TEMP_ARM_64)bin/
 DIR_BUILD_TEMP_ARM_64_OBJ       := $(DIR_BUILD_TEMP_ARM_64)obj/
 DIR_BUILD_TESTS                 := $(DIR)Build/Tests/
-DIR_BUILD_TESTS_BIN             := $(DIR_BUILD_TESTS)obj/
-DIR_BUILD_TESTS_OBJ             := $(DIR_BUILD_TESTS)bin/
+DIR_BUILD_TESTS_BIN             := $(DIR_BUILD_TESTS)bin/
+DIR_BUILD_TESTS_OBJ             := $(DIR_BUILD_TESTS)obj/
 
 # Source directories
 DIR_INC                         := $(DIR)$(PRODUCT)/include/
@@ -129,6 +129,7 @@ DIR_TESTS                       := $(DIR)Unit-Tests/
 
 # Define the search paths for source files
 vpath %$(EXT_C) $(DIR_SRC)
+vpath %$(EXT_C) $(DIR_TESTS)
 
 #-------------------------------------------------------------------------------
 # File suffixes
@@ -160,6 +161,7 @@ _GET_C_FILES    = $(foreach dir,$(1), $(wildcard $(dir)*$(EXT_C)))
 _FILES_C       += $(call _GET_C_FILES, $(DIR_SRC))
 _FILES_C       += $(call _GET_C_FILES, $(DIR_SRC)Atomic/)
 _FILES_C       += $(call _GET_C_FILES, $(DIR_SRC)Threading/)
+_FILES_TESTS   += $(call _GET_C_FILES, $(DIR_TESTS))
 
 # Platform specific files not to include in compilation
 _FILES_EXCLUDE  =   Threading/NativeMutex-WIN32.cpp \
@@ -169,13 +171,15 @@ _FILES_EXCLUDE  =   Threading/NativeMutex-WIN32.cpp \
                     Threading/Semaphore-WIN32.cpp
 
 # Gets only the file name of the C files
-_FILES_C_REL   := $(subst $(DIR_SRC),,$(_FILES_C))
+_FILES_C_REL        := $(subst $(DIR_SRC),,$(_FILES_C))
+_FILES_TESTS_REL    := $(subst $(DIR_TESTS),,$(_FILES_TESTS))
 
 # Do not include excluded files
 _FILES_C_REL   := $(filter-out $(_FILES_EXCLUDE),$(_FILES_C_REL))
 
 # Replace the code extension by the object one
-_FILES_C_OBJ    = $(subst $(EXT_C),$(EXT_O),$(_FILES_C_REL))
+_FILES_C_OBJ     = $(subst $(EXT_C),$(EXT_O),$(_FILES_C_REL))
+_FILES_TESTS_OBJ = $(subst $(EXT_C),$(EXT_O),$(_FILES_TESTS_REL))
 
 # Prefix all object files with the build directory for each platform
 _FILES_C_BUILD_INTEL_32 = $(addprefix $(DIR_BUILD_TEMP_INTEL_32_OBJ),$(_FILES_C_OBJ))
@@ -183,6 +187,7 @@ _FILES_C_BUILD_INTEL_64 = $(addprefix $(DIR_BUILD_TEMP_INTEL_64_OBJ),$(_FILES_C_
 _FILES_C_BUILD_ARM_7    = $(addprefix $(DIR_BUILD_TEMP_ARM_7_OBJ),$(_FILES_C_OBJ))
 _FILES_C_BUILD_ARM_7S   = $(addprefix $(DIR_BUILD_TEMP_ARM_7S_OBJ),$(_FILES_C_OBJ))
 _FILES_C_BUILD_ARM_64   = $(addprefix $(DIR_BUILD_TEMP_ARM_64_OBJ),$(_FILES_C_OBJ))
+_FILES_TESTS_BUILD      = $(addprefix $(DIR_BUILD_TESTS_OBJ),$(_FILES_TESTS_OBJ))
 
 #-------------------------------------------------------------------------------
 # Commands configuration
@@ -215,7 +220,6 @@ _LD_FLAGS_ARM_7    =
 _LD_FLAGS_ARM_7S   = 
 _LD_FLAGS_ARM_64   = 
 endif
-
 
 #-------------------------------------------------------------------------------
 # Display
@@ -362,17 +366,21 @@ test-debug: debug
 	@$(MAKE) -s _test DEBUG=1
 
 # Test target
-_test:
-	
 ifeq ($(_HAS_XCTOOL),true)
+_test:
 	@echo -e $(call _PRINT,Testing,universal,Building and running unit tests)
 	@$(_XCTOOL) -project IDE/Xcode/$(PRODUCT).xcodeproj -scheme "$(PRODUCT) Mac Static Library" test
 else
 ifeq ($(_HAS_XCBUILD),true)
+_test:
 	@echo -e $(call _PRINT,Testing,universal,Building and running unit tests)
 	@$(_XCBUILD) -project IDE/Xcode/$(PRODUCT).xcodeproj -scheme "$(PRODUCT) Mac Static Library" test
 else
-	@echo -e $(call _PRINT,Testing,universal,Skipping unit tests - xcodebuild is not installed)
+_test: $(_FILES_TESTS_BUILD)
+	$(CC) $(_LIBS) -o $(DIR_BUILD_TESTS_BIN)$(PRODUCT) $(_FILES_TESTS_BUILD) \
+	Submodules/gmock-xcode/Libraries/build/lib/linux/libgmock.a              \
+	Submodules/gmock-xcode/Libraries/build/lib/linux/libgtest.a              \
+	$(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_LIB)$(EXT_LIB)
 endif
 endif
 
@@ -622,29 +630,35 @@ arm64: $(_FILES_C_BUILD_ARM_64)
 # Target: i386 object file
 $(DIR_BUILD_TEMP_INTEL_32_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
 	
-	@echo -e $(call _PRINT_FILE,"Compiling C file",i386,$<)
+	@echo -e $(call _PRINT_FILE,"Compiling file",i386,$<)
 	@$(_CC) -m32 -o $@ -c $<
 
 # Target: x86_64 object file
 $(DIR_BUILD_TEMP_INTEL_64_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
 	
-	@echo -e $(call _PRINT_FILE,"Compiling C file",x86-64,$<)
+	@echo -e $(call _PRINT_FILE,"Compiling file",x86-64,$<)
 	@$(_CC) -m64 -o $@ -c $<
 
 # Target: armv7 object file
 $(DIR_BUILD_TEMP_ARM_7_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
 	
-	@echo -e $(call _PRINT_FILE,"Compiling C file",armv7,$<)
+	@echo -e $(call _PRINT_FILE,"Compiling file",armv7,$<)
 	@$(_CC) -arch armv7 -isysroot $(_IOS_SDK_PATH) -o $@ -c $<
 
 # Target: armv7s object file
 $(DIR_BUILD_TEMP_ARM_7S_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
 	
-	@echo -e $(call _PRINT_FILE,"Compiling C file",armv7s,$<)
+	@echo -e $(call _PRINT_FILE,"Compiling file",armv7s,$<)
 	@$(_CC) -arch armv7s -isysroot $(_IOS_SDK_PATH) -o $@ -c $<
 
 # Target: arm64 object file
 $(DIR_BUILD_TEMP_ARM_64_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
 	
-	@echo -e $(call _PRINT_FILE,"Compiling C file",arm64,$<)
+	@echo -e $(call _PRINT_FILE,"Compiling file",arm64,$<)
 	@$(_CC) -arch arm64 -isysroot $(_IOS_SDK_PATH) -o $@ -c $<
+	
+# Target: i386 object file
+$(DIR_BUILD_TESTS_OBJ)%$(EXT_O): %$(EXT_C)
+	
+	@echo -e $(call _PRINT_FILE,"Compiling file",Test,$<)
+	@$(_CC) -I Submodules/gmock-xcode/ -I Submodules/gmock-xcode/Libraries/build/include -o $@ -c $<
