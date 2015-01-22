@@ -193,6 +193,22 @@ _LIBS = -lpthread -lc++
 # iOS SDK root
 _IOS_SDK_PATH := /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS$(IOS_SDK).sdk
 
+# Architecture specific flags for ld
+ifeq ($(_BUILD_TYPE),unix-like)
+_LD_FLAGS_INTEL_32 = -m elf_i386
+_LD_FLAGS_INTEL_64 = -m elf_x86_64
+_LD_FLAGS_ARM_7    = 
+_LD_FLAGS_ARM_7S   = 
+_LD_FLAGS_ARM_64   = 
+else
+_LD_FLAGS_INTEL_32 = 
+_LD_FLAGS_INTEL_64 = 
+_LD_FLAGS_ARM_7    = 
+_LD_FLAGS_ARM_7S   = 
+_LD_FLAGS_ARM_64   = 
+endif
+
+
 #-------------------------------------------------------------------------------
 # Display
 #-------------------------------------------------------------------------------
@@ -532,35 +548,35 @@ i386: $(_FILES_C_BUILD_INTEL_32)
 	
 	@echo -e $(call _PRINT,Linking object files,i386,$(PRODUCT)$(EXT_O))
 	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
-	@ld -r $(_FILES_C_BUILD_INTEL_32) -o $(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O)
+	@ld -r $(_LD_FLAGS_INTEL_32) $(_FILES_C_BUILD_INTEL_32) -o $(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O)
 
 # Target: x86-64
 x86-64: $(_FILES_C_BUILD_INTEL_64)
 	
 	@echo -e $(call _PRINT,Linking object files,x86-64,$(PRODUCT)$(EXT_O))
 	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
-	@ld -r $(_FILES_C_BUILD_INTEL_64) -o $(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O)
+	@ld -r $(_LD_FLAGS_INTEL_64) $(_FILES_C_BUILD_INTEL_64) -o $(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O)
 
 # Target: armv7
 armv7: $(_FILES_C_BUILD_ARM_7)
 	
 	@echo -e $(call _PRINT,Linking object files,armv7,$(PRODUCT)$(EXT_O))
 	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
-	@ld -r $(_FILES_C_BUILD_ARM_7) -o $(DIR_BUILD_TEMP_ARM_7_OBJ)$(PRODUCT)$(EXT_O)
+	@ld -r $(_LD_FLAGS_ARM_7) $(_FILES_C_BUILD_ARM_7) -o $(DIR_BUILD_TEMP_ARM_7_OBJ)$(PRODUCT)$(EXT_O)
 
 # Target: armv7s
 armv7s: $(_FILES_C_BUILD_ARM_7S)
 	
 	@echo -e $(call _PRINT,Linking object files,armv7s,$(PRODUCT)$(EXT_O))
 	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
-	@ld -r $(_FILES_C_BUILD_ARM_7S) -o $(DIR_BUILD_TEMP_ARM_7S_OBJ)$(PRODUCT)$(EXT_O)
+	@ld -r $(_LD_FLAGS_ARM_7S) $(_FILES_C_BUILD_ARM_7S) -o $(DIR_BUILD_TEMP_ARM_7S_OBJ)$(PRODUCT)$(EXT_O)
 
 # Target: arm64
 arm64: $(_FILES_C_BUILD_ARM_64)
 	
 	@echo -e $(call _PRINT,Linking object files,arm64,$(PRODUCT)$(EXT_O))
 	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
-	@ld -r $(_FILES_C_BUILD_ARM_64) -o $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
+	@ld -r $(_LD_FLAGS_ARM_64) $(_FILES_C_BUILD_ARM_64) -o $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
 
 #-------------------------------------------------------------------------------
 # Targets with second expansion
