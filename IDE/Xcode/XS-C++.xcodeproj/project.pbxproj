@@ -197,7 +197,6 @@
 /* Begin PBXFileReference section */
 		051F09651946EB70004B6E47 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		054511EF1A6A0ACA002B8F92 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = Makefile; path = ../../Makefile; sourceTree = "<group>"; };
-		054511F31A6A0AFF002B8F92 /* coveralls.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = coveralls.sh; sourceTree = "<group>"; };
 		056C881218C8B85F006260B3 /* libXS-C++.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libXS-C++.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		056C884A18C8C547006260B3 /* libXS-C++.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "libXS-C++.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
 		056C885F18C8C76B006260B3 /* XS-C++.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "XS-C++.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -301,7 +300,6 @@
 		054511F11A6A0AFF002B8F92 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				054511F31A6A0AFF002B8F92 /* coveralls.sh */,
 				0590A5F41A72B53600BFF0BF /* travis-linux-after.sh */,
 				0590A5F51A72B53600BFF0BF /* travis-linux-before.sh */,
 				0590A5F61A72B53600BFF0BF /* travis-osx-after.sh */,
