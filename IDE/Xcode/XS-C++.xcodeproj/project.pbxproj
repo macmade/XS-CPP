@@ -16,7 +16,6 @@
 		0590A5B91A6F08EF00BFF0BF /* XS-Threading-STLMutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5B01A6F08EF00BFF0BF /* XS-Threading-STLMutex.cpp */; };
 		0590A5BA1A6F08EF00BFF0BF /* XS-ToStringable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5B11A6F08EF00BFF0BF /* XS-ToStringable.cpp */; };
 		0590A5BB1A6F08EF00BFF0BF /* XS-Version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5B21A6F08EF00BFF0BF /* XS-Version.cpp */; };
-		0590A5F91A72B6CA00BFF0BF /* GMock-Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5F81A72B6CA00BFF0BF /* GMock-Main.cpp */; };
 		05CADA291A69E91E00C9E9DC /* gmock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CADA1E1A69E7FA00C9E9DC /* gmock.framework */; };
 		05CADA2A1A69E91E00C9E9DC /* GoogleMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CADA1C1A69E7FA00C9E9DC /* GoogleMock.framework */; };
 		05CADA2B1A69E91E00C9E9DC /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CADA201A69E7FA00C9E9DC /* gtest.framework */; };
@@ -825,7 +824,6 @@
 				0590A5B81A6F08EF00BFF0BF /* XS-Threading-Semaphore.cpp in Sources */,
 				0590A5BB1A6F08EF00BFF0BF /* XS-Version.cpp in Sources */,
 				0590A5B51A6F08EF00BFF0BF /* XS-PIMPL-Object.cpp in Sources */,
-				0590A5F91A72B6CA00BFF0BF /* GMock-Main.cpp in Sources */,
 				0590A5B41A6F08EF00BFF0BF /* XS-Exception.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
