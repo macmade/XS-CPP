@@ -16,6 +16,7 @@
 		0590A5B91A6F08EF00BFF0BF /* XS-Threading-STLMutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5B01A6F08EF00BFF0BF /* XS-Threading-STLMutex.cpp */; };
 		0590A5BA1A6F08EF00BFF0BF /* XS-ToStringable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5B11A6F08EF00BFF0BF /* XS-ToStringable.cpp */; };
 		0590A5BB1A6F08EF00BFF0BF /* XS-Version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5B21A6F08EF00BFF0BF /* XS-Version.cpp */; };
+		0590A5F91A72B6CA00BFF0BF /* GMock-Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5F81A72B6CA00BFF0BF /* GMock-Main.cpp */; };
 		05CADA291A69E91E00C9E9DC /* gmock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CADA1E1A69E7FA00C9E9DC /* gmock.framework */; };
 		05CADA2A1A69E91E00C9E9DC /* GoogleMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CADA1C1A69E7FA00C9E9DC /* GoogleMock.framework */; };
 		05CADA2B1A69E91E00C9E9DC /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CADA201A69E7FA00C9E9DC /* gtest.framework */; };
@@ -211,11 +212,11 @@
 		0590A5B01A6F08EF00BFF0BF /* XS-Threading-STLMutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Threading-STLMutex.cpp"; sourceTree = "<group>"; };
 		0590A5B11A6F08EF00BFF0BF /* XS-ToStringable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-ToStringable.cpp"; sourceTree = "<group>"; };
 		0590A5B21A6F08EF00BFF0BF /* XS-Version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Version.cpp"; sourceTree = "<group>"; };
-		0590A5C61A70803500BFF0BF /* GMock-Main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "GMock-Main.c"; sourceTree = "<group>"; };
 		0590A5F41A72B53600BFF0BF /* travis-linux-after.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "travis-linux-after.sh"; sourceTree = "<group>"; };
 		0590A5F51A72B53600BFF0BF /* travis-linux-before.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "travis-linux-before.sh"; sourceTree = "<group>"; };
 		0590A5F61A72B53600BFF0BF /* travis-osx-after.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "travis-osx-after.sh"; sourceTree = "<group>"; };
 		0590A5F71A72B53600BFF0BF /* travis-osx-before.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "travis-osx-before.sh"; sourceTree = "<group>"; };
+		0590A5F81A72B6CA00BFF0BF /* GMock-Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "GMock-Main.cpp"; sourceTree = "<group>"; };
 		05BDE00A18CDB2450028F339 /* Clang-Warnings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Clang-Warnings.h"; sourceTree = "<group>"; };
 		05BDE01818CDB2450028F339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05BDE01918CDB2450028F339 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -441,7 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				05E71B711961DA1100F911C4 /* Info.plist */,
-				0590A5C61A70803500BFF0BF /* GMock-Main.c */,
+				0590A5F81A72B6CA00BFF0BF /* GMock-Main.cpp */,
 				0590A5AA1A6F08EF00BFF0BF /* XS-Atomic.cpp */,
 				0590A5AB1A6F08EF00BFF0BF /* XS-Exception.cpp */,
 				0590A5AC1A6F08EF00BFF0BF /* XS-PIMPL-Object.cpp */,
@@ -824,6 +825,7 @@
 				0590A5B81A6F08EF00BFF0BF /* XS-Threading-Semaphore.cpp in Sources */,
 				0590A5BB1A6F08EF00BFF0BF /* XS-Version.cpp in Sources */,
 				0590A5B51A6F08EF00BFF0BF /* XS-PIMPL-Object.cpp in Sources */,
+				0590A5F91A72B6CA00BFF0BF /* GMock-Main.cpp in Sources */,
 				0590A5B41A6F08EF00BFF0BF /* XS-Exception.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
