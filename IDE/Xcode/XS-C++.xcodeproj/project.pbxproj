@@ -212,6 +212,10 @@
 		0590A5B11A6F08EF00BFF0BF /* XS-ToStringable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-ToStringable.cpp"; sourceTree = "<group>"; };
 		0590A5B21A6F08EF00BFF0BF /* XS-Version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Version.cpp"; sourceTree = "<group>"; };
 		0590A5C61A70803500BFF0BF /* GMock-Main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "GMock-Main.c"; sourceTree = "<group>"; };
+		0590A5F41A72B53600BFF0BF /* travis-linux-after.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "travis-linux-after.sh"; sourceTree = "<group>"; };
+		0590A5F51A72B53600BFF0BF /* travis-linux-before.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "travis-linux-before.sh"; sourceTree = "<group>"; };
+		0590A5F61A72B53600BFF0BF /* travis-osx-after.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "travis-osx-after.sh"; sourceTree = "<group>"; };
+		0590A5F71A72B53600BFF0BF /* travis-osx-before.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "travis-osx-before.sh"; sourceTree = "<group>"; };
 		05BDE00A18CDB2450028F339 /* Clang-Warnings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Clang-Warnings.h"; sourceTree = "<group>"; };
 		05BDE01818CDB2450028F339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05BDE01918CDB2450028F339 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -298,6 +302,10 @@
 			isa = PBXGroup;
 			children = (
 				054511F31A6A0AFF002B8F92 /* coveralls.sh */,
+				0590A5F41A72B53600BFF0BF /* travis-linux-after.sh */,
+				0590A5F51A72B53600BFF0BF /* travis-linux-before.sh */,
+				0590A5F61A72B53600BFF0BF /* travis-osx-after.sh */,
+				0590A5F71A72B53600BFF0BF /* travis-osx-before.sh */,
 			);
 			name = Scripts;
 			path = ../../Scripts;
