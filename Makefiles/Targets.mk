@@ -99,7 +99,7 @@ _debug: $(BUILD_TYPE)
 	@:
     
 # Build for OS-X
-os-x: lib dylib mac-framework ios-lib
+os-x: lib-universal dylib mac-framework ios-lib
 	
 	@:
 	
@@ -173,7 +173,34 @@ _clean:
 # Builds a static library
 lib: i386 x86-64
 	
-	@:
+	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_LIB),i386,Linking the i386 binary)
+	@ar rcs $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O)
+	
+	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_LIB),x86-64,Linking the x86-64 binary)
+	@ar rcs $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O)
+	
+ifeq ($(findstring 1,$(DEBUG)),)
+	
+	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_LIB),i386,Stripping the debug symbols)
+	@strip -S $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_LIB)$(EXT_LIB)
+	
+	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_LIB),x86-64,Stripping the debug symbols)
+	@strip -S $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_LIB)$(EXT_LIB)
+	
+endif
+
+# Builds a universal static library
+lib-universal: lib
+	
+	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Linking the universal binary)
+	@libtool -static $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_LIB)$(EXT_LIB) -o $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_LIB)$(EXT_LIB)
+	
+ifeq ($(findstring 1,$(DEBUG)),)
+
+	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Stripping the debug symbols)
+	@strip -S $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_LIB)$(EXT_LIB)
+	
+endif
 
 # Builds a static library
 dylib: i386 x86-64
