@@ -48,8 +48,8 @@ LD_FLAGS_ARM_7S     :=
 LD_FLAGS_ARM_64     := 
 
 # Architecture specific flags for the C compiler
-FLAGS_CC_INTEL_32   := -m32
-FLAGS_CC_INTEL_64   := -m64
-FLAGS_CC_ARM_7      := 
-FLAGS_CC_ARM_7S     := 
-FLAGS_CC_ARM_64     := 
+CC_FLAGS_INTEL_32   := -m32
+CC_FLAGS_INTEL_64   := -m64
+CC_FLAGS_ARM_7      := 
+CC_FLAGS_ARM_7S     := 
+CC_FLAGS_ARM_64     := 
