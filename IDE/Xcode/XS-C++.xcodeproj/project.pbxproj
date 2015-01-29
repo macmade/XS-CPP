@@ -215,6 +215,9 @@
 		0590A5F61A72B53600BFF0BF /* travis-osx-after.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "travis-osx-after.sh"; sourceTree = "<group>"; };
 		0590A5F71A72B53600BFF0BF /* travis-osx-before.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "travis-osx-before.sh"; sourceTree = "<group>"; };
 		0590A5F81A72B6CA00BFF0BF /* GMock-Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "GMock-Main.cpp"; sourceTree = "<group>"; };
+		0590A5FC1A72B7CE00BFF0BF /* Common.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = Common.mk; sourceTree = "<group>"; };
+		0590A5FD1A72B7CE00BFF0BF /* Linux.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = Linux.mk; sourceTree = "<group>"; };
+		0590A5FE1A72B7CE00BFF0BF /* OSX.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = OSX.mk; sourceTree = "<group>"; };
 		05BDE00A18CDB2450028F339 /* Clang-Warnings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Clang-Warnings.h"; sourceTree = "<group>"; };
 		05BDE01818CDB2450028F339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05BDE01918CDB2450028F339 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -248,6 +251,7 @@
 		05DC079F1A61466A00A7CF26 /* Exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Exception.cpp; sourceTree = "<group>"; };
 		05DC07A51A61489300A7CF26 /* ToStringable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToStringable.h; sourceTree = "<group>"; };
 		05DC07A81A6149A700A7CF26 /* ToStringable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToStringable.cpp; sourceTree = "<group>"; };
+		05DED7FD1A78A6E200B9DFAB /* Targets.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = Targets.mk; sourceTree = "<group>"; };
 		05E71B631961D9D100F911C4 /* XS-C++ Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XS-C++ Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E71B711961DA1100F911C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05FFA3701A696E75006E1B9B /* GoogleMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GoogleMock.xcodeproj; path = "../../Submodules/gmock-xcode/GoogleMock.xcodeproj"; sourceTree = "<group>"; };
@@ -314,10 +318,11 @@
 			children = (
 				05FFA3701A696E75006E1B9B /* GoogleMock.xcodeproj */,
 				054511EF1A6A0ACA002B8F92 /* Makefile */,
+				0590A5FA1A72B7CE00BFF0BF /* Makefiles */,
+				054511F11A6A0AFF002B8F92 /* Scripts */,
 				051F09651946EB70004B6E47 /* README.md */,
 				05BDE00918CDB2450028F339 /* XS-C++ */,
 				05E71B6F1961DA1100F911C4 /* Unit-Tests */,
-				054511F11A6A0AFF002B8F92 /* Scripts */,
 				056C880D18C8B50E006260B3 /* Frameworks */,
 				056C87CF18C8B0F8006260B3 /* Products */,
 			);
@@ -340,6 +345,18 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0590A5FA1A72B7CE00BFF0BF /* Makefiles */ = {
+			isa = PBXGroup;
+			children = (
+				0590A5FC1A72B7CE00BFF0BF /* Common.mk */,
+				0590A5FD1A72B7CE00BFF0BF /* Linux.mk */,
+				0590A5FE1A72B7CE00BFF0BF /* OSX.mk */,
+				05DED7FD1A78A6E200B9DFAB /* Targets.mk */,
+			);
+			name = Makefiles;
+			path = ../../Makefiles;
 			sourceTree = "<group>";
 		};
 		05BDE00918CDB2450028F339 /* XS-C++ */ = {
