@@ -118,7 +118,7 @@ FILES_OBJ           = $(subst $(EXT_C),$(EXT_O),$(FILES_REL))
 FILES_TESTS_OBJ     = $(subst $(EXT_C),$(EXT_O),$(FILES_TESTS_REL))
 
 # Files to build
-FILES_BUILD         = $(foreach _TARGET,$(TARGETS),$(addprefix $(DIR_BUILD_TEMP)$(_TARGET)/,$(FILES_OBJ)))
+FILES_BUILD         = $(foreach _ARCH,$(ARCHS),$(addprefix $(DIR_BUILD_TEMP)$(_ARCH)/,$(FILES_OBJ)))
 FILES_BUILD_TEST    = 
 
 #-------------------------------------------------------------------------------

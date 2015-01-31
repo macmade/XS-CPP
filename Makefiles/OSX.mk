@@ -40,7 +40,7 @@ EXT_DYLIB       := .dylib
 # Supported architectures
 #-------------------------------------------------------------------------------
 
-TARGETS := i386 x86_64 armv7 armv7s arm64
+ARCHS := i386 x86_64 armv7 armv7s arm64
 
 #-------------------------------------------------------------------------------
 # Commands configuration

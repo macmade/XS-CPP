@@ -36,6 +36,19 @@ vpath %$(EXT_C) $(DIR_SRC)
 vpath %$(EXT_C) $(DIR_TESTS)
 
 #-------------------------------------------------------------------------------
+# Built-in targets
+#-------------------------------------------------------------------------------
+
+# Declaration for phony targets, to avoid problems with local files
+.PHONY: all     \
+        clean   \
+        debug   \
+        release
+
+# Declaration for precious targets, to avoid cleaning of intermediate files
+.PRECIOUS: %$(EXT_O)
+
+#-------------------------------------------------------------------------------
 # Common targets
 #-------------------------------------------------------------------------------
 
@@ -45,40 +58,33 @@ all: release debug
 	@:
 	
 # Release build (parallel if available)
+release: _ARCHS = $(foreach _ARCH,$(ARCHS),$(addprefix _arch_,$(_ARCH)))
 release:
 	
 ifeq ($(MAKE_4),true)
-	@$(MAKE) -j 50 --output-sync _release
+	@$(MAKE) -j 50 --output-sync $(_ARCHS)
 else
-	@$(MAKE) _release
+	@$(MAKE) _release $(_ARCHS)
 endif
 
 # Debug build (parallel if available)
+debug: _ARCHS = $(foreach _ARCH,$(ARCHS),$(addprefix _arch_,$(_ARCH)))
 debug:
 	
 ifeq ($(MAKE_4),true)
-	@$(MAKE) -j 50 --output-sync _debug DEBUG=1
+	@$(MAKE) -j 50 --output-sync $(_ARCHS) DEBUG=1
 else
-	@$(MAKE) _debug DEBUG=1
+	@$(MAKE) _debug $(_ARCHS) DEBUG=1
 endif
 
-# Release build
-_release: $(FILES_BUILD)
-	
-	@:
-
-# Debug build
-_debug: $(FILES_BUILD)
-	
-	@:
-
 # Cleans all build files
-clean: _CLEAN_TARGETS = $(foreach _TARGET,$(TARGETS),$(addprefix _clean_,$(_TARGET)))
+clean: _CLEAN_ARCHS = $(foreach _ARCH,$(ARCHS),$(addprefix _clean_,$(_ARCH)))
 clean:
 	
-	@$(MAKE) $(_CLEAN_TARGETS)
-	@$(MAKE) $(_CLEAN_TARGETS) DEBUG=1
+	@$(MAKE) $(_CLEAN_ARCHS)
+	@$(MAKE) $(_CLEAN_ARCHS) DEBUG=1
 	
+# Cleans architecture specific files
 _clean_%:
 	
 	@echo -e $(call PRINT,Cleaning,$*,Cleaning all intermediate files)
@@ -86,17 +92,27 @@ _clean_%:
 	
 	@echo -e $(call PRINT,Cleaning,$*,Cleaning all product files)
 	@rm -rf $(DIR_BUILD_PRODUCTS)$*
-	
+
 #-------------------------------------------------------------------------------
 # Targets with second expansion
 #-------------------------------------------------------------------------------
 
 .SECONDEXPANSION:
 
-%$(EXT_O): _TARGET    = $(firstword $(subst /, ,$(subst $(DIR_BUILD_TEMP),,$@)))
-%$(EXT_O): _FILE      = $(subst $(DIR_BUILD_TEMP)$(_TARGET)/,,$*)$(EXT_C)
-%$(EXT_O): _FLAGS     = $(CC_FLAGS_$(_TARGET))
+# Build architecture specific files
+_arch_%: _FILES = $(filter $(DIR_BUILD_TEMP)$*/%,$(FILES_BUILD))
+_arch_%: _OBJ   = $(DIR_BUILD_TEMP)$*/$(PRODUCT)$(EXT_O)
+_arch_%: _FLAGS = $(LD_FLAGS_$(_ARCH))
+_arch_%: $$(_FILES)
+	
+	@echo -e $(call PRINT,Linking object files,$*,$(PRODUCT)$(EXT_O))
+	@rm -rf $(OBJ)
+	@ld -r $(_FLAGS) $(_FILES) -o $(_OBJ)
+
+%$(EXT_O): _ARCH      = $(firstword $(subst /, ,$(subst $(DIR_BUILD_TEMP),,$@)))
+%$(EXT_O): _FILE      = $(subst $(DIR_BUILD_TEMP)$(_ARCH)/,,$*)$(EXT_C)
+%$(EXT_O): _FLAGS     = $(CC_FLAGS_$(_ARCH))
 %$(EXT_O): $$(shell mkdir -p $$(dir $$@)) $(_FILE)
 	
-	@echo -e $(call PRINT_FILE,"Compiling file",$(_TARGET),$(_FILE))
+	@echo -e $(call PRINT_FILE,"Compiling file",$(_ARCH),$(_FILE))
 	@$(_CC) $(_FLAGS) -o $@ -c $(addprefix $(DIR_SRC),$(_FILE))
