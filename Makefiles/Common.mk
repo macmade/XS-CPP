@@ -84,15 +84,15 @@ endif
 
 # Root build directory (debug or release)
 ifeq ($(findstring 1,$(DEBUG)),)
-    DIR_BUILD                   := Build/Release/
+    DIR_BUILD       := Build/Release/
 else
-    DIR_BUILD                   := Build/Debug/
+    DIR_BUILD       := Build/Debug/
 endif
 
 # Relative build directories
-DIR_BUILD_PRODUCTS      := $(DIR_BUILD)Products/
-DIR_BUILD_TEMP          := $(DIR_BUILD)Intermediates/
-DIR_BUILD_TESTS         := $(DIR)Build/Tests/
+DIR_BUILD_PRODUCTS  := $(DIR_BUILD)Products/
+DIR_BUILD_TEMP      := $(DIR_BUILD)Intermediates/
+DIR_BUILD_TESTS     := $(DIR)Build/Tests/
 
 #-------------------------------------------------------------------------------
 # File suffixes

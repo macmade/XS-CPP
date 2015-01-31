@@ -72,6 +72,21 @@ _debug: $(FILES_BUILD)
 	
 	@:
 
+# Cleans all build files
+clean: _CLEAN_TARGETS = $(foreach _TARGET,$(TARGETS),$(addprefix _clean_,$(_TARGET)))
+clean:
+	
+	@$(MAKE) $(_CLEAN_TARGETS)
+	@$(MAKE) $(_CLEAN_TARGETS) DEBUG=1
+	
+_clean_%:
+	
+	@echo -e $(call PRINT,Cleaning,$*,Cleaning all intermediate files)
+	@rm -rf $(DIR_BUILD_TEMP)$*
+	
+	@echo -e $(call PRINT,Cleaning,$*,Cleaning all product files)
+	@rm -rf $(DIR_BUILD_PRODUCTS)$*
+	
 #-------------------------------------------------------------------------------
 # Targets with second expansion
 #-------------------------------------------------------------------------------
@@ -79,7 +94,7 @@ _debug: $(FILES_BUILD)
 .SECONDEXPANSION:
 
 %$(EXT_O): _TARGET    = $(firstword $(subst /, ,$(subst $(DIR_BUILD_TEMP),,$@)))
-%$(EXT_O): _FILE      = $(patsubst $(DIR_BUILD_TEMP)$(_TARGET)/%$(EXT_O),%$(EXT_C),$@)
+%$(EXT_O): _FILE      = $(subst $(DIR_BUILD_TEMP)$(_TARGET)/,,$*)$(EXT_C)
 %$(EXT_O): _FLAGS     = $(CC_FLAGS_$(_TARGET))
 %$(EXT_O): $$(shell mkdir -p $$(dir $$@)) $(_FILE)
 	
