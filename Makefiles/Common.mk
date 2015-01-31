@@ -82,44 +82,17 @@ endif
 # Paths
 #-------------------------------------------------------------------------------
 
-# Root directory
-DIR                             := ./
-
 # Root build directory (debug or release)
 ifeq ($(findstring 1,$(DEBUG)),)
-    DIR_BUILD                   := $(DIR)Build/Release/
+    DIR_BUILD                   := Build/Release/
 else
-    DIR_BUILD                   := $(DIR)Build/Debug/
+    DIR_BUILD                   := Build/Debug/
 endif
 
 # Relative build directories
-DIR_BUILD_PRODUCTS              := $(DIR_BUILD)Products/
-DIR_BUILD_PRODUCTS_INTEL_32     := $(DIR_BUILD_PRODUCTS)i386/
-DIR_BUILD_PRODUCTS_INTEL_64     := $(DIR_BUILD_PRODUCTS)x86_64/
-DIR_BUILD_PRODUCTS_ARM_7        := $(DIR_BUILD_PRODUCTS)armv7/
-DIR_BUILD_PRODUCTS_ARM_7S       := $(DIR_BUILD_PRODUCTS)armv7s/
-DIR_BUILD_PRODUCTS_ARM_64       := $(DIR_BUILD_PRODUCTS)arm64/
-DIR_BUILD_PRODUCTS_UNIVERSAL    := $(DIR_BUILD_PRODUCTS)universal/
-DIR_BUILD_TEMP                  := $(DIR_BUILD)Intermediates/
-DIR_BUILD_TEMP                  := $(DIR_BUILD)Intermediates/
-DIR_BUILD_TEMP_INTEL_32         := $(DIR_BUILD_TEMP)i386/
-DIR_BUILD_TEMP_INTEL_64         := $(DIR_BUILD_TEMP)x86_64/
-DIR_BUILD_TEMP_ARM_7            := $(DIR_BUILD_TEMP)armv7/
-DIR_BUILD_TEMP_ARM_7S           := $(DIR_BUILD_TEMP)armv7s/
-DIR_BUILD_TEMP_ARM_64           := $(DIR_BUILD_TEMP)arm64/
-DIR_BUILD_TEMP_INTEL_32_BIN     := $(DIR_BUILD_TEMP_INTEL_32)bin/
-DIR_BUILD_TEMP_INTEL_32_OBJ     := $(DIR_BUILD_TEMP_INTEL_32)obj/
-DIR_BUILD_TEMP_INTEL_64_BIN     := $(DIR_BUILD_TEMP_INTEL_64)bin/
-DIR_BUILD_TEMP_INTEL_64_OBJ     := $(DIR_BUILD_TEMP_INTEL_64)obj/
-DIR_BUILD_TEMP_ARM_7_BIN        := $(DIR_BUILD_TEMP_ARM_7)bin/
-DIR_BUILD_TEMP_ARM_7_OBJ        := $(DIR_BUILD_TEMP_ARM_7)obj/
-DIR_BUILD_TEMP_ARM_7S_BIN       := $(DIR_BUILD_TEMP_ARM_7S)bin/
-DIR_BUILD_TEMP_ARM_7S_OBJ       := $(DIR_BUILD_TEMP_ARM_7S)obj/
-DIR_BUILD_TEMP_ARM_64_BIN       := $(DIR_BUILD_TEMP_ARM_64)bin/
-DIR_BUILD_TEMP_ARM_64_OBJ       := $(DIR_BUILD_TEMP_ARM_64)obj/
-DIR_BUILD_TESTS                 := $(DIR)Build/Tests/
-DIR_BUILD_TESTS_BIN             := $(DIR_BUILD_TESTS)bin/
-DIR_BUILD_TESTS_OBJ             := $(DIR_BUILD_TESTS)obj/
+DIR_BUILD_PRODUCTS      := $(DIR_BUILD)Products/
+DIR_BUILD_TEMP          := $(DIR_BUILD)Intermediates/
+DIR_BUILD_TESTS         := $(DIR)Build/Tests/
 
 #-------------------------------------------------------------------------------
 # File suffixes
@@ -137,23 +110,16 @@ EXT_O   := .o
 #-------------------------------------------------------------------------------
 
 # Gets only the file name of the C files
-FILES_C_REL             = $(subst $(DIR_SRC),,$(FILES_C))
-FILES_TESTS_REL         = $(subst $(DIR_TESTS),,$(FILES_TESTS))
-
-# Do not include excluded files
-FILES_C_REL_EXCL        = $(filter-out $(FILES_C_EXCLUDE),$(FILES_C_REL))
+FILES_REL           = $(subst $(DIR_SRC),,$(FILES))
+FILES_TESTS_REL     = $(subst $(DIR_TESTS),,$(FILES_TESTS))
 
 # Replace the code extension by the object one
-FILES_C_OBJ             = $(subst $(EXT_C),$(EXT_O),$(FILES_C_REL_EXCL))
-FILES_TESTS_OBJ         = $(subst $(EXT_C),$(EXT_O),$(FILES_TESTS_REL))
+FILES_OBJ           = $(subst $(EXT_C),$(EXT_O),$(FILES_REL))
+FILES_TESTS_OBJ     = $(subst $(EXT_C),$(EXT_O),$(FILES_TESTS_REL))
 
-# Prefix all object files with the build directory for each platform
-FILES_C_BUILD_INTEL_32  = $(addprefix $(DIR_BUILD_TEMP_INTEL_32_OBJ),$(FILES_C_OBJ))
-FILES_C_BUILD_INTEL_64  = $(addprefix $(DIR_BUILD_TEMP_INTEL_64_OBJ),$(FILES_C_OBJ))
-FILES_C_BUILD_ARM_7     = $(addprefix $(DIR_BUILD_TEMP_ARM_7_OBJ),$(FILES_C_OBJ))
-FILES_C_BUILD_ARM_7S    = $(addprefix $(DIR_BUILD_TEMP_ARM_7S_OBJ),$(FILES_C_OBJ))
-FILES_C_BUILD_ARM_64    = $(addprefix $(DIR_BUILD_TEMP_ARM_64_OBJ),$(FILES_C_OBJ))
-FILES_TESTS_BUILD       = $(addprefix $(DIR_BUILD_TESTS_OBJ),$(FILES_TESTS_OBJ))
+# Files to build
+FILES_BUILD         = $(foreach _TARGET,$(TARGETS),$(addprefix $(DIR_BUILD_TEMP)$(_TARGET)/,$(FILES_OBJ)))
+FILES_BUILD_TEST    = 
 
 #-------------------------------------------------------------------------------
 # Display
@@ -176,22 +142,21 @@ COLOR_CYAN      := "\x1b[36;01m"
 # Gets every C file in a specific source directory
 # 
 # @1:   The directory with the source files
-GET_C_FILES = $(foreach dir,$(1), $(wildcard $(dir)*$(EXT_C)))
+GET_C_FILES = $(foreach _DIR,$(1), $(wildcard $(_DIR)*$(EXT_C)))
 
 # Prints a message about a file
 # 
 # @1:   The first message part
 # @2:   The architecture
 # @3:   The file
-PRINT_FILE  = $(call PRINT,$(1),$(2),XS.$(patsubst %.,%,$(subst /,.,$(subst ./,,$(dir $(patsubst $(DIR_SRC)%,%,$<))/))))$(COLOR_GRAY)"$(notdir $(3))"$(COLOR_NONE)
+PRINT_FILE = $(call PRINT,$(1),$(2),$(subst /,.,$(subst ./,,$(dir $(3))))"$(COLOR_GRAY)"$(notdir $(3))"$(COLOR_NONE)")
 
 # Prints a message
 # 
-# @1:   The first message part
-# @2:   The architecture
+# @1:   The first message part# @2:   The architecture
 # @3:   The second message part
 ifeq ($(findstring 1,$(DEBUG)),)
-PRINT       = "["$(COLOR_GREEN)" $(PRODUCT) "$(COLOR_NONE)"]> $(1) [ "$(COLOR_CYAN)"Release - $(2)"$(COLOR_NONE)" ]: "$(COLOR_YELLOW)"$(3)"$(COLOR_NONE)
+PRINT = "["$(COLOR_GREEN)" $(PRODUCT) "$(COLOR_NONE)"]> $(1) [ "$(COLOR_CYAN)"Release - $(2)"$(COLOR_NONE)" ]: "$(COLOR_YELLOW)"$(3)"$(COLOR_NONE)
 else
-PRINT       = "["$(COLOR_GREEN)" $(PRODUCT) "$(COLOR_NONE)"]> $(1) [ "$(COLOR_CYAN)"Debug - $(2)"$(COLOR_NONE)" ]: "$(COLOR_YELLOW)"$(3)"$(COLOR_NONE)
+PRINT = "["$(COLOR_GREEN)" $(PRODUCT) "$(COLOR_NONE)"]> $(1) [ "$(COLOR_CYAN)"Debug - $(2)"$(COLOR_NONE)" ]: "$(COLOR_YELLOW)"$(3)"$(COLOR_NONE)
 endif

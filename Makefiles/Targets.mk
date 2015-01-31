@@ -36,32 +36,6 @@ vpath %$(EXT_C) $(DIR_SRC)
 vpath %$(EXT_C) $(DIR_TESTS)
 
 #-------------------------------------------------------------------------------
-# Built-in targets
-#-------------------------------------------------------------------------------
-
-# Declaration for phony targets, to avoid problems with local files
-.PHONY: all             \
-        clean           \
-        os-x            \
-        linux           \
-        lib             \
-        dylib           \
-        ios-lib         \
-        mac-framework   \
-        i386            \
-        x86-64          \
-        armv7           \
-        armv7s          \
-        arm64
-
-# Declaration for precious targets, to avoid cleaning of intermediate files
-.PRECIOUS:  $(DIR_BUILD_TEMP_INTEL_32_OBJ)%$(EXT_O) \
-            $(DIR_BUILD_TEMP_INTEL_64_OBJ)%$(EXT_O) \
-            $(DIR_BUILD_TEMP_ARM_7_OBJ)%$(EXT_O)    \
-            $(DIR_BUILD_TEMP_ARM_7S_OBJ)%$(EXT_O)   \
-            $(DIR_BUILD_TEMP_ARM_64_OBJ)%$(EXT_O)
-
-#-------------------------------------------------------------------------------
 # Common targets
 #-------------------------------------------------------------------------------
 
@@ -69,7 +43,7 @@ vpath %$(EXT_C) $(DIR_TESTS)
 all: release debug
 	
 	@:
-    
+	
 # Release build (parallel if available)
 release:
 	
@@ -89,172 +63,14 @@ else
 endif
 
 # Release build
-_release: $(BUILD_TYPE)
+_release: $(FILES_BUILD)
 	
 	@:
 
 # Debug build
-_debug: $(BUILD_TYPE)
+_debug: $(FILES_BUILD)
 	
 	@:
-    
-# Build for OS-X
-os-x: lib-universal dylib mac-framework ios-lib
-	
-	@:
-	
-# Build for Linux
-linux: lib dylib
-	
-	@:
-
-# Release test target
-test: release
-	
-	@$(MAKE) -s _test
-
-# Debug test target
-test-debug: debug
-	
-	@$(MAKE) -s _test DEBUG=1
-
-# Test target
-_test:
-	
-	@:
-
-# Cleans all build files
-clean:
-	
-	@$(MAKE) _clean
-	@$(MAKE) _clean DEBUG=1
-	
-# Clean target
-_clean:
-	
-	@echo -e $(call PRINT,Cleaning,i386,Cleaning all intermediate files)
-	@rm -rf $(DIR_BUILD_TEMP_INTEL_32_OBJ)*
-	@rm -rf $(DIR_BUILD_TEMP_INTEL_32_BIN)*
-	
-	@echo -e $(call PRINT,Cleaning,x86-64,Cleaning all intermediate files)
-	@rm -rf $(DIR_BUILD_TEMP_INTEL_64_OBJ)*
-	@rm -rf $(DIR_BUILD_TEMP_INTEL_64_BIN)*
-	
-	@echo -e $(call PRINT,Cleaning,armv7,Cleaning all intermediate files)
-	@rm -rf $(DIR_BUILD_TEMP_ARM_7_OBJ)*
-	@rm -rf $(DIR_BUILD_TEMP_ARM_7_BIN)*
-	
-	@echo -e $(call PRINT,Cleaning,armv7s,Cleaning all intermediate files)
-	@rm -rf $(DIR_BUILD_TEMP_ARM_7S_OBJ)*
-	@rm -rf $(DIR_BUILD_TEMP_ARM_7S_BIN)*
-	
-	@echo -e $(call PRINT,Cleaning,arm64,Cleaning all intermediate files)
-	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)*
-	@rm -rf $(DIR_BUILD_TEMP_ARM_64_BIN)*
-	
-	@echo -e $(call PRINT,Cleaning,i386,Cleaning all product files)
-	@rm -rf $(DIR_BUILD_PRODUCTS_INTEL_32)*
-	
-	@echo -e $(call PRINT,Cleaning,x86-64,Cleaning all product files)
-	@rm -rf $(DIR_BUILD_PRODUCTS_INTEL_64)*
-	
-	@echo -e $(call PRINT,Cleaning,armv7,Cleaning all product files)
-	@rm -rf $(DIR_BUILD_PRODUCTS_ARM_7)*
-	
-	@echo -e $(call PRINT,Cleaning,armv7s,Cleaning all product files)
-	@rm -rf $(DIR_BUILD_PRODUCTS_ARM_7S)*
-	
-	@echo -e $(call PRINT,Cleaning,arm64,Cleaning all product files)
-	@rm -rf $(DIR_BUILD_PRODUCTS_ARM_64)*
-	
-	@echo -e $(call PRINT,Cleaning,universal,Cleaning all product files)
-	@rm -rf $(DIR_BUILD_PRODUCTS_UNIVERSAL)*
-
-# Builds a static library
-lib: i386 x86-64
-	
-	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_LIB),i386,Linking the i386 binary)
-	@ar rcs $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O)
-	
-	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_LIB),x86-64,Linking the x86-64 binary)
-	@ar rcs $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O)
-	
-ifeq ($(findstring 1,$(DEBUG)),)
-	
-	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_LIB),i386,Stripping the debug symbols)
-	@strip -S $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_LIB)$(EXT_LIB)
-	
-	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_LIB),x86-64,Stripping the debug symbols)
-	@strip -S $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_LIB)$(EXT_LIB)
-	
-endif
-
-# Builds a universal static library
-lib-universal: lib
-	
-	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Linking the universal binary)
-	@libtool -static $(DIR_BUILD_PRODUCTS_INTEL_32)$(PRODUCT_LIB)$(EXT_LIB) $(DIR_BUILD_PRODUCTS_INTEL_64)$(PRODUCT_LIB)$(EXT_LIB) -o $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_LIB)$(EXT_LIB)
-	
-ifeq ($(findstring 1,$(DEBUG)),)
-
-	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_LIB),universal,Stripping the debug symbols)
-	@strip -S $(DIR_BUILD_PRODUCTS_UNIVERSAL)$(PRODUCT_LIB)$(EXT_LIB)
-	
-endif
-
-# Builds a static library
-dylib: i386 x86-64
-	
-	@:
-
-# Builds an iOS static library (OS-X builds only)
-ios-lib: armv7 armv7s arm64
-	
-	@:
-	
-# Builds an Mac framework (OS-X builds only)
-mac-framework: i386 x86-64
-	
-	@:
-
-#-------------------------------------------------------------------------------
-# Architecture specific targets
-#-------------------------------------------------------------------------------
-
-# Target: i386
-i386: $(FILES_C_BUILD_INTEL_32)
-	
-	@echo -e $(call PRINT,Linking object files,i386,$(PRODUCT)$(EXT_O))
-	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
-	@ld -r $(LD_FLAGS_INTEL_32) $(FILES_C_BUILD_INTEL_32) -o $(DIR_BUILD_TEMP_INTEL_32_OBJ)$(PRODUCT)$(EXT_O)
-
-# Target: x86-64
-x86-64: $(FILES_C_BUILD_INTEL_64)
-	
-	@echo -e $(call PRINT,Linking object files,x86-64,$(PRODUCT)$(EXT_O))
-	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
-	@ld -r $(LD_FLAGS_INTEL_64) $(FILES_C_BUILD_INTEL_64) -o $(DIR_BUILD_TEMP_INTEL_64_OBJ)$(PRODUCT)$(EXT_O)
-
-# Target: armv7
-armv7: $(FILES_C_BUILD_ARM_7)
-	
-	@echo -e $(call PRINT,Linking object files,armv7,$(PRODUCT)$(EXT_O))
-	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
-	@ld -r $(LD_FLAGS_ARM_7) $(FILES_C_BUILD_ARM_7) -o $(DIR_BUILD_TEMP_ARM_7_OBJ)$(PRODUCT)$(EXT_O)
-
-# Target: armv7s
-armv7s: $(FILES_C_BUILD_ARM_7S)
-	
-	@echo -e $(call PRINT,Linking object files,armv7s,$(PRODUCT)$(EXT_O))
-	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
-	@ld -r $(LD_FLAGS_ARM_7S) $(FILES_C_BUILD_ARM_7S) -o $(DIR_BUILD_TEMP_ARM_7S_OBJ)$(PRODUCT)$(EXT_O)
-
-# Target: arm64
-arm64: $(FILES_C_BUILD_ARM_64)
-	
-	@echo -e $(call PRINT,Linking object files,arm64,$(PRODUCT)$(EXT_O))
-	@rm -rf $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
-	@ld -r $(LD_FLAGS_ARM_64) $(FILES_C_BUILD_ARM_64) -o $(DIR_BUILD_TEMP_ARM_64_OBJ)$(PRODUCT)$(EXT_O)
 
 #-------------------------------------------------------------------------------
 # Targets with second expansion
@@ -262,32 +78,10 @@ arm64: $(FILES_C_BUILD_ARM_64)
 
 .SECONDEXPANSION:
 
-# Target: i386 object file
-$(DIR_BUILD_TEMP_INTEL_32_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
+%$(EXT_O): _TARGET    = $(firstword $(subst /, ,$(subst $(DIR_BUILD_TEMP),,$@)))
+%$(EXT_O): _FILE      = $(patsubst $(DIR_BUILD_TEMP)$(_TARGET)/%$(EXT_O),%$(EXT_C),$@)
+%$(EXT_O): _FLAGS     = $(CC_FLAGS_$(_TARGET))
+%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) $(_FILE)
 	
-	@echo -e $(call PRINT_FILE,"Compiling file",i386,$<)
-	@$(_CC) $(CC_FLAGS_INTEL_32) -o $@ -c $<
-
-# Target: x86_64 object file
-$(DIR_BUILD_TEMP_INTEL_64_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
-	
-	@echo -e $(call PRINT_FILE,"Compiling file",x86-64,$<)
-	@$(_CC) $(CC_FLAGS_INTEL_64) -o $@ -c $<
-
-# Target: armv7 object file
-$(DIR_BUILD_TEMP_ARM_7_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
-	
-	@echo -e $(call PRINT_FILE,"Compiling file",armv7,$<)
-	@$(_CC) $(CC_FLAGS_ARM_7) -isysroot $(IOS_SDK_PATH) -o $@ -c $<
-
-# Target: armv7s object file
-$(DIR_BUILD_TEMP_ARM_7S_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
-	
-	@echo -e $(call PRINT_FILE,"Compiling file",armv7s,$<)
-	@$(_CC) $(CC_FLAGS_ARM_7S) -isysroot $(IOS_SDK_PATH) -o $@ -c $<
-
-# Target: arm64 object file
-$(DIR_BUILD_TEMP_ARM_64_OBJ)%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) %$(EXT_C)
-	
-	@echo -e $(call PRINT_FILE,"Compiling file",arm64,$<)
-	@$(_CC) $(CC_FLAGS_ARM_64) -isysroot $(IOS_SDK_PATH) -o $@ -c $<
+	@echo -e $(call PRINT_FILE,"Compiling file",$(_TARGET),$(_FILE))
+	@$(_CC) $(_FLAGS) -o $@ -c $(addprefix $(DIR_SRC),$(_FILE))

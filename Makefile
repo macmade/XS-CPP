@@ -43,6 +43,7 @@ endif
 # Products
 #-------------------------------------------------------------------------------
 
+# Procuct name
 PRODUCT                 := XS-C++
 PRODUCT_LIB             := lib$(PRODUCT)
 PRODUCT_DYLIB           := lib$(PRODUCT)
@@ -54,29 +55,32 @@ PRODUCT_IOS_LIB         := lib$(PRODUCT)-iOS
 #-------------------------------------------------------------------------------
 
 # Source directories
-DIR_INC     := $(DIR)$(PRODUCT)/include/
-DIR_SRC     := $(DIR)$(PRODUCT)/source/
-DIR_RES     := $(DIR)$(PRODUCT)/
-DIR_TESTS   := $(DIR)Unit-Tests/
+DIR_INC     := $(PRODUCT)/include/
+DIR_SRC     := $(PRODUCT)/source/
+DIR_RES     := $(PRODUCT)/
+DIR_TESTS   := Unit-Tests/
 
 #-------------------------------------------------------------------------------
 # Files
 #-------------------------------------------------------------------------------
 
-# Gets every C file in the source directories
+# All source files in the source directories
 FILES_C         :=  $(call GET_C_FILES, $(DIR_SRC))             \
                     $(call GET_C_FILES, $(DIR_SRC)Atomic/)      \
                     $(call GET_C_FILES, $(DIR_SRC)Threading/)
 
-# Gets unit-test files
-FILES_TESTS     :=  $(call GET_C_FILES, $(DIR_TESTS))
-
 # Platform specific files not to include in compilation
-FILES_C_EXCLUDE :=  Threading/NativeMutex-WIN32.cpp \
-                    Threading/NativeMutex-POSIX.cpp \
-                    Threading/Semaphore-APPLE.cpp   \
-                    Threading/Semaphore-POSIX.cpp   \
-                    Threading/Semaphore-WIN32.cpp
+FILES_C_EXCLUDE :=  %/Threading/NativeMutex-WIN32.cpp \
+                    %/Threading/NativeMutex-POSIX.cpp \
+                    %/Threading/Semaphore-APPLE.cpp   \
+                    %/Threading/Semaphore-POSIX.cpp   \
+                    %/Threading/Semaphore-WIN32.cpp
+
+# Files to compile
+FILES           :=  $(filter-out $(FILES_C_EXCLUDE),$(FILES_C))
+
+# Unit-test files
+FILES_TESTS     :=  $(call GET_C_FILES, $(DIR_TESTS))
 
 #-------------------------------------------------------------------------------
 # Configuration

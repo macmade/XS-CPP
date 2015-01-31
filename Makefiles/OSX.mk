@@ -37,19 +37,25 @@ EXT_FRAMEWORK   := .framework
 EXT_DYLIB       := .dylib
 
 #-------------------------------------------------------------------------------
-# Linker configuration
+# Supported architectures
+#-------------------------------------------------------------------------------
+
+TARGETS := i386 x86_64 armv7 armv7s arm64
+
+#-------------------------------------------------------------------------------
+# Commands configuration
 #-------------------------------------------------------------------------------
 
 # Architecture specific flags for ld
-LD_FLAGS_INTEL_32   := 
-LD_FLAGS_INTEL_64   := 
-LD_FLAGS_ARM_7      := 
-LD_FLAGS_ARM_7S     := 
-LD_FLAGS_ARM_64     := 
+LD_FLAGS_i386   := 
+LD_FLAGS_x86_64 := 
+LD_FLAGS_armv7  := 
+LD_FLAGS_arm7s  := 
+LD_FLAGS_arm64  := 
 
 # Architecture specific flags for the C compiler
-CC_FLAGS_INTEL_32   := -arch i386
-CC_FLAGS_INTEL_64   := -arch x86_64
-CC_FLAGS_ARM_7      := -arch armv7
-CC_FLAGS_ARM_7S     := -arch armv7s
-CC_FLAGS_ARM_64     := -arch arm64
+CC_FLAGS_i386   := -arch i386
+CC_FLAGS_x86_64 := -arch x86_64
+CC_FLAGS_armv7  := -arch armv7 -isysroot $(IOS_SDK_PATH)
+CC_FLAGS_armv7s := -arch armv7s -isysroot $(IOS_SDK_PATH)
+CC_FLAGS_arm64  := -arch arm64 -isysroot $(IOS_SDK_PATH)

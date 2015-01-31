@@ -26,30 +26,3 @@
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 #-------------------------------------------------------------------------------
-
-#-------------------------------------------------------------------------------
-# File suffixes
-#-------------------------------------------------------------------------------
-
-# File extensions
-EXT_LIB         := .a
-EXT_FRAMEWORK   := 
-EXT_DYLIB       := .so
-
-#-------------------------------------------------------------------------------
-# Commands configuration
-#-------------------------------------------------------------------------------
-
-# Architecture specific flags for the linker
-LD_FLAGS_INTEL_32   := -m elf_i386
-LD_FLAGS_INTEL_64   := -m elf_x86_64
-LD_FLAGS_ARM_7      := 
-LD_FLAGS_ARM_7S     := 
-LD_FLAGS_ARM_64     := 
-
-# Architecture specific flags for the C compiler
-CC_FLAGS_INTEL_32   := -m32
-CC_FLAGS_INTEL_64   := -m64
-CC_FLAGS_ARM_7      := 
-CC_FLAGS_ARM_7S     := 
-CC_FLAGS_ARM_64     := 
