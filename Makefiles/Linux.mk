@@ -33,7 +33,6 @@
 
 # File extensions
 EXT_LIB         := .a
-EXT_FRAMEWORK   := .framework
 EXT_DYLIB       := .so
 
 #-------------------------------------------------------------------------------
@@ -49,13 +48,7 @@ ARCHS := i386 x86_64
 # Architecture specific flags for ld
 LD_FLAGS_i386   := -m elf_i386
 LD_FLAGS_x86_64 := -m elf_x86_64
-LD_FLAGS_armv7  := 
-LD_FLAGS_arm7s  := 
-LD_FLAGS_arm64  := 
 
 # Architecture specific flags for the C compiler
 CC_FLAGS_i386   := -march i386
 CC_FLAGS_x86_64 := -march x86_64
-CC_FLAGS_armv7  := 
-CC_FLAGS_armv7s := 
-CC_FLAGS_arm64  := 
