@@ -93,6 +93,11 @@ _clean_%:
 	@echo -e $(call PRINT,Cleaning,$*,Cleaning all product files)
 	@rm -rf $(DIR_BUILD_PRODUCTS)$*
 
+# Unit-tests
+test:
+	
+	@:
+
 #-------------------------------------------------------------------------------
 # Targets with second expansion
 #-------------------------------------------------------------------------------
