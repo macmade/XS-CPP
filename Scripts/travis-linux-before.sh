@@ -1,14 +1,15 @@
 #!/bin/bash
 
-declare -r UBUNTU_14=`uname -v | grep trusty`
+. /etc/lsb-release
 
-if [ -z $UBUNTU_14 ]; then
+if [ $(echo "$DISTRIB_RELEASE < 14" | bc) -eq 1 ]; then
     
     echo "Ubuntu 14 Trusty is required"
     exit 1
 
 fi
 
+sudo dpkg --add-architecture i386
 sudo apt-get update
 
 sudo apt-get -y install make
