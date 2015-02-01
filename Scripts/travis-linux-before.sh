@@ -4,8 +4,9 @@ declare -r UBUNTU_14=`uname -v | grep trusty`
 
 if [ ! -z $UBUNTU_14 ]; then
     sudo dpkg --add-architecture i386
-    sudo apt-get update
 fi
+
+sudo apt-get update
 
 if [ ! -z $UBUNTU_14 ]; then
     sudo apt-get -y install libc++1
