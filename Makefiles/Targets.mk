@@ -64,7 +64,7 @@ release:
 ifeq ($(MAKE_4),true)
 	@$(MAKE) -j 50 --output-sync $(_ARCHS)
 else
-	@$(MAKE) _release $(_ARCHS)
+	@$(MAKE) $(_ARCHS)
 endif
 
 # Debug build (parallel if available)
@@ -74,7 +74,7 @@ debug:
 ifeq ($(MAKE_4),true)
 	@$(MAKE) -j 50 --output-sync $(_ARCHS) DEBUG=1
 else
-	@$(MAKE) _debug $(_ARCHS) DEBUG=1
+	@$(MAKE) $(_ARCHS) DEBUG=1
 endif
 
 # Cleans all build files
@@ -102,7 +102,7 @@ _clean_%:
 # Build architecture specific files
 _arch_%: _FILES = $(filter $(DIR_BUILD_TEMP)$*/%,$(FILES_BUILD))
 _arch_%: _OBJ   = $(DIR_BUILD_TEMP)$*/$(PRODUCT)$(EXT_O)
-_arch_%: _FLAGS = $(LD_FLAGS_$(_ARCH))
+_arch_%: _FLAGS = $(LD_FLAGS_$*)
 _arch_%: $$(_FILES)
 	
 	@echo -e $(call PRINT,Linking object files,$*,$(PRODUCT)$(EXT_O))

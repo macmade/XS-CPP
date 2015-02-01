@@ -50,5 +50,5 @@ LD_FLAGS_i386   := -m elf_i386
 LD_FLAGS_x86_64 := -m elf_x86_64
 
 # Architecture specific flags for the C compiler
-CC_FLAGS_i386   := -march i386
-CC_FLAGS_x86_64 := -march x86_64
+CC_FLAGS_i386   := -m32
+CC_FLAGS_x86_64 := -m64
