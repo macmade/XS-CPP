@@ -15,3 +15,5 @@ sudo apt-get -y install libc6
 sudo apt-get -y install libc6:i386
 sudo apt-get -y install libc6-dev
 sudo apt-get -y install libc6-dev:i386
+
+sudo cat /etc/apt/sources.list
