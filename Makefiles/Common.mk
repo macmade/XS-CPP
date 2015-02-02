@@ -164,5 +164,3 @@ ifeq ($(BUILD_TYPE),os-x)
 else
     include $(__DIR__)Linux.mk
 endif
-
-undefine __DIR__
