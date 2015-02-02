@@ -107,30 +107,26 @@ test:
 # Products target
 products: _PRODUCTS       = $(foreach _PRODUCT,$(PRODUCTS),$(foreach _ARCH,$(subst $(firstword $(subst |, ,$(_PRODUCT))),,$(subst |, ,$(_PRODUCT))),$(_ARCH)/$(firstword $(subst |, ,$(_PRODUCT)))))
 products: _PRODUCTS_BUILD = $(foreach _PRODUCT,$(_PRODUCTS),$(addprefix $(DIR_BUILD_PRODUCTS),$(_PRODUCT)))
-products: _PRODUCTS_ECHO  = $(subst $(TEXT_SPACE),\n    - ,$(_PRODUCTS))
 products: $$(_PRODUCTS_BUILD)
 	
 	@:
 
 # Static library target
 $(DIR_BUILD_PRODUCTS)%$(EXT_LIB): _ARCH  = $(firstword $(subst /, ,$*))
-$(DIR_BUILD_PRODUCTS)%$(EXT_LIB): _FLAGS = $(AR_FLAGS_$(_ARCH))
 $(DIR_BUILD_PRODUCTS)%$(EXT_LIB): $$(shell mkdir -p $$(dir $$@)) $(DIR_BUILD_TEMP)$$(_ARCH)/$(PRODUCT)$(EXT_O)
 	
 	@echo -e $(call PRINT,$(notdir $@),$(_ARCH),Linking the $(_ARCH) binary)
-	@$(AR) $(_FLAGS) $@ $<
+	@$(AR) $(AR_FLAGS_$(_ARCH)) $@ $<
 
 # Dynamic library target
 $(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): _ARCH  = $(firstword $(subst /, ,$*))
-$(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): _FLAGS = $(CC_FLAGS_DYLIB_$(_ARCH)) $(CC_FLAGS_$(_ARCH))
 $(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): $$(shell mkdir -p $$(dir $$@)) $(DIR_BUILD_TEMP)$$(_ARCH)/$(PRODUCT)$(EXT_O)
 	
 	@echo -e $(call PRINT,$(notdir $@),$(_ARCH),Linking the $(_ARCH) binary)
-	@$(CC) $(LIBS) $(_FLAGS) -o $@ $<
+	@$(CC) $(LIBS) $(CC_FLAGS_DYLIB_$(_ARCH)) $(CC_FLAGS_$(_ARCH)) -o $@ $<
 
 # Framework target
 $(DIR_BUILD_PRODUCTS)%$(EXT_FRAMEWORK): _ARCH  = $(firstword $(subst /, ,$*))
-$(DIR_BUILD_PRODUCTS)%$(EXT_FRAMEWORK): _FLAGS = $(CC_FLAGS_FRAMEWORK_$(_ARCH)) $(CC_FLAGS_$(_ARCH))
 $(DIR_BUILD_PRODUCTS)%$(EXT_FRAMEWORK): $$(shell mkdir -p $$(dir $$@)) $(DIR_BUILD_TEMP)$$(_ARCH)/$(PRODUCT)$(EXT_O)
 	
 	@echo -e $(call PRINT,$(notdir $@),$(_ARCH),Creating the directory structure)
@@ -163,22 +159,20 @@ $(DIR_BUILD_PRODUCTS)%$(EXT_FRAMEWORK): $$(shell mkdir -p $$(dir $$@)) $(DIR_BUI
 	plutil -insert DTXcodeBuild -string $(call XCODE_SDK_VALUE,DTXcodeBuild) $@/Versions/A/Resources/Info.plist
 	
 	@echo -e $(call PRINT,$(notdir $@),$(_ARCH),Linking the $(_ARCH) binary)
-	@$(CC) $(LIBS) $(_FLAGS) -o $@/Versions/A/$(notdir $(basename $@)) $<
+	@$(CC) $(LIBS) $(CC_FLAGS_FRAMEWORK_$(_ARCH)) $(CC_FLAGS_$(_ARCH)) -o $@/Versions/A/$(notdir $(basename $@)) $<
 
 $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _ARCH        = $(subst /,,$*)
 $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _FILES       = $(foreach _FILE,$(FILES),$(patsubst $(DIR_SRC)%,%,$(_FILE)))
 $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _FILES_OBJ   = $(addprefix $*,$(patsubst %$(EXT_C),%$(EXT_C)$(EXT_O),$(_FILES)))
 $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _FILES_BUILD = $(addprefix $(DIR_BUILD_TEMP),$(_FILES_OBJ))
-$(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _FLAGS       = $(LD_FLAGS_$(_ARCH))
 $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): $$(shell mkdir -p $$(dir $$@)) $$(_FILES_BUILD)
 	
 	@echo -e $(call PRINT,Linking object files,$(_ARCH),$(notdir $@))
-	@$(LD) -r $(_FLAGS) $(_FILES_BUILD) -o $@
+	@$(LD) -r $(LD_FLAGS_$(_ARCH)) $(_FILES_BUILD) -o $@
 
 $(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O): _ARCH      = $(firstword $(subst /, ,$(subst $(DIR_BUILD_TEMP),,$@)))
 $(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O): _FILE      = $(subst $(_ARCH)/,,$*)$(EXT_C)
-$(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O): _FLAGS     = $(CC_FLAGS_$(_ARCH))
 $(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O): $$(shell mkdir -p $$(dir $$@)) $$(_FILE)
 	
 	@echo -e $(call PRINT_FILE,"Compiling file",$(_ARCH),$(_FILE))
-	@$(_CC) $(_FLAGS) -o $@ -c $(addprefix $(DIR_SRC),$(_FILE))
+	@$(_CC) $(CC_FLAGS_$(_ARCH)) -o $@ -c $(addprefix $(DIR_SRC),$(_FILE))
