@@ -39,25 +39,21 @@ EXT_DYLIB   := .so
 # Products and architectures to build
 #-------------------------------------------------------------------------------
 
-PRODUCTS = $(PRODUCT_LIB)$(EXT_LIB)|i386|x86_64     \
-           $(PRODUCT_DYLIB)$(EXT_DYLIB)|i386|x86_64
+PRODUCTS = $(PRODUCT_LIB)$(EXT_LIB)|$(HOST_ARCH)     \
+           $(PRODUCT_DYLIB)$(EXT_DYLIB)|$(HOST_ARCH)
 
 #-------------------------------------------------------------------------------
 # Commands configuration
 #-------------------------------------------------------------------------------
 
 # Architecture specific flags for ld
-LD_FLAGS_i386   := -m elf_i386
-LD_FLAGS_x86_64 := -m elf_x86_64
+LD_FLAGS_$(HOST_ARCH)       := -m elf_$(HOST_ARCH)
 
 # Architecture specific flags for ar
-AR_FLAGS_i386   := rcs
-AR_FLAGS_x86_64 := rcs
+AR_FLAGS_$(HOST_ARCH)       := rcs
 
 # Architecture specific flags for the C compiler
-CC_FLAGS_i386   := -m32
-CC_FLAGS_x86_64 := -m64
+CC_FLAGS_$(HOST_ARCH)       := 
 
 # Architecture specific flags for the C compiler when creating a dynamic library
-CC_FLAGS_DYLIB_i386     := -dynamiclib -install_name $(PREFIX_DYLIB)$(PRODUCT_DYLIB)$(EXT_DYLIB)
-CC_FLAGS_DYLIB_x86_64   := -dynamiclib -install_name $(PREFIX_DYLIB)$(PRODUCT_DYLIB)$(EXT_DYLIB)
+CC_FLAGS_DYLIB_$(HOST_ARCH) := -shared -Wl,-soname,$(PRODUCT_DYLIB)$(EXT_DYLIB)
