@@ -36,10 +36,11 @@ EXT_LIB     := .a
 EXT_DYLIB   := .so
 
 #-------------------------------------------------------------------------------
-# Supported architectures
+# Products and architectures to build
 #-------------------------------------------------------------------------------
 
-ARCHS := i386 x86_64
+PRODUCTS = $(PRODUCT_LIB)$(EXT_LIB)|i386|x86_64     \
+           $(PRODUCT_DYLIB)$(EXT_DYLIB)|i386|x86_64
 
 #-------------------------------------------------------------------------------
 # Commands configuration

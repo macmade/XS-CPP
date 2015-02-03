@@ -106,22 +106,6 @@ EXT_O   := .o
 .SUFFIXES:
 
 #-------------------------------------------------------------------------------
-# Files
-#-------------------------------------------------------------------------------
-
-# Gets only the file name of the C files
-FILES_REL           = $(subst $(DIR_SRC),,$(FILES))
-FILES_TESTS_REL     = $(subst $(DIR_TESTS),,$(FILES_TESTS))
-
-# Replace the code extension by the object one
-FILES_OBJ           = $(subst $(EXT_C),$(EXT_O),$(FILES_REL))
-FILES_TESTS_OBJ     = $(subst $(EXT_C),$(EXT_O),$(FILES_TESTS_REL))
-
-# Files to build
-FILES_BUILD         = $(foreach _ARCH,$(ARCHS),$(addprefix $(DIR_BUILD_TEMP)$(_ARCH)/,$(FILES_OBJ)))
-FILES_BUILD_TEST    = 
-
-#-------------------------------------------------------------------------------
 # Display
 #-------------------------------------------------------------------------------
 

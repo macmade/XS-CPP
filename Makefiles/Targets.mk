@@ -40,10 +40,11 @@ vpath %$(EXT_C) $(DIR_TESTS)
 #-------------------------------------------------------------------------------
 
 # Declaration for phony targets, to avoid problems with local files
-.PHONY: all     \
-        clean   \
-        debug   \
-        release
+.PHONY: all      \
+        clean    \
+        debug    \
+        release  \
+        products
 
 # Declaration for precious targets, to avoid cleaning of intermediate files
 .PRECIOUS: %$(EXT_O)
@@ -58,32 +59,31 @@ all: release debug
 	@:
 	
 # Release build (parallel if available)
-release: _ARCHS = $(foreach _ARCH,$(ARCHS),$(addprefix _arch_,$(_ARCH)))
 release:
 	
 ifeq ($(MAKE_4),true)
-	@$(MAKE) -j 50 --output-sync $(_ARCHS)
+	@$(MAKE) -j 50 --output-sync products
 else
-	@$(MAKE) $(_ARCHS)
+	@$(MAKE) products
 endif
 
 # Debug build (parallel if available)
-debug: _ARCHS = $(foreach _ARCH,$(ARCHS),$(addprefix _arch_,$(_ARCH)))
 debug:
 	
 ifeq ($(MAKE_4),true)
-	@$(MAKE) -j 50 --output-sync $(_ARCHS) DEBUG=1
+	@$(MAKE) -j 50 --output-sync products DEBUG=1
 else
-	@$(MAKE) $(_ARCHS) DEBUG=1
+	@$(MAKE) products DEBUG=1
 endif
 
 # Cleans all build files
-clean: _CLEAN_ARCHS = $(foreach _ARCH,$(ARCHS),$(addprefix _clean_,$(_ARCH)))
+clean: _ARCHS         = $(foreach _PRODUCT,$(PRODUCTS),$(subst $(firstword $(subst |, ,$(_PRODUCT))),,$(subst |, ,$(_PRODUCT))))
+clean: _CLEAN_ARCHS   = $(foreach _ARCH,$(_ARCHS),$(addprefix _clean_,$(_ARCH)))
 clean:
 	
 	@$(MAKE) $(_CLEAN_ARCHS)
 	@$(MAKE) $(_CLEAN_ARCHS) DEBUG=1
-	
+
 # Cleans architecture specific files
 _clean_%:
 	
@@ -104,15 +104,42 @@ test:
 
 .SECONDEXPANSION:
 
+# Products target
+products: _PRODUCTS       = $(foreach _PRODUCT,$(PRODUCTS),$(foreach _ARCH,$(subst $(firstword $(subst |, ,$(_PRODUCT))),,$(subst |, ,$(_PRODUCT))),$(_ARCH)/$(firstword $(subst |, ,$(_PRODUCT)))))
+products: _PRODUCTS_BUILD = $(foreach _PRODUCT,$(_PRODUCTS),$(addprefix $(DIR_BUILD_PRODUCTS),$(_PRODUCT)))
+products: $$(_PRODUCTS_BUILD)
+	
+	@:
+
+# Static library target
+$(DIR_BUILD_PRODUCTS)%$(EXT_LIB): _ARCH = $(firstword $(subst /, ,$*))
+$(DIR_BUILD_PRODUCTS)%$(EXT_LIB): _arch_$$(_ARCH)
+	
+	@:
+
+# Dynamic library target
+$(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): _ARCH = $(firstword $(subst /, ,$*))
+$(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): _arch_$$(_ARCH)
+	
+	@:
+
+# Framework target
+$(DIR_BUILD_PRODUCTS)%$(EXT_FRAMEWORK): _ARCH = $(firstword $(subst /, ,$*))
+$(DIR_BUILD_PRODUCTS)%$(EXT_FRAMEWORK): _arch_$$(_ARCH)
+	
+	@:
+
 # Build architecture specific files
-_arch_%: _FILES = $(filter $(DIR_BUILD_TEMP)$*/%,$(FILES_BUILD))
-_arch_%: _OBJ   = $(DIR_BUILD_TEMP)$*/$(PRODUCT)$(EXT_O)
-_arch_%: _FLAGS = $(LD_FLAGS_$*)
-_arch_%: $$(_FILES)
+_arch_%: _FILES       = $(foreach _FILE,$(FILES),$(patsubst $(DIR_SRC)%,%,$(_FILE)))
+_arch_%: _FILES_OBJ   = $(addprefix $*/,$(patsubst %$(EXT_C),%$(EXT_O),$(_FILES)))
+_arch_%: _FILES_BUILD = $(addprefix $(DIR_BUILD_TEMP),$(_FILES_OBJ))
+_arch_%: _OBJ         = $(DIR_BUILD_TEMP)$*/$(PRODUCT)$(EXT_O)
+_arch_%: _FLAGS       = $(LD_FLAGS_$*)
+_arch_%: $$(_FILES_BUILD)
 	
 	@echo -e $(call PRINT,Linking object files,$*,$(PRODUCT)$(EXT_O))
 	@rm -rf $(OBJ)
-	@ld -r $(_FLAGS) $(_FILES) -o $(_OBJ)
+	@ld -r $(_FLAGS) $(_FILES_BUILD) -o $(_OBJ)
 
 %$(EXT_O): _ARCH      = $(firstword $(subst /, ,$(subst $(DIR_BUILD_TEMP),,$@)))
 %$(EXT_O): _FILE      = $(subst $(DIR_BUILD_TEMP)$(_ARCH)/,,$*)$(EXT_C)

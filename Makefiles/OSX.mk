@@ -37,10 +37,13 @@ EXT_DYLIB       := .dylib
 EXT_FRAMEWORK   := .framework
 
 #-------------------------------------------------------------------------------
-# Supported architectures
+# Products and architectures to build
 #-------------------------------------------------------------------------------
 
-ARCHS := i386 x86_64 armv7 armv7s arm64
+PRODUCTS = $(PRODUCT_LIB)$(EXT_LIB)|i386|x86_64            \
+           $(PRODUCT_DYLIB)$(EXT_DYLIB)|i386|x86_64        \
+           $(PRODUCT_DYLIB)$(EXT_FRAMEWORK)|i386|x86_64    \
+           $(PRODUCT_IOS_LIB)$(EXT_LIB)|armv7|armv7s|arm64
 
 #-------------------------------------------------------------------------------
 # Commands configuration
