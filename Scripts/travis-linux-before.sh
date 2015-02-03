@@ -2,9 +2,11 @@
 
 . /etc/lsb-release
 
-if [ $(echo "$DISTRIB_RELEASE < 14" | bc) -eq 1 ]; then
+declare -r MAJOR=$(echo "$DISTRIB_RELEASE" | perl -e "s/([0-9]+).*/\1/" -pi)
+
+if [ $MAJOR -lt 14 ]; then
     
-    echo "Ubuntu 14 Trusty is required"
+    echo "Ubuntu 14 or greater is required"
     exit 1
 
 fi
