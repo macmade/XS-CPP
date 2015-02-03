@@ -33,8 +33,8 @@
 
 # File extensions
 EXT_LIB         := .a
-EXT_FRAMEWORK   := .framework
 EXT_DYLIB       := .dylib
+EXT_FRAMEWORK   := .framework
 
 #-------------------------------------------------------------------------------
 # Supported architectures
