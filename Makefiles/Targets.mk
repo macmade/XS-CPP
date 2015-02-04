@@ -138,7 +138,7 @@ $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _FILES       = $(foreach _FILE,$(FILES),$(
 $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _FILES_OBJ   = $(addprefix $*,$(patsubst %$(EXT_C),%$(EXT_C)$(EXT_O),$(_FILES)))
 $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _FILES_BUILD = $(addprefix $(DIR_BUILD_TEMP),$(_FILES_OBJ))
 $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _FLAGS       = $(LD_FLAGS_$(_ARCH))
-$(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): $$(_FILES_BUILD)
+$(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): $$(shell mkdir -p $$(dir $$@)) $$(_FILES_BUILD)
 	
 	@echo -e $(call PRINT,Linking object files,$(_ARCH),$(PRODUCT)$(EXT_O))
 	@ld -r $(_FLAGS) $(_FILES_BUILD) -o $@
@@ -146,7 +146,7 @@ $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): $$(_FILES_BUILD)
 $(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O): _ARCH      = $(firstword $(subst /, ,$(subst $(DIR_BUILD_TEMP),,$@)))
 $(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O): _FILE      = $(subst $(_ARCH)/,,$*)$(EXT_C)
 $(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O): _FLAGS     = $(CC_FLAGS_$(_ARCH))
-$(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O): $$(_FILE)
+$(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O): $$(shell mkdir -p $$(dir $$@)) $$(_FILE)
 	
 	@echo -e $(call PRINT_FILE,"Compiling file",$(_ARCH),$(_FILE))
 	@$(_CC) $(_FLAGS) -o $@ -c $(addprefix $(DIR_SRC),$(_FILE))
