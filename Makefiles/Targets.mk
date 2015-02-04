@@ -47,7 +47,7 @@ vpath %$(EXT_C) $(DIR_TESTS)
         products
 
 # Declaration for precious targets, to avoid cleaning of intermediate files
-.PRECIOUS: %$(EXT_O)
+.PRECIOUS: $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O) $(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O)
 
 #-------------------------------------------------------------------------------
 # Common targets
@@ -114,41 +114,39 @@ products: $$(_PRODUCTS_BUILD)
 # Static library target
 $(DIR_BUILD_PRODUCTS)%$(EXT_LIB): _ARCH  = $(firstword $(subst /, ,$*))
 $(DIR_BUILD_PRODUCTS)%$(EXT_LIB): _FLAGS = $(AR_FLAGS_$(_ARCH))
-$(DIR_BUILD_PRODUCTS)%$(EXT_LIB): $$(shell mkdir -p $$(dir $$@)) _arch_$$(_ARCH)
+$(DIR_BUILD_PRODUCTS)%$(EXT_LIB): $$(shell mkdir -p $$(dir $$@)) $(DIR_BUILD_TEMP)$$(_ARCH)/$(PRODUCT)$(EXT_O)
 	
 	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_LIB),$(_ARCH),Linking the $(_ARCH) binary)
-	@$(AR) $(_FLAGS) $@ $(DIR_BUILD_TEMP)$(_ARCH)/$(PRODUCT)$(EXT_O)
+	@$(AR) $(_FLAGS) $@ $<
 
 # Dynamic library target
 $(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): _ARCH  = $(firstword $(subst /, ,$*))
 $(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): _FLAGS = $(CC_FLAGS_DYLIB_$(_ARCH)) $(CC_FLAGS_$(_ARCH))
-$(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): $$(shell mkdir -p $$(dir $$@)) _arch_$$(_ARCH)
+$(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): $$(shell mkdir -p $$(dir $$@)) $(DIR_BUILD_TEMP)$$(_ARCH)/$(PRODUCT)$(EXT_O)
 	
 	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_DYLIB),$(_ARCH),Linking the $(_ARCH) binary)
-	@$(CC) $(LIBS) $(_FLAGS) -o $@ $(DIR_BUILD_TEMP)$(_ARCH)/$(PRODUCT)$(EXT_O)
+	@$(CC) $(LIBS) $(_FLAGS) -o $@ $<
 
 # Framework target
 $(DIR_BUILD_PRODUCTS)%$(EXT_FRAMEWORK): _ARCH = $(firstword $(subst /, ,$*))
-$(DIR_BUILD_PRODUCTS)%$(EXT_FRAMEWORK): _arch_$$(_ARCH)
+$(DIR_BUILD_PRODUCTS)%$(EXT_FRAMEWORK): $$(shell mkdir -p $$(dir $$@)) $(DIR_BUILD_TEMP)$$(_ARCH)/$(PRODUCT)$(EXT_O)
 	
 	@:
 
-# Build architecture specific files
-_arch_%: _FILES       = $(foreach _FILE,$(FILES),$(patsubst $(DIR_SRC)%,%,$(_FILE)))
-_arch_%: _FILES_OBJ   = $(addprefix $*/,$(patsubst %$(EXT_C),%$(EXT_O),$(_FILES)))
-_arch_%: _FILES_BUILD = $(addprefix $(DIR_BUILD_TEMP),$(_FILES_OBJ))
-_arch_%: _OBJ         = $(DIR_BUILD_TEMP)$*/$(PRODUCT)$(EXT_O)
-_arch_%: _FLAGS       = $(LD_FLAGS_$*)
-_arch_%: $$(_FILES_BUILD)
+$(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _ARCH        = $(subst /,,$*)
+$(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _FILES       = $(foreach _FILE,$(FILES),$(patsubst $(DIR_SRC)%,%,$(_FILE)))
+$(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _FILES_OBJ   = $(addprefix $*,$(patsubst %$(EXT_C),%$(EXT_C)$(EXT_O),$(_FILES)))
+$(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _FILES_BUILD = $(addprefix $(DIR_BUILD_TEMP),$(_FILES_OBJ))
+$(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _FLAGS       = $(LD_FLAGS_$(_ARCH))
+$(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): $$(_FILES_BUILD)
 	
-	@echo -e $(call PRINT,Linking object files,$*,$(PRODUCT)$(EXT_O))
-	@rm -rf $(OBJ)
-	@ld -r $(_FLAGS) $(_FILES_BUILD) -o $(_OBJ)
+	@echo -e $(call PRINT,Linking object files,$(_ARCH),$(PRODUCT)$(EXT_O))
+	@ld -r $(_FLAGS) $(_FILES_BUILD) -o $@
 
-%$(EXT_O): _ARCH      = $(firstword $(subst /, ,$(subst $(DIR_BUILD_TEMP),,$@)))
-%$(EXT_O): _FILE      = $(subst $(DIR_BUILD_TEMP)$(_ARCH)/,,$*)$(EXT_C)
-%$(EXT_O): _FLAGS     = $(CC_FLAGS_$(_ARCH))
-%$(EXT_O): $$(shell mkdir -p $$(dir $$@)) $(_FILE)
+$(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O): _ARCH      = $(firstword $(subst /, ,$(subst $(DIR_BUILD_TEMP),,$@)))
+$(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O): _FILE      = $(subst $(_ARCH)/,,$*)$(EXT_C)
+$(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O): _FLAGS     = $(CC_FLAGS_$(_ARCH))
+$(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O): $$(_FILE)
 	
 	@echo -e $(call PRINT_FILE,"Compiling file",$(_ARCH),$(_FILE))
 	@$(_CC) $(_FLAGS) -o $@ -c $(addprefix $(DIR_SRC),$(_FILE))
