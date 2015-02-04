@@ -131,6 +131,11 @@ COLOR_CYAN      := "\x1b[36;01m"
 # @1:   The directory with the source files
 GET_C_FILES = $(foreach _DIR,$(1), $(wildcard $(_DIR)*$(EXT_C)))
 
+# Gets an SDK value from Xcode
+# 
+# @1:   The key for which to get the SDK value
+XCODE_SDK_VALUE = "$(shell /usr/libexec/PlistBuddy -c "Print $(1)" /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Info.plist)"
+
 # Prints a message about a file
 # 
 # @1:   The first message part

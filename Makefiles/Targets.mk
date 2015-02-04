@@ -107,6 +107,7 @@ test:
 # Products target
 products: _PRODUCTS       = $(foreach _PRODUCT,$(PRODUCTS),$(foreach _ARCH,$(subst $(firstword $(subst |, ,$(_PRODUCT))),,$(subst |, ,$(_PRODUCT))),$(_ARCH)/$(firstword $(subst |, ,$(_PRODUCT)))))
 products: _PRODUCTS_BUILD = $(foreach _PRODUCT,$(_PRODUCTS),$(addprefix $(DIR_BUILD_PRODUCTS),$(_PRODUCT)))
+products: _PRODUCTS_ECHO  = $(subst $(TEXT_SPACE),\n    - ,$(_PRODUCTS))
 products: $$(_PRODUCTS_BUILD)
 	
 	@:
@@ -116,7 +117,7 @@ $(DIR_BUILD_PRODUCTS)%$(EXT_LIB): _ARCH  = $(firstword $(subst /, ,$*))
 $(DIR_BUILD_PRODUCTS)%$(EXT_LIB): _FLAGS = $(AR_FLAGS_$(_ARCH))
 $(DIR_BUILD_PRODUCTS)%$(EXT_LIB): $$(shell mkdir -p $$(dir $$@)) $(DIR_BUILD_TEMP)$$(_ARCH)/$(PRODUCT)$(EXT_O)
 	
-	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_LIB),$(_ARCH),Linking the $(_ARCH) binary)
+	@echo -e $(call PRINT,$(notdir $@),$(_ARCH),Linking the $(_ARCH) binary)
 	@$(AR) $(_FLAGS) $@ $<
 
 # Dynamic library target
@@ -124,14 +125,45 @@ $(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): _ARCH  = $(firstword $(subst /, ,$*))
 $(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): _FLAGS = $(CC_FLAGS_DYLIB_$(_ARCH)) $(CC_FLAGS_$(_ARCH))
 $(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): $$(shell mkdir -p $$(dir $$@)) $(DIR_BUILD_TEMP)$$(_ARCH)/$(PRODUCT)$(EXT_O)
 	
-	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_DYLIB),$(_ARCH),Linking the $(_ARCH) binary)
+	@echo -e $(call PRINT,$(notdir $@),$(_ARCH),Linking the $(_ARCH) binary)
 	@$(CC) $(LIBS) $(_FLAGS) -o $@ $<
 
 # Framework target
-$(DIR_BUILD_PRODUCTS)%$(EXT_FRAMEWORK): _ARCH = $(firstword $(subst /, ,$*))
+$(DIR_BUILD_PRODUCTS)%$(EXT_FRAMEWORK): _ARCH  = $(firstword $(subst /, ,$*))
+$(DIR_BUILD_PRODUCTS)%$(EXT_FRAMEWORK): _FLAGS = $(CC_FLAGS_FRAMEWORK_$(_ARCH)) $(CC_FLAGS_$(_ARCH))
 $(DIR_BUILD_PRODUCTS)%$(EXT_FRAMEWORK): $$(shell mkdir -p $$(dir $$@)) $(DIR_BUILD_TEMP)$$(_ARCH)/$(PRODUCT)$(EXT_O)
 	
+	@echo -e $(call PRINT,$(notdir $@),$(_ARCH),Creating the directory structure)
+	@rm -rf $@
+	@mkdir -p $@/Versions/A/Headers/
+	@mkdir -p $@/Versions/A/Resources/
+	
+	@echo -e $(call PRINT,$(notdir $@),$(_ARCH),Creating the symbolic links)
+	@ln -s A/ $@/Versions/Current
+	@ln -s Versions/A/Headers/ $@/Headers
+	@ln -s Versions/A/Resources/ $@/Resources
+	@ln -s Versions/A/$(notdir $(basename $@)) $@/$(notdir $(basename $@))
+	
+	@echo -e $(call PRINT,$(notdir $@),$(_ARCH),Copying the public header files)
+	@cp -rf $(DIR_INC)$(PRODUCT).h $@/Versions/A/Headers/
+	@cp -rf $(DIR_INC)$(PRODUCT)/* $@/Versions/A/Headers/
+	
+	@echo -e $(call PRINT,$(notdir $@),$(_ARCH),Copying the bundle resources)
 	@:
+	
+	@echo -e $(call PRINT,$(notdir $@),$(_ARCH),Creating the Info.plist file)
+	@cp -rf $(DIR_RES)Info.plist $@/Versions/A/Resources/Info.plist
+	plutil -insert BuildMachineOSBuild -string $(shell sw_vers -buildVersion) $@/Versions/A/Resources/Info.plist
+	plutil -insert DTSDKName -string macosx$(MAC_TARGET) $@/Versions/A/Resources/Info.plist
+	plutil -insert DTCompiler -string $(call XCODE_SDK_VALUE,DTCompiler) $@/Versions/A/Resources/Info.plist
+	plutil -insert DTPlatformBuild -string $(call XCODE_SDK_VALUE,DTPlatformBuild) $@/Versions/A/Resources/Info.plist
+	plutil -insert DTPlatformVersion -string $(call XCODE_SDK_VALUE,DTPlatformVersion) $@/Versions/A/Resources/Info.plist
+	plutil -insert DTSDKBuild -string $(call XCODE_SDK_VALUE,DTSDKBuild) $@/Versions/A/Resources/Info.plist
+	plutil -insert DTXcode -string $(call XCODE_SDK_VALUE,DTXcode) $@/Versions/A/Resources/Info.plist
+	plutil -insert DTXcodeBuild -string $(call XCODE_SDK_VALUE,DTXcodeBuild) $@/Versions/A/Resources/Info.plist
+	
+	@echo -e $(call PRINT,$(notdir $@),$(_ARCH),Linking the $(_ARCH) binary)
+	@$(CC) $(LIBS) $(_FLAGS) -o $@/Versions/A/$(notdir $(basename $@)) $<
 
 $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _ARCH        = $(subst /,,$*)
 $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _FILES       = $(foreach _FILE,$(FILES),$(patsubst $(DIR_SRC)%,%,$(_FILE)))
@@ -140,7 +172,7 @@ $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _FILES_BUILD = $(addprefix $(DIR_BUILD_TEM
 $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _FLAGS       = $(LD_FLAGS_$(_ARCH))
 $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): $$(shell mkdir -p $$(dir $$@)) $$(_FILES_BUILD)
 	
-	@echo -e $(call PRINT,Linking object files,$(_ARCH),$(PRODUCT)$(EXT_O))
+	@echo -e $(call PRINT,Linking object files,$(_ARCH),$(notdir $@))
 	@$(LD) -r $(_FLAGS) $(_FILES_BUILD) -o $@
 
 $(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O): _ARCH      = $(firstword $(subst /, ,$(subst $(DIR_BUILD_TEMP),,$@)))

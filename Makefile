@@ -32,14 +32,15 @@
 #-------------------------------------------------------------------------------
 
 # Procuct name
-PRODUCT                 := XS-C++
-PRODUCT_LIB             := lib$(PRODUCT)
-PRODUCT_DYLIB           := lib$(PRODUCT)
-PRODUCT_MAC_FRAMEWORK   := $(PRODUCT)
-PRODUCT_IOS_LIB         := lib$(PRODUCT)-iOS
+PRODUCT             := XS-C++
+PRODUCT_LIB         := lib$(PRODUCT)
+PRODUCT_DYLIB       := lib$(PRODUCT)
+PRODUCT_FRAMEWORK   := $(PRODUCT)
+PRODUCT_IOS_LIB     := lib$(PRODUCT)-iOS
 
 # Product paths
-PREFIX_DYLIB            := /usr/local/lib/
+PREFIX_DYLIB        := /usr/local/lib/
+PREFIX_FRAMEWORK    := /Library/Frameworks/
 
 #-------------------------------------------------------------------------------
 # Paths
