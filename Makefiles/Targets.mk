@@ -141,7 +141,7 @@ $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): _FLAGS       = $(LD_FLAGS_$(_ARCH))
 $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O): $$(shell mkdir -p $$(dir $$@)) $$(_FILES_BUILD)
 	
 	@echo -e $(call PRINT,Linking object files,$(_ARCH),$(PRODUCT)$(EXT_O))
-	@ld -r $(_FLAGS) $(_FILES_BUILD) -o $@
+	@$(LD) -r $(_FLAGS) $(_FILES_BUILD) -o $@
 
 $(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O): _ARCH      = $(firstword $(subst /, ,$(subst $(DIR_BUILD_TEMP),,$@)))
 $(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O): _FILE      = $(subst $(_ARCH)/,,$*)$(EXT_C)
