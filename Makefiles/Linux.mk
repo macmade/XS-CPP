@@ -57,3 +57,7 @@ AR_FLAGS_x86_64 := rcs
 # Architecture specific flags for the C compiler
 CC_FLAGS_i386   := -m32
 CC_FLAGS_x86_64 := -m64
+
+# Architecture specific flags for the C compiler when creating a dynamic library
+CC_FLAGS_DYLIB_i386     := -dynamiclib -install_name $(PREFIX_DYLIB)$(PRODUCT_DYLIB)$(EXT_DYLIB)
+CC_FLAGS_DYLIB_x86_64   := -dynamiclib -install_name $(PREFIX_DYLIB)$(PRODUCT_DYLIB)$(EXT_DYLIB)

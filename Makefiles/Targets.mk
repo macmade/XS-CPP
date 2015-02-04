@@ -120,10 +120,12 @@ $(DIR_BUILD_PRODUCTS)%$(EXT_LIB): $$(shell mkdir -p $$(dir $$@)) _arch_$$(_ARCH)
 	@$(AR) $(_FLAGS) $@ $(DIR_BUILD_TEMP)$(_ARCH)/$(PRODUCT)$(EXT_O)
 
 # Dynamic library target
-$(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): _ARCH = $(firstword $(subst /, ,$*))
-$(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): _arch_$$(_ARCH)
+$(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): _ARCH  = $(firstword $(subst /, ,$*))
+$(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): _FLAGS = $(CC_FLAGS_DYLIB_$(_ARCH)) $(CC_FLAGS_$(_ARCH))
+$(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): $$(shell mkdir -p $$(dir $$@)) _arch_$$(_ARCH)
 	
-	@:
+	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_DYLIB),$(_ARCH),Linking the $(_ARCH) binary)
+	@$(CC) $(LIBS) $(_FLAGS) -o $@ $(DIR_BUILD_TEMP)$(_ARCH)/$(PRODUCT)$(EXT_O)
 
 # Framework target
 $(DIR_BUILD_PRODUCTS)%$(EXT_FRAMEWORK): _ARCH = $(firstword $(subst /, ,$*))
