@@ -40,11 +40,14 @@ vpath %$(EXT_C) $(DIR_TESTS)
 #-------------------------------------------------------------------------------
 
 # Declaration for phony targets, to avoid problems with local files
-.PHONY: all      \
-        clean    \
-        debug    \
-        release  \
-        products
+.PHONY: all        \
+        clean      \
+        debug      \
+        release    \
+        products   \
+        test       \
+        test-debug \
+        _test
 
 # Declaration for precious targets, to avoid cleaning of intermediate files
 .PRECIOUS: $(DIR_BUILD_TEMP)%$(PRODUCT)$(EXT_O) $(DIR_BUILD_TEMP)%$(EXT_C)$(EXT_O)
@@ -93,10 +96,38 @@ _clean_%:
 	@echo -e $(call PRINT,Cleaning,$*,Cleaning all product files)
 	@rm -rf $(DIR_BUILD_PRODUCTS)$*
 
-# Unit-tests
-test:
+# Release test target
+test: release
+	
+	@$(MAKE) -s _test
+
+# Debug test target
+test-debug: debug
+	
+	@$(MAKE) -s _test DEBUG=1
+
+# Test target
+ifeq ($(HAS_XCTOOL),true)
+
+_test:
+	@echo -e $(call PRINT,Testing,n/a,Building and running unit tests)
+	@$(XCTOOL) -project $(XCODE_PROJECT) -scheme "$(XCODE_TEST_SCHEME)" test
+
+else
+ifeq ($(HAS_XCBUILD),true)
+
+_test:
+	@echo -e $(call PRINT,Testing,n/a,Building and running unit tests)
+	@$(XCBUILD) -project $(XCODE_PROJECT) -scheme "$(XCODE_TEST_SCHEME)" test
+
+else
+
+_test:
 	
 	@:
+	
+endif
+endif
 
 #-------------------------------------------------------------------------------
 # Targets with second expansion
