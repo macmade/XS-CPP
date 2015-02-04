@@ -78,6 +78,8 @@ IOS_SDK_PATH        := /Applications/Xcode.app/Contents/Developer/Platforms/iPho
 XCODE_SDK_VALUE     := "$(shell /usr/libexec/PlistBuddy -c "Print $(1)" /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Info.plist)"
 endif
 
+AR                  := ar
+
 #-------------------------------------------------------------------------------
 # Paths
 #-------------------------------------------------------------------------------

@@ -112,10 +112,12 @@ products: $$(_PRODUCTS_BUILD)
 	@:
 
 # Static library target
-$(DIR_BUILD_PRODUCTS)%$(EXT_LIB): _ARCH = $(firstword $(subst /, ,$*))
-$(DIR_BUILD_PRODUCTS)%$(EXT_LIB): _arch_$$(_ARCH)
+$(DIR_BUILD_PRODUCTS)%$(EXT_LIB): _ARCH  = $(firstword $(subst /, ,$*))
+$(DIR_BUILD_PRODUCTS)%$(EXT_LIB): _FLAGS = $(AR_FLAGS_$(_ARCH))
+$(DIR_BUILD_PRODUCTS)%$(EXT_LIB): $$(shell mkdir -p $$(dir $$@)) _arch_$$(_ARCH)
 	
-	@:
+	@echo -e $(call PRINT,$(PRODUCT_LIB)$(EXT_LIB),$(_ARCH),Linking the $(_ARCH) binary)
+	@$(AR) $(_FLAGS) $@ $(DIR_BUILD_TEMP)$(_ARCH)/$(PRODUCT)$(EXT_O)
 
 # Dynamic library target
 $(DIR_BUILD_PRODUCTS)%$(EXT_DYLIB): _ARCH = $(firstword $(subst /, ,$*))

@@ -53,8 +53,15 @@ PRODUCTS = $(PRODUCT_LIB)$(EXT_LIB)|i386|x86_64            \
 LD_FLAGS_i386   := 
 LD_FLAGS_x86_64 := 
 LD_FLAGS_armv7  := 
-LD_FLAGS_arm7s  := 
+LD_FLAGS_armv7s := 
 LD_FLAGS_arm64  := 
+
+# Architecture specific flags for ar
+AR_FLAGS_i386   := rcs
+AR_FLAGS_x86_64 := rcs
+AR_FLAGS_armv7  := rcs
+AR_FLAGS_armv7s := rcs
+AR_FLAGS_arm64  := rcs
 
 # Architecture specific flags for the C compiler
 CC_FLAGS_i386   := -arch i386

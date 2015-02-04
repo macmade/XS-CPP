@@ -50,6 +50,10 @@ PRODUCTS = $(PRODUCT_LIB)$(EXT_LIB)|i386|x86_64     \
 LD_FLAGS_i386   := -m elf_i386
 LD_FLAGS_x86_64 := -m elf_x86_64
 
+# Architecture specific flags for ar
+AR_FLAGS_i386   := rcs
+AR_FLAGS_x86_64 := rcs
+
 # Architecture specific flags for the C compiler
 CC_FLAGS_i386   := -m32
 CC_FLAGS_x86_64 := -m64
