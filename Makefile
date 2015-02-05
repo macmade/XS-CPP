@@ -28,88 +28,52 @@
 #-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-# Includes
+# makelib configuration
 #-------------------------------------------------------------------------------
 
-include Makefiles/Common.mk
+include Submodules/makelib/Common.mk
 
-#-------------------------------------------------------------------------------
-# Products
-#-------------------------------------------------------------------------------
-
-# Procuct name
 PRODUCT             := XS-C++
-PRODUCT_LIB         := lib$(PRODUCT)
-PRODUCT_DYLIB       := lib$(PRODUCT)
-PRODUCT_FRAMEWORK   := $(PRODUCT)
-PRODUCT_IOS_LIB     := lib$(PRODUCT)-iOS
-
-# Product paths
+PRODUCT_LIB         := libXS-C++
+PRODUCT_DYLIB       := libXS-C++
+PRODUCT_FRAMEWORK   := XS-C++
 PREFIX_DYLIB        := /usr/local/lib/
 PREFIX_FRAMEWORK    := /Library/Frameworks/
+DIR_INC             := XS-C++/include/
+DIR_SRC             := XS-C++/source/
+DIR_RES             := XS-C++/
+DIR_TESTS           := Unit-Tests/
+EXT_C               := .cpp
+EXT_H               := .h
+CC                  := clang
+LIBS                := -lpthread -lc++
+FLAGS_OPTIM         := Os
+FLAGS_WARN          := -Werror -Wall
+FLAGS_STD           := c++11
+FLAGS_OTHER         := -stdlib=libc++ -fno-strict-aliasing
+XCODE_PROJECT       := IDE/Xcode/XS-C++.xcodeproj
+XCODE_TEST_SCHEME   := XS-C++ Mac Static Library
 
-#-------------------------------------------------------------------------------
-# Paths
-#-------------------------------------------------------------------------------
+FILES_C             := $(call GET_C_FILES, $(DIR_SRC))             \
+                       $(call GET_C_FILES, $(DIR_SRC)Atomic/)      \
+                       $(call GET_C_FILES, $(DIR_SRC)Threading/)
 
-# Source directories
-DIR_INC     := $(PRODUCT)/include/
-DIR_SRC     := $(PRODUCT)/source/
-DIR_RES     := $(PRODUCT)/
-DIR_TESTS   := Unit-Tests/
+FILES_C_EXCLUDE     := %/Threading/NativeMutex-WIN32.cpp           \
+                       %/Threading/NativeMutex-POSIX.cpp           \
+                       %/Threading/Semaphore-APPLE.cpp             \
+                       %/Threading/Semaphore-POSIX.cpp             \
+                       %/Threading/Semaphore-WIN32.cpp
 
-#-------------------------------------------------------------------------------
-# Xcode specific
-#-------------------------------------------------------------------------------
+FILES               := $(filter-out $(FILES_C_EXCLUDE),$(FILES_C))
+FILES_TESTS         := $(call GET_C_FILES, $(DIR_TESTS))
 
-XCODE_PROJECT       := IDE/Xcode/$(PRODUCT).xcodeproj
-XCODE_TEST_SCHEME   := $(PRODUCT) Mac Static Library
-
-#-------------------------------------------------------------------------------
-# Files
-#-------------------------------------------------------------------------------
-
-# All source files in the source directories
-FILES_C         :=  $(call GET_C_FILES, $(DIR_SRC))             \
-                    $(call GET_C_FILES, $(DIR_SRC)Atomic/)      \
-                    $(call GET_C_FILES, $(DIR_SRC)Threading/)
-
-# Platform specific files not to include in compilation
-FILES_C_EXCLUDE :=  %/Threading/NativeMutex-WIN32.cpp \
-                    %/Threading/NativeMutex-POSIX.cpp \
-                    %/Threading/Semaphore-APPLE.cpp   \
-                    %/Threading/Semaphore-POSIX.cpp   \
-                    %/Threading/Semaphore-WIN32.cpp
-
-# Files to compile
-FILES           :=  $(filter-out $(FILES_C_EXCLUDE),$(FILES_C))
-
-# Unit-test files
-FILES_TESTS     :=  $(call GET_C_FILES, $(DIR_TESTS))
-
-#-------------------------------------------------------------------------------
-# Configuration
-#-------------------------------------------------------------------------------
-
-CC          := clang
-LIBS        := -lpthread -lc++
-FLAGS_OPTIM := Os
-FLAGS_WARN  := -Werror -Wall
-FLAGS_STD   := c++11
-FLAGS_OTHER := -stdlib=libc++ -fno-strict-aliasing
+include Submodules/makelib/Targets.mk
 
 #-------------------------------------------------------------------------------
 # Custom targets
 #-------------------------------------------------------------------------------
 
-# Documentation
 doc:
 	
 	@echo -e $(call PRINT,Documentation,universal,Generating the documentation)
 	@doxygen Documentation/$(PRODUCT).doxygen
-
-#-------------------------------------------------------------------------------
-# Includes
-#-------------------------------------------------------------------------------
-
-include Makefiles/Targets.mk
