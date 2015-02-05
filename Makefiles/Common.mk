@@ -152,3 +152,17 @@ PRINT = "["$(COLOR_GREEN)" $(PRODUCT) "$(COLOR_NONE)"]> $(1) [ "$(COLOR_CYAN)"Re
 else
 PRINT = "["$(COLOR_GREEN)" $(PRODUCT) "$(COLOR_NONE)"]> $(1) [ "$(COLOR_CYAN)"Debug - $(2)"$(COLOR_NONE)" ]: "$(COLOR_YELLOW)"$(3)"$(COLOR_NONE)
 endif
+
+#-------------------------------------------------------------------------------
+# Includes
+#-------------------------------------------------------------------------------
+
+__DIR__ := $(dir $(lastword $(MAKEFILE_LIST)))
+
+ifeq ($(BUILD_TYPE),os-x)
+    include $(__DIR__)/OSX.mk
+else
+    include $(__DIR__)Linux.mk
+endif
+
+undefine __DIR__
