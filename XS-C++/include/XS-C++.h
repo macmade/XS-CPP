@@ -32,8 +32,8 @@
  * @brief       XS-C++ main header file
  */
 
-#ifndef __XSCPP__
-#define __XSCPP__
+#ifndef XSCPP
+#define XSCPP
 #ifdef  __cplusplus
 
 /*!
@@ -82,4 +82,4 @@
 #include <XS-C++/Threading/Semaphore.h>
 
 #endif /* __cplusplus */
-#endif /* __XSCPP__ */
+#endif /* XSCPP */

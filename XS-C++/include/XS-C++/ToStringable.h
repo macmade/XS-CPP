@@ -32,8 +32,8 @@
  * @brief       Declaration of the XS::ToStringable abstract class
  */
 
-#ifndef __XSCPP_TO_STRINGABLE_H__
-#define __XSCPP_TO_STRINGABLE_H__
+#ifndef XSCPP_TO_STRINGABLE_H
+#define XSCPP_TO_STRINGABLE_H
 
 namespace XS
 {
@@ -86,4 +86,4 @@ namespace XS
     };
 }
 
-#endif /* __XSCPP_TO_STRINGABLE_H__ */
+#endif /* XSCPP_TO_STRINGABLE_H */

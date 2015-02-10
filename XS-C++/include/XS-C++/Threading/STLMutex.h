@@ -32,8 +32,8 @@
  * @brief       Declaration of the XS::Threading::STLMutex class
  */
 
-#ifndef __XSCPP_THREADING_STL_MUTEX_H__
-#define __XSCPP_THREADING_STL_MUTEX_H__
+#ifndef XSCPP_THREADING_STL_MUTEX_H
+#define XSCPP_THREADING_STL_MUTEX_H
 
 namespace XS
 {
@@ -102,4 +102,4 @@ namespace XS
     }
 }
 
-#endif /* __XSCPP_THREADING_STL_MUTEX_H__ */
+#endif /* XSCPP_THREADING_STL_MUTEX_H */

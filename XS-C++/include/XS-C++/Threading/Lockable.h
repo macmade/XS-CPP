@@ -32,8 +32,8 @@
  * @brief       Declaration of the XS::Threading::Locakble interface
  */
 
-#ifndef __XSCPP_THREADING_LOCKABLE_H__
-#define __XSCPP_THREADING_LOCKABLE_H__
+#ifndef XSCPP_THREADING_LOCKABLE_H
+#define XSCPP_THREADING_LOCKABLE_H
 
 namespace XS
 {
@@ -75,4 +75,4 @@ namespace XS
     }
 }
 
-#endif /* __XSCPP_THREADING_LOCKABLE_H__ */
+#endif /* XSCPP_THREADING_LOCKABLE_H */

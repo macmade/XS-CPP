@@ -32,9 +32,9 @@
  * @brief       XS-C++ precompiled header
  */
 
-#ifndef __XSCPP_PREFIX_H__
-#define __XSCPP_PREFIX_H__
+#ifndef XSCPP_PREFIX_H
+#define XSCPP_PREFIX_H
 
 #include "Clang-Warnings.h"
 
-#endif /* __XSCPP_PREFIX_H__ */
+#endif /* XSCPP_PREFIX_H */

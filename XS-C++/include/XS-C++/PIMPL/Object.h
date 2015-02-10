@@ -32,8 +32,8 @@
  * @brief       Declaration of the XS::PIMPL::Object template class
  */
 
-#ifndef __XSCPP_PIMPL_OBJECT_H__
-#define __XSCPP_PIMPL_OBJECT_H__
+#ifndef XSCPP_PIMPL_OBJECT_H
+#define XSCPP_PIMPL_OBJECT_H
 
 namespace XS
 {
@@ -117,4 +117,4 @@ namespace XS
     }
 }
 
-#endif /* __XSCPP_PIMPL_OBJECT_H__ */
+#endif /* XSCPP_PIMPL_OBJECT_H */

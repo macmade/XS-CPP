@@ -32,8 +32,8 @@
  * @brief       Declaration of the XS::Exception class
  */
 
-#ifndef __XSCPP_EXCEPTION_H__
-#define __XSCPP_EXCEPTION_H__
+#ifndef XSCPP_EXCEPTION_H
+#define XSCPP_EXCEPTION_H
 
 namespace XS
 {
@@ -80,4 +80,4 @@ namespace XS
     };
 }
 
-#endif /* __XSCPP_EXCEPTION_H__ */
+#endif /* XSCPP_EXCEPTION_H */

@@ -32,8 +32,8 @@
  * @brief       Declaration of the XS::Version class
  */
 
-#ifndef __XSCPP_VERSION_H__
-#define __XSCPP_VERSION_H__
+#ifndef XSCPP_VERSION_H
+#define XSCPP_VERSION_H
 
 namespace XS
 {
@@ -146,4 +146,4 @@ namespace XS
     };
 }
 
-#endif /* __XSCPP_VERSION_H__ */
+#endif /* XSCPP_VERSION_H */

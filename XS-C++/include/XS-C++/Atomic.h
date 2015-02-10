@@ -32,8 +32,8 @@
  * @brief       Declaration of the XS::Atomic functions
  */
 
-#ifndef __XSCPP_ATOMIC_H__
-#define __XSCPP_ATOMIC_H__
+#ifndef XSCPP_ATOMIC_H
+#define XSCPP_ATOMIC_H
 
 namespace XS
 {
@@ -124,4 +124,4 @@ namespace XS
     }
 }
 
-#endif /* __XSCPP_ATOMIC_H__ */
+#endif /* XSCPP_ATOMIC_H */

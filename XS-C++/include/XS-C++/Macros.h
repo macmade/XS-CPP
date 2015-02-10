@@ -32,8 +32,8 @@
  * @brief       XS-C++ common macros
  */
 
-#ifndef __XSCPP_MACROS_H__
-#define __XSCPP_MACROS_H__
+#ifndef XSCPP_MACROS_H
+#define XSCPP_MACROS_H
 
 /*!
  * @brief   Checks whether a builtin function is supported
@@ -89,4 +89,4 @@
 #define __has_declspec_attribute( _x_ )     0
 #endif
 
-#endif /* __XSCPP_MACROS_H__ */
+#endif /* XSCPP_MACROS_H */

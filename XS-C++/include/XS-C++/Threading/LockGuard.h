@@ -32,8 +32,8 @@
  * @brief       Declaration of the XS::Threading::LockGuard class
  */
 
-#ifndef __XSCPP_THREADING_LOCK_GUARD_H__
-#define __XSCPP_THREADING_LOCK_GUARD_H__
+#ifndef XSCPP_THREADING_LOCK_GUARD_H
+#define XSCPP_THREADING_LOCK_GUARD_H
 
 namespace XS
 {
@@ -80,4 +80,4 @@ namespace XS
     }
 }
 
-#endif /* __XSCPP_THREADING_LOCK_GUARD_H__ */
+#endif /* XSCPP_THREADING_LOCK_GUARD_H */

@@ -32,8 +32,8 @@
  * @brief       XS-C++ common types
  */
 
-#ifndef __XSCPP_TYPES_H__
-#define __XSCPP_TYPES_H__
+#ifndef XSCPP_TYPES_H
+#define XSCPP_TYPES_H
 
 /*
  * Using stdint.h rather than cstdint as exact-width integer types
@@ -180,4 +180,4 @@ namespace XS
     const Int64 Int64Min = static_cast< Int64 >( -Int64Max - 1 );
 }
 
-#endif /* __XSCPP_TYPES_H__ */
+#endif /* XSCPP_TYPES_H */

@@ -32,8 +32,8 @@
  * @brief       Declaration of the XS::Threading::Semaphore class
  */
 
-#ifndef __XSCPP_THREADING_SEMAPHORE_H__
-#define __XSCPP_THREADING_SEMAPHORE_H__
+#ifndef XSCPP_THREADING_SEMAPHORE_H
+#define XSCPP_THREADING_SEMAPHORE_H
 
 namespace XS
 {
@@ -75,4 +75,4 @@ namespace XS
     }
 }
 
-#endif /* __XSCPP_THREADING_SEMAPHORE_H__ */
+#endif /* XSCPP_THREADING_SEMAPHORE_H */

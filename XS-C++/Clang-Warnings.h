@@ -32,8 +32,8 @@
  * @brief       Extra warning flags for Clang
  */
 
-#ifndef __XSCPP_WARNINGS__
-#define __XSCPP_WARNINGS__
+#ifndef XSCPP_WARNINGS
+#define XSCPP_WARNINGS
 
 #ifndef __clang__
 
@@ -223,4 +223,4 @@
 
 #endif
 
-#endif /* __XSCPP_WARNINGS__ */
+#endif /* XSCPP_WARNINGS */
