@@ -79,7 +79,7 @@ namespace XS
                 {
                     this->_semp = sem_open( this->_name.c_str(), O_CREAT, S_IRUSR | S_IWUSR, this->_count );
                     
-                    if( this->_semp == nullptr )
+                    if( this->_semp == nullptr || this->_semp == SEM_FAILED )
                     {
                         throw Exception( "Error initializing the semaphore object" );
                     }
