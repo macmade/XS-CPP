@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8EB9A87BADA27F786ABEAE37843ACE47183D75D1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8EB9A87BADA27F786ABEAE37843ACE47183D75D1" : 0,
+    "A59B79241FF48B87B8A2D6239F13C873F14163E3" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3D28BE29-5E59-4BFE-936F-6C95632DAD92",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8EB9A87BADA27F786ABEAE37843ACE47183D75D1" : "XS-CPP",
+    "A59B79241FF48B87B8A2D6239F13C873F14163E3" : "XS-CPPSubmodules\/gmock-xcode"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "XS-C++",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "IDE\/Xcode\/XS-C++.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:macmade\/XS-CPP.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8EB9A87BADA27F786ABEAE37843ACE47183D75D1"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/macmade\/gmock-xcode.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A59B79241FF48B87B8A2D6239F13C873F14163E3"
+    }
+  ]
+}
