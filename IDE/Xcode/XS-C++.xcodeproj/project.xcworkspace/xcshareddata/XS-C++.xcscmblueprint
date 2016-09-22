@@ -9,11 +9,11 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3D28BE29-5E59-4BFE-936F-6C95632DAD92",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "8EB9A87BADA27F786ABEAE37843ACE47183D75D1" : "XS-CPP",
-    "A59B79241FF48B87B8A2D6239F13C873F14163E3" : "XS-CPPSubmodules\/gmock-xcode"
+    "8EB9A87BADA27F786ABEAE37843ACE47183D75D1" : "XS-CPP\/",
+    "A59B79241FF48B87B8A2D6239F13C873F14163E3" : "XS-CPP\/Submodules\/gmock-xcode\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "XS-C++",
-  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "IDE\/Xcode\/XS-C++.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
