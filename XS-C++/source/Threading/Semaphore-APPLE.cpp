@@ -33,7 +33,7 @@
  */
 
 #include <XS-C++.h>
-#include <XS-C++/PIMPL/Object-IMPL.h>
+#include <XS/PIMPL/Object-IMPL.h>
 
 #include <sys/semaphore.h>
 #include <fcntl.h>

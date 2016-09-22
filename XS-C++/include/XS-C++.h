@@ -67,19 +67,19 @@
 #include <iostream>
 
 /* Includes from XS-C++ */
-#include <XS-C++/Macros.h>
-#include <XS-C++/Types.h>
-#include <XS-C++/Atomic.h>
-#include <XS-C++/PIMPL/Object.h>
-#include <XS-C++/ToStringable.h>
-#include <XS-C++/Exception.h>
-#include <XS-C++/Version.h>
-#include <XS-C++/Threading/Lockable.h>
-#include <XS-C++/Threading/LockGuard.h>
-#include <XS-C++/Threading/Mutex.h>
-#include <XS-C++/Threading/STLMutex.h>
-#include <XS-C++/Threading/NativeMutex.h>
-#include <XS-C++/Threading/Semaphore.h>
+#include <XS/Macros.h>
+#include <XS/Types.h>
+#include <XS/Atomic.h>
+#include <XS/PIMPL/Object.h>
+#include <XS/ToStringable.h>
+#include <XS/Exception.h>
+#include <XS/Version.h>
+#include <XS/Threading/Lockable.h>
+#include <XS/Threading/LockGuard.h>
+#include <XS/Threading/Mutex.h>
+#include <XS/Threading/STLMutex.h>
+#include <XS/Threading/NativeMutex.h>
+#include <XS/Threading/Semaphore.h>
 
 #endif /* __cplusplus */
 #endif /* XSCPP */
