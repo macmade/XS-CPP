@@ -35,6 +35,6 @@
 #ifndef XSCPP_PREFIX_H
 #define XSCPP_PREFIX_H
 
-#include "Clang-Warnings.h"
+#include "../Submodules/SeriousCode/clang-warnings.h"
 
 #endif /* XSCPP_PREFIX_H */

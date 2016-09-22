@@ -215,7 +215,6 @@
 		0590A5F61A72B53600BFF0BF /* travis-osx-after.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "travis-osx-after.sh"; sourceTree = "<group>"; };
 		0590A5F71A72B53600BFF0BF /* travis-osx-before.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "travis-osx-before.sh"; sourceTree = "<group>"; };
 		0590A5F81A72B6CA00BFF0BF /* GMock-Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "GMock-Main.cpp"; sourceTree = "<group>"; };
-		05BDE00A18CDB2450028F339 /* Clang-Warnings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Clang-Warnings.h"; sourceTree = "<group>"; };
 		05BDE01818CDB2450028F339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05BDE01918CDB2450028F339 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		05CADA111A69DD0F00C9E9DC /* Semaphore-APPLE.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Semaphore-APPLE.cpp"; sourceTree = "<group>"; };
@@ -345,7 +344,6 @@
 		05BDE00918CDB2450028F339 /* XS-C++ */ = {
 			isa = PBXGroup;
 			children = (
-				05BDE00A18CDB2450028F339 /* Clang-Warnings.h */,
 				05BDE00B18CDB2450028F339 /* include */,
 				05BDE01818CDB2450028F339 /* Info.plist */,
 				05BDE01918CDB2450028F339 /* PrefixHeader.pch */,
