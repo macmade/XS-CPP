@@ -4,3 +4,15 @@
 [submodule "Submodules/makelib"]
 	path = Submodules/makelib
 	url = https://github.com/macmade/makelib.git
+[submodule "Submodules/PIMPL"]
+	path = Submodules/PIMPL
+	url = https://github.com/macmade/PIMPL.git
+[submodule "Submodules/CPPAtomic"]
+	path = Submodules/CPPAtomic
+	url = https://github.com/macmade/CPPAtomic.git
+[submodule "Submodules/STDC"]
+	path = Submodules/STDC
+	url = https://github.com/macmade/STDC.git
+[submodule "Submodules/SeriousCode"]
+	path = Submodules/SeriousCode
+	url = https://github.com/macmade/SeriousCode.git
