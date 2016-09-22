@@ -50,14 +50,6 @@
 
 namespace XS
 {
-    template<>
-    void PIMPL::Object< Threading::Semaphore >::D::operator ()( PIMPL::Object< Threading::Semaphore >::IMPL * p )
-    {
-        delete p;
-    }
-
-    template class PIMPL::Object< Threading::Semaphore >;
-    
     namespace Threading
     {
         Semaphore::Semaphore( unsigned int count, std::string name ): XS::PIMPL::Object< Semaphore >( count, name )

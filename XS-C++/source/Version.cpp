@@ -33,7 +33,6 @@
  */
 
 #include <XS-C++.hpp>
-#include <XS/PIMPL/Object-IMPL.hpp>
 
 namespace XS
 {
@@ -47,7 +46,7 @@ namespace XS
     {
         public:
             
-            IMPL( unsigned int major, unsigned int minor, unsigned int build, unsigned int revision, Version::Status status ): _major( major ), _minor( minor ), _build( build ), _revision( revision ), _status( status )
+            IMPL( unsigned int major = 0, unsigned int minor = 0, unsigned int build = 0, unsigned int revision = 0, Version::Status status = Version::StatusAlpha ): _major( major ), _minor( minor ), _build( build ), _revision( revision ), _status( status )
             {}
             
             IMPL( const IMPL & o )
@@ -75,15 +74,13 @@ namespace XS
     #ifdef __clang__
     #pragma clang diagnostic pop
     #endif
-    
-    template<>
-    void PIMPL::Object< Version >::D::operator ()( PIMPL::Object< Version >::IMPL * p )
-    {
-        delete p;
-    }
+}
 
-    template class PIMPL::Object< Version >;
-    
+#define XS_PIMPL_CLASS XS::Version
+#include <XS/PIMPL/Object-IMPL.hpp>
+
+namespace XS
+{
     Version::Version( unsigned int major, unsigned int minor, unsigned int build, unsigned int revision, Status status ): XS::PIMPL::Object< Version >( major, minor, build, revision, status )
     {}
     

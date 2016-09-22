@@ -33,7 +33,6 @@
  */
 
 #include <XS-C++.hpp>
-#include <XS/PIMPL/Object-IMPL.hpp>
 
 namespace XS
 {
@@ -47,7 +46,7 @@ namespace XS
     {
         public:
             
-            IMPL( std::string reason, int code ): _code( code ), _reason( reason )
+            IMPL( std::string reason = "", int code = 0 ): _code( code ), _reason( reason )
             {
                 this->_what = "Exception code: "
                             + std::to_string( this->_code )
@@ -69,15 +68,13 @@ namespace XS
     #ifdef __clang__
     #pragma clang diagnostic pop
     #endif
-    
-    template<>
-    void PIMPL::Object< Exception >::D::operator ()( PIMPL::Object< Exception >::IMPL * p )
-    {
-        delete p;
-    }
+}
 
-    template class PIMPL::Object< Exception >;
-    
+#define XS_PIMPL_CLASS XS::Exception
+#include <XS/PIMPL/Object-IMPL.hpp>
+
+namespace XS
+{
     Exception::Exception( std::string reason, int code ): PIMPL::Object< Exception >( reason, code )
     {}
           

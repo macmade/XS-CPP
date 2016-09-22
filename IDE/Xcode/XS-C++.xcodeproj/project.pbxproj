@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		053E4CD11D94612F0044F333 /* XS-C++.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C885F18C8C76B006260B3 /* XS-C++.framework */; };
+		053E4CDA1D9463530044F333 /* PIMPL in Headers */ = {isa = PBXBuildFile; fileRef = 053E4CD91D94634C0044F333 /* PIMPL */; settings = {ATTRIBUTES = (Public, ); }; };
+		053E4CDB1D9463560044F333 /* PIMPL in Headers */ = {isa = PBXBuildFile; fileRef = 053E4CD91D94634C0044F333 /* PIMPL */; settings = {ATTRIBUTES = (Public, ); }; };
 		0590A5B31A6F08EF00BFF0BF /* XS-Atomic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5AA1A6F08EF00BFF0BF /* XS-Atomic.cpp */; };
 		0590A5B41A6F08EF00BFF0BF /* XS-Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5AB1A6F08EF00BFF0BF /* XS-Exception.cpp */; };
-		0590A5B51A6F08EF00BFF0BF /* XS-PIMPL-Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5AC1A6F08EF00BFF0BF /* XS-PIMPL-Object.cpp */; };
 		0590A5B61A6F08EF00BFF0BF /* XS-Threading-LockGuard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5AD1A6F08EF00BFF0BF /* XS-Threading-LockGuard.cpp */; };
 		0590A5B71A6F08EF00BFF0BF /* XS-Threading-NativeMutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5AE1A6F08EF00BFF0BF /* XS-Threading-NativeMutex.cpp */; };
 		0590A5B81A6F08EF00BFF0BF /* XS-Threading-Semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0590A5AF1A6F08EF00BFF0BF /* XS-Threading-Semaphore.cpp */; };
@@ -68,8 +69,6 @@
 		05DC07651A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07631A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp */; };
 		05DC07661A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07631A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp */; };
 		05DC07671A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07631A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp */; };
-		05DC076B1A5FD86F00A7CF26 /* PIMPL in Headers */ = {isa = PBXBuildFile; fileRef = 05DC076A1A5FD86200A7CF26 /* PIMPL */; settings = {ATTRIBUTES = (Public, ); }; };
-		05DC076C1A5FD8AF00A7CF26 /* PIMPL in Headers */ = {isa = PBXBuildFile; fileRef = 05DC076A1A5FD86200A7CF26 /* PIMPL */; settings = {ATTRIBUTES = (Public, ); }; };
 		05DC07701A5FF68800A7CF26 /* Version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 05DC076F1A5FF68200A7CF26 /* Version.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		05DC07711A5FF68900A7CF26 /* Version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 05DC076F1A5FF68200A7CF26 /* Version.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		05DC07731A5FF6A300A7CF26 /* Version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05DC07721A5FF6A300A7CF26 /* Version.cpp */; };
@@ -182,6 +181,7 @@
 
 /* Begin PBXFileReference section */
 		051F09651946EB70004B6E47 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
+		053E4CD91D94634C0044F333 /* PIMPL */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PIMPL; path = ../../../Submodules/PIMPL/PIMPL/include/XS/PIMPL; sourceTree = "<group>"; };
 		054511EF1A6A0ACA002B8F92 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = Makefile; path = ../../Makefile; sourceTree = "<group>"; };
 		056C881218C8B85F006260B3 /* libXS-C++.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libXS-C++.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		056C884A18C8C547006260B3 /* libXS-C++.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "libXS-C++.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,7 +189,6 @@
 		056C88AA18C8C8AC006260B3 /* libXS-C++.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libXS-C++.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0590A5AA1A6F08EF00BFF0BF /* XS-Atomic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Atomic.cpp"; sourceTree = "<group>"; };
 		0590A5AB1A6F08EF00BFF0BF /* XS-Exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Exception.cpp"; sourceTree = "<group>"; };
-		0590A5AC1A6F08EF00BFF0BF /* XS-PIMPL-Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-PIMPL-Object.cpp"; sourceTree = "<group>"; };
 		0590A5AD1A6F08EF00BFF0BF /* XS-Threading-LockGuard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Threading-LockGuard.cpp"; sourceTree = "<group>"; };
 		0590A5AE1A6F08EF00BFF0BF /* XS-Threading-NativeMutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Threading-NativeMutex.cpp"; sourceTree = "<group>"; };
 		0590A5AF1A6F08EF00BFF0BF /* XS-Threading-Semaphore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "XS-Threading-Semaphore.cpp"; sourceTree = "<group>"; };
@@ -220,7 +219,6 @@
 		05DC07591A5FD16B00A7CF26 /* CompareAndSwap32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompareAndSwap32.cpp; sourceTree = "<group>"; };
 		05DC075E1A5FD28B00A7CF26 /* CompareAndSwap64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompareAndSwap64.cpp; sourceTree = "<group>"; };
 		05DC07631A5FD39A00A7CF26 /* CompareAndSwapPointer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompareAndSwapPointer.cpp; sourceTree = "<group>"; };
-		05DC076A1A5FD86200A7CF26 /* PIMPL */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PIMPL; sourceTree = "<group>"; };
 		05DC076F1A5FF68200A7CF26 /* Version.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Version.hpp; sourceTree = "<group>"; };
 		05DC07721A5FF6A300A7CF26 /* Version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Version.cpp; sourceTree = "<group>"; };
 		05DC07791A600EE500A7CF26 /* Threading */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Threading; sourceTree = "<group>"; };
@@ -377,7 +375,7 @@
 				05DC06EA1A5FB38A00A7CF26 /* Atomic.hpp */,
 				05DC079C1A61465400A7CF26 /* Exception.hpp */,
 				05DC06DF1A5FAD5100A7CF26 /* Macros.hpp */,
-				05DC076A1A5FD86200A7CF26 /* PIMPL */,
+				053E4CD91D94634C0044F333 /* PIMPL */,
 				05DC07791A600EE500A7CF26 /* Threading */,
 				05DC07A51A61489300A7CF26 /* ToStringable.hpp */,
 				05DC06E21A5FADA300A7CF26 /* Types.hpp */,
@@ -426,7 +424,6 @@
 				0590A5F81A72B6CA00BFF0BF /* GMock-Main.cpp */,
 				0590A5AA1A6F08EF00BFF0BF /* XS-Atomic.cpp */,
 				0590A5AB1A6F08EF00BFF0BF /* XS-Exception.cpp */,
-				0590A5AC1A6F08EF00BFF0BF /* XS-PIMPL-Object.cpp */,
 				0590A5AD1A6F08EF00BFF0BF /* XS-Threading-LockGuard.cpp */,
 				0590A5AE1A6F08EF00BFF0BF /* XS-Threading-NativeMutex.cpp */,
 				0590A5AF1A6F08EF00BFF0BF /* XS-Threading-Semaphore.cpp */,
@@ -456,7 +453,7 @@
 				05DC06EB1A5FB38A00A7CF26 /* Atomic.hpp in Headers */,
 				05DC06E11A5FAD5500A7CF26 /* Macros.hpp in Headers */,
 				05DC07A61A61489300A7CF26 /* ToStringable.hpp in Headers */,
-				05DC076C1A5FD8AF00A7CF26 /* PIMPL in Headers */,
+				053E4CDA1D9463530044F333 /* PIMPL in Headers */,
 				05DC077C1A600F0300A7CF26 /* Threading in Headers */,
 				05DC06E31A5FADA300A7CF26 /* Types.hpp in Headers */,
 				05DC06DC1A5FACEF00A7CF26 /* XS-C++.hpp in Headers */,
@@ -472,7 +469,7 @@
 				05DC06EC1A5FB38A00A7CF26 /* Atomic.hpp in Headers */,
 				05DC06E01A5FAD5500A7CF26 /* Macros.hpp in Headers */,
 				05DC07A71A61489300A7CF26 /* ToStringable.hpp in Headers */,
-				05DC076B1A5FD86F00A7CF26 /* PIMPL in Headers */,
+				053E4CDB1D9463560044F333 /* PIMPL in Headers */,
 				05DC077B1A600EFC00A7CF26 /* Threading in Headers */,
 				05DC06E41A5FADA300A7CF26 /* Types.hpp in Headers */,
 				05DC06DD1A5FACEF00A7CF26 /* XS-C++.hpp in Headers */,
@@ -803,7 +800,6 @@
 				0590A5BA1A6F08EF00BFF0BF /* XS-ToStringable.cpp in Sources */,
 				0590A5B81A6F08EF00BFF0BF /* XS-Threading-Semaphore.cpp in Sources */,
 				0590A5BB1A6F08EF00BFF0BF /* XS-Version.cpp in Sources */,
-				0590A5B51A6F08EF00BFF0BF /* XS-PIMPL-Object.cpp in Sources */,
 				0590A5B41A6F08EF00BFF0BF /* XS-Exception.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1058,6 +1054,7 @@
 				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					../../Submodules/PIMPL/PIMPL/include,
 					"../../XS-C++/include",
 				);
 				PRODUCT_NAME = "XS-C++";
@@ -1074,6 +1071,7 @@
 				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					../../Submodules/PIMPL/PIMPL/include,
 					"../../XS-C++/include",
 				);
 				PRODUCT_NAME = "XS-C++";
@@ -1090,6 +1088,7 @@
 				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					../../Submodules/PIMPL/PIMPL/include,
 					"../../XS-C++/include",
 				);
 				PRODUCT_NAME = "XS-C++";
@@ -1105,6 +1104,7 @@
 				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					../../Submodules/PIMPL/PIMPL/include,
 					"../../XS-C++/include",
 				);
 				PRODUCT_NAME = "XS-C++";
@@ -1122,6 +1122,7 @@
 				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					../../Submodules/PIMPL/PIMPL/include,
 					"../../XS-C++/include",
 				);
 				INFOPLIST_FILE = "../../XS-C++/Info.plist";
@@ -1142,6 +1143,7 @@
 				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					../../Submodules/PIMPL/PIMPL/include,
 					"../../XS-C++/include",
 				);
 				INFOPLIST_FILE = "../../XS-C++/Info.plist";
@@ -1159,6 +1161,7 @@
 				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					../../Submodules/PIMPL/PIMPL/include,
 					"../../XS-C++/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1178,6 +1181,7 @@
 				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					../../Submodules/PIMPL/PIMPL/include,
 					"../../XS-C++/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1308,6 +1312,7 @@
 				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					../../Submodules/PIMPL/PIMPL/include,
 					"../../XS-C++/include",
 				);
 				PRODUCT_NAME = "XS-C++";
@@ -1324,6 +1329,7 @@
 				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					../../Submodules/PIMPL/PIMPL/include,
 					"../../XS-C++/include",
 				);
 				PRODUCT_NAME = "XS-C++";
@@ -1341,6 +1347,7 @@
 				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					../../Submodules/PIMPL/PIMPL/include,
 					"../../XS-C++/include",
 				);
 				INFOPLIST_FILE = "../../XS-C++/Info.plist";
@@ -1358,6 +1365,7 @@
 				GCC_PREFIX_HEADER = "../../XS-C++/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					../../Submodules/PIMPL/PIMPL/include,
 					"../../XS-C++/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1382,6 +1390,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Applications/Xcode6-Beta2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+					../../Submodules/PIMPL/PIMPL/include,
 					"../../XS-C++/include",
 				);
 				INFOPLIST_FILE = "../../Unit-Tests/Info.plist";
@@ -1405,6 +1414,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Applications/Xcode6-Beta2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+					../../Submodules/PIMPL/PIMPL/include,
 					"../../XS-C++/include",
 				);
 				INFOPLIST_FILE = "../../Unit-Tests/Info.plist";
@@ -1428,6 +1438,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Applications/Xcode6-Beta2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+					../../Submodules/PIMPL/PIMPL/include,
 					"../../XS-C++/include",
 				);
 				INFOPLIST_FILE = "../../Unit-Tests/Info.plist";

@@ -33,7 +33,6 @@
  */
 
 #include <XS-C++.hpp>
-#include <XS/PIMPL/Object-IMPL.hpp>
 #include <mutex>
 
 namespace XS
@@ -48,7 +47,7 @@ namespace XS
     {
         public:
             
-            IMPL( bool recursive ): _recursive( recursive )
+            IMPL( bool recursive = false ): _recursive( recursive )
             {
                 this->CreateMutex();
             }
@@ -94,15 +93,13 @@ namespace XS
     #ifdef __clang__
     #pragma clang diagnostic pop
     #endif
-    
-    template<>
-    void PIMPL::Object< Threading::STLMutex >::D::operator ()( PIMPL::Object< Threading::STLMutex >::IMPL * p )
-    {
-        delete p;
-    }
+}
 
-    template class PIMPL::Object< Threading::STLMutex >;
-    
+#define XS_PIMPL_CLASS XS::Threading::STLMutex
+#include <XS/PIMPL/Object-IMPL.hpp>
+
+namespace XS
+{
     namespace Threading
     {
         STLMutex::STLMutex( bool recursive ): XS::PIMPL::Object< STLMutex >( recursive )

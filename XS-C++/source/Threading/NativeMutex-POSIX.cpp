@@ -33,7 +33,6 @@
  */
 
 #include <XS-C++.hpp>
-#include <XS/PIMPL/Object-IMPL.hpp>
 #include <pthread.h>
 
 namespace XS
@@ -48,7 +47,7 @@ namespace XS
     {
         public:
             
-            IMPL( bool recursive ): _recursive( recursive )
+            IMPL( bool recursive = false ): _recursive( recursive )
             {
                 this->CreateMutex();
             }
@@ -104,7 +103,13 @@ namespace XS
     #ifdef __clang__
     #pragma clang diagnostic pop
     #endif
-    
+}
+
+#define XS_PIMPL_CLASS XS::Threading::NativeMutex
+#include <XS/PIMPL/Object-IMPL.hpp>
+
+namespace XS
+{
     namespace Threading
     {
         void NativeMutex::Lock( void )

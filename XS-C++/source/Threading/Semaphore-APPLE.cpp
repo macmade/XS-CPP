@@ -33,7 +33,6 @@
  */
 
 #include <XS-C++.hpp>
-#include <XS/PIMPL/Object-IMPL.hpp>
 
 #include <sys/semaphore.h>
 #include <fcntl.h>
@@ -53,7 +52,7 @@ namespace XS
     {
         public:
             
-            IMPL( unsigned int count, std::string name ): _count( count ), _name( name )
+            IMPL( unsigned int count = 1, std::string name = "" ): _count( count ), _name( name )
             {
                 this->CreateSemaphore();
             }
@@ -111,7 +110,13 @@ namespace XS
     #ifdef __clang__
     #pragma clang diagnostic pop
     #endif
-    
+}
+
+#define XS_PIMPL_CLASS XS::Threading::Semaphore
+#include <XS/PIMPL/Object-IMPL.hpp>
+
+namespace XS
+{
     namespace Threading
     {
         bool Semaphore::TryWait( void )

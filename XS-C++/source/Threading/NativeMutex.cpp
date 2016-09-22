@@ -46,14 +46,6 @@
 
 namespace XS
 {
-    template<>
-    void PIMPL::Object< Threading::NativeMutex >::D::operator ()( PIMPL::Object< Threading::NativeMutex >::IMPL * p )
-    {
-        delete p;
-    }
-    
-    template class PIMPL::Object< Threading::NativeMutex >;
-    
     namespace Threading
     {
         NativeMutex::NativeMutex( bool recursive ): XS::PIMPL::Object< NativeMutex >( recursive )

@@ -33,7 +33,6 @@
  */
 
 #include <XS-C++.hpp>
-#include <XS/PIMPL/Object-IMPL.hpp>
 
 namespace XS
 {
@@ -46,6 +45,9 @@ namespace XS
     class PIMPL::Object< Threading::LockGuard >::IMPL
     {
         public:
+            
+            IMPL( void ): IMPL( nullptr )
+            {}
             
             IMPL( Threading::Lockable * lock ): _lock( lock )
             {
@@ -73,15 +75,13 @@ namespace XS
     #ifdef __clang__
     #pragma clang diagnostic pop
     #endif
-    
-    template<>
-    void PIMPL::Object< Threading::LockGuard >::D::operator ()( PIMPL::Object< Threading::LockGuard >::IMPL * p )
-    {
-        delete p;
-    }
+}
 
-    template class PIMPL::Object< Threading::LockGuard >;
-    
+#define XS_PIMPL_CLASS XS::Threading::LockGuard
+#include <XS/PIMPL/Object-IMPL.hpp>
+
+namespace XS
+{
     namespace Threading
     {
         LockGuard::LockGuard( Lockable * lock ): XS::PIMPL::Object< LockGuard >( lock )
