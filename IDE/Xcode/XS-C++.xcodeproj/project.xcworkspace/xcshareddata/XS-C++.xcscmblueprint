@@ -5,12 +5,18 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "8EB9A87BADA27F786ABEAE37843ACE47183D75D1" : 0,
-    "A59B79241FF48B87B8A2D6239F13C873F14163E3" : 0
+    "A59B79241FF48B87B8A2D6239F13C873F14163E3" : 0,
+    "DC27B5DA8A3BAEC9EFF8F0DE9ED4ADFB1116243D" : 9223372036854775807,
+    "EA75150531006966844D38F6DEFA072DB263D143" : 9223372036854775807,
+    "E63E8B041FFE0E898A7B0E12EA50CACECFE4362C" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3D28BE29-5E59-4BFE-936F-6C95632DAD92",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "8EB9A87BADA27F786ABEAE37843ACE47183D75D1" : "XS-CPP\/",
-    "A59B79241FF48B87B8A2D6239F13C873F14163E3" : "XS-CPP\/Submodules\/gmock-xcode\/"
+    "A59B79241FF48B87B8A2D6239F13C873F14163E3" : "XS-CPP\/Submodules\/gmock-xcode\/",
+    "DC27B5DA8A3BAEC9EFF8F0DE9ED4ADFB1116243D" : "XS-CPP\/Submodules\/PIMPL\/",
+    "EA75150531006966844D38F6DEFA072DB263D143" : "XS-CPP\/Submodules\/CPPAtomic\/",
+    "E63E8B041FFE0E898A7B0E12EA50CACECFE4362C" : "XS-CPP\/Submodules\/CPPAtomic\/Submodules\/SeriousCode\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "XS-C++",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -25,6 +31,21 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/macmade\/gmock-xcode.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A59B79241FF48B87B8A2D6239F13C873F14163E3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/macmade\/PIMPL.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DC27B5DA8A3BAEC9EFF8F0DE9ED4ADFB1116243D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/macmade\/SeriousCode.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E63E8B041FFE0E898A7B0E12EA50CACECFE4362C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/macmade\/CPPAtomic.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EA75150531006966844D38F6DEFA072DB263D143"
     }
   ]
 }
