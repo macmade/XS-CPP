@@ -32,7 +32,7 @@
  * @brief       Definition of XS::Atomic::Decrement64
  */
 
-#include <XS-C++.h>
+#include <XS-C++.hpp>
 
 #if defined( _WIN32 )
 

@@ -32,7 +32,7 @@
  * @brief       Definition of the XS::ToStringable abstract class
  */
 
-#include <XS-C++.h>
+#include <XS-C++.hpp>
 
 namespace XS
 {

@@ -32,7 +32,7 @@
  * @brief       Definition of XS::Atomic::MemoryBarrier
  */
 
-#include <XS-C++.h>
+#include <XS-C++.hpp>
 
 namespace XS
 {

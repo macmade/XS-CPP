@@ -32,7 +32,7 @@
  * @brief       Main executable for GoogleMock tests
  */
 
-#include <XS-C++.h>
+#include <XS-C++.hpp>
 #include <GoogleMock/GoogleMock.h>
 
 using namespace testing;

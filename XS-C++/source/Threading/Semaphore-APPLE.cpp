@@ -32,8 +32,8 @@
  * @brief       Definition of the XS::Threading::Semaphore class
  */
 
-#include <XS-C++.h>
-#include <XS/PIMPL/Object-IMPL.h>
+#include <XS-C++.hpp>
+#include <XS/PIMPL/Object-IMPL.hpp>
 
 #include <sys/semaphore.h>
 #include <fcntl.h>

@@ -29,57 +29,53 @@
 
 /*!
  * @copyright   (c) 2015 - Jean-David Gadina - www.xs-labs.com
- * @brief       XS-C++ main header file
- */
-
-#ifndef XSCPP
-#define XSCPP
-#ifdef  __cplusplus
-
-/*!
- * @define      XSCPP_HAS_CPP11
- * @brief       Whether the compiler has ISO C++ 2011 support
- */
-#if defined( __cplusplus ) && ( __cplusplus > 199711L || ( defined( _MSC_VER ) && _MSC_VER >= 1800 ) )
-#define XSCPP_HAS_CPP11         1
-#endif
-
-/*!
- * @define      XSCPP_THREADING_USE_STL
- * @brief       Whether to use the ISO C++ 2011 thread support library
+ * @brief       Private delcarations of the XS::PIMPL::Object template class
  * 
- * If not defined previously to 0 (before inclusion of this header file, this
- * macro will be defined to 1, meaning the ISO C++ 2011 thread support library
- * will be used instead of native thread functions (eg. pthread on POSIX).
+ * This header shall be included in implementations of PIMPL classes.
+ * Note that explicit template instanciation is required after the declaration
+ * of the IMPL class.
  */
-#ifndef XSCPP_THREADING_USE_STL
-#define XSCPP_THREADING_USE_STL    1
-#endif
 
-/* ISO C++ 2011 is required */
-#ifndef XSCPP_HAS_CPP11
-#error "The XS-Labs C++ Utility Library requires ISO C++ 2011"
-#endif
+#include <XS-C++.hpp>
 
-/* Includes from the C++ STL */
-#include <memory>
-#include <string>
-#include <iostream>
-
-/* Includes from XS-C++ */
-#include <XS/Macros.h>
-#include <XS/Types.h>
-#include <XS/Atomic.h>
-#include <XS/PIMPL/Object.h>
-#include <XS/ToStringable.h>
-#include <XS/Exception.h>
-#include <XS/Version.h>
-#include <XS/Threading/Lockable.h>
-#include <XS/Threading/LockGuard.h>
-#include <XS/Threading/Mutex.h>
-#include <XS/Threading/STLMutex.h>
-#include <XS/Threading/NativeMutex.h>
-#include <XS/Threading/Semaphore.h>
-
-#endif /* __cplusplus */
-#endif /* XSCPP */
+namespace XS
+{
+    namespace PIMPL
+    {
+        template< class T >
+        template< typename ... A >
+        Object< T >::Object( A ... args ): impl( new Object< T >::IMPL( args ... ) )
+        {}
+        
+        template< class T >
+        Object< T >::Object( const Object & o ): impl( new Object< T >::IMPL( *( o.impl ) ) )
+        {}
+        
+        template< class T >
+        Object< T >::Object( Object && o )
+        {
+            this->impl = std::move( o.impl );
+            o.impl     = nullptr;
+        }
+        
+        template< class T >
+        Object< T >::~Object( void )
+        {}
+        
+        template< class T >
+        Object< T > & Object< T >::operator =( Object o )
+        {
+            swap( *( this ), o );
+            
+            return *( this );
+        }
+        
+        template< class U >
+        void swap( Object< U > & o1, Object< U > & o2 )
+        {
+            using std::swap;
+            
+            swap( o1.impl, o2.impl );
+        }
+    }
+}

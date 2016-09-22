@@ -32,7 +32,7 @@
  * @brief       Definition of the XS::Threading::NativeMutex class
  */
 
-#include <XS-C++.h>
+#include <XS-C++.hpp>
 
 #ifdef _WIN32
 

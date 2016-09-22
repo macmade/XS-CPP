@@ -32,7 +32,7 @@
  * @brief       Definition of the XS::Threading::Semaphore class
  */
 
-#include <XS-C++.h>
+#include <XS-C++.hpp>
 
 #if defined( _WIN32 )
 

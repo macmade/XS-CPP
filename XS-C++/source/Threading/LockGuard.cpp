@@ -32,8 +32,8 @@
  * @brief       Definition of the XS::Threading::LockGuard class
  */
 
-#include <XS-C++.h>
-#include <XS/PIMPL/Object-IMPL.h>
+#include <XS-C++.hpp>
+#include <XS/PIMPL/Object-IMPL.hpp>
 
 namespace XS
 {
