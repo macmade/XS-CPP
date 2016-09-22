@@ -23,7 +23,7 @@
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "GCov"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
@@ -38,7 +38,26 @@
                ReferencedContainer = "container:XS-C++.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "053BEDAB1B8EFDC1007D82A4"
+               BuildableName = "PIMPL-Tests.xctest"
+               BlueprintName = "PIMPL-Tests"
+               ReferencedContainer = "container:../../../PIMPL/PIMPL.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "056C885E18C8C76B006260B3"
+            BuildableName = "XS-C++.framework"
+            BlueprintName = "XS-C++ Mac Framework"
+            ReferencedContainer = "container:XS-C++.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -70,6 +89,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "056C885E18C8C76B006260B3"
+            BuildableName = "XS-C++.framework"
+            BlueprintName = "XS-C++ Mac Framework"
+            ReferencedContainer = "container:XS-C++.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
