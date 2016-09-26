@@ -50,7 +50,7 @@ LIBS                := -lpthread -lc++
 FLAGS_OPTIM         := Os
 FLAGS_WARN          := -Werror -Wall
 FLAGS_STD           := c++11
-FLAGS_OTHER         := -stdlib=libc++ -fno-strict-aliasing
+FLAGS_OTHER         := -stdlib=libc++ -fno-strict-aliasing -ISubmodules/PIMPL/PIMPL/include
 XCODE_PROJECT       := IDE/Xcode/XS-C++.xcodeproj
 XCODE_TEST_SCHEME   := XS-C++ Mac Static Library
 
